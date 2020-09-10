@@ -1,0 +1,6 @@
+#!/bin/bash
+direction=$1
+
+if [ -n "${direction}" ]; then
+  swaymsg mark _swapee, focus "${direction}", swap container with mark _swapee, focus "${direction}", unmark _swapee
+fi

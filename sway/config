@@ -1,0 +1,329 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+font pango:UbuntuMono Nerd Font 12
+
+# floating applications
+# for_window [app_id="^.*$"] floating enable
+
+for_window [app_id="^firefox$"] floating enable
+for_window [app_id="^virt-manager$"] floating enable
+for_window [app_id="^feh$"] floating enable
+for_window [app_id="^mpv$"] floating enable
+for_window [app_id="^gedit$"] floating enable
+for_window [app_id="^evince$"] floating enable
+for_window [app_id="^blueberry.py$"] floating enable
+for_window [app_id="^pavucontrol$"] floating enable
+for_window [app_id="^org.gnome.Nautilus$"] floating enable
+for_window [app_id="^nm-connection-editor$"] floating enable
+for_window [app_id="^Terminator Preferences$"] floating enable
+for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
+for_window [class="^XEyes$"] floating enable
+for_window [class="^Slack$"] floating enable
+for_window [class="^Chromium$"] floating enable
+
+assign [class="^privateinternetaccess$"] 7
+assign [class="^firefox$"] 7
+assign [class="^Microsoft Teams - Preview$"] 2
+# Spotify does not work with just the assign
+for_window [class="^Spotify$"] move to workspace 9
+#
+### Output configuration
+#
+
+output * bg /usr/share/backgrounds/kind-sur.jpg fill
+# output * bg #457595 solid_color
+
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# output HDMI-A-1 resolution 1920x1080 position 2880,0
+output DP-5 resolution 2560x1440 position 0,0
+output DP-4 resolution 2560x1440 position 2560,0
+output DP-2 resolution 2560x1440 position 5120,0
+
+workspace 1 output DP-4
+workspace 2 output DP-4
+workspace 3 output DP-4
+workspace 4 output DP-4
+workspace 5 output DP-5
+workspace 6 output DP-5
+workspace 7 output DP-2
+workspace 8 output DP-2
+workspace 9 output DP-4
+
+
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' \
+               resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by runnxing: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input * {
+    repeat_delay 250
+    repeat_rate 25
+    xkb_layout us,no
+    xkb_options grp:caps_toggle
+    xkb_numlock enabled
+}
+
+# gaps config
+default_border pixel 2
+default_floating_border pixel 2
+
+gaps inner 20
+gaps outer 0
+smart_gaps off
+smart_borders on
+
+client.focused            #282828 #252525 #282828 #93e0e3   #282828
+client.focused_inactive   #282828 #353535 #656565 #282828   #252525
+client.unfocused          #282828 #353535 #656565 #282828   #252525
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Shift+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+    bindsym $mod+p exec rofi -show run
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exit
+
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+    # swap postition and size of the active window
+    # to the window in the given direction
+    bindsym $mod+Ctrl+Left exec "~/.config/sway/swap left"
+    bindsym $mod+Ctrl+Down exec "~/.config/sway/swap down"
+    bindsym $mod+Ctrl+Up exec "~/.config/sway/swap up"
+    bindsym $mod+Ctrl+Right exec "~/.config/swaway/swap right"
+
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+grave move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+grave scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+## Applications
+
+bindsym $mod+Delete exec 'makoctl dismiss --all'
+
+# Screenshot
+bindsym $mod+F11 exec 'grim -g "$(slurp)" - | wl-copy'
+bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png && scp $(ls -tr ~/Downloads/*.png | tail -n 1) skynet:~/Downloads/'
+
+# Spotify
+bindsym Ctrl+F7 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym Ctrl+F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym Ctrl+F6 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+
+bindsym F12 exec '~/Scripts/copyclipboard'
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    swaybar_command waybar
+    # position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    # status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    # mode hide
+
+    # colors {
+    #     statusline #cc241d
+    #     background #252525
+    #     focused_workspace  #252525 #959595 #252525
+    #     active_workspace   #959595 #252525 #959595
+    #     inactive_workspace #252525 #252525 #959595
+    # }
+
+}
+
+# include /etc/sway/conf.d/*
+
+# Start some tools
+exec flashfocus
+exec dunst
+exec redshift
+#exec dropbox
+exec /opt/piavpn/bin/pia-client
+
+# Start some apps
+exec firefox
+# exec flatpak run com.microsoft.Teams
+exec flatpak run com.spotify.Client
+

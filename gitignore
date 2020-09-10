@@ -1,0 +1,10 @@
+.\#*
+\#*\#
+.idea
+.vscode
+*.swp
+TAGS
+__pycache__
+*.pyc
+.venv
+id_rsa*

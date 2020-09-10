@@ -1,0 +1,11 @@
+{
+  "go.goplsOptions": {"completeUnimported": true},
+  "go.goplsPath": "$GOPATH/bin/gopls",
+  "go.goplsArgs": ["-remote=auto"],
+  "coc.preferences.rootPatterns": [
+      ".git",
+      ".hg",
+      ".projections.json",
+      "go.mod"
+  ]
+}

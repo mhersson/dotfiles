@@ -1,0 +1,6 @@
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.dotfiles/gitignore
+[pull]
+	rebase = false

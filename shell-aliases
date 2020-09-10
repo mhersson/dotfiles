@@ -1,0 +1,22 @@
+#------------------------------
+# Alias
+#------------------------------
+
+stty -ixon
+
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -alh'
+alias ..='cd ..'
+alias vi='vim'
+alias cat='bat -p --paging=never'
+alias grep='grep --color=auto'
+alias emacs='emacs -nw'
+alias gei='curl --silent https://icanhazip.com'
+
+alias getrootpw='~/Scripts/getrootpw'
+
+# WAN - Bamsebo
+alias bamsebo='screen -ls bamsebo && screen -r bamsebo || screen -S bamsebo bash -c "~/.ssh/badvpn/bamsebo-vpn.sh"'
+
+alias stibocon='screen -ls stibo && screen -r stibo || screen -S stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
