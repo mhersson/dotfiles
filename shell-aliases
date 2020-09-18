@@ -17,6 +17,6 @@ alias gei='curl --silent https://icanhazip.com'
 alias getrootpw='~/Scripts/getrootpw'
 
 # WAN - Bamsebo
-alias bamsebo='screen -ls bamsebo && screen -r bamsebo || screen -S bamsebo bash -c "~/.ssh/badvpn/bamsebo-vpn.sh"'
+alias bamsebo='tmux attach -t bamsebo || tmux new -s bamsebo bash -c "~/.ssh/badvpn/bamsebo-vpn.sh"'
 
-alias stibocon='screen -ls stibo && screen -r stibo || screen -S stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
+alias stibocon='tmux attach -t stibo || tmux new -s stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
