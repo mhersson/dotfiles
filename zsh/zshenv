@@ -1,4 +1,7 @@
 export LC_ALL=en_US.UTF-8
 
 export GOPATH=$HOME/Development/go
+
+# Discard duplicates from both $PATH and $path
+typeset -U PATH path
 path+=($GOPATH/bin $HOME/.emacs.d/bin)
