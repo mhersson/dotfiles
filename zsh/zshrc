@@ -98,8 +98,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export LC_ALL=en_US.UTF-8
-export GOPATH=$HOME/Development/go
-export PATH=$GOPATH/bin:$HOME/.emacs.d/bin:$PATH
 source $HOME/.dotfiles/shell-aliases
 
