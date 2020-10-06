@@ -10,6 +10,7 @@ alias la='ls -alh'
 alias ..='cd ..'
 alias vi='vim'
 alias cat='bat -p --paging=never'
+alias icat="kitty +kitten icat"
 alias grep='grep --color=auto'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
