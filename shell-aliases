@@ -8,12 +8,14 @@ alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
 alias ..='cd ..'
-alias vi='vim'
+alias vi='nvim'
 alias cat='bat -p --paging=never'
 alias icat="kitty +kitten icat"
 alias grep='grep --color=auto'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
+alias si='~/Scripts/slack-image'
+alias sp='~/Scripts/slack-pipe'
 
 alias getrootpw='~/Scripts/getrootpw'
 
@@ -21,3 +23,4 @@ alias getrootpw='~/Scripts/getrootpw'
 alias bamsebo='tmux attach -t bamsebo || tmux new -s bamsebo bash -c "~/.ssh/badvpn/bamsebo-vpn.sh"'
 
 alias stibocon='tmux attach -t stibo || tmux new -s stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
+alias stibocon-reload='~/.ssh/badvpn/stibocon.sh'
