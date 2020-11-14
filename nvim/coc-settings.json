@@ -1,0 +1,15 @@
+{
+  "go.goplsOptions": {
+      "completeUnimported": true,
+      "usePlaceholders": true,
+      "deepCompletion": true
+  },
+  "go.goplsPath": "/home/morten/Development/go/bin/gopls",
+  "go.goplsArgs": ["-remote=auto"],
+  "coc.preferences.rootPatterns": [
+      ".git",
+      ".hg",
+      ".projections.json",
+      "go.mod"
+  ]
+}
