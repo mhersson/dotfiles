@@ -1,0 +1,12 @@
+source-file ~/.tmux.conf
+
+new-session -s centered-master
+
+split-window -h -t 0 -l 10%
+split-window -h -t 0 -l 89%
+split-window -v -t 0 -l 33%
+split-window -v -t 0 -l 50%
+split-window -v -t 4 -l 33%
+split-window -v -t 4 -l 50% -b
+
+set-option status off
