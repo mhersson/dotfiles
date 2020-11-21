@@ -14,12 +14,12 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty --single-instance
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-font pango:UbuntuMono Nerd Font 12
+font pango:Inconsolata 12
 
 # floating applications
 # for_window [app_id="^.*$"] floating enable
@@ -39,17 +39,17 @@ for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
 for_window [class="^XEyes$"] floating enable
 for_window [class="^Slack$"] floating enable
 for_window [class="^Chromium$"] floating enable
+for_window [class="^Brave-browser$"] floating enable
 
-assign [class="^privateinternetaccess$"] 7
-assign [class="^firefox$"] 7
-assign [class="^Microsoft Teams - Preview$"] 2
-# Spotify does not work with just the assign
-for_window [class="^Spotify$"] move to workspace 9
+assign [class="^privateinternetaccess$"] 6
+assign [class="^Firefox$"] 6
+assign [class="^Microsoft Teams - Preview$"] 3
+assign [class="^Spotify$"] 9
 #
 ### Output configuration
 #
 
-output * bg /usr/share/backgrounds/kind-sur.jpg fill
+output * bg ~/Pictures/wallpaper/earth.jpg fill
 # output * bg #457595 solid_color
 
 #
@@ -60,18 +60,19 @@ output * bg /usr/share/backgrounds/kind-sur.jpg fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # output HDMI-A-1 resolution 1920x1080 position 2880,0
-output DP-5 resolution 2560x1440 position 0,0
-output DP-4 resolution 2560x1440 position 2560,0
-output DP-2 resolution 2560x1440 position 5120,0
+output DP-5 resolution 2560x1440 position 0,1080
+output DP-4 resolution 2560x1440 position 2560,1080
+output DP-2 resolution 2560x1440 position 5120,1080
+output DP-3 resolution 1920x1080 position 2880,0
 
 workspace 1 output DP-4
 workspace 2 output DP-4
 workspace 3 output DP-4
-workspace 4 output DP-4
+workspace 4 output DP-5
 workspace 5 output DP-5
-workspace 6 output DP-5
+workspace 6 output DP-2
 workspace 7 output DP-2
-workspace 8 output DP-2
+workspace 8 output DP-3
 workspace 9 output DP-4
 
 
@@ -280,15 +281,15 @@ bindsym $mod+Delete exec 'makoctl dismiss --all'
 
 # Screenshot
 bindsym $mod+F11 exec 'grim -g "$(slurp)" - | wl-copy'
-bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png && scp $(ls -tr ~/Downloads/*.png | tail -n 1) skynet:~/Downloads/'
+#bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png && scp $(ls -tr ~/Downloads/*.png | tail -n 1) skynet:~/Downloads/'
+bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png'
 
 # Spotify
 bindsym Ctrl+F7 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Ctrl+F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym Ctrl+F6 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
-
-bindsym F12 exec '~/Scripts/copyclipboard'
+# bindsym F12 exec '~/Scripts/copyclipboard'
 
 #
 # Status Bar:
@@ -319,11 +320,9 @@ bar {
 exec flashfocus
 exec dunst
 exec redshift
-#exec dropbox
-exec /opt/piavpn/bin/pia-client
+exec dropbox start
+exec /usr/local/bin/piactl connect
 
 # Start some apps
 exec firefox
-# exec flatpak run com.microsoft.Teams
-exec flatpak run com.spotify.Client
 

@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     //"modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "custom/vpn", "cpu", "memory", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
          "disable-scroll": true,
@@ -146,7 +146,7 @@
     "custom/vpn": {
         "format": "{} {icon}",
         "max-length": 40,
-        "interval": 300,
+        "interval": 30,
         "format-icons": {
             "down": "",
             "default": ""
