@@ -55,6 +55,8 @@ if !exists('g:vscode')
     set expandtab               " Use spaces, not tabs, for autoindent/tab key.
     set shiftround              " rounds indent to a multiple of shiftwidth
     "set textwidth=79            " breaks line at length 79
+    set nofixendofline
+    set noeol
 
     " close preview window automatically when we move around
     autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
