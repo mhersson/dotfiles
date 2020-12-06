@@ -76,6 +76,11 @@
 (global-set-key (kbd "C-s") 'normal-mode-and-save)
 (global-set-key (kbd "C-q") 'evil-quit)
 
+;; Set shell indent to 2 spaces
+(add-hook! sh-mode
+  (setq sh-basic-offset 2)
+  (setq tab-width 2))
+
 ;; Disable the golang lsp formatter - it does not clean up imports
 ;; https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format#disabling-the-lsp-formatter
 (setq-hook! 'go-mode-hook +format-with-lsp nil)
