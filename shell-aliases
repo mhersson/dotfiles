@@ -8,6 +8,19 @@ alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
 alias ..='cd ..'
+
+# Git
+alias ga='git add'
+alias gaa='git add --all'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gca='git commit --amend'
+alias gcaf='git commit -a --fixup'
+alias glp='git log --decorate --patch --word-diff=color --color-moved'
+alias gp='git pull'
+alias gria='git rebase --interactive --autosquash'
+alias gst='git status'
+
 alias vi='nvim'
 alias cat='bat --theme TwoDark --style plain --paging=never'
 alias less='bat --theme TwoDark --style plain'
@@ -15,8 +28,10 @@ alias icat="kitty +kitten icat"
 alias grep='grep --color=auto'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
+
 alias si='~/Scripts/slack-image'
 alias sp='~/Scripts/slack-pipe'
+
 
 alias getrootpw='~/Scripts/getrootpw'
 
