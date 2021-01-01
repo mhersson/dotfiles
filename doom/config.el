@@ -26,8 +26,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-one)
-(load-theme 'gruvbox-dark-hard t)
+(setq doom-theme 'doom-one)
+;;(load-theme 'gruvbox-dark-medium t)
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/org-files")
@@ -58,13 +58,16 @@
 (setq mouse-yank-at-point t)
 
 ;; Set cursor colors on mode change
+(unless (display-graphic-p)
+  (evil-terminal-cursor-changer-activate))
+
 (when (display-graphic-p)
-  (setq evil-emacs-state-cursor '("red" box)
-	evil-normal-state-cursor '("green" box)
-	evil-visual-state-cursor '("orange" box)
-	evil-insert-state-cursor '("red" bar)
-	evil-replace-state-cursor '("red" bar)
-	evil-operator-state-cursor '("red" hollow)))
+(setq evil-emacs-state-cursor '("red" box)
+    evil-normal-state-cursor '("green" box)
+    evil-visual-state-cursor '("orange" box)
+    evil-insert-state-cursor '("red" bar)
+    evil-replace-state-cursor '("red" bar)
+    evil-operator-state-cursor '("red" hollow)))
 
 (defun normal-mode-and-save ()
   "Enter 'evil-normal-state and 'evil-write in sequence."
@@ -81,16 +84,29 @@
   (setq sh-basic-offset 2)
   (setq tab-width 2))
 
+;; Set up flycheck checkers combined with lsp
+;; https://github.com/hlissner/doom-emacs/issues/1530#issuecomment-725588733
+(add-hook! 'lsp-after-initialize-hook
+  (run-hooks (intern (format "%s-lsp-hook" major-mode))))
+
+(defun sh-flycheck-setup ()
+  (flycheck-add-next-checker 'lsp 'sh-shellcheck))
+(add-hook 'sh-mode-lsp-hook #'sh-flycheck-setup)
+
+(defun go-flycheck-setup ()
+  (flycheck-add-next-checker 'lsp 'golangci-lint)
+  (setq flycheck-golangci-lint-enable-all t)
+  (setq flycheck-golangci-lint-disable-linters
+     '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci" "exhaustivestruct")))
+(add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
+
 ;; Disable the golang lsp formatter - it does not clean up imports
 ;; https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format#disabling-the-lsp-formatter
 (setq-hook! 'go-mode-hook +format-with-lsp nil)
 
 (add-hook! go-mode
   (setq gofmt-command "goreturns")
-  (setq lsp-gopls-complete-unimported t)
-  (setq flycheck-checker 'golangci-lint)
-  (setq flycheck-golangci-lint-enable-all t)
-  (setq flycheck-golangci-lint-disable-linters '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci")))
+  (setq lsp-gopls-complete-unimported t))
 
 ;; Insert CLOSED property when a TODO item is marked as DONE
 (setq org-log-done 'time)
