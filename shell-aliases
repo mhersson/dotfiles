@@ -2,8 +2,6 @@
 # Alias
 #------------------------------
 
-stty -ixon
-
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -alh'
