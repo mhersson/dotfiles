@@ -93,6 +93,10 @@
   (flycheck-add-next-checker 'lsp 'sh-shellcheck))
 (add-hook 'sh-mode-lsp-hook #'sh-flycheck-setup)
 
+(defun python-flycheck-setup ()
+  (flycheck-add-next-checker 'lsp 'python-pylint))
+(add-hook 'python-mode-lsp-hook #'python-flycheck-setup)
+
 (defun go-flycheck-setup ()
   (flycheck-add-next-checker 'lsp 'golangci-lint)
   (setq flycheck-golangci-lint-enable-all t)
