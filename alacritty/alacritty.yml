@@ -18,8 +18,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 165
-    lines: 70
+    columns: 150
+    lines: 80
 
   # Window position (changes require restart)
   #
@@ -102,7 +102,7 @@ window:
     # The `style` can be specified to pick a specific face.
     #style: Regular
 font:
-  family: Inconsolata
+  family: Source Code Pro
   style: Regular
 
   # Bold font face
@@ -139,7 +139,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 14
+  size: 11.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
