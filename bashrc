@@ -17,7 +17,3 @@ export GOPATH=$HOME/Development/go
 export PATH=$GOPATH/bin:$PATH
 
 source $HOME/.dotfiles/shell-aliases
-
-[ -f "${HOME}"/.config/gojira/gojira-bash-completions ] && source "${HOME}"/.config/gojira/gojira-bash-completions
-[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
-[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
