@@ -109,7 +109,7 @@
 (setq-hook! 'go-mode-hook +format-with-lsp nil)
 
 (add-hook! go-mode
-  (setq gofmt-command "goreturns")
+  (setq gofmt-command "goimports")
   (setq lsp-gopls-complete-unimported t))
 
 ;; Insert CLOSED property when a TODO item is marked as DONE
