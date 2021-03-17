@@ -4,3 +4,5 @@
 	excludesfile = ~/.dotfiles/gitignore
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
