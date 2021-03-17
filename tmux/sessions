@@ -2,15 +2,14 @@
 #split-window -h -t 0
 #split-window -v -t 1
 
-new-session -s weechat
+rename-session weechat
 send-keys -t 0 'weechat' Enter
 
 new-session -s main
 send-keys -t 0 'emacs' Enter
 new-window
 new-window
-new-window
-move-window -s 4 -t 9
+move-window -s 3 -t 9
 split-window -v -t 0
 split-window -h -t 0
 send-keys -t 0 'ssh -t skynet htop' Enter
