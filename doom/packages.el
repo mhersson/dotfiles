@@ -8,7 +8,7 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;;(package! some-package)
-;(package! gruvbox-theme)
+(package! gruvbox-theme)
 (package! ox-hugo)
 (package! evil-terminal-cursor-changer)
 
