@@ -34,6 +34,7 @@ ZLE_RPROMPT_INDENT=0
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
+    toolbox                 # Says if in toolbox
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -1538,6 +1539,13 @@ ZLE_RPROMPT_INDENT=0
   # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS. It displays an icon and orange text greeting the user.
   #
   # Type `p10k help segment` for documentation and a more sophisticated example.
+
+  function prompt_toolbox() {
+    if [ -f /run/.toolboxenv ]; then
+        p10k segment -f 208 -i '' -t ${FGC}
+    fi
+  }
+
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
