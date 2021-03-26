@@ -36,7 +36,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -56,6 +55,9 @@
 
 ;; Always middle click paste at cursors position
 (setq mouse-yank-at-point t)
+
+;; Copy from terminal emacs to the system clipboard
+(xclip-mode 1)
 
 ;; Set cursor colors on mode change
 (unless (display-graphic-p)
