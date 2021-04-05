@@ -1,284 +1,160 @@
 #compdef _gojira gojira
 
+# zsh completion for gojira                               -*- shell-script -*-
 
-function _gojira {
-  local -a commands
-
-  _arguments -C \
-    "1: :->cmnds" \
-    "*::arg:->args"
-
-  case $state in
-  cmnds)
-    commands=(
-      "add:Add a comment or register time"
-      "completion:Output shell completion code for the specified shell"
-      "create:Create new issue"
-      "describe:Display issue with all its gory details"
-      "get:Display one or many resources"
-      "help:Help about any command"
-      "open:Open in browser"
-      "set:Set issue active"
-      "unset:Unset (clear) active issue"
-      "update:Update issue"
-    )
-    _describe "command" commands
-    ;;
-  esac
-
-  case "$words[1]" in
-  add)
-    _gojira_add
-    ;;
-  completion)
-    _gojira_completion
-    ;;
-  create)
-    _gojira_create
-    ;;
-  describe)
-    _gojira_describe
-    ;;
-  get)
-    _gojira_get
-    ;;
-  help)
-    _gojira_help
-    ;;
-  open)
-    _gojira_open
-    ;;
-  set)
-    _gojira_set
-    ;;
-  unset)
-    _gojira_unset
-    ;;
-  update)
-    _gojira_update
-    ;;
-  esac
+__gojira_debug()
+{
+    local file="$BASH_COMP_DEBUG_FILE"
+    if [[ -n ${file} ]]; then
+        echo "$*" >> "${file}"
+    fi
 }
 
+_gojira()
+{
+    local shellCompDirectiveError=1
+    local shellCompDirectiveNoSpace=2
+    local shellCompDirectiveNoFileComp=4
+    local shellCompDirectiveFilterFileExt=8
+    local shellCompDirectiveFilterDirs=16
 
-function _gojira_add {
-  local -a commands
+    local lastParam lastChar flagPrefix requestComp out directive compCount comp lastComp
+    local -a completions
 
-  _arguments -C \
-    "1: :->cmnds" \
-    "*::arg:->args"
+    __gojira_debug "\n========= starting completion logic =========="
+    __gojira_debug "CURRENT: ${CURRENT}, words[*]: ${words[*]}"
 
-  case $state in
-  cmnds)
-    commands=(
-      "comment:Add new comment"
-      "work:Add work (format 2h or 120m)"
-    )
-    _describe "command" commands
-    ;;
-  esac
+    # The user could have moved the cursor backwards on the command-line.
+    # We need to trigger completion from the $CURRENT location, so we need
+    # to truncate the command-line ($words) up to the $CURRENT location.
+    # (We cannot use $CURSOR as its value does not work when a command is an alias.)
+    words=("${=words[1,CURRENT]}")
+    __gojira_debug "Truncated words[*]: ${words[*]},"
 
-  case "$words[1]" in
-  comment)
-    _gojira_add_comment
-    ;;
-  work)
-    _gojira_add_work
-    ;;
-  esac
+    lastParam=${words[-1]}
+    lastChar=${lastParam[-1]}
+    __gojira_debug "lastParam: ${lastParam}, lastChar: ${lastChar}"
+
+    # For zsh, when completing a flag with an = (e.g., gojira -n=<TAB>)
+    # completions must be prefixed with the flag
+    setopt local_options BASH_REMATCH
+    if [[ "${lastParam}" =~ '-.*=' ]]; then
+        # We are dealing with a flag with an =
+        flagPrefix="-P ${BASH_REMATCH}"
+    fi
+
+    # Prepare the command to obtain completions
+    requestComp="${words[1]} __complete ${words[2,-1]}"
+    if [ "${lastChar}" = "" ]; then
+        # If the last parameter is complete (there is a space following it)
+        # We add an extra empty parameter so we can indicate this to the go completion code.
+        __gojira_debug "Adding extra empty parameter"
+        requestComp="${requestComp} \"\""
+    fi
+
+    __gojira_debug "About to call: eval ${requestComp}"
+
+    # Use eval to handle any environment variables and such
+    out=$(eval ${requestComp} 2>/dev/null)
+    __gojira_debug "completion output: ${out}"
+
+    # Extract the directive integer following a : from the last line
+    local lastLine
+    while IFS='\n' read -r line; do
+        lastLine=${line}
+    done < <(printf "%s\n" "${out[@]}")
+    __gojira_debug "last line: ${lastLine}"
+
+    if [ "${lastLine[1]}" = : ]; then
+        directive=${lastLine[2,-1]}
+        # Remove the directive including the : and the newline
+        local suffix
+        (( suffix=${#lastLine}+2))
+        out=${out[1,-$suffix]}
+    else
+        # There is no directive specified.  Leave $out as is.
+        __gojira_debug "No directive found.  Setting do default"
+        directive=0
+    fi
+
+    __gojira_debug "directive: ${directive}"
+    __gojira_debug "completions: ${out}"
+    __gojira_debug "flagPrefix: ${flagPrefix}"
+
+    if [ $((directive & shellCompDirectiveError)) -ne 0 ]; then
+        __gojira_debug "Completion received error. Ignoring completions."
+        return
+    fi
+
+    compCount=0
+    while IFS='\n' read -r comp; do
+        if [ -n "$comp" ]; then
+            # If requested, completions are returned with a description.
+            # The description is preceded by a TAB character.
+            # For zsh's _describe, we need to use a : instead of a TAB.
+            # We first need to escape any : as part of the completion itself.
+            comp=${comp//:/\\:}
+
+            local tab=$(printf '\t')
+            comp=${comp//$tab/:}
+
+            ((compCount++))
+            __gojira_debug "Adding completion: ${comp}"
+            completions+=${comp}
+            lastComp=$comp
+        fi
+    done < <(printf "%s\n" "${out[@]}")
+
+    if [ $((directive & shellCompDirectiveFilterFileExt)) -ne 0 ]; then
+        # File extension filtering
+        local filteringCmd
+        filteringCmd='_files'
+        for filter in ${completions[@]}; do
+            if [ ${filter[1]} != '*' ]; then
+                # zsh requires a glob pattern to do file filtering
+                filter="\*.$filter"
+            fi
+            filteringCmd+=" -g $filter"
+        done
+        filteringCmd+=" ${flagPrefix}"
+
+        __gojira_debug "File filtering command: $filteringCmd"
+        _arguments '*:filename:'"$filteringCmd"
+    elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
+        # File completion for directories only
+        local subDir
+        subdir="${completions[1]}"
+        if [ -n "$subdir" ]; then
+            __gojira_debug "Listing directories in $subdir"
+            pushd "${subdir}" >/dev/null 2>&1
+        else
+            __gojira_debug "Listing directories in ."
+        fi
+
+        _arguments '*:dirname:_files -/'" ${flagPrefix}"
+        if [ -n "$subdir" ]; then
+            popd >/dev/null 2>&1
+        fi
+    elif [ $((directive & shellCompDirectiveNoSpace)) -ne 0 ] && [ ${compCount} -eq 1 ]; then
+        __gojira_debug "Activating nospace."
+        # We can use compadd here as there is no description when
+        # there is only one completion.
+        compadd -S '' "${lastComp}"
+    elif [ ${compCount} -eq 0 ]; then
+        if [ $((directive & shellCompDirectiveNoFileComp)) -ne 0 ]; then
+            __gojira_debug "deactivating file completion"
+        else
+            # Perform file completion
+            __gojira_debug "activating file completion"
+            _arguments '*:filename:_files'" ${flagPrefix}"
+        fi
+    else
+        _describe "completions" completions $(echo $flagPrefix)
+    fi
 }
 
-function _gojira_add_comment {
-  _arguments
-}
-
-function _gojira_add_work {
-  _arguments \
-    '(-c --comment)'{-c,--comment}'[add a comment to you worklog]:' \
-    '(-d --date)'{-d,--date}'[date, overrides the default date (today)]:'
-}
-
-function _gojira_completion {
-  _arguments \
-    '(-h --help)'{-h,--help}'[help for completion]'
-}
-
-function _gojira_create {
-  _arguments
-}
-
-function _gojira_describe {
-  _arguments
-}
-
-
-function _gojira_get {
-  local -a commands
-
-  _arguments -C \
-    "1: :->cmnds" \
-    "*::arg:->args"
-
-  case $state in
-  cmnds)
-    commands=(
-      "active:Display the active issue"
-      "all:Display all issues assigned to you"
-      "comments:Display all comments"
-      "myworklog:Display your worklog for a given date"
-      "status:Display the current status"
-      "transitions:Display available transistions"
-      "worklog:Display the worklog"
-    )
-    _describe "command" commands
-    ;;
-  esac
-
-  case "$words[1]" in
-  active)
-    _gojira_get_active
-    ;;
-  all)
-    _gojira_get_all
-    ;;
-  comments)
-    _gojira_get_comments
-    ;;
-  myworklog)
-    _gojira_get_myworklog
-    ;;
-  status)
-    _gojira_get_status
-    ;;
-  transitions)
-    _gojira_get_transitions
-    ;;
-  worklog)
-    _gojira_get_worklog
-    ;;
-  esac
-}
-
-function _gojira_get_active {
-  _arguments
-}
-
-function _gojira_get_all {
-  _arguments \
-    '(-f --filter)'{-f,--filter}'[write your own jql filter]:'
-}
-
-function _gojira_get_comments {
-  _arguments
-}
-
-function _gojira_get_myworklog {
-  _arguments
-}
-
-function _gojira_get_status {
-  _arguments
-}
-
-function _gojira_get_transitions {
-  _arguments
-}
-
-function _gojira_get_worklog {
-  _arguments
-}
-
-function _gojira_help {
-  _arguments
-}
-
-function _gojira_open {
-  _arguments
-}
-
-
-function _gojira_set {
-  local -a commands
-
-  _arguments -C \
-    "1: :->cmnds" \
-    "*::arg:->args"
-
-  case $state in
-  cmnds)
-    commands=(
-      "active:Set issue active"
-    )
-    _describe "command" commands
-    ;;
-  esac
-
-  case "$words[1]" in
-  active)
-    _gojira_set_active
-    ;;
-  esac
-}
-
-function _gojira_set_active {
-  _arguments
-}
-
-function _gojira_unset {
-  _arguments
-}
-
-
-function _gojira_update {
-  local -a commands
-
-  _arguments -C \
-    "1: :->cmnds" \
-    "*::arg:->args"
-
-  case $state in
-  cmnds)
-    commands=(
-      "assignee:Assign issue to user"
-      "comment:Update (edit) comment"
-      "description:Update the description"
-      "status:Update the status"
-    )
-    _describe "command" commands
-    ;;
-  esac
-
-  case "$words[1]" in
-  assignee)
-    _gojira_update_assignee
-    ;;
-  comment)
-    _gojira_update_comment
-    ;;
-  description)
-    _gojira_update_description
-    ;;
-  status)
-    _gojira_update_status
-    ;;
-  esac
-}
-
-function _gojira_update_assignee {
-  _arguments \
-    '(-u --username)'{-u,--username}'[username of the new assignee]:'
-}
-
-function _gojira_update_comment {
-  _arguments
-}
-
-function _gojira_update_description {
-  _arguments
-}
-
-function _gojira_update_status {
-  _arguments
-}
-
+# don't run the completion function when being source-ed or eval-ed
+if [ "$funcstack[1]" = "_gojira" ]; then
+	_gojira
+fi
 compdef _gojira gojira
