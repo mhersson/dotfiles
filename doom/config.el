@@ -9,6 +9,11 @@
 (setq user-full-name "Morten Hersson"
       user-mail-address "mher@stibodx.com")
 
+;; List of directories which magit should follow
+(setq magit-repository-directories
+      `(("~/Development" . 1)
+        (,"~/.dotfiles"    . 1)))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -28,6 +33,7 @@
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-one)
 (load-theme 'gruvbox-dark-medium t)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/org-files")
