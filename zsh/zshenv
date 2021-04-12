@@ -6,4 +6,6 @@ export GOPATH=$HOME/Development/go
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path
-path+=($GOPATH/bin $HOME/.emacs.d/bin)
+path=($GOPATH/bin $HOME/.emacs.d/bin $HOME/.local/bin $path)
+
+source "$HOME/.cargo/env"
