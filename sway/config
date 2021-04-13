@@ -39,6 +39,7 @@ for_window [class="^XEyes$"] floating enable
 for_window [class="^Slack$"] floating enable
 for_window [class="^Microsoft Teams - Preview$"] floating enable
 for_window [class="^Spotify$"] floating enable
+for_window [class="^Signal$"] floating enable
 
 ### Output configuration
 #
@@ -112,7 +113,7 @@ client.unfocused          #282828 #353535 #656565 #282828   #252525
     bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
