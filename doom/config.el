@@ -12,7 +12,8 @@
 ;; List of directories which magit should follow
 (setq magit-repository-directories
       `(("~/Development" . 1)
-        (,"~/.dotfiles"    . 1)))
+        (,"~/.dotfiles"  . 1)
+        (,"~/Scripts"    . 1)))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
