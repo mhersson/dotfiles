@@ -8,4 +8,3 @@ export GOPATH=$HOME/Development/go
 typeset -U PATH path
 path=($GOPATH/bin $HOME/.emacs.d/bin $HOME/.local/bin $path)
 
-source "$HOME/.cargo/env"
