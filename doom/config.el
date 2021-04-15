@@ -39,6 +39,9 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/org-files")
 
+;; Set max length for branch name on the modeline
+(setq doom-modeline-vcs-max-length 40)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
