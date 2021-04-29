@@ -91,10 +91,20 @@
 (global-set-key (kbd "C-s") 'normal-mode-and-save)
 (global-set-key (kbd "C-q") 'evil-quit)
 
+
+;; Add autocompletion on local file paths
+(add-to-list 'company-backends 'company-files)
+(add-to-list '+lsp-company-backends 'company-files)
+
 ;; Set shell indent to 2 spaces
 (add-hook! sh-mode
   (setq sh-basic-offset 2)
   (setq tab-width 2))
+
+;; Lookup reference fix temporary fix
+;; https://github.com/hlissner/doom-emacs/issues/4894
+(add-hook! lsp-mode
+  (defalias '+lookup/references 'lsp-find-references))
 
 ;; Set up flycheck checkers combined with lsp
 ;; https://github.com/hlissner/doom-emacs/issues/1530#issuecomment-725588733
