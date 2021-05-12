@@ -101,6 +101,16 @@
   (setq sh-basic-offset 2)
   (setq tab-width 2))
 
+;; Override shfmt to use two spaces instead of tabs
+(after! format-all
+  (set-formatter! 'shfmt
+    '("shfmt"
+      "-i" "2"
+      ;; Mode selection copied from the default config
+      ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
+                    (bash "bash") (mksh "mksh") (t "posix"))))
+    :modes 'sh-mode))
+
 ;; Lookup reference fix temporary fix
 ;; https://github.com/hlissner/doom-emacs/issues/4894
 (add-hook! lsp-mode
