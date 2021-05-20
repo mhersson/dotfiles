@@ -144,28 +144,3 @@
   (setq gofmt-command "goimports")
   (setq lsp-gopls-complete-unimported t))
 
-;; Insert CLOSED property when a TODO item is marked as DONE
-(setq org-log-done 'time)
-
-;; Populates the EXPORT_FILE_NAME property in the inserted headline.
-(after! org-capture
-  (defun org-hugo-new-subtree-post-capture-template ()
-      "Returns `org-capture' template string for new Hugo post.
-  See `org-capture-templates' for more information."
-      (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
-            (fname (org-hugo-slug title)))
-        (mapconcat #'identity
-                  `(
-                    ,(concat "* TODO " title)
-                    ":PROPERTIES:"
-                    ,(concat ":EXPORT_FILE_NAME: " fname)
-                    ":END:"
-                    "%?\n")          ;Place the cursor here finally
-                  "\n")))
-
-  (add-to-list 'org-capture-templates
-                '("h"                ;`org-capture' binding + h
-                  "Hugo post"
-                  entry
-                  (file+olp buffer-file-name "Posts")
-                  (function org-hugo-new-subtree-post-capture-template))))
