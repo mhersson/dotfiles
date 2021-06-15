@@ -249,7 +249,9 @@ if !exists('g:vscode')
     \ --disable gochecknoglobals
     \ --disable gochecknoinits
     \ --disable gofumpt
-    \ --disable gomnd'
+    \ --disable gomnd
+    \ --disable gci
+    \ --disable exhaustivestruct'
 
     " As of 10.05.2020 this needs to be 1 for linting to work
     let g:ale_go_golangci_lint_package = 1
