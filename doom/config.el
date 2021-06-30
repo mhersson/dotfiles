@@ -111,10 +111,8 @@
                     (bash "bash") (mksh "mksh") (t "posix"))))
     :modes 'sh-mode))
 
-;; Lookup reference fix temporary fix
-;; https://github.com/hlissner/doom-emacs/issues/4894
-(add-hook! lsp-mode
-  (defalias '+lookup/references 'lsp-find-references))
+;; Disable the documentation pop-up
+(setq lsp-ui-doc-enable nil)
 
 ;; Set up flycheck checkers combined with lsp
 ;; https://github.com/hlissner/doom-emacs/issues/1530#issuecomment-725588733
@@ -136,11 +134,7 @@
      '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci" "exhaustivestruct")))
 (add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
 
-;; Disable the golang lsp formatter - it does not clean up imports
-;; https://github.com/hlissner/doom-emacs/tree/develop/modules/editor/format#disabling-the-lsp-formatter
-(setq-hook! 'go-mode-hook +format-with-lsp nil)
-
 (add-hook! go-mode
   (setq gofmt-command "goimports")
   (setq lsp-gopls-complete-unimported t))
-
+  ;(setq lsp-go-build-flags ["-tags=integration"]))
