@@ -12,7 +12,8 @@ if !exists('g:vscode')
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
-    Plug 'sainnhe/gruvbox-material'
+    " Plug 'sainnhe/gruvbox-material'
+    Plug 'arcticicestudio/nord-vim'
     " Fuzzy file, buffer, mru, tag, etc finder
     Plug 'ctrlpvim/ctrlp.vim'
     " Ale linting with support for language servers
@@ -208,21 +209,21 @@ if !exists('g:vscode')
     " ==========================================================
 
 
-    set background=dark
+    "set background=dark
     let g:gruvbox_material_background = 'soft'
     let g:gruvbox_material_transparent_background = 1
     let g:gruvbox_material_diagnostic_line_highlight = 1
 
-    colorscheme gruvbox-material
+    colorscheme nord
     "set termguicolors
-    "hi Normal guibg=NONE ctermbg=NONE
-    "hi NonText guibg=NONE ctermbg=NONE
-    "hi EndOfBuffer guibg=NONE ctermbg=NONE
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+    hi EndOfBuffer guibg=NONE ctermbg=NONE
 
     " ==========================================================
     " Airline
     " ==========================================================
-    let g:airline_theme = 'gruvbox_material'
+    let g:airline_theme = 'nord'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     "let g:airline#extensions#tabline#buffer_min_count = 2
