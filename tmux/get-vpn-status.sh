@@ -15,7 +15,7 @@
 #     echo -n "#[fg=black,bg=red,bold] #h"
 # fi
 
-if (nmcli c show --active | grep protonvpn.com.udp >/dev/null 2>&1); then
+if (nmcli c show --active | grep -i protonvpn >/dev/null 2>&1); then
     echo -n "#[fg=black,bg=cyan,bold] #h "
 else
     echo -n "#[fg=black,bg=red,bold] #h"
