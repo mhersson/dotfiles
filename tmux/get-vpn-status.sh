@@ -9,15 +9,15 @@
 # fi
 
 # Nord
-# if (piactl get connectionstate | grep Connected >/dev/null 2>&1); then
-#     echo -n "#[fg=black,bg=cyan,bold] #h "
-# else
-#     echo -n "#[fg=black,bg=red,bold] #h"
-# fi
-
-if (nmcli c show --active | grep -i protonvpn >/dev/null 2>&1); then
+if (piactl get connectionstate | grep Connected >/dev/null 2>&1); then
     echo -n "#[fg=black,bg=cyan,bold] #h "
 else
     echo -n "#[fg=black,bg=red,bold] #h"
 fi
+
+# if (nmcli c show --active | grep -i protonvpn >/dev/null 2>&1); then
+#     echo -n "#[fg=black,bg=cyan,bold] #h "
+# else
+#     echo -n "#[fg=black,bg=red,bold] #h"
+# fi
 
