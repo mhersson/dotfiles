@@ -311,5 +311,5 @@ if !exists('g:vscode')
 
     " automatically install coc extensions if they're missing
     let g:coc_global_extensions=['coc-go', 'coc-python', 'coc-snippets',
-            \ 'coc-highlight', 'coc-yaml', 'coc-json', 'coc-sh']
+            \ 'coc-highlight', 'coc-yaml', 'coc-json', 'coc-sh', 'coc-rust-analyzer']
 endif

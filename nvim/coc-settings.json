@@ -1,4 +1,5 @@
 {
+"rust-analyzer.server.path": "/home/morten/.local/bin/rust-analyzer",
   "go.goplsOptions": {
       "completeUnimported": true,
       "usePlaceholders": true,
