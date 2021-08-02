@@ -14,6 +14,6 @@ complete -cf sudo
 complete -cf man
 
 export GOPATH=$HOME/Development/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 source $HOME/.dotfiles/shell-aliases
