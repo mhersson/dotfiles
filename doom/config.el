@@ -114,6 +114,9 @@
 ;; Disable the documentation pop-up
 (setq lsp-ui-doc-enable nil)
 
+(add-hook! rustic-mode
+  (setq lsp-rust-analyzer-server-display-inlay-hints t))
+
 ;; Set up flycheck checkers combined with lsp
 ;; https://github.com/hlissner/doom-emacs/issues/1530#issuecomment-725588733
 (add-hook! 'lsp-after-initialize-hook
