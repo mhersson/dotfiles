@@ -9,12 +9,6 @@
 (setq user-full-name "Morten Hersson"
       user-mail-address "mher@stibodx.com")
 
-;; List of directories which magit should follow
-(setq magit-repository-directories
-      `(("~/Development" . 1)
-        (,"~/.dotfiles"  . 1)
-        (,"~/Scripts"    . 1)))
-
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -27,13 +21,13 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "MesloLGS NF" :size 15))
+(setq doom-font (font-spec :family "Source Code Pro" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;(setq doom-theme 'doom-one)
-(load-theme 'nord t)
+;;(setq doom-theme 'doom-opera-light)
+(load-theme 'ayu-light t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,7 +69,7 @@
 
 (when (display-graphic-p)
 (setq evil-emacs-state-cursor '("red" box)
-    evil-normal-state-cursor '("green" box)
+    evil-normal-state-cursor '("orange" box)
     evil-visual-state-cursor '("orange" box)
     evil-insert-state-cursor '("red" bar)
     evil-replace-state-cursor '("red" bar)
