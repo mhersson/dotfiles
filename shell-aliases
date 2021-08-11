@@ -19,9 +19,9 @@ alias gp='git pull'
 alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
 
-alias cat='bat --theme Nord --style plain --paging=never'
-alias less='bat --theme Nord --style plain'
-alias icat="kitty +kitten icat"
+alias cat='bat --theme "Monokai Extended Light" --style plain --paging=never'
+alias less='bat --theme "Monokai Extended Light" --style plain'
+alias icat='kitty +kitten icat'
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias emacs='emacs -nw'
