@@ -1,0 +1,131 @@
+/**
+ * Ayu rofi theme
+ *
+ */
+
+configuration {
+
+	font: "Envy Code R 18";
+	width: 30;
+	line-margin: 10;
+	lines: 5;
+	columns: 1;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
+
+* {
+	ayu0: #000000;
+	ayu1: #ea6c6d;
+	ayu2: #99bf4d;
+	ayu3: #eca944;
+
+	ayu4: #3199e1;
+	ayu5: #9e75c7;
+	ayu6: #46ba94;
+
+	ayu7: #c7c7c7;
+	ayu8: #686868;
+	ayu9: #f07171;
+	ayu10: #99bf4d;
+	ayu11: #f2ae49;
+
+	ayu12: #399ee6;
+	ayu13: #a37acc;
+	ayu14: #4cbf99;
+	ayu15: #d1d1d1;
+
+    foreground:  @ayu8;
+    background-color:  #fafafa;
+
+    highlight: #ff9940;
+}
+
+window {
+    location: center;
+    anchor:   center;
+    transparency: "screenshot";
+    padding: 10px;
+    border:  2px;
+    border-color: #ff9940;
+
+    background-color: #fafafa;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+    width: 12%;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+message {
+    color: @ayu0;
+    padding: 5;
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+    background-color: @ayu7;
+}
+
+inputbar {
+    color: @ayu8;
+    padding: 11px;
+    background-color: #fafafa;
+
+    border: 1px;
+    border-radius:  6px 6px 0px 0px;
+    border-color: @ayu4;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+prompt {
+    margin: 0px 0.3em 0em 0em ;
+}
+
+listview {
+    padding: 8px;
+    border-radius: 0px 0px 6px 6px;
+    border-color: @ayu4;
+    border: 0px 1px 1px 1px;
+    background-color: #fafafa;
+    dynamic: false;
+}
+
+element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    text-color: @ayu8;
+}
+
+element selected.normal {
+	text-color: #ff9940;
+}
+
+button {
+    padding: 6px;
+    color: @foreground;
+    horizontal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @foreground;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @foreground;
+}
