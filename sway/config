@@ -19,7 +19,7 @@ set $term alacritty
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-font pango:Inconsolata 12
+font pango:Inconsolata 10
 
 # floating applications
 # for_window [app_id="^.*$"] floating enable
@@ -34,18 +34,17 @@ for_window [app_id="^pavucontrol$"] floating enable
 for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
-for_window [class="^Chromium-browser$"] floating enable
+for_window [class="^Google-chrome$"] floating enable
 for_window [class="^XEyes$"] floating enable
-for_window [class="^Slack$"] floating enable
-for_window [class="^Microsoft Teams - Preview$"] floating enable
+# for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
 for_window [class="^Signal$"] floating enable
 
 ### Output configuration
 #
 
-output * bg ~/Pictures/wallpaper/skyline-5120x1440.jpg fill
-# output * bg #457595 solid_color
+# output * bg ~/Pictures/wallpaper/skyline-5120x1440.jpg fill
+output * bg #eeeeee solid_color
 
 #
 # Example configuration:
@@ -61,8 +60,8 @@ output DP-1 resolution 5120x1440 position 0,0
 # Example configuration:
 #
 exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * dpms off"' \
+          timeout 900 'swaylock -f -c 000000' \
+          timeout 870 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
 #
@@ -101,9 +100,9 @@ gaps outer 0
 smart_gaps off
 smart_borders on
 
-client.focused            #282828 #252525 #282828 #93e0e3   #282828
-client.focused_inactive   #282828 #353535 #656565 #282828   #252525
-client.unfocused          #282828 #353535 #656565 #282828   #252525
+client.focused            #ff9940 #fafafa #3199e1 #ff9940   #ff9940
+client.focused_inactive   #575566 #d1d1d1 #6c7680 #575566   #575566
+client.unfocused          #575566 #d1d1d1 #6c7680 #575566   #575566
 
 ### Key bindings
 #
@@ -117,7 +116,7 @@ client.unfocused          #282828 #353535 #656565 #282828   #252525
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec rofi -width 750 -show run
+    bindsym $mod+p exec rofi -width 750 -show drun
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -281,11 +280,11 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+    # command_status while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
     # mode hide
 
-    # colors {
-    #     statusline #cc241d
+    # statusline {
+    #     colors #cc241d
     #     background #252525
     #     focused_workspace  #252525 #959595 #252525
     #     active_workspace   #959595 #252525 #959595
@@ -297,11 +296,13 @@ bar {
 # include /etc/sway/conf.d/*
 
 # Start some tools
-exec flashfocus
+# exec flashfocus
 exec dunst
 exec redshift
-# exec dropbox start
+# dropbox exec start
 
 # # Start some apps
-# exec firefox
+exec alacritty
+exec alacritty
+exec firefox
 
