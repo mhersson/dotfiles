@@ -102,7 +102,7 @@ window:
     # The `style` can be specified to pick a specific face.
     #style: Regular
 font:
-  family: MesloLGS NF
+  family: Source Code Pro
   style: Regular
 
   # Bold font face
@@ -250,68 +250,64 @@ font:
   #   `- { index: 16, color: '#ff00ff' }`
   #
   #indexed_colors: []
+schemes:
+  nord: &nord
+    # Default colors
+    primary:
+      background: '0x2E3440'
+      # background: '0x1D1D1D'
+      foreground: '0xD8DEE9'
 
-# # Colors (Gruvbox dark)
-# colors:
-#   # Default colors
-#   primary:
-#     # hard contrast: background = '#1d2021'
-#     background: '#1D1D1D'
-#     # soft contrast: background = '#32302f'
-#     foreground: '#ebdbb2'
+    # Normal colors
+    normal:
+      black:   '0x3B4252'
+      red:     '0xBF616A'
+      green:   '0xA3BE8C'
+      yellow:  '0xEBCB8B'
+      blue:    '0x81A1C1'
+      magenta: '0xB48EAD'
+      cyan:    '0x88C0D0'
+      white:   '0xE5E9F0'
 
-#   # Normal colors
-#   normal:
-#     black:   '#282828'
-#     red:     '#cc241d'
-#     green:   '#98971a'
-#     yellow:  '#d79921'
-#     blue:    '#458588'
-#     magenta: '#b16286'
-#     cyan:    '#689d6a'
-#     white:   '#a89984'
+    # Bright colors
+    bright:
+      black:   '0x4C566A'
+      red:     '0xBF616A'
+      green:   '0xA3BE8C'
+      yellow:  '0xEBCB8B'
+      blue:    '0x81A1C1'
+      magenta: '0xB48EAD'
+      cyan:    '0x8FBCBB'
+      white:   '0xECEFF4'
 
-#   # Bright colors
-#   bright:
-#     black:   '#928374'
-#     red:     '#fb4934'
-#     green:   '#b8bb26'
-#     yellow:  '#fabd2f'
-#     blue:    '#83a598'
-#     magenta: '#d3869b'
-#     cyan:    '#8ec07c'
-#     white:   '#ebdbb2'
+  ayu_light: &ayu_light
+    cursor:
+      text: '#6c7680'
+      cursor: '#ff9940'
+    primary:
+      background:  '#fafafa'
+      foreground:  '#6c7680'
+    normal:
+      black:   '#000000'
+      red:     '#ea6c6d'
+      green:   '#99bf4d'
+      yellow:  '#eca944'
+      blue:    '#3199e1'
+      magenta: '#9e75c7'
+      cyan:    '#46ba94'
+      white:   '#c7c7c7'
+    bright:
+      black:   '#686868'
+      red:     '#f07171'
+      green:   '#99bf4d'
+      yellow:  '#f2ae49'
+      blue:    '#399ee6'
+      magenta: '#a37acc'
+      cyan:    '#4cbf99'
+      white:   '#d1d1d1'
 
-
-# Colors (Nord)
-colors:
-  # Default colors
-  primary:
-    background: '0x2E3440'
-    # background: '0x1D1D1D'
-    foreground: '0xD8DEE9'
-
-  # Normal colors
-  normal:
-    black:   '0x3B4252'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x88C0D0'
-    white:   '0xE5E9F0'
-
-  # Bright colors
-  bright:
-    black:   '0x4C566A'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x8FBCBB'
-    white:   '0xECEFF4'
+# Apply the color scheme.
+colors: *ayu_light
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -342,7 +338,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 1
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -360,11 +356,15 @@ background_opacity: 0.95
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  #style: Block
+cursor:
+  style: Block
+  blinking: On
+  blink_interval: 750
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   #unfocused_hollow: true
+
 
 # Live config reload (changes require restart)
 #live_config_reload: true
