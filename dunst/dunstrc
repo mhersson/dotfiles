@@ -1,6 +1,6 @@
 [global]
 # font = Iosevka Term 11
-font = Source Code Pro 13
+font = Source Code Pro 18
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -71,11 +71,11 @@ hide_duplicates_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-geometry = "300x50-1550+49"
+geometry = "500-1250+10"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
-shrink = no
+shrink = yes
 
 # The transparency of the window.  Range: [0; 100].
 # This option will only work if a compositing windowmanager is
@@ -156,7 +156,7 @@ max_icon_size = 48
 icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
 frame_width = 3
-frame_color = "#8EC07C"
+frame_color = "#3199e1"
 
 [shortcuts]
 
@@ -182,24 +182,21 @@ context = ctrl+shift+period
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#3B7C87"
-foreground = "#D0D0D0"
-background = "#252525"
-#background = "#2B313C"
+frame_color = "#FF9940"
+foreground = "#3199e1"
+background = "#fafafa"
 timeout = 4
 
 [urgency_normal]
-frame_color = "#1793D1"
-foreground = "#D0D0D0"
-background = "#252525"
-#background = "#2B313C"
+frame_color = "#FF9940"
+foreground = "#3199e1"
+background = "#fafafa"
 timeout = 6
 
 [urgency_critical]
-frame_color = "#e73c50"
-foreground = "#D0D0D0"
-background = "#252525"
-#background = "#2B313C"
+frame_color = "#FF9940"
+foreground = "#ea6c6d"
+background = "#fafafa"
 timeout = 8
 
 
