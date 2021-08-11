@@ -13,7 +13,8 @@ if !exists('g:vscode')
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     " Plug 'sainnhe/gruvbox-material'
-    Plug 'arcticicestudio/nord-vim'
+    " Plug 'arcticicestudio/nord-vim'
+    Plug 'ayu-theme/ayu-vim'
     " Fuzzy file, buffer, mru, tag, etc finder
     Plug 'ctrlpvim/ctrlp.vim'
     " Ale linting with support for language servers
@@ -116,7 +117,7 @@ if !exists('g:vscode')
 
 
     " Reload Vimrc
-    map <silent> <leader>V :source ~/.vim/vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    map <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'config reloaded'"<CR>
 
     " ==========================================================
     " Bash
@@ -210,20 +211,25 @@ if !exists('g:vscode')
 
 
     "set background=dark
-    let g:gruvbox_material_background = 'soft'
-    let g:gruvbox_material_transparent_background = 1
-    let g:gruvbox_material_diagnostic_line_highlight = 1
+    "let g:gruvbox_material_background = 'soft'
+    "let g:gruvbox_material_transparent_background = 1
+    "let g:gruvbox_material_diagnostic_line_highlight = 1
 
-    colorscheme nord
+    set termguicolors     " enable true colors support
+    let ayucolor="light"  " for light version of theme
+    " let ayucolor="mirage" " for mirage version of theme
+    " let ayucolor="dark"   " for dark version of theme
+    colorscheme ayu
+
     "set termguicolors
-    hi Normal guibg=NONE ctermbg=NONE
-    hi NonText guibg=NONE ctermbg=NONE
-    hi EndOfBuffer guibg=NONE ctermbg=NONE
+    "hi Normal guibg=NONE ctermbg=NONE
+    "hi NonText guibg=NONE ctermbg=NONE
+    "hi EndOfBuffer guibg=NONE ctermbg=NONE
 
     " ==========================================================
     " Airline
     " ==========================================================
-    let g:airline_theme = 'nord'
+    let g:airline_theme = 'ayu'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     "let g:airline#extensions#tabline#buffer_min_count = 2
