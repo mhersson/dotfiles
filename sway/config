@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -34,7 +34,7 @@ for_window [app_id="^pavucontrol$"] floating enable
 for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
-for_window [class="^Google-chrome$"] floating enable
+for_window [app_id="^Google-chrome$"] floating enable
 for_window [class="^XEyes$"] floating enable
 # for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
@@ -43,8 +43,8 @@ for_window [class="^Signal$"] floating enable
 ### Output configuration
 #
 
-# output * bg ~/Pictures/wallpaper/skyline-5120x1440.jpg fill
-output * bg #eeeeee solid_color
+output * bg ~/Pictures/wallpaper/windows11-light.png fill
+#output * bg #eeeeee solid_color
 
 #
 # Example configuration:
@@ -59,11 +59,16 @@ output DP-1 resolution 5120x1440 position 0,0
 #
 # Example configuration:
 #
+#exec swayidle -w \
+#          timeout 900 'swaylock -f -c 000000' \
+#          timeout 870 'swaymsg "output * dpms off"' \
+#               resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
 exec swayidle -w \
-          timeout 900 'swaylock -f -c 000000' \
           timeout 870 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          timeout 3600 'systemctl suspend'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -117,6 +122,7 @@ client.unfocused          #575566 #d1d1d1 #6c7680 #575566   #575566
     # Start your launcher
     bindsym $mod+d exec $menu
     bindsym $mod+p exec rofi -width 750 -show drun
+    bindsym $mod+Tab exec rofi -width 750 -show window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -302,7 +308,7 @@ exec redshift
 # dropbox exec start
 
 # # Start some apps
-exec alacritty
-exec alacritty
+exec flatpak run com.slack.Slack
+exec kitty
 exec firefox
 
