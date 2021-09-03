@@ -295,7 +295,7 @@ schemes:
       blue:    '#3199e1'
       magenta: '#9e75c7'
       cyan:    '#46ba94'
-      white:   '#c7c7c7'
+      white:   '#d1d1d1'
     bright:
       black:   '#686868'
       red:     '#f07171'
@@ -304,7 +304,7 @@ schemes:
       blue:    '#399ee6'
       magenta: '#a37acc'
       cyan:    '#4cbf99'
-      white:   '#d1d1d1'
+      white:   '#fafafa'
 
 # Apply the color scheme.
 colors: *ayu_light
