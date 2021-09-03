@@ -15,8 +15,8 @@ if !exists('g:vscode')
     Plug 'vim-airline/vim-airline-themes'
     " Plug 'sainnhe/gruvbox-material'
     " Plug 'arcticicestudio/nord-vim'
+    " Plug 'ayu-theme/ayu-vim'
     Plug 'romgrk/github-light.vim'
-    Plug 'ayu-theme/ayu-vim'
     " Fuzzy file, buffer, mru, tag, etc finder
     Plug 'ctrlpvim/ctrlp.vim'
     " Ale linting with support for language servers
@@ -26,7 +26,7 @@ if !exists('g:vscode')
     " Org mode
     Plug 'jceb/vim-orgmode'
 
-    Plug 'neoclide/coc.nvim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     call plug#end()
     " ==========================================================
     " Basic Settings
