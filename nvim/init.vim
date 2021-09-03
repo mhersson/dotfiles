@@ -12,8 +12,10 @@ if !exists('g:vscode')
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     " Plug 'sainnhe/gruvbox-material'
     " Plug 'arcticicestudio/nord-vim'
+    Plug 'romgrk/github-light.vim'
     Plug 'ayu-theme/ayu-vim'
     " Fuzzy file, buffer, mru, tag, etc finder
     Plug 'ctrlpvim/ctrlp.vim'
@@ -219,7 +221,7 @@ if !exists('g:vscode')
     let ayucolor="light"  " for light version of theme
     " let ayucolor="mirage" " for mirage version of theme
     " let ayucolor="dark"   " for dark version of theme
-    colorscheme ayu
+    colorscheme github-light
 
     "set termguicolors
     "hi Normal guibg=NONE ctermbg=NONE
@@ -229,9 +231,9 @@ if !exists('g:vscode')
     " ==========================================================
     " Airline
     " ==========================================================
-    let g:airline_theme = 'ayu'
+    let g:airline_theme = 'base16_one_light'
     let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
+    "let g:airline#extensions#tabline#enabled = 0
     "let g:airline#extensions#tabline#buffer_min_count = 2
     "let g:airline#extensions#tabline#fnamemod = ':t'
 
