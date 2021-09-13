@@ -306,8 +306,34 @@ schemes:
       cyan:    '#4cbf99'
       white:   '#fafafa'
 
+  github: &github
+    cursor:
+      text: '#6c7680'
+      cursor: '#ff9940'
+    primary:
+      background:  '#ffffff'
+      foreground:  '#6c7680'
+    normal:
+      black:   '#3e3e3e'
+      red:     '#970b16'
+      green:   '#07962a'
+      yellow:  '#ffc000'
+      blue:    '#003e8a'
+      magenta: '#e94691'
+      cyan:    '#89d1ec'
+      white:   '#ffffff'
+    bright:
+      black:   '#666666'
+      red:     '#de0000'
+      green:   '#87d5a2'
+      yellow:  '#ffcf00'
+      blue:    '#2e6cba'
+      magenta: '#ffa29f'
+      cyan:    '#1cfafe'
+      white:   '#ffffff'
+
 # Apply the color scheme.
-colors: *ayu_light
+colors: *github
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
