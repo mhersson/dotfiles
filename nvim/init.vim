@@ -13,10 +13,8 @@ if !exists('g:vscode')
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    " Plug 'sainnhe/gruvbox-material'
     " Plug 'arcticicestudio/nord-vim'
-    " Plug 'ayu-theme/ayu-vim'
-    Plug 'romgrk/github-light.vim'
+    Plug 'projekt0n/github-nvim-theme'
     " Fuzzy file, buffer, mru, tag, etc finder
     Plug 'ctrlpvim/ctrlp.vim'
     " Ale linting with support for language servers
@@ -212,30 +210,14 @@ if !exists('g:vscode')
     " ==========================================================
 
 
-    "set background=dark
-    "let g:gruvbox_material_background = 'soft'
-    "let g:gruvbox_material_transparent_background = 1
-    "let g:gruvbox_material_diagnostic_line_highlight = 1
-
     set termguicolors     " enable true colors support
-    let ayucolor="light"  " for light version of theme
-    " let ayucolor="mirage" " for mirage version of theme
-    " let ayucolor="dark"   " for dark version of theme
-    colorscheme github-light
-
-    "set termguicolors
-    "hi Normal guibg=NONE ctermbg=NONE
-    "hi NonText guibg=NONE ctermbg=NONE
-    "hi EndOfBuffer guibg=NONE ctermbg=NONE
+    colorscheme github_light
 
     " ==========================================================
     " Airline
     " ==========================================================
     let g:airline_theme = 'base16_one_light'
     let g:airline_powerline_fonts = 1
-    "let g:airline#extensions#tabline#enabled = 0
-    "let g:airline#extensions#tabline#buffer_min_count = 2
-    "let g:airline#extensions#tabline#fnamemod = ':t'
 
     " ==========================================================
     " Fugitive
