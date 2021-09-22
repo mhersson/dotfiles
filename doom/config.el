@@ -128,7 +128,7 @@
   (flycheck-add-next-checker 'lsp 'golangci-lint)
   (setq flycheck-golangci-lint-enable-all t)
   (setq flycheck-golangci-lint-disable-linters
-     '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci" "exhaustivestruct")))
+     '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci" "exhaustivestruct" "golint" "forbidigo")))
 (add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
 
 (add-hook! go-mode
