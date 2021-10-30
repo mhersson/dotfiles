@@ -52,6 +52,8 @@ local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
+theme.systray_icon_spacing = dpi(15)
+
 -- Variables set for theming notifications:
 -- notification_font
 -- notification_[bg|fg]
@@ -59,11 +61,10 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_
 -- notification_[border_color|border_width|shape|opacity]
 theme.notification_font = "sans 12"
 theme.notification_bg = "#fafafa"
-theme.notification_fg = "#3199e1"
-theme.notification_border_color = "#FE8019"
-theme.notification_border_width = dpi(4)
-theme.notification_width = 480
-theme.notification_height = 110
+theme.notification_fg = "#3e3e3e"
+theme.notification_border_color = "#ff9940"
+theme.notification_width = 380
+theme.notification_height = 80
 theme.notification_shape = gears.shape.rounded_rect
 
 theme.hotkeys_font = "sans 12"

@@ -24,6 +24,14 @@ package.loaded["awful.hotkeys_popup.keys.firefox"] = {}
 -- Then enable hotkeys
 require("awful.hotkeys_popup.keys")
 
+
+-- Notifications
+for _, preset in pairs(naughty.config.presets) do
+    preset.position = "top_middle"
+    preset.margin = 10
+    preset.icon_size = 32
+    preset.border_width = 2
+end
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
