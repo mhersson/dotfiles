@@ -28,7 +28,7 @@ local function arrange(p, layout)
     local g = {}
 
     -- Main column, fixed width and height
-    local mwfact = 0.28 -- t.master_width_factor
+    local mwfact = 0.32 -- t.master_width_factor
     local mainhei = floor(wa.height * mwfact)
     local mainwid = floor(wa.width * mwfact)
     local slavewid = wa.width - mainwid

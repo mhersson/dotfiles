@@ -258,7 +258,7 @@ awful.screen.connect_for_each_screen(
         s.mypromptbox = awful.widget.prompt()
         -- Create an imagebox widget which will contain an icon indicating which layout we're using.
         -- We need one layoutbox per screen.
-        s.mylayoutbox = awful.widget.layoutbox(s)
+        s.mylayoutbox = wibox.container.margin(awful.widget.layoutbox(s),5,15,5,5)
         s.mylayoutbox:buttons(
             gears.table.join(
                 awful.button(
@@ -292,12 +292,12 @@ awful.screen.connect_for_each_screen(
             )
         )
         -- Create a taglist widget
-        s.mytaglist =
+        s.mytaglist = wibox.container.margin(
             awful.widget.taglist {
             screen = s,
             filter = awful.widget.taglist.filter.all,
             buttons = taglist_buttons
-        }
+        },15,5,5,5)
 
         -- Create a tasklist widget
         s.mytasklist =
@@ -307,8 +307,17 @@ awful.screen.connect_for_each_screen(
             buttons = tasklist_buttons
         }
 
+        s.mysystray = wibox.container.margin(wibox.widget.systray{},5, 5, 5, 5)
+
         -- Create the wibox
-        s.mywibox = awful.wibar({position = "top", screen = s})
+        s.mywibox = awful.wibar({
+            position = "top",
+            screen = s,
+            width = 1000,
+            stretch = false,
+            shape = gears.shape.rounded_bar,
+        })
+        s.mywibox.y = 10
 
         -- Add widgets to the wibox
         s.mywibox:setup {
@@ -326,9 +335,9 @@ awful.screen.connect_for_each_screen(
                 -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
                 mykeyboardlayout,
-                wibox.widget.systray(),
+                s.mysystray,
                 mytextclock,
-                s.mylayoutbox
+                s.mylayoutbox,
             }
         }
     end
@@ -376,22 +385,6 @@ globalkeys =
     ),
     awful.key(
         {modkey},
-        "j",
-        function()
-            awful.client.focus.byidx(1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key(
-        {modkey},
-        "k",
-        function()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
-    awful.key(
-        {modkey},
         "Left",
         function()
             awful.client.focus.bydirection("left")
@@ -428,36 +421,52 @@ globalkeys =
     -- Layout manipulation
     awful.key(
         {modkey, "Shift"},
-        "j",
+        "Left",
         function()
-            awful.client.swap.byidx(1)
+            awful.client.swap.bydirection("left")
         end,
-        {description = "swap with next client by index", group = "client"}
+        {description = "swap position with client on the left", group = "client"}
     ),
     awful.key(
         {modkey, "Shift"},
-        "k",
+        "Right",
         function()
-            awful.client.swap.byidx(-1)
+            awful.client.swap.bydirection("right")
         end,
-        {description = "swap with previous client by index", group = "client"}
+        {description = "swap position with client on the right", group = "client"}
     ),
     awful.key(
-        {modkey, "Control"},
-        "j",
+        {modkey, "Shift"},
+        "Up",
         function()
-            awful.screen.focus_relative(1)
+            awful.client.swap.bydirection("up")
         end,
-        {description = "focus the next screen", group = "screen"}
+        {description = "swap position with client above", group = "client"}
     ),
     awful.key(
-        {modkey, "Control"},
-        "k",
+        {modkey, "Shift"},
+        "Down",
         function()
-            awful.screen.focus_relative(-1)
+            awful.client.swap.bydirection("down")
         end,
-        {description = "focus the previous screen", group = "screen"}
+        {description = "swap position with client below", group = "client"}
     ),
+    -- awful.key(
+    --     {modkey, "Control"},
+    --     "Right",
+    --     function()
+    --         awful.screen.focus_relative(1)
+    --     end,
+    --     {description = "focus the next screen", group = "screen"}
+    -- ),
+    -- awful.key(
+    --     {modkey, "Control"},
+    --     "Left",
+    --     function()
+    --         awful.screen.focus_relative(-1)
+    --     end,
+    --     {description = "focus the previous screen", group = "screen"}
+    -- ),
     awful.key({modkey}, "u", awful.client.urgent.jumpto, {description = "jump to urgent client", group = "client"}),
     -- Standard program
     awful.key(
@@ -519,32 +528,12 @@ globalkeys =
         {description = "decrease the number of columns", group = "layout"}
     ),
     awful.key(
-        {modkey},
+        {modkey, "Control"},
         "space",
         function()
             awful.layout.inc(1)
         end,
         {description = "select next", group = "layout"}
-    ),
-    awful.key(
-        {modkey, "Shift"},
-        "space",
-        function()
-            awful.layout.inc(-1)
-        end,
-        {description = "select previous", group = "layout"}
-    ),
-    awful.key(
-        {modkey, "Control"},
-        "n",
-        function()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-                c:emit_signal("request::activate", "key.unminimize", {raise = true})
-            end
-        end,
-        {description = "restore minimized", group = "client"}
     ),
     -- Prompt
     awful.key(
@@ -646,7 +635,7 @@ clientkeys =
         {description = "close", group = "client"}
     ),
     awful.key(
-        {modkey, "Control"},
+        {modkey, "Shift"},
         "space",
         awful.client.floating.toggle,
         {description = "toggle floating", group = "client"}
@@ -659,14 +648,14 @@ clientkeys =
         end,
         {description = "move to master", group = "client"}
     ),
-    awful.key(
-        {modkey},
-        "o",
-        function(c)
-            c:move_to_screen()
-        end,
-        {description = "move to screen", group = "client"}
-    ),
+    -- awful.key(
+    --     {modkey},
+    --     "o",
+    --     function(c)
+    --         c:move_to_screen()
+    --     end,
+    --     {description = "move to screen", group = "client"}
+    -- ),
     awful.key(
         {modkey},
         "s",
@@ -685,7 +674,7 @@ clientkeys =
     ),
     awful.key(
         {modkey},
-        "n",
+        "m",
         function(c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
@@ -694,31 +683,16 @@ clientkeys =
         {description = "minimize", group = "client"}
     ),
     awful.key(
-        {modkey},
-        "m",
-        function(c)
-            c.maximized = not c.maximized
-            c:raise()
-        end,
-        {description = "(un)maximize", group = "client"}
-    ),
-    awful.key(
         {modkey, "Control"},
         "m",
-        function(c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
+        function()
+            local c = awful.client.restore()
+            -- Focus restored client
+            if c then
+                c:emit_signal("request::activate", "key.unminimize", {raise = true})
+            end
         end,
-        {description = "(un)maximize vertically", group = "client"}
-    ),
-    awful.key(
-        {modkey, "Shift"},
-        "m",
-        function(c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end,
-        {description = "(un)maximize horizontally", group = "client"}
+        {description = "restore minimized", group = "client"}
     )
 )
 
@@ -975,6 +949,7 @@ client.connect_signal(
         awful.titlebar.hide(c)
     end
 )
+
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal(

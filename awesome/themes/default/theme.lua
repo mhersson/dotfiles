@@ -17,21 +17,21 @@ local theme = {}
 
 theme.font = "sans 10"
 
-theme.bg_normal = "#2e3440"
-theme.bg_focus = "#2e3440"
+theme.bg_normal = "#fafafa"
+theme.bg_focus = "#fafafa"
 theme.bg_urgent = "#ff0000"
-theme.bg_minimize = "#2e3440"
+theme.bg_minimize = "#fafafa"
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_normal = "#6c7680"
+theme.fg_focus = "#3199e1"
+theme.fg_urgent = "#ff9940"
+theme.fg_minimize = "#ff9940"
 
 theme.useless_gap = dpi(10)
 theme.border_width = dpi(2)
-theme.border_normal = "#2e3440"
-theme.border_focus = "#88c0d0" --"#FE8019"
+theme.border_normal = "#6c7680"
+theme.border_focus = "#ff9940" --"#FE8019"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -58,9 +58,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
 theme.notification_font = "sans 12"
-theme.notification_bg = "#2e3440"
-theme.notification_fg = "#F1F1F1"
-theme.notification_border_color = "#88c0d0" --"#FE8019"
+theme.notification_bg = "#fafafa"
+theme.notification_fg = "#3199e1"
+theme.notification_border_color = "#FE8019"
 theme.notification_border_width = dpi(4)
 theme.notification_width = 480
 theme.notification_height = 110
@@ -68,10 +68,10 @@ theme.notification_shape = gears.shape.rounded_rect
 
 theme.hotkeys_font = "sans 12"
 theme.hotkeys_description_font = "sans 10"
-theme.hotkeys_bg = "#2e3440"
-theme.hotkeys_fg = "#F1F1F1"
+theme.hotkeys_bg = "#fafafa"
+theme.hotkeys_fg = "#3199e1"
 theme.hotkeys_modifiers_fg = "#A1A1A1"
-theme.hotkeys_border_color = "#88c0d0" --"#FE8019"
+theme.hotkeys_border_color = "#FE8019"
 theme.hotkeys_border_width = dpi(4)
 theme.hotkeys_shape = gears.shape.rounded_rect
 -- Variables set for theming the menu:
@@ -112,7 +112,7 @@ theme.titlebar_maximized_button_focus_inactive = themes_path .. "default/titleba
 theme.titlebar_maximized_button_normal_active = themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = themes_path .. "default/titlebar/maximized_focus_active.png"
 
--- theme.wallpaper = "~/Pictures/wallpaper/material-linux-dark.png"
+theme.wallpaper = "~/Pictures/wallpaper/windows11-light.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_centerwork = "~/.config/awesome/themes/default/layouts/centerwork.png"
