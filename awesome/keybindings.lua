@@ -5,7 +5,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 local modkey = "Mod4"
 
--- {{{ Key bindings
 Globalkeys =
     gears.table.join(
     awful.key({modkey}, "F1", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
@@ -243,12 +242,20 @@ Globalkeys =
         {description = "previous", group = "spotify"}
     ),
     awful.key(
+        {modkey},
+        "F11",
+        function()
+            awful.spawn.with_shell("~/Scripts/screenshot save_to_file")
+        end,
+        {description = "Save selection to file", group = "screenshot"}
+    ),
+    awful.key(
         {modkey, "Shift"},
         "F11",
         function()
             awful.spawn.with_shell("~/Scripts/screenshot")
         end,
-        {description = "Interactive Screenshot", group = "awesome"}
+        {description = "Save selection to clipboard", group = "screenshot"}
     )
 )
 
