@@ -7,7 +7,8 @@ send-keys -t 0 'emacs' Enter
 new-window
 new-window
 new-window
-move-window -s 4 -t 9
+new-window
+move-window -s 5 -t 9
 rename-window vpn
 split-window -v -t 0
 send-keys -t 0 'stibocon-reload' Enter
