@@ -275,7 +275,7 @@ awful.rules.rules = {
                 "Blueberry.py",
                 "Zathura",
                 "Virt-manager",
-                "Virt-viewer",
+                "Remote-viewer",
                 "Spotify",
                 "Pavucontrol",
                 "Nm-connection-editor",

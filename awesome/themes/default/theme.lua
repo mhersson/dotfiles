@@ -19,14 +19,14 @@ theme.font = "sans 10"
 
 theme.bg_normal = "#fafafa"
 theme.bg_focus = "#fafafa"
-theme.bg_urgent = "#ff0000"
+theme.bg_urgent = "#fafafa"
 theme.bg_minimize = "#fafafa"
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#6c7680"
 theme.fg_focus = "#3199e1"
 theme.fg_urgent = "#ff9940"
-theme.fg_minimize = "#ff9940"
+theme.fg_minimize = "#3199e1"
 
 theme.useless_gap = dpi(10)
 theme.border_width = dpi(2)
@@ -59,7 +59,7 @@ theme.systray_icon_spacing = dpi(15)
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
-theme.notification_font = "sans 12"
+theme.notification_font = "sans 10"
 theme.notification_bg = "#fafafa"
 theme.notification_fg = "#3e3e3e"
 theme.notification_border_color = "#ff9940"
