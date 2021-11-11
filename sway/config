@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -34,7 +34,7 @@ for_window [app_id="^pavucontrol$"] floating enable
 for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
-for_window [app_id="^Google-chrome$"] floating enable
+for_window [app_id="^google-chrome$"] floating enable
 for_window [class="^XEyes$"] floating enable
 # for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
@@ -43,7 +43,7 @@ for_window [class="^Signal$"] floating enable
 ### Output configuration
 #
 
-output * bg ~/Pictures/wallpaper/windows11-light.png fill
+output * bg ~/Pictures/wallpaper/windows11-light.jpg fill
 #output * bg #eeeeee solid_color
 
 #
@@ -65,9 +65,9 @@ output DP-1 resolution 5120x1440 position 0,0
 #               resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
 exec swayidle -w \
-          timeout 870 'swaymsg "output * dpms off"' \
+          timeout 600 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          timeout 3600 'systemctl suspend'
+          timeout 1800 'systemctl suspend'
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -304,11 +304,11 @@ bar {
 # Start some tools
 # exec flashfocus
 exec dunst
-exec redshift
+exec /home/morten/.local/bin/redshift
 # dropbox exec start
 
 # # Start some apps
 exec flatpak run com.slack.Slack
-exec kitty
+exec alacritty
 exec firefox
 
