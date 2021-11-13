@@ -265,8 +265,6 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "DTA", -- Firefox addon DownThemAll.
-                "copyq", -- Includes session name in class.
                 "pinentry"
             },
             class = {
@@ -308,9 +306,9 @@ awful.rules.rules = {
         properties = {titlebars_enabled = true}
     },
 
+    {rule = { class = "Slack", name = "screen share" }, properties = { floating = true, ontop = true }},
     -- -- Set Signal and spotify to always be on the tag named "2"
-    -- { rule_any = { class = {"Signal", "Spotify"} },
-    --   properties = { tag = "2"}}
+    -- { rule_any = { class = {"Signal", "Spotify"} }, properties = { tag = "2"}},
 }
 -- }}}
 
