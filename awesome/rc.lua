@@ -390,6 +390,8 @@ client.connect_signal(
 
         -- hide titlebar on startup
         awful.titlebar.hide(c)
+        -- open new windows as slaves (put it at the end of other windows)
+        awful.client.setslave(c)
     end
 )
 
