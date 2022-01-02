@@ -228,7 +228,7 @@ if !exists('g:vscode')
     " Ale
     " ==========================================================
     let g:ale_go_gopls_executable = '$GOPATH/bin/gopls'
-    let g:ale_go_gopls_options = ['-remote=auto']
+
     let g:ale_linters = {
     \ 'go': ['golangci-lint','gopls'],
     \ 'python': ['pyls', 'pylint', 'flake8'],
