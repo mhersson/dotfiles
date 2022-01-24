@@ -125,10 +125,7 @@
 (add-hook 'python-mode-lsp-hook #'python-flycheck-setup)
 
 (defun go-flycheck-setup ()
-  (flycheck-add-next-checker 'lsp 'golangci-lint)
-  (setq flycheck-golangci-lint-enable-all t)
-  (setq flycheck-golangci-lint-disable-linters
-     '("gochecknoinits" "gochecknoglobals" "gomnd" "gofumpt" "gci" "exhaustivestruct" "golint" "forbidigo")))
+  (flycheck-add-next-checker 'lsp 'golangci-lint))
 (add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
 
 (add-hook! go-mode
