@@ -130,6 +130,9 @@
 
 (add-hook! go-mode
   (setq gofmt-command "goimports")
-  (setq lsp-gopls-complete-unimported t))
-  ;(setq lsp-go-build-flags ["-tags=integration"]))
+  (setq lsp-gopls-complete-unimported t)
+  (setq lsp-go-build-flags ["-tags=integration"]))
 
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\moto")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor"))
