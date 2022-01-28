@@ -113,7 +113,7 @@ theme.titlebar_maximized_button_focus_inactive = themes_path .. "default/titleba
 theme.titlebar_maximized_button_normal_active = themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = themes_path .. "default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/Pictures/wallpaper/einstein.jpg"
+theme.wallpaper = "~/Pictures/wallpaper/current"
 
 -- You can use your own layout icons like this:
 theme.layout_centerwork = "~/.config/awesome/themes/default/layouts/centerwork.png"

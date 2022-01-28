@@ -310,6 +310,7 @@ awful.rules.rules = {
 
     {rule = { class = "Slack", name = "screen share" }, properties = { floating = true, ontop = true }},
     {rule = { class = "Brave-browser", name = "Microsoft Teams" }, properties = { floating = true, ontop = true }},
+    {rule = { class = "Brave-browser", name = "Meet - " }, properties = { floating = true, ontop = true }},
     -- -- Set Signal and spotify to always be on the tag named "2"
     -- { rule_any = { class = {"Signal", "Spotify"} }, properties = { tag = "2"}},
 }
