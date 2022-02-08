@@ -1,15 +1,16 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: JetBrains Mono, Helvetica, Arial, sans-serif;
+    font-size: 15px;
     min-height: 0;
+    font-weight: bold;
 }
 
 window#waybar {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     border-bottom: 2px solid #ff9940; /*rgba(100, 114, 125, 0.5);*/
-    color: #575566;
+    color: #3199e1;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -20,26 +21,26 @@ window#waybar.hidden {
 
 /*
 window#waybar.empty {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 window#waybar.solo {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 */
 
 window#waybar.termite {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 window#waybar.chromium {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     border: none;
 }
 
 #workspaces button {
     padding: 0 10px;
-    background-color: #fafafa;
-    color: #575566;
+    background-color: #4e4e4e;
+    color: #3199e1;
     border-bottom: 2px solid #ff9940;
 }
 
@@ -51,7 +52,7 @@ window#waybar.chromium {
 }
 
 #workspaces button.focused {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     border-bottom: 2px solid #ff9940;
     color: #3199e1;
 }
@@ -61,7 +62,7 @@ window#waybar.chromium {
 }
 
 #mode {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     border-bottom: 2px solid #ff9940;
 }
 
@@ -80,34 +81,34 @@ window#waybar.chromium {
 #idle_inhibitor {
     padding: 0 10px;
     /* margin: 0 4px; */
-    color: #575566;
+    color: #3199e1;
     border-bottom: 2px solid #ff9940;
 }
 
 #clock {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #battery {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     color: #d1d1d1;
 }
 
 #battery.charging {
-    color: #575566;
-    background-color: #fafafa;
+    color: #3199e1;
+    background-color: #4e4e4e;
 }
 
 @keyframes blink {
     to {
-        background-color: #fafafa;
+        background-color: #4e4e4e;
         color: #d1d1d1;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #fafafa;
-    color: #575566;
+    background-color: #4e4e4e;
+    color: #3199e1;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -116,94 +117,94 @@ window#waybar.chromium {
 }
 
 label:focus {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #cpu {
-    background-color: #fafafa;
-    color: #575566;
+    background-color: #4e4e4e;
+    color: #3199e1;
 }
 
 #memory {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #backlight {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #network {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #network.disconnected {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #custom-vpn {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #custom-vpn.down {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #pulseaudio {
-    background-color: #fafafa;
-    color: #575566;
+    background-color: #4e4e4e;
+    color: #3199e1;
 }
 
 #pulseaudio.muted {
-    background-color: #fafafa;
-    color: #575566;
+    background-color: #4e4e4e;
+    color: #3199e1;
 }
 
 #custom-media {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     color: #2a5c45;
     min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #custom-media.custom-vlc {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #temperature {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #temperature.critical {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #tray {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #idle_inhibitor {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #idle_inhibitor.activated {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     color: #d65d03;
 }
 
 #mpd {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
     color: #2a5c45;
 }
 
 #mpd.disconnected {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #mpd.stopped {
-    background-color: #fafafa;
+    background-color: #4e4e4e;
 }
 
 #mpd.paused {

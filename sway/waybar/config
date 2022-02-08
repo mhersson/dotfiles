@@ -8,7 +8,7 @@
     "margin-right": 1850,
     "modules-left": ["sway/workspaces", "sway/mode"],
     //"modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "custom/vpn", "cpu", "memory", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "bluetooth", "custom/vpn", "cpu", "memory", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
          "disable-scroll": true,
@@ -26,6 +26,16 @@
              "focused": "",
              "urgent": "",
          }
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "format-alt": "bluetooth: {status}",
+        "format-icons": {
+                "enabled": "",
+                "disabled": ""
+        },
+        "tooltip-format": "{}",
+        "on-click": "blueberry",
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"

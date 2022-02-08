@@ -1,16 +1,10 @@
 #!/bin/bash
 
-class="up"
+class="down"
 
-state=
-state=$(piactl get connectionstate)
-
-region=
-region=$(piactl get region)
-
-
-if [ "${state}"  != "Connected" ]; then
-    class="down"
+country=$(protonvpn-cli status | grep Country | awk '{print $2}')
+if [ "${country}" != "" ];then
+  class="up"
 fi
 
-echo \{ \"text\": \""${state} ${region^}"\", \"class\": \""${class}"\", \"alt\": \""${class}"\" \}
+echo \{ \"text\": \""${country}"\", \"class\": \""${class}"\", \"alt\": \""${class}"\" \}

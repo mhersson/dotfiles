@@ -14,27 +14,28 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-font pango:Inconsolata 10
+font pango: JetBrains Mono 10
 
 # floating applications
 # for_window [app_id="^.*$"] floating enable
 
-for_window [app_id="^virt-manager$"] floating enable
 for_window [app_id="^feh$"] floating enable
 for_window [app_id="^mpv$"] floating enable
 for_window [app_id="^gedit$"] floating enable
 for_window [app_id="^evince$"] floating enable
 for_window [app_id="^blueberry.py$"] floating enable
 for_window [app_id="^pavucontrol$"] floating enable
+for_window [app_id="^remote-viewer$"] floating enable
 for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
-for_window [app_id="^google-chrome$"] floating enable
+for_window [class="^Brave-browser$" title="Microsoft Teams - Brave"] floating enable
+for_window [class="^Brave-browser$" title="Meet - "] floating enable
 for_window [class="^XEyes$"] floating enable
 # for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
@@ -43,8 +44,8 @@ for_window [class="^Signal$"] floating enable
 ### Output configuration
 #
 
-output * bg ~/Pictures/wallpaper/windows11-light.jpg fill
-#output * bg #eeeeee solid_color
+# output * bg ~/Pictures/wallpaper/windows11-dark.png center #0d0d0d
+output * bg #252525 solid_color
 
 #
 # Example configuration:
@@ -67,7 +68,7 @@ output DP-1 resolution 5120x1440 position 0,0
 exec swayidle -w \
           timeout 600 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          timeout 1800 'systemctl suspend'
+          timeout 7200 'systemctl suspend'
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -100,14 +101,14 @@ input * {
 default_border pixel 2
 default_floating_border pixel 2
 
-gaps inner 20
+gaps inner 15
 gaps outer 0
 smart_gaps off
 smart_borders on
 
-client.focused            #ff9940 #fafafa #3199e1 #ff9940   #ff9940
-client.focused_inactive   #575566 #d1d1d1 #6c7680 #575566   #575566
-client.unfocused          #575566 #d1d1d1 #6c7680 #575566   #575566
+client.focused            #ff9940 #4e4e4e #3199e1 #ff9940   #ff9940
+client.focused_inactive   #575566 #4e4e4e #6c7680 #575566   #575566
+client.unfocused          #575566 #4e4e4e #6c7680 #575566   #575566
 
 ### Key bindings
 #
@@ -121,8 +122,12 @@ client.unfocused          #575566 #d1d1d1 #6c7680 #575566   #575566
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec rofi -width 750 -show drun
-    bindsym $mod+Tab exec rofi -width 750 -show window
+    bindsym $mod+p exec fuzzel --background 282828ff --text 3199e1ff \
+        --selection-color 88C0D0ff --selection-text 282828ff \
+        --border-color ff9940ff --border-width 2 --font "Jetbrains Mono:size=14"
+
+    # Toggle notification control center
+    bindsym $mod+Shift+n exec swaync-client -t -sw
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -265,16 +270,13 @@ bindsym $mod+r mode "resize"
 #bindsym $mod+Delete exec 'makoctl dismiss --all'
 
 # Screenshot
-bindsym $mod+F11 exec 'grim -g "$(slurp)" - | wl-copy'
-#bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png && scp $(ls -tr ~/Downloads/*.png | tail -n 1) skynet:~/Downloads/'
-bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png'
+bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" - | wl-copy'
+bindsym $mod+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png'
 
 # Spotify
 bindsym Ctrl+F7 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Ctrl+F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym Ctrl+F6 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-
-# bindsym F12 exec '~/Scripts/copyclipboard'
 
 #
 # Status Bar:
@@ -286,11 +288,12 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    # command_status while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
+
+    # status_command while date +'%Y-%m-%d %H:%M'; do sleep 5; done
     # mode hide
 
-    # statusline {
-    #     colors #cc241d
+    # colors {
+    #     statusline #ff9940
     #     background #252525
     #     focused_workspace  #252525 #959595 #252525
     #     active_workspace   #959595 #252525 #959595
@@ -301,14 +304,14 @@ bar {
 
 # include /etc/sway/conf.d/*
 
-# Start some tools
-# exec flashfocus
-exec dunst
-exec /home/morten/.local/bin/redshift
-# dropbox exec start
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
-# # Start some apps
-exec flatpak run com.slack.Slack
-exec alacritty
-exec firefox
+exec gammastep -c ~/.config/gammastep/gammastep.conf
+exec nm-applet
+# Notification Daemon
+exec swaync
 
+exec sleep 3 && protonvpn-cli c -f
+exec $term
+exec $term
+exec brave
