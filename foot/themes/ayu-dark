@@ -1,0 +1,21 @@
+# ayu-dark (custom)
+
+[colors]
+background=454545
+foreground=D8DEE9
+regular0=454545
+regular1=e65050
+regular2=99bf4d
+regular3=eca944
+regular4=73b8ff
+regular5=9e75c7
+regular6=96e6cb
+regular7=efefef
+bright0=686868
+bright1=f07171
+bright2=99bf4d
+bright3=f2ae49
+bright4=399ee6
+bright5=a37acc
+bright6=4cbf99
+bright7=fafafa
