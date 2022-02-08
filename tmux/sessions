@@ -1,8 +1,8 @@
-#rename-session weechat
-#send-keys -t 0 'weechat' Enter
+rename-session weechat
+send-keys -t 0 'weechat' Enter
 
-#new-session -s main
-rename-session main
+new-session -s main
+# rename-session main
 send-keys -t 0 'emacs' Enter
 new-window
 new-window
