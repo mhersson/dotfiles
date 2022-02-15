@@ -67,8 +67,8 @@ output DP-1 resolution 5120x1440 position 0,0
 #          before-sleep 'swaylock -f -c 000000'
 exec swayidle -w \
           timeout 600 'swaymsg "output * dpms off"' \
-               resume 'swaymsg "output * dpms on"' \
-          timeout 7200 'systemctl suspend'
+               resume 'swaymsg "output * dpms on"'
+          # timeout 7200 'systemctl suspend'
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -89,7 +89,7 @@ exec swayidle -w \
 # You can get the names of your inputs by runnxing: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input * {
+input "type:keyboard" {
     repeat_delay 250
     repeat_rate 25
     xkb_layout us,no
