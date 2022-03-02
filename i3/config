@@ -24,8 +24,8 @@ gaps outer 0
 # smart_gaps on
 smart_borders on
 
-client.focused            #ff9940 #4e4e4e #3199e1 #ff9940   #ff9940
-client.urgent             #ff9940 #4e4e4e #3199e1 #ff9940   #ff9940
+client.focused            #cd00cd #4e4e4e #3199e1 #cd00cd   #cd00cd
+client.urgent             #cd00cd #4e4e4e #3199e1 #cd00cd   #cd00cd
 client.focused_inactive   #575566 #4e4e4e #6c7680 #575566   #575566
 client.unfocused          #575566 #4e4e4e #6c7680 #575566   #575566
 
@@ -64,8 +64,12 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+p exec --no-startup-id rofi -show drun
 
 # Screenshot
-bindsym $mod+Shift+F11 exec maim -s | xclip -selection clipboard -t image/png
-bindsym $mod+F11 exec maim -s ~/Downloads/screenshot-$(date +%Y%m%d%H%M%S).png
+bindsym $mod+Shift+F11 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym $mod+F11 exec  --no-startup-id maim -s ~/Downloads/screenshot-$(date +%Y%m%d%H%M%S).png
+
+# Clear/close all notifications
+bindsym $mod+Shift+m exec --no-startup-id dunstctl close-all
+
 
 # change focus
 bindsym $mod+j focus left
@@ -206,12 +210,12 @@ bindsym $mod+r mode "resize"
 #         colors {
 #            background #282828
 #         #   statusline #3199e1
-#         #   separator #ff9940
+#         #   separator #cd00cd
 
-#            focused_workspace  #ff9940 #4e4e4e #ebdbb2
+#            focused_workspace  #cd00cd #4e4e4e #ebdbb2
 #            inactive_workspace #333333 #4e4e4e #ebdbb2
-#         #   active_workspace   #ff9940 #4e4e4e #ebdbb2
-#         #   urgent_workspace   #ff9940 #ff9940 #4e4e4e
+#         #   active_workspace   #cd00cd #4e4e4e #ebdbb2
+#         #   urgent_workspace   #cd00cd #cd00cd #4e4e4e
 #         }
 # }
 
