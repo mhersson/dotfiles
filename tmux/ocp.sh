@@ -4,7 +4,7 @@ set -euo pipefail
 theme=github
 
 if (oc whoami 1>&2 >/dev/null); then
-  status=$(oc adm config current-context |
+  status=$(oc config current-context |
     awk -F'/' '{ print $2 }' |
     awk -F':' '{ print $1 }' |
     sed "s/ocp-\|api-\|-openshift-cue-cloud\|@stibodx.com//"g)
