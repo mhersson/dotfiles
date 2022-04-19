@@ -136,3 +136,9 @@
 (after! lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\moto")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor"))
+
+;; Remap SPC-c-x to flycheck-list-errors with vertico
+(map!
+ (:leader
+  (:prefix "c"
+   :desc "List flycheck errors" "x" #'flycheck-list-errors)))
