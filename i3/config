@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $term kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -52,7 +53,7 @@ exec --no-startup-id dex --autostart --environment i3
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec $term
 
 # kill focused window
 bindsym $mod+q kill
@@ -230,6 +231,6 @@ exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 exec --no-startup-id protonvpn-cli c -f
 
-exec i3-sensible-terminal
-exec i3-sensible-terminal
+exec $term
+exec $term
 exec brave
