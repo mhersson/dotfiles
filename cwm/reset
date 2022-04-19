@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Layout for Odyssey g9
+# kitty tmux | kitty tmux layered with emacs gui | brave
+
+# startup
+#xdotool search --onlyvisible --class kitty \
+#    windowsize %1 1700 1410 \
+#    windowsize %2 1700 1410 \
+#    windowmove %1 7 15 \
+#    windowmove %2 1720 15 \
+
+xdotool search --onlyvisible --name weechat \
+    windowsize %1 1700 1410 windowmove %1 7 15
+
+xdotool search --onlyvisible --name main \
+    windowsize %1 1700 1410 windowmove %1 1720 15 \
+    set_desktop_for_window %1 1
+
+xdotool search --onlyvisible --class emacs \
+    windowsize %1 1700 1410 windowmove %1 1720 15 \
+    set_desktop_for_window %1 1
+
+xdotool search --onlyvisible --class brave-browser \
+    windowsize %1 1674 1410 windowmove %1 3435 15
+
+xdotool key Super+1
