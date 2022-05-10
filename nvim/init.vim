@@ -13,7 +13,7 @@ if !exists('g:vscode')
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    "Plug 'ericbn/vim-solarized'
+    Plug 'ericbn/vim-solarized'
 "    Plug 'arcticicestudio/nord-vim'
     Plug 'projekt0n/github-nvim-theme'
     "Plug 'sainnhe/gruvbox-material'
@@ -215,8 +215,8 @@ if !exists('g:vscode')
     " let g:gruvbox_material_transparent_background = 1
     " let g:gruvbox_material_diagnostic_line_highlight = 1
 
-    " set background=light
-    colorscheme github_light
+    set background=light
+    colorscheme solarized
     set termguicolors
 
     " ==========================================================
