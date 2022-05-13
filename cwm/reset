@@ -21,7 +21,7 @@ xdotool search --onlyvisible --class emacs \
   windowsize %1 1700 1410 windowmove %1 1720 15 \
   set_desktop_for_window %1 1
 
-xdotool search --onlyvisible --class brave-browser \
-  windowsize %1 1674 1410 windowmove %1 3435 15
+xdotool search --onlyvisible --class firefox \
+  windowsize %1 1672 1410 windowmove %1 3435 15
 
 xdotool key Super+1

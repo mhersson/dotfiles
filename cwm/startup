@@ -20,7 +20,7 @@ kitty --title weechat tmux new-session -s weechat \; \
   send-keys -t 0 'weechat' Enter \; &
 
 emacs &
-brave &
+firefox &
 
 sleep 1.5
 ~/.config/cwm/reset &
