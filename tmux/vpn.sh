@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set -euo pipefail
 
-theme=github
+theme=dracula
 
 if (command -v piactl >/dev/null); then
   VPN_CMD="piactl get connectionstate | grep -i connected >/dev/null"
@@ -10,6 +10,13 @@ else
 fi
 
 case "$theme" in
+  "dracula")
+    if (eval $VPN_CMD); then
+      echo -n "#[bg=colour235,fg=colour67]#[bg=colour67,fg=colour246] 🔐 "
+    else
+      echo -n "#[bg=colour235,fg=red]#[bg=red,fg=colour246] 🔓 "
+    fi
+    ;;
   "github")
     if (eval $VPN_CMD); then
       echo -n "#[bg=default,fg=colour67]#[bg=colour67,fg=colour246] 🔐 "

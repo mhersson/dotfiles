@@ -10,6 +10,9 @@ if (oc whoami 1>&2 >/dev/null); then
     sed "s/ocp-\|api-\|-openshift-cue-cloud\|@stibodx.com//"g)
 
   case "$theme" in
+    "dracula")
+      echo -n "#[fg=colour162]#[bg=colour162,fg=colour235] ${status} #[bg=colour162,fg=colour235]"
+      ;;
     "github")
       echo -n "#[fg=colour163]#[bg=colour163,fg=white] ${status} #[bg=colour163,fg=white]"
       ;;

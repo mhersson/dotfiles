@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-theme=github
+theme=dracula
 
 case "$theme" in
+  "dracula")
+    if (bt-device -i "H-Phonak Høreapparat" | grep "Connected: 1" >/dev/null); then
+      echo -n "#[bg=colour235,fg=colour67]#[bg=colour67,fg=colour235] 🎧 #[bg=colourcolour67,fg=colour235]"
+    fi
+    ;;
   "github")
     if (bt-device -i "H-Phonak Høreapparat" | grep "Connected: 1" >/dev/null); then
       echo -n "#[bg=default,fg=colour67]#[bg=colour67,fg=white] 🎧 #[bg=colourcolour67,fg=white]"
