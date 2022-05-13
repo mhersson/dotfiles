@@ -14,6 +14,7 @@ if !exists('g:vscode')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ericbn/vim-solarized'
+    Plug 'dracula/vim', { 'as': 'dracula' }
 "    Plug 'arcticicestudio/nord-vim'
     Plug 'projekt0n/github-nvim-theme'
     "Plug 'sainnhe/gruvbox-material'
@@ -215,14 +216,14 @@ if !exists('g:vscode')
     " let g:gruvbox_material_transparent_background = 1
     " let g:gruvbox_material_diagnostic_line_highlight = 1
 
-    set background=light
-    colorscheme solarized
+    set background=dark
+    colorscheme dracula
     set termguicolors
 
     " ==========================================================
     " Airline
     " ==========================================================
-    let g:airline_theme = 'base16_one_light'
+    let g:airline_theme = 'dracula' "'base16_one_light'
     let g:airline_powerline_fonts = 1
 
     " ==========================================================
