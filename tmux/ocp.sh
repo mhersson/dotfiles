@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-theme=github
+theme=dracula
 
 if (oc whoami 1>&2 >/dev/null); then
   status=$(oc config current-context |
@@ -11,7 +11,7 @@ if (oc whoami 1>&2 >/dev/null); then
 
   case "$theme" in
     "dracula")
-      echo -n "#[fg=colour162]#[bg=colour162,fg=colour235] ${status} #[bg=colour162,fg=colour235]"
+      echo -n "#[fg=colour162]#[bg=colour162,fg=default] ${status} #[bg=colour162,fg=colour235]"
       ;;
     "github")
       echo -n "#[fg=colour163]#[bg=colour163,fg=white] ${status} #[bg=colour163,fg=white]"
