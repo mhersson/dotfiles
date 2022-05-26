@@ -44,8 +44,8 @@ for_window [class="^Signal$"] floating enable
 ### Output configuration
 #
 
-# output * bg ~/Pictures/wallpaper/windows11-dark.png center #0d0d0d
-output * bg #252525 solid_color
+output * bg ~/Pictures/wallpaper/rhapsody-in-blue-5120x2160.png center
+# output * bg #252525 solid_color
 
 #
 # Example configuration:
@@ -106,7 +106,7 @@ gaps outer 0
 smart_gaps off
 smart_borders on
 
-client.focused            #ff9940 #4e4e4e #3199e1 #ff9940   #ff9940
+client.focused            #cd00cd #4e4e4e #3199e1 #cd00cd   #cd00cd
 client.focused_inactive   #575566 #4e4e4e #6c7680 #575566   #575566
 client.unfocused          #575566 #4e4e4e #6c7680 #575566   #575566
 
@@ -314,4 +314,4 @@ exec swaync
 exec sleep 3 && protonvpn-cli c -f
 exec $term
 exec $term
-exec brave
+exec firefox
