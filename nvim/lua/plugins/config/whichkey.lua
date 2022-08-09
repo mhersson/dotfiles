@@ -63,16 +63,16 @@ function M.setup()
       name = "Find",
       a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
       c = { "<cmd>Telescope commands<cr>", "Commands" },
-      d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
-      e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
+      --     d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
+      --     e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
       b = { "<cmd>lua require('telescope').extensions.file_browser.file_browser({ previewer = false, })<cr>",
         "File Browser" },
       g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
+      --      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
       k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       m = { "<cmd>Telescope marks<cr>", "Marks" },
-      o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+      o = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
       p = { "<cmd>Telescope projects<cr>", "Recent projects" },
       f = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Files" },
       r = { "<cmd>Telescope registers<cr>", "Registers" },
@@ -94,9 +94,10 @@ function M.setup()
       ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
     },
 
-    l = {
-      name = "LSP",
-      i = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" }
+    c = {
+      name = "Code",
+      i = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+      x = { "<cmd>Trouble<cr>", "Open" }
     },
 
     n = {
@@ -119,30 +120,6 @@ function M.setup()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-    },
-
-    t = {
-      name = "Terminal",
-      l = { "<cmd>:lua _toggle_lazygit()<CR>", "Lazygit" },
-      c = { "<cmd>:lua _toggle_console()<CR>", "Console" },
-      i = { "<cmd>:lua _toggle_irb()<CR>", "IRB" },
-      h = { "<cmd>:lua _toggle_htop()<CR>", "htop" },
-    },
-
-    x = {
-      name = "Trouble",
-      x = { "<cmd>Trouble<cr>", "Open" },
-      w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-      d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
-      l = { "<cmd>Trouble loclist<cr>", "Loclist" },
-      q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
-      r = { "<cmd>Trouble lsp_references<cr>", "LSP References" },
-    },
-
-    y = {
-      name = "Yank",
-      p = { "<cmd>let @+ = expand('%:p')<cr> <cmd>lua vim.notifier.info('Yanked filepath')<cr>", "Filepath" },
-      a = { "<cmd>%y<cr>", "Buffer contents" },
     },
 
     z = {
