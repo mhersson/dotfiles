@@ -1,0 +1,5 @@
+load "autocommands.general"
+load "autocommands.editing"
+load "autocommands.git"
+load "autocommands.formatting"
+-- load "autocommands.indent_line"
