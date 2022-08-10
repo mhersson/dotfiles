@@ -57,6 +57,7 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all" },
       n = { "<Cmd>bnext<Cr>", "Next buffer" },
       p = { "<Cmd>bprev<Cr>", "Previous buffer" },
+
     },
 
     f = {

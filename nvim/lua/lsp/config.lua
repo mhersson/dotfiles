@@ -29,7 +29,17 @@ else
 end
 
 lspconfig.bashls.setup(defaults)
-lspconfig.gopls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
 lspconfig.yamlls.setup(defaults)
+
+lspconfig.gopls.setup({
+  settings = {
+    gopls = {
+      gofumpt = true,
+      usePlaceholders = true,
+      completeUnimported = true,
+      deepCompletion = true,
+    }
+  }
+})

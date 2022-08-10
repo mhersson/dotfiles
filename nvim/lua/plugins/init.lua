@@ -259,6 +259,10 @@ return require('packer').startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    "fedepujol/move.nvim",
+    config = function() require("plugins.config.move") end,
+  }
   -- Pretty notifications
   use {
     "rcarriga/nvim-notify",
