@@ -109,7 +109,7 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------------
   use {
     "williamboman/nvim-lsp-installer",
-    requires = { "neovim/nvim-lspconfig" },
+    requires = { "neovim/nvim-lspconfig", "mfussenegger/nvim-lint" },
   }
 
   use {
@@ -163,6 +163,7 @@ return require('packer').startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-textsubjects",
+      "p00f/nvim-ts-rainbow",
       -- "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-refactor",
     },
@@ -230,18 +231,17 @@ return require('packer').startup(function(use)
     event = "BufReadPre",
   }
 
+  use { 'TimUntersberger/neogit',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require("plugins.config.neogit") end,
+  }
+
   use {
     "sindrets/diffview.nvim",
     config = function() require("plugins.config.diffview") end,
     requires = "nvim-lua/plenary.nvim",
     cmd = "DiffviewOpen",
   }
-
-  use {
-    "akinsho/git-conflict.nvim",
-    config = function() require("plugins.config.git_conflict") end
-  }
-
 
   -----------------------------------------------------------------------------
   -- Misc
@@ -275,6 +275,12 @@ return require('packer').startup(function(use)
       "nvim-treesitter/nvim-treesitter",
     },
     event = "BufEnter",
+  }
+
+  -- Terminal
+  use { "akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+    require("plugins.config.toggleterm")
+  end,
   }
 
   -- Profiling and Performance

@@ -14,7 +14,7 @@ function M.setup()
         operators = false,
         motions = false,
         text_objects = false, -- help for text objects triggered after entering an operator
-        windows = true, -- default bindings on <c-w>
+        windows = false, -- default bindings on <c-w>
         nav = true, -- misc bindings to work with windows
         z = false, -- bindings for folds, spelling and others prefixed with z
         g = false, -- bindings for prefixed with g
@@ -85,19 +85,13 @@ function M.setup()
       b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-      O = { "<cmd>GitConflictChooseOurs<cr>", "Ours" },
-      T = { "<cmd>GitConflictChooseTheirs<cr>", "Theirs" },
-      B = { "<cmd>GitConflictChooseBoth<cr>", "Both" },
-      N = { "<cmd>GitConflictChooseNone<cr>", "None" },
-      Q = { "<cmd>GitConflictListQf<cr>", "Quicklist" },
-      ["]"] = { "<cmd>GitConflictNextConflict<cr>", "Next" },
-      ["["] = { "<cmd>GitConflictPrevConflict<cr>", "Previous" },
+      g = { "<cmd>Neogit<cr>", "Neogit Open" }
     },
 
     c = {
       name = "Code",
       i = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      x = { "<cmd>Trouble<cr>", "Open" }
+      x = { "<cmd>Trouble<cr>", "Diagnostics" }
     },
 
     n = {
@@ -110,6 +104,7 @@ function M.setup()
       S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
       s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
     },
+
 
     p = {
       name = "Plugins",
@@ -130,6 +125,15 @@ function M.setup()
       e = { "!!$SHELL<CR>", "Execute Shell" },
       w = { "<cmd>update!<CR>", "Save" },
       q = { "<cmd>q!<CR>", "Quit" },
+    },
+
+    w = {
+      name = "Window",
+      h = { "<C-w>h", "Move Left" },
+      j = { "<C-w>j", "Move Down" },
+      k = { "<C-w>k", "Move Up" },
+      l = { "<C-w>l", "Move Right" },
+      q = { "<C-w>q", "Close" },
     },
   }
 
