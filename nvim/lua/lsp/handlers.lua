@@ -37,27 +37,6 @@ M.setup = function()
   })
 end
 
-local function lsp_keymaps(bufnr)
-  local opts = { silent = true, remap = false, buffer = bufnr }
-
-  -- Generate LSP functionality
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "ge", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-  vim.keymap.set('n', 'lhs', function() print("real lua function") end)
-
-  -- Navigate diagnotis errors/mesages
-  vim.keymap.set("n", "gk", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "gj", vim.diagnostic.goto_prev, opts)
-
-  -- Telescope helpers for listing symbols and diagnostics
-  vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-  vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", opts)
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_lsp_loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if cmp_lsp_loaded then

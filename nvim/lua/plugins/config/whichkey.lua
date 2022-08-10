@@ -61,24 +61,22 @@ function M.setup()
     },
 
     f = {
-      name = "Find",
-      a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
-      c = { "<cmd>Telescope commands<cr>", "Commands" },
+      name = "File",
+      -- a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
+      -- c = { "<cmd>Telescope commands<cr>", "Commands" },
       --     d = { "<cmd>Telescope find_dotfiles<cr>", "Dotfiles" },
       --     e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
       b = { "<cmd>lua require('telescope').extensions.file_browser.file_browser({ previewer = false, })<cr>",
         "File Browser" },
-      g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-      h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      --      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
-      k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-      m = { "<cmd>Telescope marks<cr>", "Marks" },
-      o = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-      p = { "<cmd>Telescope projects<cr>", "Recent projects" },
       f = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Files" },
-      r = { "<cmd>Telescope registers<cr>", "Registers" },
+      -- g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+      -- h = { "<cmd>Telescope help_tags<cr>", "Help" },
+      --      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
+      -- k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+      -- m = { "<cmd>Telescope marks<cr>", "Marks" },
+      r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
+      -- r = { "<cmd>Telescope registers<cr>", "Registers" },
       t = { "<cmd>NvimTreeToggle<cr>", "Tree Explorer" },
-      w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
     },
 
     g = {
@@ -92,6 +90,8 @@ function M.setup()
     c = {
       name = "Code",
       i = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+      r = { "<cmd>lua vim.lsp.buf.rename()<Cr>", "LSP Rename" },
+      d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
       x = { "<cmd>Trouble<cr>", "Diagnostics" }
     },
 
@@ -106,9 +106,14 @@ function M.setup()
       s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
     },
 
-
     p = {
-      name = "Plugins",
+      name = "Project",
+      p = { "<cmd>Telescope projects<cr>", "Recent projects" },
+    },
+
+
+    z = {
+      name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       l = { "<cmd>PackerClean<cr>", "clean" },
@@ -116,17 +121,17 @@ function M.setup()
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
-    },
-
-    z = {
-      name = "System",
-      f = { "<cmd>echo &filetype<cr>", "Filetype" },
-      r = { "<cmd>luafile %<cr> <cmd>lua vim.notifier.info('Sourced file')<cr>", "Source file" },
-      x = { "<cmd>cd %:p:h<cr>", "Change Directory" },
-      e = { "!!$SHELL<CR>", "Execute Shell" },
-      w = { "<cmd>update!<CR>", "Save" },
       q = { "<cmd>q!<CR>", "Quit" },
     },
+
+    s = {
+      name = "Search",
+      i = { "<cmd>Telescope lsp_document_symbols<cr>", "Jump to Symbol" },
+      b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Search Buffer" },
+      d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
+      p = { "<cmd>Telescope live_grep<cr>", "Search Current Directory" },
+    },
+
 
     w = {
       name = "Window",
