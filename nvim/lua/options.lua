@@ -38,8 +38,8 @@ local options = {
   numberwidth = 4, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line
-  scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor.
-  sidescrolloff = 8, -- minimal number of screen lines to keep left and right of the cursor.
+  scrolloff = 0, -- minimal number of screen lines to keep above and below the cursor.
+  sidescrolloff = 0, -- minimal number of screen lines to keep left and right of the cursor.
 }
 
 for k, v in pairs(options) do
