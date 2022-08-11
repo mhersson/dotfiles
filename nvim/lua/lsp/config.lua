@@ -28,18 +28,8 @@ else
   lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
 end
 
+lspconfig.gopls.setup(require("lsp.settings.gopls"))
 lspconfig.bashls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
 lspconfig.yamlls.setup(defaults)
-
-lspconfig.gopls.setup({
-  settings = {
-    gopls = {
-      gofumpt = true,
-      usePlaceholders = true,
-      completeUnimported = true,
-      deepCompletion = true,
-    }
-  }
-})

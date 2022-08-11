@@ -5,10 +5,10 @@ bufferline.setup({
   options = {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = true,
-    show_buffer_icons = false,
+    show_buffer_icons = true,
     show_tab_indicators = false,
     show_buffer_close_icons = false,
-    show_close_icon = true,
+    show_close_icon = false,
     persist_buffer_sort = false,
     enforce_regular_tabs = false,
     always_show_bufferline = true,
@@ -21,4 +21,3 @@ bufferline.setup({
     sort_by = "id",
   },
 })
-

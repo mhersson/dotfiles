@@ -60,7 +60,7 @@ telescope.setup({
       "--trim"
     },
     prompt_prefix = " ",
-    selection_caret = " ",
+    selection_caret = "→ ",
     entry_prefix = "  ",
     set_env = { ["COLORTERM"] = "truecolor" },
     initial_mode = "insert",

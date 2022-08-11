@@ -7,4 +7,9 @@ neogit.setup({
   integrations = {
     diffview = false
   },
+  sections = {
+    recent = {
+      folded = false
+    },
+  },
 })

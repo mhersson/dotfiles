@@ -132,7 +132,6 @@ cmp.setup {
   },
   experimental = {
     ghost_text = false,
-    native_menu = false,
   },
   enabled = function()
     local in_prompt = vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt'
