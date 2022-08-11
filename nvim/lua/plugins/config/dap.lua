@@ -20,23 +20,32 @@ dap.adapters.delve = {
 -- - `${relativeFileDirname}`: The current file's dirname relative to |getcwd()|
 -- - `${workspaceFolder}`: The current working directory of Neovim
 -- - `${workspaceFolderBasename}`: The name of the folder opened in Neovim
+
+-- Code snippet for asking for input arguments when invoking the debugger:
+--
+-- args = function()
+--   local argument_string = vim.fn.input('Program arguments: ')
+--   return vim.fn.split(argument_string, " ", true)
+-- end,
+
+-- Arguments can be configured by using the function above or specifying them
+-- directly in the array, then source this file before launching the debugger.
+
 dap.configurations.go = {
   {
     type = "delve",
     name = "Debug",
     request = "launch",
     program = "${file}",
-    args = function()
-      local argument_string = vim.fn.input('Program arguments: ')
-      return vim.fn.split(argument_string, " ", true)
-    end,
+    args = {},
   },
   {
     type = "delve",
     name = "Debug test", -- configuration for debugging test files
     request = "launch",
     mode = "test",
-    program = "${file}"
+    program = "${file}",
+    args = {},
   },
   -- works with go.mod packages and sub packages
   {
@@ -44,7 +53,8 @@ dap.configurations.go = {
     name = "Debug test (go.mod)",
     request = "launch",
     mode = "test",
-    program = "./${relativeFileDirname}"
+    program = "./${relativeFileDirname}",
+    args = {},
   }
 }
 
