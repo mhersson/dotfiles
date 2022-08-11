@@ -210,7 +210,7 @@ return require('packer').startup(function(use)
   use {
     "nvim-neotest/neotest",
     requires = {
-      "olimorris/neotest-rspec",
+      "nvim-neotest/neotest-go",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim"
@@ -220,6 +220,16 @@ return require('packer').startup(function(use)
   }
 
   use "folke/lua-dev.nvim"
+
+  use { "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function() require("plugins.config.dapui") end,
+  }
+
+  use { "mfussenegger/nvim-dap",
+    config = function() require("plugins.config.dap") end,
+  }
+
 
   -----------------------------------------------------------------------------
   -- Git

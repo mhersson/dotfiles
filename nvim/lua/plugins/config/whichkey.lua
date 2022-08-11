@@ -91,20 +91,30 @@ function M.setup()
       name = "Code",
       i = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
       r = { "<cmd>lua vim.lsp.buf.rename()<Cr>", "LSP Rename" },
-      d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
-      x = { "<cmd>Trouble<cr>", "Diagnostics" }
+      -- d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
+      x = { "<cmd>Trouble<cr>", "Diagnostics" },
+      t = {
+        name = "Test",
+        a = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run All" },
+        c = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+        l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
+        o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
+        S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+        s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+        t = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
+      },
+      d = {
+        name = "Debug",
+        b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+        c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
+        d = { "<cmd>lua Start_debug()<Cr>", "Start debug" },
+        t = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle Dap UI" },
+        i = { "<cmd>lua require('dap').step_into()<cr>", "Step into" },
+        o = { "<cmd>lua require('dap').step_over()<cr>", "Step over" },
+        O = { "<cmd>lua require('dap').step_out()<cr>", "Step out" },
+      },
     },
 
-    n = {
-      name = "Neotest",
-      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run All" },
-      l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
-      n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
-      o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
-      S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-      s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-    },
 
     p = {
       name = "Project",
@@ -129,7 +139,7 @@ function M.setup()
       i = { "<cmd>Telescope lsp_document_symbols<cr>", "Jump to Symbol" },
       b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Search Buffer" },
       d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
-      p = { "<cmd>Telescope live_grep<cr>", "Search Current Directory" },
+      p = { "<cmd>Telescope live_grep<cr>", "Search Project" },
     },
 
 
