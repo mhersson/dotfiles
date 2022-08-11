@@ -62,10 +62,16 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 
 -------------------------------------------------------------------------------
--- Deprecations
+-- Completion for parentheses
 -------------------------------------------------------------------------------
-vim.keymap.set("n", "<C-a>", "<cmd>lua vim.notifier.error('Deprecated keymap')<cr>", opts)
--- vim.keymap.set("n", "<leader>p", "<Nop>", opts)
--- vim.keymap.set("n", "<leader>p", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader ep`')<cr>", opts)
--- vim.keymap.set("n", "<leader>w", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader bc`')<cr>", opts)
-vim.keymap.set("n", "<leader>ft", "<cmd>lua vim.notifier.error('Deprecated Keymap, use `leader zf`')<cr>", opts)
+vim.keymap.set("i", "{", "{}<Left>", opts)
+vim.keymap.set("i", "{{", "{", opts)
+vim.keymap.set("i", "{}", "{}", opts)
+vim.keymap.set("i", "[", "[]<Left>", opts)
+vim.keymap.set("i", "[[", "[", opts)
+vim.keymap.set("i", "[]", "[]", opts)
+vim.keymap.set("i", "(", "()<Left>", opts)
+vim.keymap.set("i", "((", "(", opts)
+vim.keymap.set("i", "()", "()", opts)
+vim.keymap.set("i", "'", "''<Left>", opts)
+vim.keymap.set("i", '"', '""<Left>', opts)
