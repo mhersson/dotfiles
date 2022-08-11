@@ -26,3 +26,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.g["indentLine_enabled"] = "0"
   end,
 })
+
+-- Set all tmpl files to to gohtmltmpl to enable syntax highlighting
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = "_editing",
+  pattern = "*.tmpl",
+  callback = function()
+    vim.bo["filetype"] = "gohtmltmpl"
+  end,
+})
