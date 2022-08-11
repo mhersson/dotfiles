@@ -1,6 +1,10 @@
 local status_ok, dap = pcall(require, "dap")
 if not status_ok then return end
 
+
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl = '', linehl = '', numhl = '' })
+
+
 dap.adapters.delve = {
   type = 'server',
   port = '${port}',
