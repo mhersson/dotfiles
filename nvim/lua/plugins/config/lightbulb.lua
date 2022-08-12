@@ -4,8 +4,7 @@ if not status_ok then return end
 -- Showing defaults
 lightbulb.setup({
   -- LSP client names to ignore
-  -- Example: {"sumneko_lua", "null-ls"}
-  ignore = {},
+  ignore = { "sumneko_lua" },
   sign = {
     enabled = true,
     -- Priority of the gutter sign

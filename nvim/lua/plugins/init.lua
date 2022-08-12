@@ -81,6 +81,9 @@ return require('packer').startup(function(use)
     event = "VimEnter",
   }
 
+  use { "lukas-reineke/indent-blankline.nvim",
+    config = function() require("indent_blankline").setup() end,
+  }
   -----------------------------------------------------------------------------
   -- Navigation
   -----------------------------------------------------------------------------
@@ -307,6 +310,9 @@ return require('packer').startup(function(use)
     require("plugins.config.toggleterm")
   end,
   }
+
+  -- Editor config integration
+  use "editorconfig/editorconfig-vim"
 
   -- Profiling and Performance
   use "dstein64/vim-startuptime"
