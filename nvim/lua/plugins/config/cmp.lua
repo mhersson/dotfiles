@@ -78,7 +78,7 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping {
+    ["<Esc>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
@@ -86,6 +86,7 @@ cmp.setup {
       select = true,
     }),
   },
+
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = function(entry, vim_item)
@@ -111,19 +112,6 @@ cmp.setup {
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
-  },
-  sorting = {
-    comparators = {
-      function(...) return cmp_buffer:compare_locality(...) end,
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-      cmp_under_comparator.under,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
   },
   window = {
     documentation = {

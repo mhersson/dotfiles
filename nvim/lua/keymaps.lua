@@ -13,6 +13,13 @@ vim.keymap.set("n", "<DOWN>", "<NOP>", opts)
 vim.keymap.set("n", "<LEFT>", "<NOP>", opts)
 vim.keymap.set("n", "<RIGHT>", "<NOP>", opts)
 
+-- Map Ctrl-c to esc
+vim.keymap.set("i", "<C-c>", "<esc>", opts)
+
+-- Map jj to esc
+vim.keymap.set("i", "jj", "<esc>", opts)
+
+
 -- Use Del key for black hole register
 vim.keymap.set("", "<Del>", '"_x', opts)
 
@@ -27,7 +34,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "oo", "o<Esc>k", opts)
 vim.keymap.set("n", "OO", "O<Esc>j", opts)
 
--- Alternatives to :w, because I constantly typo it
+-- Easy save
 vim.keymap.set("n", "<c-s>", "<NOP>", opts)
 vim.keymap.set("i", "<c-s>", "<NOP>", opts)
 vim.keymap.set("n", "<c-s>", "<cmd>w<cr>", opts)
@@ -60,18 +67,3 @@ vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
-
--------------------------------------------------------------------------------
--- Completion for parentheses
--------------------------------------------------------------------------------
-vim.keymap.set("i", "{", "{}<Left>", opts)
-vim.keymap.set("i", "{{", "{", opts)
-vim.keymap.set("i", "{}", "{}", opts)
-vim.keymap.set("i", "[", "[]<Left>", opts)
-vim.keymap.set("i", "[[", "[", opts)
-vim.keymap.set("i", "[]", "[]", opts)
-vim.keymap.set("i", "(", "()<Left>", opts)
-vim.keymap.set("i", "((", "(", opts)
-vim.keymap.set("i", "()", "()", opts)
-vim.keymap.set("i", "'", "''<Left>", opts)
-vim.keymap.set("i", '"', '""<Left>', opts)

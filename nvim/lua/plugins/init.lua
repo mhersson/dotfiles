@@ -125,6 +125,12 @@ return require('packer').startup(function(use)
     event = "BufEnter",
   }
 
+  use {
+    'kosayoda/nvim-lightbulb',
+    requires = 'antoinemadec/FixCursorHold.nvim',
+    config = function() require("plugins.config.lightbulb") end,
+  }
+
   use "folke/lsp-colors.nvim" -- Add missing LSP highlight groups
   use "nvim-lua/lsp-status.nvim" -- Used by other plugins for basic lsp info
 
@@ -152,6 +158,11 @@ return require('packer').startup(function(use)
     },
     config = function() require("plugins.config.cmp") end,
     --event = "BufEnter",
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
   }
 
   -----------------------------------------------------------------------------
