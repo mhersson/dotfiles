@@ -265,11 +265,6 @@ return require('packer').startup(function(use)
     event = "BufReadPre",
   }
 
-  use { 'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function() require("plugins.config.neogit") end,
-  }
-
   use {
     "sindrets/diffview.nvim",
     config = function() require("plugins.config.diffview") end,

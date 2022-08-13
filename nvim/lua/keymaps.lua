@@ -19,9 +19,11 @@ vim.keymap.set("i", "<C-c>", "<esc>", opts)
 -- Map jj to esc
 vim.keymap.set("i", "jj", "<esc>", opts)
 
-
 -- Use Del key for black hole register
 vim.keymap.set("", "<Del>", '"_x', opts)
+
+-- Enable press and hold for deleting same as Del
+vim.keymap.set("n", "x", '"_x', opts)
 
 -- Paste over selected text
 vim.keymap.set("v", "p", '"_dP', opts)
