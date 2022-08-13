@@ -35,3 +35,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo["filetype"] = "gohtmltmpl"
   end,
 })
+
+-- Set filetype for conf files. This is basically just to get the colorizer
+-- plugin to work in conf files.
+-- https://github.com/norcalli/nvim-colorizer.lua/issues/9#issuecomment-543742619
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+  group = "_editing",
+  pattern = "*.conf",
+  callback = function()
+    vim.bo["filetype"] = "conf"
+  end,
+})

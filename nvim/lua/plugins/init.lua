@@ -84,6 +84,12 @@ return require('packer').startup(function(use)
   use { "lukas-reineke/indent-blankline.nvim",
     config = function() require("indent_blankline").setup() end,
   }
+
+  use {
+    "norcalli/nvim-colorizer.lua",
+    config = function() require("plugins.config.colorizer") end,
+    event = "BufReadPre",
+  }
   -----------------------------------------------------------------------------
   -- Navigation
   -----------------------------------------------------------------------------
