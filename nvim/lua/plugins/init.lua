@@ -250,6 +250,10 @@ return require('packer').startup(function(use)
     config = function() require("plugins.config.dap") end,
   }
 
+  use { "jose-elias-alvarez/null-ls.nvim",
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require("plugins.config.null_ls") end,
+  }
 
   -----------------------------------------------------------------------------
   -- Git

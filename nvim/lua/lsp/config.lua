@@ -9,6 +9,7 @@ lsp_installer.setup {
     "gopls",
     "dockerls",
     "jsonls",
+    "pyright",
     "sumneko_lua",
     "yamlls",
   }
@@ -32,4 +33,5 @@ lspconfig.gopls.setup(vim.tbl_deep_extend("force", require("lsp.settings.gopls")
 lspconfig.bashls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
+lspconfig.pyright.setup(defaults)
 lspconfig.yamlls.setup(defaults)

@@ -1,9 +1,11 @@
-vim.api.nvim_create_augroup("_formatting", { clear = true })
+vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 -- Format on save using the lsp defined formatter
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "_formatting",
+  group = "LspFormatting",
   pattern = "*",
-  command = "lua vim.lsp.buf.formatting_sync()"
+  callback = function()
+    vim.lsp.buf.formatting_sync()
+  end,
 })
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 
@@ -24,7 +26,7 @@ function go_org_imports(wait_ms)
 end
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "_formatting",
+  group = "LspFormatting",
   pattern = "*.go",
   command = "lua go_org_imports()"
 })
