@@ -84,7 +84,7 @@ function M.setup()
       b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff view open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff view close" },
-      g = { "<cmd>lua _toggle_lazygit()<cr>", "Lazygit open" }
+      g = { "<cmd>lua Toggle_lazygit()<cr>", "Lazygit open" }
     },
 
     c = {
@@ -128,7 +128,7 @@ function M.setup()
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
-      h = { "<cmd>lua _toggle_htop()<cr>", "Htop" },
+      h = { "<cmd>lua Toggle_htop()<cr>", "Htop" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       l = { "<cmd>PackerClean<cr>", "clean" },
       p = { "<cmd>PackerProfile<cr>", "Profile" },

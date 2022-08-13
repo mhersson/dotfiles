@@ -19,7 +19,7 @@ local htop = Terminal:new(vim.tbl_deep_extend("force", {
   cmd = "htop",
 }, defaults))
 
-function _toggle_htop()
+function Toggle_htop()
   htop:toggle()
 end
 
@@ -27,6 +27,6 @@ local lazygit = Terminal:new(vim.tbl_deep_extend("force", {
   cmd = "lazygit",
 }, defaults))
 
-function _toggle_lazygit()
+function Toggle_lazygit()
   lazygit:toggle()
 end
