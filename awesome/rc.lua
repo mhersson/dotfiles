@@ -145,7 +145,7 @@ local function set_wallpaper(s)
 end
 
 local pavuctl = wibox.widget.imagebox()
-pavuctl:set_image("/usr/share/icons/Adwaita/scalable/legacy/multimedia-volume-control-symbolic.svg")
+pavuctl:set_image(awful.util.getdir("config") .. "/themes/default/pulseeffects.svg")
 pavuctl:connect_signal("button::press", function()
   awful.spawn("pavucontrol")
 end)
