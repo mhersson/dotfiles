@@ -2,8 +2,8 @@ configuration {
     modi: "drun,run";
     show-icons: true;
 }
-@theme "/usr/share/rofi/themes/Arc.rasi"
-// @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+// @theme "/usr/share/rofi/themes/Arc.rasi"
+@theme "onedark.rasi"
 window {
     width: 15%;
 }
