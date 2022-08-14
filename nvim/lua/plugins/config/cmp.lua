@@ -78,7 +78,7 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<Esc>"] = cmp.mapping {
+    ["<C-e>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
@@ -93,9 +93,9 @@ cmp.setup {
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 
       vim_item.menu = ({
+        nvim_lsp = "[LSP]",
         buffer = "[Buffer]",
         luasnip = "[Snippet]",
-        nvim_lsp = "[LSP]",
         -- nvim_lua = "[Lua]",
       })[entry.source.name]
 
@@ -112,6 +112,19 @@ cmp.setup {
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
+  },
+  sorting = {
+    -- priority_weight = 1.0,
+    comparators = {
+      -- cmp.config.compare.exact,
+      -- cmp.config.compare.kind,
+      -- cmp.config.compare.offset,
+      cmp.config.compare.score,
+      cmp_under_comparator.under,
+      cmp.config.compare.sort_text,
+      -- cmp.config.compare.length,
+      -- cmp.config.compare.order,
+    },
   },
   window = {
     documentation = {
