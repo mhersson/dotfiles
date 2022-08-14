@@ -60,19 +60,19 @@ theme.systray_icon_spacing = dpi(15)
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
 theme.notification_font = "sans 10"
-theme.notification_bg = "#fafafa"
-theme.notification_fg = "#3e3e3e"
-theme.notification_border_color = "#ff9940"
+theme.notification_bg = "#282c34"
+theme.notification_fg = "#abb2bf"
+theme.notification_border_color = "#e06c75"
 theme.notification_width = 380
 theme.notification_height = 80
 theme.notification_shape = gears.shape.rounded_rect
 
 theme.hotkeys_font = "sans 12"
 theme.hotkeys_description_font = "sans 10"
-theme.hotkeys_bg = "#fafafa"
-theme.hotkeys_fg = "#3199e1"
+theme.hotkeys_bg = "#282c34"
+theme.hotkeys_fg = "#61afef"
 theme.hotkeys_modifiers_fg = "#A1A1A1"
-theme.hotkeys_border_color = "#FE8019"
+theme.hotkeys_border_color = "#e06c75"
 theme.hotkeys_border_width = dpi(4)
 theme.hotkeys_shape = gears.shape.rounded_rect
 -- Variables set for theming the menu:
