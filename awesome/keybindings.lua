@@ -212,8 +212,8 @@ gears.table.join(
   ),
   -- Spotify
   awful.key(
-    { "Control" },
-    "F7",
+    {},
+    "XF86AudioPlay",
     function()
       awful.spawn(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
@@ -222,8 +222,8 @@ gears.table.join(
     { description = "play/pause", group = "spotify" }
   ),
   awful.key(
-    { "Control" },
-    "F8",
+    {},
+    "XF86AudioNext",
     function()
       awful.spawn(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
@@ -232,8 +232,8 @@ gears.table.join(
     { description = "next", group = "spotify" }
   ),
   awful.key(
-    { "Control" },
-    "F6",
+    {},
+    "XF86AudioPrev",
     function()
       awful.spawn(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
