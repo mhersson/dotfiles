@@ -214,6 +214,10 @@ return require('packer').startup(function(use)
   use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
 
+  use { "simrat39/rust-tools.nvim",
+    config = function() require("plugins.config.rust_tools") end,
+  }
+
   use {
     "cuducos/yaml.nvim",
     ft = { "yaml" },

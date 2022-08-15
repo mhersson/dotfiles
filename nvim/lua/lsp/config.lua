@@ -30,6 +30,7 @@ else
 end
 
 lspconfig.gopls.setup(vim.tbl_deep_extend("force", require("lsp.settings.gopls"), defaults))
+lspconfig.rust_analyzer.setup(vim.tbl_deep_extend("force", require("lsp.settings.rust_analyzer"), defaults))
 lspconfig.bashls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
