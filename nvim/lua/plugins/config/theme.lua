@@ -3,23 +3,21 @@ if not status_ok then return end
 
 
 onedarkpro.setup({
-  -- dark_theme = "onedark", -- The default dark theme
-  -- light_theme = "onelight", -- The default light theme
   -- -- The theme function can be overwritten with a string value for the theme
-  -- theme = function()
-  --     if vim.o.background == "dark" then
-  --         return dark_theme
-  --     else
-  --         return light_theme
-  --     end
-  -- end,
+  theme = function()
+    if vim.o.background == "dark" then
+      return "onedark"
+    else
+      return "onelight"
+    end
+  end,
   -- colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
   -- hlgroups = {}, -- Override default highlight groups
   -- filetype_hlgroups = {}, -- Override default highlight groups for specific filetypes
   -- plugins = { -- Override which plugins highlight groups are loaded
   --     -- NOTE: Plugins have been omitted for brevity - Please see the plugins section of the README
   -- },
-  theme = "onedark",
+  -- theme = "onedark",
   styles = { -- Choose from "bold,italic,underline"
     strings = "NONE", -- Style that is applied to strings.
     comments = "italic", -- Style that is applied to comments
@@ -44,3 +42,11 @@ onedarkpro.load()
 
 require('feline').setup()
 require('gitsigns').setup()
+
+function ToggleTheme()
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
+end

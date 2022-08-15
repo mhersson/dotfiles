@@ -127,14 +127,18 @@ function M.setup()
 
     z = {
       name = "System",
-      c = { "<cmd>PackerCompile<cr>", "Compile" },
       h = { "<cmd>lua Toggle_htop()<cr>", "Htop" },
-      i = { "<cmd>PackerInstall<cr>", "Install" },
-      l = { "<cmd>PackerClean<cr>", "clean" },
-      p = { "<cmd>PackerProfile<cr>", "Profile" },
-      s = { "<cmd>PackerSync<cr>", "Sync" },
-      S = { "<cmd>PackerStatus<cr>", "Status" },
-      u = { "<cmd>PackerUpdate<cr>", "Update" },
+      p = {
+        name = "Packer",
+        c = { "<cmd>PackerCompile<cr>", "Compile" },
+        i = { "<cmd>PackerInstall<cr>", "Install" },
+        l = { "<cmd>PackerClean<cr>", "clean" },
+        p = { "<cmd>PackerProfile<cr>", "Profile" },
+        s = { "<cmd>PackerSync<cr>", "Sync" },
+        S = { "<cmd>PackerStatus<cr>", "Status" },
+        u = { "<cmd>PackerUpdate<cr>", "Update" },
+      },
+      t = { "<cmd>lua ToggleTheme()<cr>", "Toggle light/dark theme" },
       q = { "<cmd>q!<CR>", "Quit" },
     },
 
