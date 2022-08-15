@@ -155,6 +155,28 @@ local opts = {
     -- standalone file support
     -- setting it to false may improve startup time
     standalone = true,
+    settings = {
+      ["rust-analyzer"] = {
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+        procMacro = {
+          enable = true
+        },
+        checkOnSave = {
+          command = "clippy"
+        },
+      }
+    }
+
   }, -- rust-analyer options
 
   -- debugging stuff

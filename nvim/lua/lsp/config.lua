@@ -30,7 +30,7 @@ else
 end
 
 lspconfig.gopls.setup(vim.tbl_deep_extend("force", require("lsp.settings.gopls"), defaults))
-lspconfig.rust_analyzer.setup(vim.tbl_deep_extend("force", require("lsp.settings.rust_analyzer"), defaults))
+lspconfig.rust_analyzer.setup(defaults) -- rust-analyzer is configured with the plugin in plugins/config/rust-tools
 lspconfig.bashls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
