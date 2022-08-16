@@ -231,6 +231,10 @@ return require('packer').startup(function(use)
     cmd = { "MarkdownPreview" },
   }
 
+  use { 'nvim-orgmode/orgmode',
+    config = function() require("plugins.config.orgmode") end,
+  }
+
   use {
     "nvim-neotest/neotest",
     requires = {
