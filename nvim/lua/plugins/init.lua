@@ -263,6 +263,13 @@ return require('packer').startup(function(use)
     config = function() require("plugins.config.null_ls") end,
   }
 
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require("plugins.config.aerial") end,
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    event = "BufEnter",
+  }
+
   -----------------------------------------------------------------------------
   -- Git
   -----------------------------------------------------------------------------

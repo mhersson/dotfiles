@@ -37,6 +37,33 @@ M.setup = function()
   })
 end
 
+local function lsp_keymaps(bufnr)
+  local opts = { silent = true, remap = false, buffer = bufnr }
+
+  -- Generate LSP functionality
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+  -- Navigate diagnotis errors/mesages
+  vim.keymap.set("n", "gk", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "gj", vim.diagnostic.goto_prev, opts)
+
+end
+
+M.on_attach = function(client, bufnr)
+  lsp_keymaps(bufnr)
+
+  local status_ok, aerial = pcall(require, "aerial")
+  if status_ok then
+    aerial.on_attach(client, bufnr)
+  end
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_lsp_loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if cmp_lsp_loaded then
