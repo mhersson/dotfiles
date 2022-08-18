@@ -25,8 +25,19 @@ end
 
 local lazygit = Terminal:new(vim.tbl_deep_extend("force", {
   cmd = "lazygit",
+  dir = "git_dir",
+  hidden = true,
 }, defaults))
 
 function Toggle_lazygit()
   lazygit:toggle()
+end
+
+local ranger = Terminal:new(vim.tbl_deep_extend("force", {
+  cmd = "ranger",
+}, defaults))
+
+
+function Toggle_ranger()
+  ranger:toggle()
 end

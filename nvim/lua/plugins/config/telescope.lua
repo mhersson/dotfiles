@@ -30,7 +30,6 @@ telescope.setup({
       show_all_buffers = true,
       sort_lastused = true,
       theme = "dropdown",
-      previewer = false,
       mappings = {
         i = {
           ["<c-d>"] = "delete_buffer",
@@ -38,8 +37,7 @@ telescope.setup({
       }
     },
     lsp_document_symbols = {
-      theme = "dropdown",
-      previewer = false,
+      theme = "ivy",
     }
   },
   defaults = {

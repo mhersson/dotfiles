@@ -64,6 +64,6 @@ dap.configurations.go = {
 
 vim.keymap.set("n", "<leader>B", "<cmd>lua require'dap'.toggle_breakpoint()<Cr>", { silent = true })
 vim.keymap.set("n", "<F5>", "<cmd>lua require'dap'.continue()<Cr>", { silent = true })
-vim.keymap.set("n", "<F10>", "<cmd>lua require'dap'.step_over()<Cr>", { silent = true })
-vim.keymap.set("n", "<F11>", "<cmd>lua require'dap'.step_into()<Cr>", { silent = true })
-vim.keymap.set("n", "<F12>", "<cmd>lua require'dap'.step_out()<Cr>", { silent = true })
+vim.keymap.set("n", "<F6>", "<cmd>lua require'dap'.step_over()<Cr>", { silent = true })
+vim.keymap.set("n", "<F7>", "<cmd>lua require'dap'.step_into()<Cr>", { silent = true })
+vim.keymap.set("n", "<F8>", "<cmd>lua require'dap'.step_out()<Cr>", { silent = true })
