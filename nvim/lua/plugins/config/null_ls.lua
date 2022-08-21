@@ -11,6 +11,12 @@ local sources = {
   formatting.prettier.with({
     filetypes = { "html", "json", "yaml", "markdown" },
   }),
+  formatting.nixfmt.with({
+    filetypes = { "nix" },
+  }),
+  formatting.black.with({
+    filetypes = { "python" },
+  })
 }
 
 null_ls.setup({ sources = sources })
