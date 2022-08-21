@@ -36,6 +36,9 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "oo", "o<Esc>k", opts)
 vim.keymap.set("n", "OO", "O<Esc>j", opts)
 
+-- Remove highlighting
+vim.keymap.set("n", "<leader>C", "<cmd>noh<cr>", opts)
+
 -- Easy save
 vim.keymap.set("n", "<c-s>", "<NOP>", opts)
 vim.keymap.set("i", "<c-s>", "<NOP>", opts)
