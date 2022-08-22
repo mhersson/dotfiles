@@ -256,6 +256,14 @@ gears.table.join(
       awful.spawn.with_shell("~/Scripts/screenshot")
     end,
     { description = "Save selection to clipboard", group = "screenshot" }
+  ),
+  awful.key(
+    { modkey, "Shift" },
+    "F12",
+    function()
+      awful.spawn.with_shell("systemctl --user restart protonvpn.service")
+    end,
+    { description = "Restart Proton VPN", group = "launcher" }
   )
 )
 
