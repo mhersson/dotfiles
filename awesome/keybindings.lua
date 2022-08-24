@@ -95,22 +95,22 @@ gears.table.join(
     end,
     { description = "swap position with client below", group = "client" }
   ),
-  -- awful.key(
-  --     {modkey, "Control"},
-  --     "Right",
-  --     function()
-  --         awful.screen.focus_relative(1)
-  --     end,
-  --     {description = "focus the next screen", group = "screen"}
-  -- ),
-  -- awful.key(
-  --     {modkey, "Control"},
-  --     "Left",
-  --     function()
-  --         awful.screen.focus_relative(-1)
-  --     end,
-  --     {description = "focus the previous screen", group = "screen"}
-  -- ),
+  awful.key(
+    { modkey, "Control" },
+    "Right",
+    function()
+      awful.screen.focus_relative(1)
+    end,
+    { description = "focus the next screen", group = "screen" }
+  ),
+  awful.key(
+    { modkey, "Control" },
+    "Left",
+    function()
+      awful.screen.focus_relative(-1)
+    end,
+    { description = "focus the previous screen", group = "screen" }
+  ),
   awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
   -- Standard program
   awful.key(
@@ -119,7 +119,7 @@ gears.table.join(
     function()
       awful.spawn(Terminal)
     end,
-    { description = "open a terminal", group = "launcher" }
+    { description = "open a terminal", group = "external" }
   ),
   awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
   awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
@@ -186,7 +186,7 @@ gears.table.join(
     function()
       awful.screen.focused().mypromptbox:run()
     end,
-    { description = "run prompt", group = "launcher" }
+    { description = "run prompt", group = "awesome" }
   ),
   awful.key(
     { modkey },
@@ -208,7 +208,7 @@ gears.table.join(
     function()
       awful.spawn("rofi -show drun")
     end,
-    { description = "show rofi run", group = "launcher" }
+    { description = "show rofi run", group = "external" }
   ),
   -- Spotify
   awful.key(
@@ -247,7 +247,7 @@ gears.table.join(
     function()
       awful.spawn.with_shell("~/Scripts/screenshot save_to_file")
     end,
-    { description = "Save selection to file", group = "screenshot" }
+    { description = "save selection to file", group = "external" }
   ),
   awful.key(
     { modkey, "Shift" },
@@ -255,7 +255,7 @@ gears.table.join(
     function()
       awful.spawn.with_shell("~/Scripts/screenshot")
     end,
-    { description = "Save selection to clipboard", group = "screenshot" }
+    { description = "save selection to clipboard", group = "external" }
   ),
   awful.key(
     { modkey, "Shift" },
@@ -263,7 +263,15 @@ gears.table.join(
     function()
       awful.spawn.with_shell("systemctl --user restart protonvpn.service")
     end,
-    { description = "Restart Proton VPN", group = "launcher" }
+    { description = "restart Proton VPN", group = "external" }
+  ),
+  awful.key(
+    { modkey, "Control" },
+    "F12",
+    function()
+      awful.spawn.with_shell("~/Scripts/xrandr-toggle")
+    end,
+    { description = "toggle screen resolution", group = "external" }
   )
 )
 
