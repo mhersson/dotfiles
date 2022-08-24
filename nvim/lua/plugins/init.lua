@@ -210,8 +210,6 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------------
   use "ekalinin/Dockerfile.vim"
   use "cespare/vim-toml"
-  use "tpope/vim-rails"
-  use "vim-ruby/vim-ruby"
   use "mtdl9/vim-log-highlighting"
 
   use { "simrat39/rust-tools.nvim",
