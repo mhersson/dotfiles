@@ -210,7 +210,23 @@ gears.table.join(
     end,
     { description = "show rofi run", group = "external" }
   ),
-  -- Spotify
+  -- Fn Keys
+  awful.key(
+    {},
+    "XF86MonBrightnessUp",
+    function()
+      awful.spawn("light -A 10")
+    end,
+    { description = "increase monitor brightness", group = "function keys" }
+  ),
+  awful.key(
+    {},
+    "XF86MonBrightnessDown",
+    function()
+      awful.spawn("light -U 10")
+    end,
+    { description = "decrease monitor brightness", group = "function keys" }
+  ),
   awful.key(
     {},
     "XF86AudioPlay",
@@ -219,7 +235,7 @@ gears.table.join(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
       )
     end,
-    { description = "play/pause", group = "spotify" }
+    { description = "spotify play/pause", group = "function keys" }
   ),
   awful.key(
     {},
@@ -229,7 +245,7 @@ gears.table.join(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
       )
     end,
-    { description = "next", group = "spotify" }
+    { description = "spotify next", group = "function keys" }
   ),
   awful.key(
     {},
@@ -239,7 +255,7 @@ gears.table.join(
         "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
       )
     end,
-    { description = "previous", group = "spotify" }
+    { description = "spotify previous", group = "function keys" }
   ),
   awful.key(
     { modkey },
