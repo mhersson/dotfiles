@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------------
   use({
     "olimorris/onedarkpro.nvim",
+    requires = { "lewis6991/gitsigns.nvim" },
     config = function()
       require("plugins.config.theme")
     end
