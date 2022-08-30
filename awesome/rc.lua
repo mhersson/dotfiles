@@ -32,8 +32,8 @@ require("awful.hotkeys_popup.keys")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-  centerwork,
   awful.layout.suit.floating,
+  centerwork,
   awful.layout.suit.tile,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile.bottom,
@@ -160,9 +160,11 @@ awful.screen.connect_for_each_screen(
 
     -- Each screen has its own tag table.
     -- awful.tag({"", "", ""}, s, awful.layout.layouts[1])
-    awful.tag.add("", { layout = awful.layout.layouts[1], screen = s, selected = true })
-    awful.tag.add("", { layout = awful.layout.layouts[2], screen = s })
-    awful.tag.add("", { layout = awful.layout.layouts[2], screen = s })
+    awful.tag.add("", { layout = awful.layout.layouts[2], screen = s, selected = true })
+    awful.tag.add("", { layout = awful.layout.layouts[3], screen = s })
+    awful.tag.add("", { layout = awful.layout.layouts[3], screen = s })
+    awful.tag.add("", { layout = awful.layout.layouts[3], screen = s })
+    awful.tag.add("", { layout = awful.layout.layouts[3], screen = s })
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
