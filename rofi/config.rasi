@@ -5,5 +5,5 @@ configuration {
 // @theme "/usr/share/rofi/themes/Arc.rasi"
 @theme "onedark.rasi"
 window {
-    width: 15%;
+    width: 600px;
 }
