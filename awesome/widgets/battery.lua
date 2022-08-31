@@ -53,4 +53,4 @@ gears.timer {
   end
 }
 
-return wibox.container.margin(widget, 10, 10, 5, 5)
+return wibox.container.margin(widget, 10, 5, 5, 5)
