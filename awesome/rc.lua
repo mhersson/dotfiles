@@ -212,8 +212,6 @@ awful.screen.connect_for_each_screen(
 
     s.mysystray = wibox.container.margin(wibox.widget.systray {}, 5, 5, 5, 5)
 
-    s.mybattery = wibox.container.margin(bat_widget, 10, 10, 5, 5)
-
     -- Create the wibox
     s.mywibox = awful.wibar({
       position = "top",
@@ -243,7 +241,7 @@ awful.screen.connect_for_each_screen(
         s.mysystray,
         mykeyboardlayout,
         mytextclock,
-        s.mybattery,
+        bat_widget,
         s.mylayoutbox,
       }
     }

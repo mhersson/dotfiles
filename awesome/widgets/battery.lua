@@ -16,7 +16,7 @@ widget:set_widget(text)
 
 local bat = io.open("/sys/class/power_supply/BAT0/uevent", "r")
 if bat == nil then
-  return
+  return widget
 end
 io.close(bat)
 
@@ -53,4 +53,4 @@ gears.timer {
   end
 }
 
-return widget
+return wibox.container.margin(widget, 10, 10, 5, 5)
