@@ -231,31 +231,25 @@ gears.table.join(
     {},
     "XF86AudioPlay",
     function()
-      awful.spawn(
-        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-      )
+      awful.spawn("playerctl play-pause")
     end,
-    { description = "spotify play/pause", group = "function keys" }
+    { description = "play/pause", group = "function keys" }
   ),
   awful.key(
     {},
     "XF86AudioNext",
     function()
-      awful.spawn(
-        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-      )
+      awful.spawn("playerctl next")
     end,
-    { description = "spotify next", group = "function keys" }
+    { description = "next", group = "function keys" }
   ),
   awful.key(
     {},
     "XF86AudioPrev",
     function()
-      awful.spawn(
-        "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-      )
+      awful.spawn("playerctl previous")
     end,
-    { description = "spotify previous", group = "function keys" }
+    { description = "previous", group = "function keys" }
   ),
   awful.key(
     { modkey },
