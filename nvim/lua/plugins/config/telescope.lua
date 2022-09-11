@@ -24,6 +24,7 @@ local sorters = require("telescope.sorters")
 telescope.load_extension("file_browser", { grouped = true })
 telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
 telescope.load_extension("projects")
+telescope.load_extension("yank_history")
 telescope.setup({
   pickers = {
     buffers = {

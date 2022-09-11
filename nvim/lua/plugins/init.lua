@@ -296,6 +296,19 @@ return require('packer').startup(function(use)
     event = "BufEnter",
   }
 
+  -- Yanky like emacs kill-ring
+  use {
+    "gbprod/yanky.nvim",
+    config = function() require("plugins.config.yanky") end,
+  }
+
+  -- Session Manager
+  use {
+    "Shatur/neovim-session-manager",
+    require = { "nvim-lua/plenary.nvim" },
+    config = function() require("plugins.config.session_manager") end,
+  }
+
   -- Delete buffers but maintain layout
   use {
     "famiu/bufdelete.nvim",

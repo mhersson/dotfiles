@@ -40,6 +40,7 @@ dashboard.section.header.val = {
 -- Set menu
 dashboard.section.buttons.val = {
   dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("SPC q l", "  > Previous session", ":SessionManager load_last_session<CR>"),
   dashboard.button("SPC f f", "  > Find file", ":Telescope find_files<CR>"),
   dashboard.button("SPC f r", "  > Recent files", ":Telescope oldfiles<CR>"),
   dashboard.button("SPC p p", "  > Recent projects", ":Telescope projects<CR>"),
