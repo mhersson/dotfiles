@@ -129,7 +129,7 @@
 (add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
 
 (add-hook! go-mode
-  (setq gofmt-command "goimports")
+  (setq gofmt-command "gofumpt")
   (setq lsp-gopls-complete-unimported t)
   (setq lsp-go-build-flags ["-tags=integration"]))
 
