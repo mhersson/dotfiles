@@ -201,6 +201,7 @@ return require('packer').startup(function(use)
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function() require("plugins.config.telescope") end,
     event = "BufEnter",
