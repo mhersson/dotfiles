@@ -25,6 +25,7 @@ telescope.load_extension("file_browser", { grouped = true })
 telescope.load_extension("fzf") -- require fzf extension for better fzf sorting algorithm
 telescope.load_extension("projects")
 telescope.load_extension("yank_history")
+telescope.load_extension("ui-select")
 telescope.setup({
   pickers = {
     buffers = {
