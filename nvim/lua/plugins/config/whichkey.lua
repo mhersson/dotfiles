@@ -49,9 +49,9 @@ function M.setup()
     ["-"] = { ":split<CR>", "Horizonal split" },
     ['|'] = { ":vsplit<CR>", "Vertical split" },
     [","] = { "<cmd>Telescope buffers<cr>", "List buffers" },
-    ["."] = { "<cmd>Telescop find_files cwd=%:p:h hidden=true<cr>", "Find files buffer dir" },
+    ["."] = { "<cmd>Telescop find_files cwd=%:p:h hidden=true<cr>", "Find files in buffer path" },
     ["<Space>"] = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>",
-      "Find files project dir" },
+      "Find files in project" },
 
     b = {
       name = "Buffer",
@@ -72,7 +72,7 @@ function M.setup()
       --     e = { "<cmd>RnvimrToggle<CR>", "Ranger" },
       b = { "<cmd>lua require('telescope').extensions.file_browser.file_browser({ previewer = false, })<cr>",
         "File browser" },
-      f = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Find files" },
+      f = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>", "Find files in project" },
       -- g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
       --      i = { "<cmd>Telescope highlights<cr>", "Highlights" },
       -- m = { "<cmd>Telescope marks<cr>", "Marks" },
