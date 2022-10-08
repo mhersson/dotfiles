@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = "LspFormatting",
   pattern = "*",
   callback = function()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
   end,
 })
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
