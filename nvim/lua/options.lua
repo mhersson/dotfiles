@@ -2,7 +2,7 @@ local options = {
   backup = false, -- creates a backup file
   background = "dark",
   icm = 'split',
-  clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+  -- clipboard = "unnamedplus", -- allows neovim to access the system clipboard
   cmdheight = 1, -- more space in the neovim command line for displaying messages
   colorcolumn = "99999", -- fixes indentline for now
   completeopt = { "menuone", "noselect" },
@@ -25,7 +25,7 @@ local options = {
   swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
   timeoutlen = 250, -- time to wait for a mapped sequence to complete (in milliseconds)
-  title = true, -- set the title of window to the value of the titlestring
+  title = false, -- set the title of window to the value of the titlestring
   -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
   undofile = true, -- enable persistent undo
   updatetime = 300, -- faster completion

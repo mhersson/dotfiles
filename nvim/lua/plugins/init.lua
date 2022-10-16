@@ -247,7 +247,7 @@ return require('packer').startup(function(use)
     event = "BufEnter",
   }
 
-  use "folke/lua-dev.nvim"
+  use "folke/neodev.nvim"
 
   use { "rcarriga/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" },

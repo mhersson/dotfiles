@@ -22,9 +22,18 @@ local defaults = {
 
 local lspconfig = require("lspconfig")
 
-local luadev_ok, luadev = pcall(require, "lua-dev")
-if luadev_ok then
-  lspconfig.sumneko_lua.setup(luadev.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults)))
+local neodev_ok, neodev = pcall(require, "neodev")
+if neodev_ok then
+  neodev.setup({})
+  lspconfig.sumneko_lua.setup({
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace"
+        }
+      }
+    }
+  })
 else
   lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
 end
