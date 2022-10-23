@@ -131,6 +131,8 @@
 (global-set-key (kbd "C-s") 'normal-mode-and-save)
 (global-set-key (kbd "C-q") 'evil-quit)
 
+(global-set-key (kbd "M-k") 'drag-stuff-up)
+(global-set-key (kbd "M-j") 'drag-stuff-down)
 
 ;; Add autocompletion on local file paths
 (add-to-list 'company-backends 'company-files)
