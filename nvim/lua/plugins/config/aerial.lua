@@ -2,7 +2,9 @@ local status_ok, aerial = pcall(require, "aerial")
 if not status_ok then return end
 
 aerial.setup({
-  min_width = 40,
+  layout = {
+    min_width = 40,
+  },
   on_attach = function(bufnr)
     -- Jump forwards/backwards with '{' and '}'
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
