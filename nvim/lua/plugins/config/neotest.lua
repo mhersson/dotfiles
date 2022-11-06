@@ -2,35 +2,12 @@ local status_ok, neotest = pcall(require, "neotest")
 if not status_ok then return end
 
 neotest.setup({
-  adapters = { require("neotest-go"), },
-  diagnostic = {
-    enabled = false
-  },
-  discovery = {
-    enabled = true
-  },
-  floating = {
-    border = "rounded",
-    max_height = 0.6,
-    max_width = 0.6,
-    options = {}
-  },
-  highlights = {
-    adapater_name = "NeotestAdapterName",
-    border = "NeotestBorder",
-    dir = "NeotestDir",
-    expand_marker = "NeotestExpandMarker",
-    failed = "NeotestFailed",
-    file = "NeotestFile",
-    focused = "NeotestFocused",
-    indent = "NeotestIndent",
-    marked = "NeotestMarked",
-    namespace = "NeotestNamespace",
-    passed = "NeotestPassed",
-    running = "NeotestRunning",
-    select_win = "NeotestWinSelect",
-    skipped = "NeotestSkipped",
-    test = "NeotestTest"
+  adapters = {
+    require("neotest-go")({
+      experimental = {
+        test_table = true,
+      },
+    }),
   },
   icons = {
     child_indent = "│",
@@ -46,38 +23,23 @@ neotest.setup({
     skipped = "ﰸ",
     unknown = "?"
   },
-  jump = {
-    enabled = true
+  consumers = {
+    always_open_output = function(client)
+      local async = require("neotest.async")
+
+      client.listeners.results = function(adapter_id, results)
+        local file_path = async.fn.expand("%:p")
+        local row = async.fn.getpos(".")[2] - 1
+        local position = client:get_nearest(file_path, row, {})
+        if not position then
+          return
+        end
+        local pos_id = position:data().id
+        if not results[pos_id] then
+          return
+        end
+        neotest.output.open({ position_id = pos_id, adapter = adapter_id })
+      end
+    end,
   },
-  output = {
-    enabled = true,
-    open_on_run = "short"
-  },
-  run = {
-    enabled = true
-  },
-  status = {
-    enabled = true
-  },
-  strategies = {
-    integrated = {
-      height = 40,
-      width = 120
-    }
-  },
-  summary = {
-    enabled = true,
-    expand_errors = true,
-    follow = true,
-    mappings = {
-      attach = "a",
-      expand = { "<CR>", "<2-LeftMouse>" },
-      expand_all = "e",
-      jumpto = "i",
-      output = "o",
-      run = "r",
-      short = "O",
-      stop = "u"
-    }
-  }
 })
