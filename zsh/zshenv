@@ -10,3 +10,4 @@ eval "$(direnv hook zsh)"
 typeset -U PATH path
 path=($GOPATH/bin $HOME/.emacs.d/bin $HOME/.local/bin /usr/local/go/bin $path)
 
+. "$HOME/.cargo/env"
