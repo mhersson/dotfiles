@@ -31,7 +31,7 @@ theme.fg_minimize = "#61afef"
 theme.useless_gap = dpi(10)
 theme.border_width = dpi(2)
 theme.border_normal = "#282c34"
-theme.border_focus = "#e06c75" --"#FE8019"
+theme.border_focus = "#61afef" --"#FE8019"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -62,7 +62,7 @@ theme.systray_icon_spacing = dpi(15)
 theme.notification_font = "sans 10"
 theme.notification_bg = "#282c34"
 theme.notification_fg = "#abb2bf"
-theme.notification_border_color = "#e06c75"
+theme.notification_border_color = "#61afef"
 theme.notification_width = 380
 theme.notification_height = 80
 theme.notification_shape = gears.shape.rounded_rect
@@ -72,7 +72,7 @@ theme.hotkeys_description_font = "sans 10"
 theme.hotkeys_bg = "#282c34"
 theme.hotkeys_fg = "#abb2bf"
 theme.hotkeys_modifiers_fg = "#61afef"
-theme.hotkeys_border_color = "#e06c75"
+theme.hotkeys_border_color = "#61afef"
 theme.hotkeys_border_width = dpi(4)
 theme.hotkeys_shape = gears.shape.rounded_rect
 -- Variables set for theming the menu:
