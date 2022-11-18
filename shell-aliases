@@ -20,6 +20,7 @@ alias gp='git pull'
 alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
 
+alias icat="kitty +kitten icat"
 alias cat='bat --theme "OneHalfDark" --style plain --paging=never'
 alias less='bat --theme "OneHalfDark" --style plain'
 alias grep='grep --color=auto'
