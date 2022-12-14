@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -44,8 +44,8 @@ for_window [class="^Signal$"] floating enable
 ### Output configuration
 #
 
-output * bg ~/Pictures/wallpaper/rhapsody-in-blue-5120x2160.png center
-# output * bg #252525 solid_color
+#output * bg ~/Pictures/wallpaper/rhapsody-in-blue-5120x2160.png center
+output * bg #252525 solid_color
 
 #
 # Example configuration:
@@ -106,9 +106,9 @@ gaps outer 0
 smart_gaps off
 smart_borders on
 
-client.focused            #cd00cd #4e4e4e #3199e1 #cd00cd   #cd00cd
-client.focused_inactive   #575566 #4e4e4e #6c7680 #575566   #575566
-client.unfocused          #575566 #4e4e4e #6c7680 #575566   #575566
+client.focused            #61afef #4e4e4e #abb2bf #61afef   #61afef
+client.focused_inactive   #282c34 #4e4e4e #6c7680 #282c34   #282c34
+client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
 
 ### Key bindings
 #
@@ -122,9 +122,9 @@ client.unfocused          #575566 #4e4e4e #6c7680 #575566   #575566
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec fuzzel --background 282828ff --text 3199e1ff \
-        --selection-color 88C0D0ff --selection-text 282828ff \
-        --border-color ff9940ff --border-width 2 --font "Jetbrains Mono:size=14"
+    bindsym $mod+p exec fuzzel --background 282c34ff --text abb2bfff \
+        --selection-color e06c75ff --selection-text 282c34ff --selection-match-color efefefff \
+        --border-color 61afefff --border-width 2 --font "Jetbrains Mono:size=14"
 
     # Toggle notification control center
     bindsym $mod+Shift+n exec swaync-client -t -sw
@@ -273,11 +273,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+F11 exec 'grim -g "$(slurp)" - | wl-copy'
 bindsym $mod+F11 exec 'grim -g "$(slurp)" ~/Downloads/screenshot-"$(date +"%Y%m%d%H%M%S")".png'
 
-# Spotify
-bindsym Ctrl+F7 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym Ctrl+F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym Ctrl+F6 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
 #
 # Status Bar:
 #
@@ -307,11 +305,13 @@ bar {
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 exec gammastep -c ~/.config/gammastep/gammastep.conf
-exec nm-applet
+# exec nm-applet
 # Notification Daemon
 exec swaync
 
-exec sleep 3 && protonvpn-cli c -f
-exec $term
+#exec sleep 3 && protonvpn-cli c -f
+exec /opt/piavpn/bin/pia-client %u
+exec flatpak run com.slack.Slack
+exec flatpak run org.signal.Signal --start-in-tray
 exec $term
 exec firefox

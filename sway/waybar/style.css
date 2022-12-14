@@ -7,9 +7,9 @@
 }
 
 window#waybar {
-    background-color: #282c36;
-    border-bottom: 2px solid #cd00cd; /*rgba(100, 114, 125, 0.5);*/
-    color: #3199e1;
+    background-color: #282c34;
+    border-bottom: 2px solid #abb2bf; /*rgba(100, 114, 125, 0.5);*/
+    color: #61afef;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -20,49 +20,49 @@ window#waybar.hidden {
 
 /*
 window#waybar.empty {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 window#waybar.solo {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 */
 
 window#waybar.termite {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 window#waybar.chromium {
-    background-color: #282c36;
+    background-color: #282c34;
     border: none;
 }
 
 #workspaces button {
     padding: 0 10px;
-    background-color: #282c36;
-    color: #3199e1;
-    border-bottom: 2px solid #cd00cd;
+    background-color: #282c34;
+    color: #61afef;
+    border-bottom: 2px solid #abb2bf;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
     box-shadow: inherit;
-    border-bottom: 2px solid #cd00cd;
+    border-bottom: 2px solid #abb2bf;
 }
 
 #workspaces button.focused {
-    background-color: #282c36;
-    border-bottom: 2px solid #cd00cd;
-    color: #3199e1;
+    background-color: #282c34;
+    border-bottom: 2px solid #abb2bf;
+    color: #61afef;
 }
 
 #workspaces button.urgent {
-    background-color: #cd00cd;
+    background-color: #abb2bf;
 }
 
 #mode {
-    background-color: #282c36;
-    border-bottom: 2px solid #cd00cd;
+    background-color: #282c34;
+    border-bottom: 2px solid #abb2bf;
 }
 
 #clock,
@@ -80,34 +80,34 @@ window#waybar.chromium {
 #idle_inhibitor {
     padding: 0 10px;
     /* margin: 0 4px; */
-    color: #3199e1;
-    border-bottom: 2px solid #cd00cd;
+    color: #61afef;
+    border-bottom: 2px solid #abb2bf;
 }
 
 #clock {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #battery {
-    background-color: #282c36;
+    background-color: #282c34;
     color: #d1d1d1;
 }
 
 #battery.charging {
-    color: #3199e1;
-    background-color: #282c36;
+    color: #61afef;
+    background-color: #282c34;
 }
 
 @keyframes blink {
     to {
-        background-color: #282c36;
+        background-color: #282c34;
         color: #d1d1d1;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #282c36;
-    color: #3199e1;
+    background-color: #282c34;
+    color: #61afef;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -116,94 +116,94 @@ window#waybar.chromium {
 }
 
 label:focus {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #cpu {
-    background-color: #282c36;
-    color: #3199e1;
+    background-color: #282c34;
+    color: #61afef;
 }
 
 #memory {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #backlight {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #network {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #network.disconnected {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #custom-vpn {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #custom-vpn.down {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #pulseaudio {
-    background-color: #282c36;
-    color: #3199e1;
+    background-color: #282c34;
+    color: #61afef;
 }
 
 #pulseaudio.muted {
-    background-color: #282c36;
-    color: #3199e1;
+    background-color: #282c34;
+    color: #61afef;
 }
 
 #custom-media {
-    background-color: #282c36;
+    background-color: #282c34;
     color: #2a5c45;
     min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #custom-media.custom-vlc {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #temperature {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #temperature.critical {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #tray {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #idle_inhibitor {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #idle_inhibitor.activated {
-    background-color: #282c36;
+    background-color: #282c34;
     color: #d65d03;
 }
 
 #mpd {
-    background-color: #282c36;
+    background-color: #282c34;
     color: #2a5c45;
 }
 
 #mpd.disconnected {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #mpd.stopped {
-    background-color: #282c36;
+    background-color: #282c34;
 }
 
 #mpd.paused {
