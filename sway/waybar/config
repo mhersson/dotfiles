@@ -10,6 +10,7 @@
     //"modules-center": ["sway/window"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "bluetooth", "custom/vpn", "cpu", "memory", "clock", "tray"],
     // Modules configuration
+    "spacing": 5,
     "sway/workspaces": {
          "disable-scroll": true,
          // "all-outputs": true,
@@ -29,12 +30,12 @@
     },
     "bluetooth": {
         "format": "{icon}",
-        "format-alt": "bluetooth: {status}",
+        "format-alt": "{icon} {status}",
+        "format-connected": "{icon} {device_alias}",
         "format-icons": {
                 "enabled": "",
                 "disabled": ""
         },
-        "tooltip-format": "{}",
         "on-click": "blueberry",
     },
     "sway/mode": {
@@ -130,15 +131,15 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -160,7 +161,8 @@
     },
     "custom/vpn": {
         "format": "{} {icon}",
-        "max-length": 40,
+        "max-length": 10,
+        "min-length": 2,
         "interval": 30,
         "format-icons": {
             "down": "",
