@@ -28,14 +28,13 @@ for_window [app_id="^feh$"] floating enable
 for_window [app_id="^mpv$"] floating enable
 for_window [app_id="^gedit$"] floating enable
 for_window [app_id="^evince$"] floating enable
+for_window [app_id="^brave.*" ] floating enable
 for_window [app_id="^blueberry.py$"] floating enable
 for_window [app_id="^pavucontrol$"] floating enable
 for_window [app_id="^remote-viewer$"] floating enable
 for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
-for_window [class="^Brave-browser$" title="Microsoft Teams - Brave"] floating enable
-for_window [class="^Brave-browser$" title="Meet - "] floating enable
 for_window [class="^XEyes$"] floating enable
 # for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
