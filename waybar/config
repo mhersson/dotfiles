@@ -2,10 +2,10 @@
     "layer": "top", // Waybar at top layer
     "margin-left": 1850,
     "margin-right": 1850,
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["wlr/workspaces"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "bluetooth", "custom/vpn", "cpu", "memory", "clock", "tray"],
     "spacing": 5,
-    "sway/workspaces": {
+    "wlr/workspaces": {
          "disable-scroll": true,
          "format": "{name}: {icon}",
          "format-icons": {
