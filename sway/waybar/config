@@ -168,6 +168,7 @@
             "down": "",
             "default": ""
         },
+        "on-click": "/opt/piavpn/bin/pia-client",
         "return-type": "json",
         "exec": "$HOME/.config/waybar/vpn.sh 2> /dev/null" // Script in resources folder
     }
