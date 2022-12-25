@@ -8,7 +8,6 @@
   color: #61afef;
 }
 
-
 #workspaces button {
   padding: 0 10px;
   border-bottom: 2px solid #abb2bf;
@@ -17,7 +16,6 @@
 #workspaces button.urgent {
   border-bottom: #e06c75;
 }
-
 
 #clock,
 #battery,
@@ -37,6 +35,10 @@
   border-bottom: 2px solid #abb2bf;
 }
 
+#idle_inhibitor.activated {
+  color: #e06c75;
+}
+
 @keyframes blink {
   to {
     color: #e06c75;
@@ -50,4 +52,3 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-
