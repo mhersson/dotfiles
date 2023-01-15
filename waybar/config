@@ -1,94 +1,79 @@
 {
-    "layer": "top", // Waybar at top layer
-    "margin-left": 1850,
-    "margin-right": 1850,
-    "modules-left": ["wlr/workspaces"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "bluetooth", "custom/vpn", "cpu", "memory", "clock", "tray"],
-    "spacing": 5,
-    "wlr/workspaces": {
-         "disable-scroll": true,
-         "format": "{name}: {icon}",
-         "format-icons": {
-             "urgent": "",
-             // hyprland uses active, sway uses focused
-             "active": "",
-             "focused": "",
-             "default": ""
-         }
-    },
-    "bluetooth": {
-        "format": "{icon}",
-        "format-alt": "{icon} {status}",
-        "format-connected": "{icon} {device_alias}",
-        "format-icons": {
-                "enabled": "",
-                "disabled": ""
-        },
-        "on-click": "blueberry",
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format": "{:%d %b %Y %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/vpn": {
-        "format": "{} {icon}",
-        "max-length": 10,
-        "min-length": 2,
-        "interval": 30,
-        "format-icons": {
-            "down": "",
-            "default": ""
-        },
-        "on-click": "/opt/piavpn/bin/pia-client",
-        "return-type": "json",
-        "exec": "$HOME/.config/waybar/vpn.sh 2> /dev/null" // Script in resources folder
-    }
+	"margin-top": 2,
+	"height": 49,
+	"layer": "top",
+	"modules-center": [
+		"wlr/workspaces",
+		"tray",
+    "custom/vpn",
+		"cpu",
+		"memory",
+		"hyprland/language",
+		"pulseaudio",
+		"clock",
+		"custom/time"
+	],
+
+	"cpu": {
+		"interval": 10,
+		"format": "  {}%"
+	},
+
+	"memory": {
+		"interval": 30,
+		"format": "  {}%",
+		"format-alt": "  {used:0.1f}G"
+	},
+
+	"hyprland/language": {
+		"format": "  {}",
+		"format-en": "English",
+		"format-hu": "Hungarian"
+	},
+
+	"wlr/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"on-click": "activate"
+	},
+
+	"tray": {
+		"icon-size": 18,
+		"spacing": 5
+	},
+
+	"clock": {
+		"format": "{:  %a, %d %b %Y}"
+	},
+
+	"pulseaudio": {
+		"scroll-step": 1,
+		"format": "{icon}  {volume}%",
+		"format-muted": "婢",
+		"format-icons": {
+			"default": ["奄", "奔", "墳"]
+		},
+		"on-click": "pavucontrol"
+	},
+
+  "custom/vpn": {
+      "format": "{icon} VPN",
+      "interval": 30,
+      "format-icons": {
+          "down": "",
+          "default": ""
+      },
+      "on-click": "/opt/piavpn/bin/pia-client",
+      "return-type": "json",
+      "exec": "sh ~/.config/waybar/vpn.sh 2> /dev/null"
+  },
+
+	"custom/time": {
+		"exec": "sh ~/.config/waybar/getTime.sh",
+		"restart-interval": 60
+	}
 }
+

@@ -1,54 +1,132 @@
 * {
-  border: none;
-  border-radius: 0;
-  font-family: JetBrains Mono, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  min-height: 0;
-  background-color: #282c34;
-  color: #61afef;
+    border: none;
+    border-radius: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 14px;
+    min-height: 0;
+    font-weight: 500;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+window#waybar > .horizontal {
+    margin-top: 5px;
+}
+
+.horizontal.modules-center {
+    /* gradient hax >:) */
+    background: linear-gradient(to right, #1e1e2e 0%, #1e1e2e 75%, #f5c2e7 75%);
+    border-radius: 50px;
+}
+
+#clock {
+    background-color: #313244;
+    color: #f5c2e7;
+    padding: 0 15px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-right: 30px;
+}
+
+#custom-time {
+    padding: 0 20px;
+    color: #313244;
+    background-color: #f5c2e7;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 15px;
+}
+
+#custom-vpn {
+    padding: 0 20px;
+    color: #98c379;
+    background-color: #313244;
+    padding-left: 15px;
+}
+
+#custom-vpn.down {
+   color: #f38ba8;
+}
+
+
+#language {
+    background-color: #313244;
+    padding: 0 15px;
+    color: #89b4fa;
+}
+
+#cpu {
+    background-color: #313244;
+    padding: 0 15px;
+    color: #f38ba8;
+}
+
+#memory {
+    background-color: #313244;
+    padding: 0 15px;
+    color: #f9e2af;
+}
+
+#pulseaudio {
+    background-color: #313244;
+    padding: 0 15px;
+    color: #fab387;
+}
+
+#tray {
+    background-color: #313244;
+    /* icons usually give it enough margin :p */
+    padding: 0 15px;
+    padding-left: 30px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+#workspaces {
+    padding: 8px 10px;
+    padding-right: 15px;
+    background-color: #1e1e2e;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
 
 #workspaces button {
-  padding: 0 10px;
-  border-bottom: 2px solid #abb2bf;
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 50px;
+    min-width: 20px;
+}
+
+#workspaces button.active {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;
+    color: #1e1e2e;
+    background-color: #f5c2e7;
 }
 
 #workspaces button.urgent {
-  border-bottom: #e06c75;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;
+    color: #1e1e2e;
+    background-color: #f7768e;
 }
 
-#clock,
-#battery,
-#bluetooth,
-#cpu,
-#memory,
-#temperature,
-#backlight,
-#network,
-#custom-vpn,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor {
-  padding: 0 10px;
-  border-bottom: 2px solid #abb2bf;
+#workspaces button:hover:not(.active) {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;
+	color: #f5c2e7;
+    background-color: #313244;
 }
 
-#idle_inhibitor.activated {
-  color: #e06c75;
-}
-
-@keyframes blink {
-  to {
-    color: #e06c75;
-  }
-}
-
-#battery.critical:not(.charging) {
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#workspaces button:not(:first-child) {
+    margin-left: 8px;
 }
