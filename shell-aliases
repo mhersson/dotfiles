@@ -36,6 +36,6 @@ alias bamsebo='tmux attach -t bamsebo || tmux new -s bamsebo bash -c "~/.ssh/bad
 alias stibocon='tmux attach -t stibo || tmux new -s stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
 alias stibocon-reload='~/.ssh/badvpn/stibocon.sh'
 
-if [ -n "$WAYLAND_DISPLAY" ]; then
+if [ "$XDG_SESSION_DESKTOP" = "gnome" ]; then
   alias pass='WAYLAND_DISPLAY="" pass'
 fi
