@@ -10,7 +10,7 @@
 ;;(package! some-package)
 ;(package! ox-hugo)
 ;(package! nord-theme)
-(package! gruvbox-theme)
+;(package! gruvbox-theme)
 (package! github-theme)
 (package! evil-terminal-cursor-changer)
 (package! xclip)
