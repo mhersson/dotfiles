@@ -5,6 +5,7 @@ require 'nvim-treesitter.configs'.setup {
     "comment",
     "c",
     "dockerfile",
+    "gitcommit",
     "go",
     "gomod",
     "gowork",
