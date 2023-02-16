@@ -1,8 +1,7 @@
 local M = {}
 
 function M.setup()
-  local module_name = "which-key"
-  local whichkey = require(module_name)
+  local whichkey = require("which-key")
 
   local conf = {
     show_help = false,
