@@ -19,7 +19,7 @@ neogit.setup({
   auto_show_console = true,
   -- Change the default way of opening the commit popup
   commit_popup = {
-    kind = "replace",
+    kind = "split_above",
   },
   -- Change the default way of opening popups
   popup = {
