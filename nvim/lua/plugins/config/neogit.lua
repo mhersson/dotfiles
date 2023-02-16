@@ -10,7 +10,7 @@ neogit.setup({
   -- Disabling `auto_refresh` will make it so you have to manually refresh the status after you open it.
   auto_refresh = true,
   disable_builtin_notifications = false,
-  use_magit_keybindings = false,
+  use_magit_keybindings = true,
   -- Change the default way of opening neogit
   kind = "tab",
   -- The time after which an output console is shown for slow running commands
@@ -18,13 +18,13 @@ neogit.setup({
   -- Automatically show console if a command takes more than console_timeout milliseconds
   auto_show_console = true,
   -- Change the default way of opening the commit popup
-  --  commit_popup = {
-  --    kind = "split",
-  --  },
+  commit_popup = {
+    kind = "split",
+  },
   -- Change the default way of opening popups
-  -- popup = {
-  --   kind = "split",
-  -- },
+  popup = {
+    kind = "split",
+  },
   -- customize displayed signs
   signs = {
     -- { CLOSED, OPENED }
@@ -68,7 +68,7 @@ neogit.setup({
       folded = false
     },
     recent = {
-      folded = true
+      folded = false
     },
   },
   -- override/add mappings
@@ -78,7 +78,7 @@ neogit.setup({
       -- Adds a mapping with "B" as key that does the "BranchPopup" command
       ["B"] = "BranchPopup",
       -- Removes the default mapping of "s"
-      ["s"] = "",
+      -- ["s"] = "",
     }
   }
 })
