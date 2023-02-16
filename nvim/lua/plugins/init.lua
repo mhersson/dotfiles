@@ -281,6 +281,11 @@ return require('packer').startup(function(use)
     cmd = "DiffviewOpen",
   }
 
+  use {
+    "TimUntersberger/neogit",
+    requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+    config = function() require("plugins.config.neogit") end,
+  }
   -----------------------------------------------------------------------------
   -- Misc
   -----------------------------------------------------------------------------

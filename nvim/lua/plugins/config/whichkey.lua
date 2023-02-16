@@ -52,7 +52,6 @@ function M.setup()
     ["."] = { "<cmd>Telescop find_files cwd=%:p:h hidden=true<cr>", "Find files in buffer path" },
     ["<Space>"] = { "<cmd>Telescope find_files hidden=true layout_config={'prompt_position':'top'}<cr>",
       "Find files in project" },
-
     b = {
       name = "Buffer",
       b = { "<cmd>Telescope buffers<cr>", "List buffers" },
@@ -63,7 +62,6 @@ function M.setup()
       p = { "<Cmd>bprev<Cr>", "Previous buffer" },
 
     },
-
     f = {
       name = "File",
       -- a = { "<cmd>Telescope autocommands<cr>", "Autocommands" },
@@ -80,15 +78,14 @@ function M.setup()
       -- r = { "<cmd>Telescope registers<cr>", "Registers" },
       t = { "<cmd>NvimTreeToggle<cr>", "Tree explorer" },
     },
-
     g = {
       name = "Git",
       b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Blame" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff view open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff view close" },
-      g = { "<cmd>lua Toggle_lazygit()<cr>", "Lazygit open" }
+      g = { "<cmd>Neogit<cr>", "Neogit" },
+      l = { "<cmd>lua Toggle_lazygit()<cr>", "Lazygit open" }
     },
-
     c = {
       name = "Code",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -121,14 +118,10 @@ function M.setup()
         u = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" },
       },
     },
-
-
     p = {
       name = "Project",
       p = { "<cmd>Telescope projects<cr>", "Recent projects" },
     },
-
-
     z = {
       name = "System",
       h = { "<cmd>lua Toggle_htop()<cr>", "Htop" },
@@ -146,7 +139,6 @@ function M.setup()
       t = { "<cmd>lua ToggleTheme()<cr>", "Toggle light/dark theme" },
       q = { "<cmd>q!<CR>", "Quit" },
     },
-
     s = {
       name = "Search",
       i = { "<cmd>Telescope lsp_document_symbols<cr>", "Jump to Symbol" },
@@ -156,8 +148,6 @@ function M.setup()
       d = { "<cmd>Telescope diagnostics<Cr>", "Search Diagnostics" },
       p = { "<cmd>Telescope live_grep<cr>", "Search Project" },
     },
-
-
     w = {
       name = "Window",
       h = { "<C-w>h", "Move Left" },

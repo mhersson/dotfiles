@@ -9,8 +9,8 @@ _G.load = function(module)
   return require(module)
 end
 
-load('utils')
 load('options')
+load('utils')
 load('keymaps')
 load('plugins')
 load('lsp.init')

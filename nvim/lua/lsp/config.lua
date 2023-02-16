@@ -10,7 +10,7 @@ lsp_installer.setup {
     "dockerls",
     "jsonls",
     "pyright",
-    "sumneko_lua",
+    "lua_ls",
     "yamlls",
   }
 }
@@ -25,17 +25,6 @@ local lspconfig = require("lspconfig")
 local neodev_ok, neodev = pcall(require, "neodev")
 if neodev_ok then
   neodev.setup({})
-  lspconfig.sumneko_lua.setup({
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = "Replace"
-        }
-      }
-    }
-  })
-else
-  lspconfig.sumneko_lua.setup(vim.tbl_deep_extend("force", require("lsp.settings.sumneko_lua"), defaults))
 end
 
 lspconfig.gopls.setup(vim.tbl_deep_extend("force", require("lsp.settings.gopls"), defaults))
@@ -43,5 +32,6 @@ lspconfig.rust_analyzer.setup(defaults) -- rust-analyzer is configured with the 
 lspconfig.bashls.setup(defaults)
 lspconfig.dockerls.setup(defaults)
 lspconfig.jsonls.setup(defaults)
+lspconfig.lua_ls.setup(defaults)
 lspconfig.pyright.setup(defaults)
 lspconfig.yamlls.setup(defaults)
