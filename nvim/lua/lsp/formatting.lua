@@ -2,7 +2,7 @@ vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 -- Format on save using the lsp defined formatter
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "LspFormatting",
-  pattern = "*",
+  pattern = "*.go,*.json,*.yaml,*.sh,*.py,*.rs,*.toml",
   callback = function()
     vim.lsp.buf.format()
   end,

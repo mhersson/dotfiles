@@ -22,7 +22,7 @@ onedarkpro.setup({
     strings = "NONE", -- Style that is applied to strings.
     comments = "italic", -- Style that is applied to comments
     keywords = "italic", -- Style that is applied to keywords
-    functions = "bold,italic", -- Style that is applied to functions,
+    functions = "italic", -- Style that is applied to functions,
     variables = "NONE", -- Style that is applied to variables
     virtual_text = "NONE", -- Style that is applied to virtual text
   },

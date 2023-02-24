@@ -88,7 +88,6 @@ function M.setup()
     c = {
       name = "Code",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      i = { "<cmd>AerialToggle<cr>", "Symbols outline" },
       n = { "<cmd>lua vim.lsp.buf.rename()<Cr>", "LSP rename" },
       d = { "<cmd>Telescope lsp_definitions<Cr>", "LSP definitions" },
       r = { "<cmd>Telescope lsp_references<Cr>", "LSP references" },
