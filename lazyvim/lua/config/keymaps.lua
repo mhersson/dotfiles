@@ -16,10 +16,6 @@ vim.keymap.set("i", "<c-q>", "<NOP>", opts)
 vim.keymap.set("n", "<c-q>", "<cmd>qa<cr>", opts)
 vim.keymap.set("i", "<c-q>", "<esc><cmd>qa<cr>", opts)
 
--- Buffer navigation
-vim.keymap.set("n", "<C-j>", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<C-k>", ":bnext<CR>", opts)
-
 -- Yanky
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", opts)
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", opts)
