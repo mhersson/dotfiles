@@ -1,5 +1,9 @@
 return {
   {
+    "leoluz/nvim-dap-go",
+    config = true,
+  },
+  {
     "rcarriga/nvim-dap-ui",
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -10,12 +14,15 @@ return {
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+
+      vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+      vim.fn.sign_define(
+        "DapBreakpointCondition",
+        { text = "ﳁ", texthl = "DiagnosticError", linehl = "", numhl = "" }
+      )
+      vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticWarning", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticOk", linehl = "", numhl = "" })
     end,
     keys = {
       {
@@ -30,7 +37,7 @@ return {
         function()
           require("dap").continue()
         end,
-        desc = "Continue",
+        desc = "Start/Continue",
       },
       {
         "<leader>di",
@@ -75,9 +82,5 @@ return {
         desc = "Toggle UI",
       },
     },
-  },
-  {
-    "leoluz/nvim-dap-go",
-    config = true,
   },
 }
