@@ -56,16 +56,23 @@ return {
       {
         "<leader>dt",
         function()
-          require("dap").debug_test()
+          require("dap-go").debug_test()
         end,
         desc = "Debug Test",
       },
       {
         "<leader>dl",
         function()
-          require("dap").debug_last_test()
+          require("dap-go").debug_last_test()
         end,
         desc = "Debug Last Test",
+      },
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "Toggle UI",
       },
     },
   },

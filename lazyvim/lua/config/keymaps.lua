@@ -23,3 +23,9 @@ vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", opts)
 vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", opts)
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)", opts)
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)", opts)
+
+-- Dap
+vim.keymap.set("n", "<F5>", require("dap").continue, opts)
+vim.keymap.set("n", "<F10>", require("dap").step_over, opts)
+vim.keymap.set("n", "<F11>", require("dap").step_into, opts)
+vim.keymap.set("n", "<F12>", require("dap").step_out, opts)
