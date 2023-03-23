@@ -26,60 +26,25 @@ return {
     end,
     keys = {
       {
-        "<leader>db",
+        "<leader>cb",
         function()
           require("dap").toggle_breakpoint()
         end,
         desc = "Toggle Breakpoint",
       },
       {
-        "<leader>dc",
+        "<leader>cD",
         function()
           require("dap").continue()
         end,
-        desc = "Start/Continue",
+        desc = "Debug",
       },
       {
-        "<leader>di",
-        function()
-          require("dap").step_into()
-        end,
-        desc = "Step Into",
-      },
-      {
-        "<leader>do",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "Step Over",
-      },
-      {
-        "<leader>dO",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Step Out",
-      },
-      {
-        "<leader>dt",
-        function()
-          require("dap-go").debug_test()
-        end,
-        desc = "Debug Test",
-      },
-      {
-        "<leader>dl",
-        function()
-          require("dap-go").debug_last_test()
-        end,
-        desc = "Debug Last Test",
-      },
-      {
-        "<leader>du",
+        "<leader>uu",
         function()
           require("dapui").toggle()
         end,
-        desc = "Toggle UI",
+        desc = "Toggle Debug UI",
       },
     },
   },
