@@ -7,6 +7,9 @@ return {
         ["<leader>p"] = {
           name = "+project",
         },
+        ["<leader>t"] = {
+          name = "+testing",
+        },
       })
     end,
     keys = {
