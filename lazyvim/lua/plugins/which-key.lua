@@ -19,6 +19,11 @@ return {
         desc = "Diagnostics",
       },
       {
+        "<leader>gb",
+        "<cmd>Gitsigns blame_line<cr>",
+        desc = "Blame line",
+      },
+      {
         "<leader>sp",
         "<cmd>Telescope live_grep<cr>",
         desc = "Search project",
