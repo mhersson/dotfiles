@@ -28,7 +28,6 @@ return {
         "nvim-telescope/telescope-project.nvim",
         keys = {
           { "<leader>fp", "<cmd>lua require'telescope'.extensions.project.project{}<cr>", desc = "Telescope Project" },
-          { "<leader>pp", "<cmd>Telescope project<cr>", desc = "Telescope Project" },
         },
       },
     },

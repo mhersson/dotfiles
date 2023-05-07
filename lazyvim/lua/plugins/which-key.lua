@@ -4,20 +4,12 @@ return {
     "folke/which-key.nvim",
     opts = function()
       require("which-key").register({
-        ["<leader>p"] = {
-          name = "+project",
-        },
         ["<leader>t"] = {
           name = "+testing",
         },
       })
     end,
     keys = {
-      {
-        "<leader>cx",
-        "<cmd>TroubleToggle<cr>",
-        desc = "Diagnostics",
-      },
       {
         "<leader>gb",
         "<cmd>Gitsigns blame_line<cr>",
