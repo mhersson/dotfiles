@@ -8,6 +8,14 @@ local modkey = "Mod4"
 Globalkeys =
     gears.table.join(
 
+      awful.key({ modkey }, "b",
+        function()
+          myscreen = awful.screen.focused()
+          myscreen.mywibox.visible = not myscreen.mywibox.visible
+        end,
+        { description = "toggle statusbar" }
+      ),
+
       awful.key({ modkey, }, "`",
         function()
           local scratchpad = function(c)
@@ -291,14 +299,6 @@ Globalkeys =
       ),
       awful.key(
         { modkey, "Shift" },
-        "F12",
-        function()
-          awful.spawn.with_shell("systemctl --user restart protonvpn.service")
-        end,
-        { description = "restart Proton VPN", group = "external" }
-      ),
-      awful.key(
-        { modkey, "Control" },
         "F12",
         function()
           awful.spawn.with_shell("~/Scripts/xrandr-toggle")
