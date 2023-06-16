@@ -8,4 +8,4 @@ eval "$(direnv hook zsh)"
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path
-path=($GOPATH/bin $HOME/.emacs.d/bin $HOME/.local/bin /usr/local/go/bin $path)
+path=($GOPATH/bin $HOME/.config/emacs/bin $HOME/.local/bin /usr/local/go/bin $path)
