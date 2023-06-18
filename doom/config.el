@@ -127,12 +127,20 @@
   (evil-normal-state)
   (evil-write nil nil))
 
-;; Save buffers with Ctrl+S
-(global-set-key (kbd "C-s") 'normal-mode-and-save)
-(global-set-key (kbd "C-q") 'evil-quit)
+;; Set custom global keybindings
+(map! :map global-map
+      "C-s" #'normal-mode-and-save
+      "C-q" #'evil-quit
+      "M-k" #'drag-stuff-up
+      "M-j" #'drag-stuff-down
+      "M-`" #'+vterm/toggle)
 
-(global-set-key (kbd "M-k") 'drag-stuff-up)
-(global-set-key (kbd "M-j") 'drag-stuff-down)
+;; Remap SPC-c-x to flycheck-list-errors with vertico
+(map!
+ (:leader
+  (:prefix "c"
+   :desc "List flycheck errors" "x" #'flycheck-list-errors)))
+
 
 ;; Add autocompletion on local file paths
 (add-to-list 'company-backends 'company-files)
@@ -185,11 +193,18 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\moto")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor"))
 
-;; Remap SPC-c-x to flycheck-list-errors with vertico
-(map!
- (:leader
-  (:prefix "c"
-   :desc "List flycheck errors" "x" #'flycheck-list-errors)))
+;; Use yamlfmt instead of lsp to format yaml files
+(after! yaml-mode
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook #'yamlfmt-format-buffer nil t))))
+
+(defun yamlfmt-format-buffer ()
+  "Format the current buffer using yamlfmt."
+  (when (executable-find "yamlfmt")
+    (let ((current-point (point)))
+      (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
+      (goto-char current-point))))
 
 ;; Copilot
 ;; accept completion from copilot and fallback to company
