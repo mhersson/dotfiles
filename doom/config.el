@@ -72,8 +72,10 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq custom-theme-directory "~/.config/doom/themes")
+(setq doom-theme 'catppuccin)
 ;; (load-theme 'github t)
+(setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -132,8 +134,7 @@
       "C-s" #'normal-mode-and-save
       "C-q" #'evil-quit
       "M-k" #'drag-stuff-up
-      "M-j" #'drag-stuff-down
-      "M-`" #'+vterm/toggle)
+      "M-j" #'drag-stuff-down)
 
 ;; Remap SPC-c-x to flycheck-list-errors with vertico
 (map!
@@ -155,8 +156,8 @@
 (after! format-all
   (set-formatter! 'shfmt
     '("shfmt"
-      "-i" "2"
-      ;; Mode selection copied from the default config
+      "-i" "2" "-ci" "-bn"
+      ;; Mode selection ropied from the default config
       ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
                     (bash "bash") (mksh "mksh") (t "posix"))))
     :modes 'sh-mode))
@@ -185,8 +186,11 @@
 (add-hook 'go-mode-lsp-hook #'go-flycheck-setup)
 
 (add-hook! go-mode
-  (setq gofmt-command "gofumpt")
+  (setq lsp-gopls-gofumpt t)
   (setq lsp-gopls-complete-unimported t)
+  (setq lsp-gopls-deep-completion t)
+  (setq lsp-gopls-use-placeholders t)
+  (setq lsp-gopls-semantic-tokens t)
   (setq lsp-go-build-flags ["-tags=integration"]))
 
 (after! lsp-mode
@@ -205,6 +209,11 @@
     (let ((current-point (point)))
       (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
       (goto-char current-point))))
+
+;; Plantuml
+(after! plantuml-mode
+  (setq plantuml-default-exec-mode 'jar
+        plantuml-preview-theme "amiga"))
 
 ;; Copilot
 ;; accept completion from copilot and fallback to company
