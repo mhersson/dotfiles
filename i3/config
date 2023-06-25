@@ -17,16 +17,16 @@ set $term kitty
 font pango:JetBrains Mono 10
 
 # gaps config
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 2
+default_floating_border pixel 2
 
-gaps inner 15
+gaps inner 0
 gaps outer 0
 # smart_gaps on
 smart_borders on
 
-client.focused            #cd00cd #cd00cd #ffffff #cd00cd   #cd00cd
-client.urgent             #cd00cd #cd00cd #ffffff #cd00cd   #cd00cd
+client.focused            #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
+client.urgent             #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
 client.focused_inactive   #575566 #4682b4 #ffffff #575566   #575566
 client.unfocused          #575566 #4682b4 #ffffff #575566   #575566
 
@@ -44,7 +44,9 @@ for_window [class="^XEyes$"] floating enable
 # for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
 for_window [class="^Signal$"] floating enable
+for_window [class="^.protonvpn-wrapped$"] floating enable
 
+for_window [instance="scratchpad"] move scratchpad
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -73,10 +75,10 @@ bindsym $mod+Shift+m exec --no-startup-id dunstctl close-all
 
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -85,10 +87,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+colon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -97,7 +99,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -203,22 +205,22 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
+ bar {
 #         font pango:JetBrains Mono 10
-#         position top
-#         status_command i3status
+         position top
+         status_command i3status
 
 #         colors {
 #            background #282828
 #         #   statusline #3199e1
-#         #   separator #cd00cd
+#         #   separator #8AADF4
 
-#            focused_workspace  #cd00cd #4e4e4e #ebdbb2
+#            focused_workspace  #8AADF4 #4e4e4e #ebdbb2
 #            inactive_workspace #333333 #4e4e4e #ebdbb2
-#         #   active_workspace   #cd00cd #4e4e4e #ebdbb2
-#         #   urgent_workspace   #cd00cd #cd00cd #4e4e4e
+#         #   active_workspace   #8AADF4 #4e4e4e #ebdbb2
+#         #   urgent_workspace   #8AADF4 #8AADF4 #4e4e4e
 #         }
-# }
+ }
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -230,7 +232,8 @@ exec --no-startup-id redshift
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 exec --no-startup-id protonvpn-cli c -f
+exec --no-startup-id $term --name scratchpad
 
-exec $term
-exec $term
-exec brave
+exec slack
+exec emacs
+exec firefox
