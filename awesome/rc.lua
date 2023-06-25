@@ -219,9 +219,9 @@ awful.screen.connect_for_each_screen(
       screen = s,
       width = 1000,
       stretch = false,
-      shape = gears.shape.rounded_bar,
+      -- shape = gears.shape.rounded_bar,
     })
-    s.mywibox.y = 10
+    -- s.mywibox.y = 10
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -244,7 +244,7 @@ awful.screen.connect_for_each_screen(
         mytextclock,
         bat_widget,
         s.mylayoutbox,
-      }
+      },
     }
   end
 )
@@ -338,7 +338,7 @@ client.connect_signal(
     end
 
     -- Rounded corners for every client
-    c.shape = gears.shape.rounded_rect
+    -- c.shape = gears.shape.rounded_rect
   end
 )
 

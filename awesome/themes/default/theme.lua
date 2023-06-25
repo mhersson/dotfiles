@@ -17,8 +17,8 @@ local theme = {}
 
 theme.font = "sans 10"
 
-theme.bg_normal = "#282c34"
-theme.bg_focus = "#282c34"
+theme.bg_normal = "#0f0f0f"
+theme.bg_focus = "#0f0f0f"
 theme.bg_urgent = "#282c34"
 theme.bg_minimize = "#282c34"
 theme.bg_systray = theme.bg_normal
@@ -28,7 +28,7 @@ theme.fg_focus = "#61afef"
 theme.fg_urgent = "#e06c75"
 theme.fg_minimize = "#61afef"
 
-theme.useless_gap = dpi(10)
+theme.useless_gap = dpi(0)
 theme.border_width = dpi(2)
 theme.border_normal = "#282c34"
 theme.border_focus = "#61afef" --"#FE8019"
@@ -67,13 +67,13 @@ theme.notification_width = 380
 theme.notification_height = 80
 theme.notification_shape = gears.shape.rounded_rect
 
-theme.hotkeys_font = "sans 12"
+theme.hotkeys_font = "sans 11"
 theme.hotkeys_description_font = "sans 10"
 theme.hotkeys_bg = "#282c34"
 theme.hotkeys_fg = "#abb2bf"
 theme.hotkeys_modifiers_fg = "#61afef"
 theme.hotkeys_border_color = "#61afef"
-theme.hotkeys_border_width = dpi(4)
+theme.hotkeys_border_width = dpi(2)
 theme.hotkeys_shape = gears.shape.rounded_rect
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -84,7 +84,7 @@ theme.menu_width = dpi(100)
 
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
+-- theme.bg_widget = "#cc0000"
 
 -- Define the image to load
 theme.titlebar_close_button_normal = themes_path .. "default/titlebar/close_normal.png"
