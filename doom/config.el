@@ -213,7 +213,7 @@
 ;; Plantuml
 (after! plantuml-mode
   (setq plantuml-default-exec-mode 'jar
-        plantuml-preview-theme "amiga"))
+        plantuml-preview-theme "toy"))
 
 ;; Copilot
 ;; accept completion from copilot and fallback to company
