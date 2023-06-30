@@ -14,7 +14,7 @@ set $term kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono 10
+font pango:Noto Sans Mono 10
 
 # gaps config
 default_border pixel 2
@@ -28,7 +28,7 @@ smart_borders on
 client.focused            #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
 client.urgent             #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
 client.focused_inactive   #575566 #4682b4 #ffffff #575566   #575566
-client.unfocused          #575566 #4682b4 #ffffff #575566   #575566
+client.unfocused          #575566 #252525 #ffffff #575566   #575566
 
 
 for_window [class="^feh$"] floating enable
@@ -38,13 +38,12 @@ for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Remote-viewer$"] floating enable
 for_window [class="^Nm-connection-editor$"] floating enable
 for_window [class="^Nm-openconnect-auth-dialog$"] floating enable
-for_window [class="^Brave-browser$" title="Microsoft Teams - Brave"] floating enable
-for_window [class="^Brave-browser$" title="Meet - "] floating enable
+for_window [class="^Brave-browser$"] floating enable
 for_window [class="^XEyes$"] floating enable
-# for_window [class="^Slack$"] floating enable
 for_window [class="^Spotify$"] floating enable
 for_window [class="^Signal$"] floating enable
-for_window [class="^.protonvpn-wrapped$"] floating enable
+for_window [class="^obs$"] floating enable
+for_window [class="^Slack" title="^.*Huddle"] floating enable
 
 for_window [instance="scratchpad"] move scratchpad
 # Start XDG autostart .desktop files using dex. See also
@@ -69,6 +68,10 @@ bindsym $mod+p exec --no-startup-id rofi -show drun
 # Screenshot
 bindsym $mod+Shift+F11 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 bindsym $mod+F11 exec  --no-startup-id maim -s ~/Downloads/screenshot-$(date +%Y%m%d%H%M%S).png
+
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
 
 # Clear/close all notifications
 bindsym $mod+Shift+m exec --no-startup-id dunstctl close-all
@@ -184,10 +187,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -234,6 +237,8 @@ exec --no-startup-id dunst
 exec --no-startup-id protonvpn-cli c -f
 exec --no-startup-id $term --name scratchpad
 
+exec signal-desktop --start-in-tray
+exec obs
 exec slack
 exec emacs
 exec firefox
