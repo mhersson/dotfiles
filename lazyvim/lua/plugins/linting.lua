@@ -24,6 +24,7 @@ return {
       }
 
       opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.golangci_lint })
+      opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.pylint })
       -- opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.shellcheck })
     end,
   },
