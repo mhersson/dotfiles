@@ -1,5 +1,4 @@
 return {
-  -- add gopls to lspconfig
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
