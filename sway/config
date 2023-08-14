@@ -19,7 +19,7 @@ set $term kitty
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-font pango: JetBrains Mono 10
+font pango: JetBrainsMono Nerd Font 10
 
 # floating applications
 # for_window [app_id="^.*$"] floating enable
@@ -36,17 +36,14 @@ for_window [app_id="^org.gnome.Nautilus$"] floating enable
 for_window [app_id="^nm-connection-editor$"] floating enable
 for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
 for_window [class="^XEyes$"] floating enable
-# for_window [class="^Slack$"] floating enable
-for_window [class="^Spotify$"] floating enable
+for_window [title="^Spotify$"] floating enable
 for_window [class="^Signal$"] floating enable
+for_window [class="^steam"] floating enable
+for_window [app_id="^Slack" title="^.*Huddle"] floating enable
+
+for_window [app_id="^kitty$" title="scratchpad"] move scratchpad
 
 ### Output configuration
-#
-
-#output * bg ~/Pictures/wallpaper/rhapsody-in-blue-5120x2160.png center
-output * bg #252525 solid_color
-
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -54,6 +51,11 @@ output * bg #252525 solid_color
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 output DP-1 resolution 5120x1440 position 0,0
+
+output * bg ~/Pictures/wallpaper/spaceman-5120x1440.png center
+# output * bg #252525 solid_color
+
+
 
 ### Idle configuration
 #
@@ -100,14 +102,15 @@ input "type:keyboard" {
 default_border pixel 2
 default_floating_border pixel 2
 
-gaps inner 15
+gaps inner 0
 gaps outer 0
 smart_gaps off
 smart_borders on
 
-client.focused            #61afef #4e4e4e #abb2bf #61afef   #61afef
-client.focused_inactive   #282c34 #4e4e4e #6c7680 #282c34   #282c34
-client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
+client.focused            #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
+client.urgent             #8AADF4 #8AADF4 #ffffff #8AADF4   #8AADF4
+client.focused_inactive   #575566 #4682b4 #ffffff #575566   #575566
+client.unfocused          #575566 #252525 #ffffff #575566   #575566
 
 ### Key bindings
 #
@@ -121,12 +124,13 @@ client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec fuzzel --background 282c34ff --text abb2bfff \
-        --selection-color e06c75ff --selection-text 282c34ff --selection-match-color efefefff \
-        --border-color 61afefff --border-width 2 --font "Jetbrains Mono:size=14"
+    # bindsym $mod+p exec fuzzel --background 282c34ff --text abb2bfff \
+    #     --selection-color e06c75ff --selection-text 282c34ff --selection-match-color efefefff \
+    #     --border-color 61afefff --border-width 2 --font "Jetbrains Mono:size=14"
+    bindsym $mod+p exec rofi -show drun
 
     # Toggle notification control center
-    bindsym $mod+Shift+n exec swaync-client -t -sw
+    # bindsym $mod+Shift+n exec swaync-client -t -sw
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -169,10 +173,10 @@ client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
 
     # swap postition and size of the active window
     # to the window in the given direction
-    bindsym $mod+Ctrl+Left exec "~/.config/sway/swap left"
-    bindsym $mod+Ctrl+Down exec "~/.config/sway/swap down"
-    bindsym $mod+Ctrl+Up exec "~/.config/sway/swap up"
-    bindsym $mod+Ctrl+Right exec "~/.config/swaway/swap right"
+    bindsym $mod+Ctrl+$left exec "~/.config/sway/swap left"
+    bindsym $mod+Ctrl+$down exec "~/.config/sway/swap down"
+    bindsym $mod+Ctrl+$up exec "~/.config/sway/swap up"
+    bindsym $mod+Ctrl+$right exec "~/.config/sway/swap right"
 
 #
 # Workspaces:
@@ -204,11 +208,11 @@ client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
+    # split in vertical orientation
     bindsym $mod+v splitv
+
+    # split in horizontal orientation
+    bindsym $mod+Shift+v split h
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -226,7 +230,9 @@ client.unfocused          #282c34 #4e4e4e #6c7680 #282c34   #282c34
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
+
+    # toggle status bar
+    bindsym $mod+b bar mode toggle
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -246,16 +252,16 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 5px
+    bindsym $down resize grow height 5px
+    bindsym $up resize shrink height 5px
+    bindsym $right resize grow width 5px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 5px
+    bindsym Down resize grow height 5px
+    bindsym Up resize shrink height 5px
+    bindsym Right resize grow width 5px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -280,8 +286,8 @@ bindsym XF86AudioPrev exec "playerctl previous"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar
-    # position top
+    status_command i3status
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -304,13 +310,12 @@ bar {
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 exec gammastep -c ~/.config/gammastep/gammastep.conf
-# exec nm-applet
-# Notification Daemon
-exec swaync
+exec nm-applet
+exec blueman-applet
 
-#exec sleep 3 && protonvpn-cli c -f
-exec /opt/piavpn/bin/pia-client %u
-exec flatpak run com.slack.Slack
-exec flatpak run org.signal.Signal --start-in-tray
+
+exec slack
+exec signal-desktop --start-in-tray
+exec $term --name scratchpad
 exec $term
 exec firefox
