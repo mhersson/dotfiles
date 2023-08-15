@@ -33,7 +33,7 @@ client.unfocused          #575566 #252525 #ffffff #575566   #575566
 
 for_window [class="^feh$"] floating enable
 for_window [class="^mpv$"] floating enable
-for_window [class="^.blueman-manager-wrapped$"] floating enable
+for_window [class="^Blueman-manager$"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Remote-viewer$"] floating enable
 for_window [class="^Nm-connection-editor$"] floating enable
@@ -231,9 +231,9 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
-# exec --no-startup-id redshift
-# exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
-# exec --no-startup-id dunst
+exec --no-startup-id redshift
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec --no-startup-id dunst
 exec --no-startup-id $term --name scratchpad
 
 exec signal-desktop --start-in-tray
