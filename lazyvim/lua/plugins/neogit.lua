@@ -34,7 +34,7 @@ return {
         recent_commit_count = 10,
       },
       commit_editor = {
-        kind = "split",
+        kind = "split_above",
       },
       commit_select_view = {
         kind = "tab",
