@@ -1,48 +1,40 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
+# Sway config file
 # Read `man 5 sway` for a complete reference.
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+xwayland disable
+
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term kitty
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 font pango: JetBrainsMono Nerd Font 10
 
 # floating applications
 # for_window [app_id="^.*$"] floating enable
-
 for_window [app_id="^$"] floating enable
 for_window [app_id="^feh$"] floating enable
 for_window [app_id="^mpv$"] floating enable
-for_window [app_id="^gedit$"] floating enable
-for_window [app_id="^evince$"] floating enable
+# for_window [app_id="^gedit$"] floating enable
+# for_window [app_id="^evince$"] floating enable
 # for_window [app_id="^brave.*" ] floating enable
 for_window [app_id="^blueman-manager$"] floating enable
 for_window [app_id="^pavucontrol$"] floating enable
 for_window [app_id="^remote-viewer$"] floating enable
-for_window [app_id="^org.gnome.Nautilus$"] floating enable
-for_window [app_id="^nm-connection-editor$"] floating enable
-for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
+# for_window [app_id="^org.gnome.Nautilus$"] floating enable
+# for_window [app_id="^nm-connection-editor$"] floating enable
+# for_window [app_id="^nm-openconnect-auth-dialog$"] floating enable
+for_window [app_id="^signal$"] floating enable
+# for_window [app_id="^Slack" title="^.*Huddle"] floating enable
 for_window [class="^XEyes$"] floating enable
-for_window [title="^Spotify$"] floating enable
-for_window [class="^(S|s)ignal$"] floating enable
+# for_window [title="^Spotify$"] floating enable
 for_window [class="^steam"] floating enable
-for_window [app_id="^Slack" title="^.*Huddle"] floating enable
 
-for_window [app_id="^kitty$" title="scratchpad"] move scratchpad
+for_window [app_id="^kitty$" title="^scratchpad$"] move scratchpad
 
 for_window [app_id="^brave-cifhbcnohmdccbgoicgdjpfamggdegmo-Default$" ] floating enable
 
@@ -55,7 +47,7 @@ for_window [app_id="^brave-cifhbcnohmdccbgoicgdjpfamggdegmo-Default$" ] floating
 
 output DP-1 resolution 5120x1440 position 0,0
 
-output * bg ~/Pictures/wallpaper/purple-space-5120x1440.jpg fill
+output * bg ~/Pictures/wallpaper/mac-OS-ventura-light.png fill
 # output * bg #252525 solid_color
 
 
@@ -126,11 +118,10 @@ client.unfocused          #575566 #252525 #ffffff #575566   #575566
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
-    # bindsym $mod+p exec fuzzel --background 282c34ff --text abb2bfff \
-    #     --selection-color e06c75ff --selection-text 282c34ff --selection-match-color efefefff \
-    #     --border-color 61afefff --border-width 2 --font "Jetbrains Mono:size=14"
-    bindsym $mod+p exec rofi -show drun
+    bindsym $mod+p exec fuzzel --background 24283bff --text abb2bfff \
+        --selection-color e06c75ff --selection-text 282c34ff --selection-match-color efefefff \
+        --border-color 61afefff --border-width 2 --font "Jetbrains Mono:size=14"
+    # bindsym $mod+p exec rofi -show drun
 
     # Toggle notification control center
     # bindsym $mod+Shift+n exec swaync-client -t -sw
@@ -289,7 +280,8 @@ bindsym XF86AudioPrev exec "playerctl previous"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command i3status
+    # status_command i3status
+    swaybar_command waybar
     position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
@@ -319,7 +311,7 @@ exec blueman-applet
 
 # exec slack
 exec /opt/brave-bin/brave --profile-directory=Default --app-id=ebhhcpigfociclbncehheofloeahmjpo
-exec signal-desktop --start-in-tray
-exec $term --name scratchpad
+exec signal-desktop --start-in-tray --enable-features=UseOzonePlatform --ozone-platform=wayland
+exec $term --title scratchpad
 exec $term
 exec brave
