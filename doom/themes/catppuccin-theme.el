@@ -61,6 +61,11 @@ The theme has to be reloaded after changing anything in this group."
   :type 'boolean
   :group 'catppuccin)
 
+(defcustom catppuccin-italic-blockquotes t
+  "Use :slant italic for blockquotes in markdown and org."
+  :type 'boolean
+  :group 'catppuccin)
+
 (defcustom catppuccin-italic-variables nil
   "Use :slant italic for variables."
   :type 'boolean
@@ -313,8 +318,8 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (lazy-highlight :foreground ,ctp-subtext1 :background ,ctp-surface1)
                (link :foreground ,ctp-lavender :underline t)
                (link-unvisited :foreground ,ctp-blue :underline t)
-               (linum :foreground ,ctp-surface1 :background ,ctp-base)
-               (line-number :foreground ,ctp-surface1 :background ,ctp-base)
+               (linum :inherit default :foreground ,ctp-surface1 :background ,ctp-base)
+               (line-number :inherit default :foreground ,ctp-surface1 :background ,ctp-base)
                (line-number-current-line :inherit line-number :foreground ,ctp-lavender)
                (match :background ,ctp-red :foreground ,ctp-mantle)
                (menu :background ,ctp-current :inverse-video nil :foreground ,ctp-text)
@@ -340,7 +345,7 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                ;; solaire-mode
                (solaire-default-face :background ,ctp-mantle :foreground ,ctp-text)
                (solaire-fringe-face :background ,ctp-mantle :foreground ,ctp-surface1)
-               (solaire-line-number-face :foreground ,ctp-surface1 :background ,ctp-mantle)
+               (solaire-line-number-face :inherit default :foreground ,ctp-surface1 :background ,ctp-mantle)
                (solaire-mode-line-face :background ,ctp-crust nil :foreground ,ctp-text)
                (solaire-mode-line-inactive-face
                 :background ,ctp-crust :inverse-video nil :foreground ,ctp-subtext1)
@@ -433,7 +438,7 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (eshell-ls-readonly :foreground ,ctp-flamingo)
                (eshell-ls-special :foreground ,ctp-pink :weight bold)
                (eshell-ls-symlink :foreground ,ctp-sapphire :weight bold)
-               (eshell-prompt :foreground ,ctp-current :weight bold)
+               (eshell-prompt :foreground ,ctp-blue :weight bold)
                ;; git-gutter
                (git-gutter:modified :foreground ,ctp-peach)
                (git-gutter:deleted :foreground ,ctp-red)
@@ -716,7 +721,7 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (lsp-ui-peek-peek :background ,ctp-mantle)
                (lsp-ui-peek-list :background ,ctp-mantle)
                (lsp-ui-peek-filename :foreground ,ctp-text)
-               (lsp-ui-peek-line-number :foreground ,ctp-surface1)
+               (lsp-ui-peek-line-number :inherit default :foreground ,ctp-surface1)
                (lsp-ui-peek-highlight :inherit highlight :distant-foreground ,ctp-base)
                (lsp-ui-peek-header :background ,ctp-mantle :foreground ,ctp-blue, :weight bold)
                (lsp-ui-peek-footer :inherit lsp-ui-peek-header)
@@ -765,6 +770,8 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (magit-process-ok :foreground ,ctp-green :weight bold)
                ;; markdown
                (markdown-blockquote-face :foreground ,ctp-green)
+               (markdown-blockquote-face :extend t :background ,ctp-mantle :foreground ,ctp-green ,@(when catppuccin-italic-blockquotes
+                                                                                                      '(:slant italic)))
                (markdown-code-face :foreground ,ctp-text)
                (markdown-footnote-face :foreground ,ctp-yellow)
                (markdown-header-face :weight normal)
@@ -876,6 +883,7 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (org-formula :foreground ,ctp-pink)
                (org-headline-done :inherit org-done)
                (org-hide :foreground ,ctp-crust :background ,ctp-base)
+               (org-indent :foreground ,ctp-base)
                (org-level-1 :inherit bold :foreground ,ctp-red
                             ,@(when catppuccin-enlarge-headings
                                 (list :height catppuccin-height-title-1)))
@@ -1022,6 +1030,25 @@ Must be one of `mocha`, `macchiato`, `frappe`, or `latte`."
                (term-color-bright-white ,@(if (eq catppuccin-flavor 'latte)
                                               (list :foreground ctp-surface1 :background ctp-surface1)
                                             (list :foreground ctp-subtext0 :background ctp-subtext0)))
+
+               ;; ansi-color (emacs >= 28.1)
+               (ansi-color-black :foreground ,ctp-surface1)
+               (ansi-color-red :foreground ,ctp-red)
+               (ansi-color-yellow :foreground ,ctp-yellow)
+               (ansi-color-green :foreground ,ctp-green)
+               (ansi-color-blue :foreground ,ctp-blue)
+               (ansi-color-magenta :foreground ,ctp-pink)
+               (ansi-color-cyan :foreground ,ctp-teal)
+               (ansi-color-white :foreground ,ctp-subtext1)
+               (ansi-color-bright-black :foreground ,ctp-surface2)
+               (ansi-color-bright-red :foreground ,ctp-red)
+               (ansi-color-bright-yellow :foreground ,ctp-yellow)
+               (ansi-color-bright-green :foreground ,ctp-green)
+               (ansi-color-bright-blue :foreground ,ctp-blue)
+               (ansi-color-bright-magenta :foreground ,ctp-pink)
+               (ansi-color-bright-cyan :foreground ,ctp-teal)
+               (ansi-color-bright-white :foreground ,ctp-subtext0)
+
                ;; treemacs
                (treemacs-async-loading-face :foreground ,ctp-text)
                (treemacs-directory-face :foreground ,ctp-blue)
