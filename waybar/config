@@ -1,63 +1,62 @@
 {
-	"margin-top": 2,
-	"height": 20,
-	"layer": "top",
-	"modules-center": [
-		"hyprland/workspaces",
-		"tray",
+  "layer": "top",
+
+  "modules-center": [
+    "hyprland/workspaces",
     "custom/vpn",
-		"cpu",
-		"memory",
-		"hyprland/language",
-		"pulseaudio",
-		"clock",
-		"custom/time"
-	],
+    "hyprland/language",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "clock",
+    "custom/time",
+    "tray"
+  ],
 
-	"cpu": {
-		"interval": 10,
-		"format": "  {}%"
-	},
+  "cpu": {
+    "interval": 10,
+    "format": "  {}%"
+  },
 
-	"memory": {
-		"interval": 30,
-		"format": "  {}%",
-		"format-alt": "  {used:0.1f}G"
-	},
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "format-alt": "  {used:0.1f}G"
+  },
 
-	"hyprland/language": {
-		"format": "  {}",
-		"format-en": "English",
-		"format-no": "Norwegian",
-	},
+  "hyprland/language": {
+    "format": "  {}",
+    "format-en": "English",
+    "format-no": "Norwegian",
+  },
 
-	"hyprland/workspaces": {
-		"disable-scroll": true,
-		"all-outputs": true,
-		"format": "{icon}",
-		"on-scroll-up": "hyprctl dispatch workspace e+1",
-		"on-scroll-down": "hyprctl dispatch workspace e-1",
-		"on-click": "activate"
-	},
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-click": "activate"
+  },
 
-	"tray": {
-		"icon-size": 18,
-		"spacing": 5
-	},
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5
+  },
 
-	"clock": {
-		"format": "{:  %a, %d %b %Y}"
-	},
+  "clock": {
+    "format": "{:  %a, %d %b %Y}"
+  },
 
-	"pulseaudio": {
-		"scroll-step": 1,
-		"format": "{icon}  {volume}%",
-		"format-muted": "婢",
-		"format-icons": {
-			"default": ["奄", "奔", "墳"]
-		},
-		"on-click": "pavucontrol"
-	},
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}  {volume}%",
+    "format-muted": "婢",
+    "format-icons": {
+      "default": ["奄", "奔", "墳"]
+    },
+    "on-click": "pavucontrol"
+  },
 
   "custom/vpn": {
       "format": "{icon} VPN",
@@ -71,9 +70,9 @@
       "exec": "sh ~/.config/waybar/vpn.sh 2> /dev/null"
   },
 
-	"custom/time": {
-		"exec": "sh ~/.config/waybar/getTime.sh",
-		"restart-interval": 60
-	}
+  "custom/time": {
+    "exec": "sh ~/.config/waybar/getTime.sh",
+    "restart-interval": 60
+  }
 }
 

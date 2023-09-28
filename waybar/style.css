@@ -1,132 +1,40 @@
 * {
-    border: none;
+    border:        none;
     border-radius: 0;
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 12px;
-    min-height: 0;
-    font-weight: 500;
+    font-family:   Sans;
+    font-size:     15px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
 }
 
-window#waybar {
-    background: transparent;
-    color: #cdd6f4;
+window {
+    color:      rgba(217, 216, 216, 1);
+    background: rgba(36, 39, 58, 0.85);
 }
 
-window#waybar > .horizontal {
-    margin-top: 2px;
-}
-
-.horizontal.modules-center {
-    /* gradient hax >:) */
-    background: linear-gradient(to right, #1e1e2e 0%, #1e1e2e 75%, #89b4fa 75%);
-    border-radius: 30px;
-}
-
-#clock {
-    background-color: #313244;
-    color: #f5c2e7;
-    padding: 0 15px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding-right: 30px;
-}
-
-#custom-time {
-    padding: 0 20px;
-    color: #313244;
-    background-color: #89b4fa;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding-left: 15px;
-}
-
-#custom-vpn {
-    padding: 0 20px;
-    color: #98c379;
-    background-color: #313244;
-    padding-left: 15px;
-}
-
-#custom-vpn.down {
-   color: #f38ba8;
-}
-
-
-#language {
-    background-color: #313244;
-    padding: 0 15px;
-    color: #89b4fa;
-}
-
-#cpu {
-    background-color: #313244;
-    padding: 0 15px;
-    color: #f38ba8;
-}
-
-#memory {
-    background-color: #313244;
-    padding: 0 15px;
-    color: #f9e2af;
-}
-
-#pulseaudio {
-    background-color: #313244;
-    padding: 0 15px;
-    color: #fab387;
-}
-
-#tray {
-    background-color: #313244;
-    /* icons usually give it enough margin :p */
-    padding: 0 15px;
-    padding-left: 30px;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
-
-#workspaces {
-    padding: 8px 10px;
-    padding-right: 15px;
-    background-color: #1e1e2e;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
 
 #workspaces button {
-    background: #1e1e2e;
-    color: #cdd6f4;
-    border-radius: 30px;
-    min-width: 20px;
+    padding:    0px 5px;
+    color:      rgba(217, 216, 216, 1);
+    border-radius: 5px;
+    min-width: 25px;
 }
 
 #workspaces button.active {
-    border: none;
-    box-shadow: none;
-    outline: none;
-    text-shadow: none;
-    color: #1e1e2e;
-    background-color: #89b4fa
+    color: rgba(36, 39, 58, 0.85);
+    background: rgba(138, 173, 244, 1);
 }
 
 #workspaces button.urgent {
-    border: none;
-    box-shadow: none;
-    outline: none;
-    text-shadow: none;
-    color: #1e1e2e;
-    background-color: #f7768e;
+    background:      rgba(238, 46, 36, 1);
 }
 
-#workspaces button:hover:not(.active) {
-    border: none;
-    box-shadow: none;
-    outline: none;
-    text-shadow: none;
-    color: #f5c2e7;
-    background-color: #313244;
+#mode, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #customer-time, #custom-vpn, #tray {
+    margin:     0px 20px 0px 20px;
 }
 
-#workspaces button:not(:first-child) {
-    margin-left: 8px;
+#clock {
+    margin:     0px 15px 0px 20px;
 }
+
