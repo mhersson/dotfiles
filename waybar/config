@@ -7,11 +7,28 @@
     "hyprland/language",
     "cpu",
     "memory",
+    "bluetooth",
     "pulseaudio",
+    "battery",
     "clock",
     "custom/time",
     "tray"
   ],
+
+  "battery": {
+      "states": {
+          // "good": 95,
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+      "format-icons": ["", "", "", "", ""]
+  },
 
   "cpu": {
     "interval": 10,
@@ -48,14 +65,32 @@
     "format": "{:  %a, %d %b %Y}"
   },
 
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "pavucontrol",
+    "on-click-right": "blueman-manager",
+    "max-length": 9
+  },
+
   "pulseaudio": {
-    "scroll-step": 1,
-    "format": "{icon}  {volume}%",
-    "format-muted": "婢",
-    "format-icons": {
-      "default": ["奄", "奔", "墳"]
-    },
-    "on-click": "pavucontrol"
+      "scroll-step": 1,
+      "format": "{icon} {volume}%",
+      "format-muted": "婢",
+      "format-bluetooth": " {volume}%",
+      "format-icons": {
+          "headphone": "",
+          "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
   },
 
   "custom/vpn": {

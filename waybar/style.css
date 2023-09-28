@@ -30,11 +30,17 @@ window {
     background:      rgba(238, 46, 36, 1);
 }
 
-#mode, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #customer-time, #custom-vpn, #tray {
+#mode, #cpu, #memory, #network, #language, #bluetooth, #pulseaudio, #idle_inhibitor, #battery, #backlight, #customer-time, #custom-vpn {
     margin:     0px 20px 0px 20px;
 }
 
 #clock {
-    margin:     0px 15px 0px 20px;
+    margin:     0px 10px 0px 10px;
 }
 
+#tray {
+    padding:    0px 5px 0px 5px;
+    margin:     0px 10px 0px 20px;
+    border-radius: 5px;
+    background: rgba(138, 173, 244, 1);
+}
