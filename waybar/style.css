@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: JetBrainsMono Nerd Font;
-    font-size: 14px;
+    font-size: 12px;
     min-height: 0;
     font-weight: 500;
 }
@@ -13,30 +13,30 @@ window#waybar {
 }
 
 window#waybar > .horizontal {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .horizontal.modules-center {
     /* gradient hax >:) */
-    background: linear-gradient(to right, #1e1e2e 0%, #1e1e2e 75%, #f5c2e7 75%);
-    border-radius: 50px;
+    background: linear-gradient(to right, #1e1e2e 0%, #1e1e2e 75%, #89b4fa 75%);
+    border-radius: 30px;
 }
 
 #clock {
     background-color: #313244;
     color: #f5c2e7;
     padding: 0 15px;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     padding-right: 30px;
 }
 
 #custom-time {
     padding: 0 20px;
     color: #313244;
-    background-color: #f5c2e7;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    background-color: #89b4fa;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     padding-left: 15px;
 }
 
@@ -81,22 +81,22 @@ window#waybar > .horizontal {
     /* icons usually give it enough margin :p */
     padding: 0 15px;
     padding-left: 30px;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 #workspaces {
     padding: 8px 10px;
     padding-right: 15px;
     background-color: #1e1e2e;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 #workspaces button {
     background: #1e1e2e;
     color: #cdd6f4;
-    border-radius: 50px;
+    border-radius: 30px;
     min-width: 20px;
 }
 
@@ -106,7 +106,7 @@ window#waybar > .horizontal {
     outline: none;
     text-shadow: none;
     color: #1e1e2e;
-    background-color: #f5c2e7;
+    background-color: #89b4fa
 }
 
 #workspaces button.urgent {
@@ -123,7 +123,7 @@ window#waybar > .horizontal {
     box-shadow: none;
     outline: none;
     text-shadow: none;
-	color: #f5c2e7;
+    color: #f5c2e7;
     background-color: #313244;
 }
 

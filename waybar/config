@@ -1,9 +1,9 @@
 {
 	"margin-top": 2,
-	"height": 49,
+	"height": 20,
 	"layer": "top",
 	"modules-center": [
-		"wlr/workspaces",
+		"hyprland/workspaces",
 		"tray",
     "custom/vpn",
 		"cpu",
@@ -28,10 +28,10 @@
 	"hyprland/language": {
 		"format": "  {}",
 		"format-en": "English",
-		"format-hu": "Hungarian"
+		"format-no": "Norwegian",
 	},
 
-	"wlr/workspaces": {
+	"hyprland/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
 		"format": "{icon}",
