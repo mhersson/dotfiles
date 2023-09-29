@@ -3,6 +3,7 @@
 
   "modules-center": [
     "hyprland/workspaces",
+    "idle_inhibitor",
     "custom/vpn",
     "hyprland/language",
     "cpu",
@@ -12,22 +13,39 @@
     "battery",
     "clock",
     "custom/time",
+    "custom/notifications",
     "tray"
   ],
 
   "battery": {
-      "states": {
-          // "good": 95,
-          "warning": 30,
-          "critical": 15
-      },
-      "format": "{capacity}% {icon}",
-      "format-charging": "{capacity}% ",
-      "format-plugged": "{capacity}% ",
-      "format-alt": "{time} {icon}",
-      // "format-good": "", // An empty format will hide the module
-      // "format-full": "",
-      "format-icons": ["", "", "", "", ""]
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "pavucontrol",
+    "on-click-right": "blueman-manager",
+    "max-length": 9
+  },
+
+  "clock": {
+    "format": "{:  %a, %d %b %Y}"
   },
 
   "cpu": {
@@ -35,10 +53,34 @@
     "format": "  {}%"
   },
 
-  "memory": {
+  "custom/notifications": {
+    "format": "{icon}",
     "interval": 30,
-    "format": "  {}%",
-    "format-alt": "  {used:0.1f}G"
+    "format-icons": {
+      "paused": "󰚣",
+      "default": "󰚢"
+    },
+    "on-click": "dunstctl set-paused toggle",
+    "on-click-right": "dunstctl history-pop",
+    "return-type": "json",
+    "exec": "sh ~/.config/waybar/notifications.sh 2> /dev/null"
+  },
+
+  "custom/vpn": {
+    "format": "{icon} VPN",
+    "interval": 30,
+    "format-icons": {
+      "down": "",
+      "default": ""
+    },
+    "on-click": "/opt/piavpn/bin/pia-client",
+    "return-type": "json",
+    "exec": "sh ~/.config/waybar/vpn.sh 2> /dev/null"
+  },
+
+  "custom/time": {
+    "exec": "sh ~/.config/waybar/getTime.sh",
+    "restart-interval": 60
   },
 
   "hyprland/language": {
@@ -56,58 +98,35 @@
     "on-click": "activate"
   },
 
-  "tray": {
-    "icon-size": 18,
-    "spacing": 5
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
   },
 
-  "clock": {
-    "format": "{:  %a, %d %b %Y}"
-  },
-
-  "bluetooth": {
-    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-    "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "pavucontrol",
-    "on-click-right": "blueman-manager",
-    "max-length": 9
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "format-alt": "  {used:0.1f}G"
   },
 
   "pulseaudio": {
-      "scroll-step": 1,
-      "format": "{icon} {volume}%",
-      "format-muted": "婢",
-      "format-bluetooth": " {volume}%",
-      "format-icons": {
-          "headphone": "",
-          "default": ["", "", ""]
-      },
-      "on-click": "pavucontrol"
+    "scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "format-muted": "婢",
+    "format-bluetooth": " {volume}%",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
   },
 
-  "custom/vpn": {
-      "format": "{icon} VPN",
-      "interval": 30,
-      "format-icons": {
-          "down": "",
-          "default": ""
-      },
-      "on-click": "/opt/piavpn/bin/pia-client",
-      "return-type": "json",
-      "exec": "sh ~/.config/waybar/vpn.sh 2> /dev/null"
-  },
-
-  "custom/time": {
-    "exec": "sh ~/.config/waybar/getTime.sh",
-    "restart-interval": 60
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5
   }
 }
 

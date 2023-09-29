@@ -27,11 +27,17 @@ window {
 }
 
 #workspaces button.urgent {
-    background:      rgba(238, 46, 36, 1);
+    background:      rgba(237, 135, 150, 1);
 }
 
-#mode, #cpu, #memory, #network, #language, #bluetooth, #pulseaudio, #idle_inhibitor, #battery, #backlight, #customer-time, #custom-vpn {
-    margin:     0px 20px 0px 20px;
+#mode, #idle_inhibitor, #cpu, #memory, #network, #language,
+#bluetooth, #pulseaudio, #idle_inhibitor, #battery, #backlight,
+#custome-time, #custom-vpn, #custom-notifications {
+    margin:     0px 15px 0px 15px;
+}
+
+#idle_inhibitor.activated, #custom-vpn.down, #custom-notifications.paused {
+    color:      rgba(237, 135, 150, 1);
 }
 
 #clock {
@@ -40,7 +46,7 @@ window {
 
 #tray {
     padding:    0px 5px 0px 5px;
-    margin:     0px 10px 0px 20px;
+    margin:     0px 10px 0px 10px;
     border-radius: 5px;
     background: rgba(138, 173, 244, 1);
 }
