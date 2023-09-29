@@ -32,7 +32,7 @@ window {
 
 #mode, #idle_inhibitor, #cpu, #memory, #network, #language,
 #bluetooth, #pulseaudio, #idle_inhibitor, #battery, #backlight,
-#custome-time, #custom-vpn, #custom-notifications {
+#custome-time, #custom-vpn, #custom-notifications, #custom-weather {
     margin:     0px 15px 0px 15px;
 }
 

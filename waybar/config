@@ -11,6 +11,7 @@
     "bluetooth",
     "pulseaudio",
     "battery",
+    "custom/weather",
     "clock",
     "custom/time",
     "custom/notifications",
@@ -60,10 +61,11 @@
       "paused": "󰚣",
       "default": "󰚢"
     },
+    "tooltip": true,
     "on-click": "dunstctl set-paused toggle",
     "on-click-right": "dunstctl history-pop",
     "return-type": "json",
-    "exec": "sh ~/.config/waybar/notifications.sh 2> /dev/null"
+    "exec": "sh $XDG_CONFIG_HOME/waybar/notifications.sh 2> /dev/null"
   },
 
   "custom/vpn": {
@@ -73,14 +75,23 @@
       "down": "",
       "default": ""
     },
+    "tooltip": true,
     "on-click": "/opt/piavpn/bin/pia-client",
     "return-type": "json",
-    "exec": "sh ~/.config/waybar/vpn.sh 2> /dev/null"
+    "exec": "sh $XDG_CONFIG_HOME/waybar/vpn.sh 2> /dev/null"
   },
 
   "custom/time": {
-    "exec": "sh ~/.config/waybar/getTime.sh",
-    "restart-interval": 60
+    "exec": "sh $XDG_CONFIG_HOME/waybar/get-time.sh",
+    "interval": 60
+  },
+
+  "custom/weather": {
+    "exec": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo+Norway",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600
   },
 
   "hyprland/language": {
