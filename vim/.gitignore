@@ -1,6 +1,0 @@
-*
-*/
-!autoload/plug.vim
-!.gitignore
-!vimrc
-!coc-settings.json
