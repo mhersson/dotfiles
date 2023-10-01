@@ -1,31 +1,21 @@
 return {
-  -- change null-ls config
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      local formatting = nls.builtins.formatting
-      opts.sources = {
-        formatting.shfmt.with({
-          extra_args = { "-i", "2", "-ci", "-bn" },
-        }),
-        formatting.prettier.with({
-          filetypes = { "html", "json", "markdown" },
-        }),
-        formatting.yamlfmt.with({
-          filetypes = { "yaml" },
-        }),
-        formatting.nixfmt.with({
-          filetypes = { "nix" },
-        }),
-        formatting.black.with({
-          filetypes = { "python" },
-        }),
-      }
+    "nvimtools/none-ls.nvim",
+    enabled = false,
+  },
 
-      opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.golangci_lint })
-      opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.pylint })
-      -- opts.sources = vim.list_extend(opts.sources, { nls.builtins.diagnostics.shellcheck })
-    end,
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      -- Event to trigger linters
+      events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+      linters_by_ft = {
+        sh = { "shellcheck" },
+        go = { "golangcilint" },
+        py = { "pylint" },
+      },
+      ---@type table<string,table>
+      linters = {},
+    },
   },
 }
