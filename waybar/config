@@ -86,7 +86,7 @@
   },
 
   "custom/weather": {
-    "exec": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo+Norway",
+    "exec": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
