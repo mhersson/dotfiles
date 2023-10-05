@@ -1,10 +1,5 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    enabled = false,
-  },
-
-  {
     "mfussenegger/nvim-lint",
     opts = {
       -- Event to trigger linters
