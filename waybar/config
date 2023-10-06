@@ -102,9 +102,20 @@
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "{icon}",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": "{name}: {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "brave-browser": "",
+      "brave-ebhhcpigfociclbncehheofloeahmjpo-Default": "󰒱",
+      "kitty": "",
+      "Signal": "󰭹",
+      "piavpn": "󱇱",
+      "blueman-manager": "󰂯",
+      "pavucontrol": "󰓃",
+      "remote-viewer": "󰢹",
+      "xfreerdp": "󰢹"
+    },
     "on-click": "activate"
   },
 
