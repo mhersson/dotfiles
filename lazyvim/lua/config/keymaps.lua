@@ -21,6 +21,3 @@ vim.keymap.set("n", "<F5>", require("dap").continue, opts)
 vim.keymap.set("n", "<F10>", require("dap").step_over, opts)
 vim.keymap.set("n", "<F11>", require("dap").step_into, opts)
 vim.keymap.set("n", "<F12>", require("dap").step_out, opts)
-
--- Git
-vim.keymap.set("n", "<leader>gg", require("neogit").open, opts)
