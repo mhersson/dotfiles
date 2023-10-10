@@ -20,7 +20,6 @@ return {
         "regex",
         "rust",
         "toml",
-        "typescript",
         "vim",
         "yaml",
       },
