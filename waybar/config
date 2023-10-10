@@ -1,6 +1,5 @@
 {
   "layer": "top",
-
   "modules-center": [
     "hyprland/workspaces",
     "idle_inhibitor",
@@ -17,7 +16,6 @@
     "custom/notifications",
     "tray"
   ],
-
   "battery": {
     "states": {
       // "good": 95,
@@ -28,9 +26,14 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
-
   "bluetooth": {
     "format": " {status}",
     "format-disabled": "", // an empty format will hide the module
@@ -43,16 +46,13 @@
     "on-click": "blueman-manager",
     "max-length": 9
   },
-
   "clock": {
     "format": "{:  %a, %d %b %Y}"
   },
-
   "cpu": {
     "interval": 10,
     "format": "  {}%"
   },
-
   "custom/notifications": {
     "format": "{icon}",
     "interval": 30,
@@ -66,7 +66,6 @@
     "return-type": "json",
     "exec": "sh $XDG_CONFIG_HOME/waybar/notifications.sh 2> /dev/null"
   },
-
   "custom/vpn": {
     "format": "{icon} VPN",
     "interval": 30,
@@ -79,26 +78,23 @@
     "return-type": "json",
     "exec": "sh $XDG_CONFIG_HOME/waybar/vpn.sh 2> /dev/null"
   },
-
   "custom/time": {
     "exec": "sh $XDG_CONFIG_HOME/waybar/get-time.sh",
     "interval": 60
   },
-
   "custom/weather": {
     "exec": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
-    "interval": 3600
+    "interval": 3600,
+    "on-click": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo"
   },
-
   "hyprland/language": {
     "format": "  {}",
     "format-en": "English",
-    "format-no": "Norwegian",
+    "format-no": "Norwegian"
   },
-
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -118,7 +114,6 @@
     },
     "on-click": "activate"
   },
-
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -126,13 +121,11 @@
       "deactivated": ""
     }
   },
-
   "memory": {
     "interval": 30,
     "format": "  {}%",
     "format-alt": "  {used:0.1f}G"
   },
-
   "pulseaudio": {
     "scroll-step": 1,
     "format": "{icon} {volume}%",
@@ -140,14 +133,16 @@
     "format-bluetooth": " {volume}%",
     "format-icons": {
       "headphone": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
-
   "tray": {
     "icon-size": 18,
     "spacing": 5
   }
 }
-
