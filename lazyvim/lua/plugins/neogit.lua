@@ -22,6 +22,11 @@ return {
       rebase_editor = {
         kind = "split_above",
       },
+      sections = {
+        recent = {
+          folded = false,
+        },
+      },
     },
   },
 }
