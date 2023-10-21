@@ -7,5 +7,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.keymap.set("n", "<c-c><c-c>", "<cmd>wq<cr>", { noremap = true, buffer = true })
     vim.keymap.set("i", "<c-c><c-c>", "<esc><cmd>wq<cr>", { noremap = true, buffer = true })
-  end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.tmpl" },
+  command = "set ft=gotmpl",
 })
