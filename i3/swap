@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+direction=$1
+
+if [ -n "${direction}" ]; then
+  i3-msg mark _swapee, focus "${direction}", swap container with mark _swapee, focus "${direction}", unmark _swapee
+fi

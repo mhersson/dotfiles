@@ -20,7 +20,7 @@ font pango:JetBrainsMono Nerd Font 10
 default_border pixel 2
 default_floating_border pixel 2
 
-gaps inner 0
+gaps inner 8
 gaps outer 0
 # smart_gaps on
 smart_borders on
@@ -38,7 +38,6 @@ for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Remote-viewer$"] floating enable
 for_window [class="^Nm-connection-editor$"] floating enable
 for_window [class="^Nm-openconnect-auth-dialog$"] floating enable
-for_window [class="^Brave-browser$"] floating enable
 for_window [class="^XEyes$"] floating enable
 for_window [class="^Spotify$"] floating enable
 for_window [class="^Signal$"] floating enable
@@ -84,23 +83,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h exec "~/.config/i3/swap left"
+bindsym $mod+Shift+j exec "~/.config/i3/swap down"
+bindsym $mod+Shift+k exec "~/.config/i3/swap up"
+bindsym $mod+Shift+l exec "~/.config/i3/swap right"
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -182,22 +170,10 @@ bindsym $mod+Shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -213,22 +189,9 @@ bindsym $mod+r mode "resize"
 #         font pango:JetBrains Mono 10
          position top
          status_command i3status
-#         colors {
-#            background #282828
-#         #   statusline #3199e1
-#         #   separator #8AADF4
-
-#            focused_workspace  #8AADF4 #4e4e4e #ebdbb2
-#            inactive_workspace #333333 #4e4e4e #ebdbb2
-#         #   active_workspace   #8AADF4 #4e4e4e #ebdbb2
-#         #   urgent_workspace   #8AADF4 #8AADF4 #4e4e4e
-#         }
  }
 
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 exec --no-startup-id redshift
@@ -237,6 +200,6 @@ exec --no-startup-id dunst
 exec --no-startup-id $term --name scratchpad
 
 exec signal-desktop --start-in-tray
-exec slack
+exec brave --profile-directory=Default --app-id=ebhhcpigfociclbncehheofloeahmjpo
 exec kitty
-exec firefox
+exec brave
