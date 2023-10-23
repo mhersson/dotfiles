@@ -18,7 +18,6 @@
   ],
   "battery": {
     "states": {
-      // "good": 95,
       "warning": 30,
       "critical": 15
     },
@@ -36,7 +35,7 @@
   },
   "bluetooth": {
     "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
+    "format-disabled": "",
     "format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
@@ -144,5 +143,18 @@
   "tray": {
     "icon-size": 18,
     "spacing": 5
+  },
+  "sway/language": {
+    "format": "  {}"
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
   }
 }
