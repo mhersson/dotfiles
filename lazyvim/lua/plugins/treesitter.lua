@@ -22,6 +22,7 @@ return {
         "toml",
         "vim",
         "yaml",
+        "zig",
       },
     },
   },
