@@ -82,12 +82,12 @@
     "interval": 60
   },
   "custom/weather": {
-    "exec": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo",
+    "exec": "$XDG_CONFIG_HOME/waybar/get-weather 59.66 10.63",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
     "interval": 3600,
-    "on-click": "sh $XDG_CONFIG_HOME/waybar/get-weather.sh Oslo"
+    "on-click": "$XDG_CONFIG_HOME/waybar/get-weather 59.66 10.63",
   },
   "hyprland/language": {
     "format": "  {}",
@@ -104,6 +104,7 @@
       "brave-browser": "",
       "brave-ebhhcpigfociclbncehheofloeahmjpo-Default": "󰒱",
       "kitty": "",
+      "org.wezfurlong.wezterm": "",
       "Signal": "󰭹",
       "piavpn": "󱇱",
       "blueman-manager": "󰂯",
