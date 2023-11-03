@@ -87,7 +87,7 @@
     "format": "{}",
     "tooltip": true,
     "interval": 3600,
-    "on-click": "$XDG_CONFIG_HOME/waybar/get-weather 59.66 10.63",
+    "on-click": "$XDG_CONFIG_HOME/waybar/get-weather 59.66 10.63"
   },
   "hyprland/language": {
     "format": "  {}",
@@ -101,6 +101,7 @@
     "format-window-separator": " ",
     "window-rewrite-default": "",
     "window-rewrite": {
+      "alacritty": "",
       "brave-browser": "",
       "brave-ebhhcpigfociclbncehheofloeahmjpo-Default": "󰒱",
       "kitty": "",
