@@ -19,7 +19,7 @@ disabled = true
 
 [kubernetes]
 format = '[$symbol$user( \($namespace\))]($style) in '
-disabled = false
+disabled = true
 [kubernetes.user_aliases]
 "mher.*cluster01.*" = "mher@cluster01"
 "mher.*cluster02.*" = "mher@cluster02"

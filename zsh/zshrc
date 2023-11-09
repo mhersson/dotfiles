@@ -1,18 +1,26 @@
 stty -ixon
 
-source $HOME/.dotfiles/shell-aliases
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 eval "$(starship init zsh)"
 
 
-# # The following lines were added by compinstall
 zstyle :compinstall filename '~/.dotfiles/zsh/zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-#
+
+source $HOME/.dotfiles/shell-aliases
+
 source ~/.dotfiles/zsh/plugins/gojira/gojira.plugin.zsh
 source ~/.dotfiles/zsh/plugins/mario/mario.plugin.zsh
 source ~/.dotfiles/zsh/plugins/oc/oc.plugin.zsh
 source ~/.dotfiles/zsh/plugins/history-substring-search/history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
