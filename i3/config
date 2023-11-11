@@ -44,6 +44,7 @@ for_window [class="^Signal$"] floating enable
 for_window [class="^obs$"] floating enable
 for_window [class="^steam$"] floating enable
 for_window [class="^Slack" title="^.*Huddle"] floating enable
+for_window [window_role="^pop-up$"] floating enable
 
 for_window [instance="scratchpad"] move scratchpad
 # Start XDG autostart .desktop files using dex. See also
@@ -54,7 +55,7 @@ exec --no-startup-id dex --autostart --environment i3
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec $term
+bindsym $mod+Shift+Return exec $term --single-instance
 
 # kill focused window
 bindsym $mod+q kill
@@ -201,5 +202,5 @@ exec --no-startup-id $term --name scratchpad
 
 exec signal-desktop --start-in-tray
 exec brave --profile-directory=Default --app-id=ebhhcpigfociclbncehheofloeahmjpo
-exec kitty
+exec $term --single-instance
 exec brave
