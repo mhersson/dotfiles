@@ -5,8 +5,8 @@ local module = {}
 function module.apply(config)
 	config.font_size = 11.5
 
-	-- use FiraCode as default and VictorMono for italics
-	config.font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Medium" })
+	-- use JetBrains Mono as default and VictorMono for italics
+	config.font = wezterm.font({ family = "JetBrains Mono Nerd Font", weight = "Regular" })
 	config.font_rules = {
 		{
 			intensity = "Bold",
