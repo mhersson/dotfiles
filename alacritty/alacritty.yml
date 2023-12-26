@@ -1,12 +1,12 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 import:
-- ~/.config/alacritty/catppuccin-macchiato.yml
+- ~/.config/alacritty/PaleNightHC.yml
 
 window:
   dimensions:
-    columns: 150
-    lines: 40
+    columns: 80
+    lines: 25
 
   padding:
     x: 10
@@ -14,11 +14,11 @@ window:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: UbuntuMono Nerd Font
     style: Medium
 
   bold:
-    family: FiraCode Nerd Font
+    family: UbuntuMono Nerd Font
     style: Bold
   italic:
     family: VictorMono Nerd Font
