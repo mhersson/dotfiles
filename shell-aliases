@@ -8,34 +8,15 @@ alias la='ls -alh'
 alias ..='cd ..'
 
 # Git
-alias lg='lazygit'
 alias ga='git add'
 alias gaa='git add --all'
-alias gb='git branch'
 alias gc='git commit -v'
-alias gca='git commit --amend'
-alias gcaf='git commit -a --fixup'
 alias glp='git log --decorate --patch --word-diff=color --color-moved'
-alias gp='git pull'
 alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
 
-alias icat="kitty +kitten icat"
-alias cat='bat --theme "OneHalfDark" --style plain --paging=never'
-alias less='bat --theme "OneHalfDark" --style plain'
-alias grep='grep --color=auto'
+alias cat='bat --theme "ansi" --style plain --paging=never'
+alias less='bat --theme "ansi" --style plain'
 alias vi='nvim'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
-
-alias getrootpw='~/Scripts/getrootpw'
-
-# WAN - Bamsebo
-alias bamsebo='tmux attach -t bamsebo || tmux new -s bamsebo bash -c "~/.ssh/badvpn/bamsebo-vpn.sh"'
-
-alias stibocon='tmux attach -t stibo || tmux new -s stibo bash -c "~/.ssh/badvpn/stibocon.sh"'
-alias stibocon-reload='~/.ssh/badvpn/stibocon.sh'
-
-if [ "$XDG_SESSION_DESKTOP" = "gnome" ]; then
-  alias pass='WAYLAND_DISPLAY="" pass'
-fi
