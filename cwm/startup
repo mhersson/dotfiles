@@ -1,30 +1,27 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-feh --bg-center ~/Pictures/wallpaper/rhapsody-in-blue-5120x2160.png &
+xrdb -remove && xrdb -cpp /usr/bin/cpp <~/.config/cwm/Xresources
 
-nm-applet &
-redshift &
-picom -b --config ~/.config/picom/picom.conf &
-dunst &
-protonvpn-cli c -f &
+# Input autorepeat
+xset r rate 225 25
+# Disable bell
+xset b off
 
-kitty --title main tmux new-session -s main \; \
-  send-keys -t 0 'emacs' Enter \; \
-  new-window \; \
-  new-window \; \
-  new-window \; \
-  new-window \; \
-  move-window -s 5 -t 9 \; \
-  rename-window vpn \; \
-  split-window -v -t 0 \; \
-  send-keys -t 0 'stibocon-reload' Enter \; \
-  select-window -t 1 \; &
+xsetroot -cursor_name left_ptr
+xsetroot -solid "#252525"
 
-kitty --title weechat tmux new-session -s weechat \; \
-  send-keys -t 0 'weechat' Enter \; &
+# Fedora
+[[ -f /usr/libexec/xdg-desktop-portal-gtk ]] && /usr/libexec/xdg-desktop-portal-gtk &
 
-# emacs &
-firefox &
+# Arch
+[[ -f /usr/lib/xdg-desktop-portal-gtk ]] && /usr/lib/xdg-desktop-portal-gtk &
 
-sleep 1.5
-~/.config/cwm/reset &
+feh --bg-scale ~/Pictures/wallpaper/mountains-of-korea-3440x1440.png
+
+blueman-applet &
+picom -b --config ~/.config/cwm/picom.conf &
+redshift -c ~/.config/cwm/redshift.conf &
+dunst -conf ~/.config/cwm/dunstrc &
+(sleep 10 && conky -c ~/.config/cwm/conky.conf &) &
+
+exec cwm -c ~/.config/cwm/cwmrc

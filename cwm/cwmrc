@@ -1,19 +1,19 @@
 fontname "Source Code Pro:pixelsize=16"
-color font "#d0d0d0"
-color selfont "#0d0d0d"
-color menubg "#575566"
-color menufg "#cd00cd"
+color font "#fdf6e3"
+color selfont "#586e75"
+color menubg "#586e75"
+color menufg "#fdf6e3"
 
 borderwidth 3
-color activeborder "#cd00cd"
-color inactiveborder "#575566"
+color activeborder "#ffffff"
+color inactiveborder "#eee8d5"
 
 
 unbind-key all
 
-bind-key XF86AudioPlay "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bind-key XF86AudioNext "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bind-key XF86AudioPrev "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bind-key XF86AudioPlay "playerctl play-pause"
+bind-key XF86AudioNext "playerctl next"
+bind-key XF86AudioPrev "playerctl previous"
 bind-key XF86MonBrightnessUp "xbacklight -inc 10"
 bind-key XF86MonBrightnessDown "xbacklight -dec 10"
 
@@ -21,9 +21,9 @@ bind-key XF86MonBrightnessDown "xbacklight -dec 10"
 bind-key 4S-F11 "/bin/sh -c 'maim -s | xclip -selection clipboard -t image/png'"
 bind-key 4-F11 "/bin/sh -c 'maim -s ~/Downloads/screenshot-$(date +%Y%m%d%H%M%S).png'"
 
-bind-key 4S-Return "kitty"
-bind-key 4-Return "swapwindow"
-bind-key 4-space "/bin/sh -c $HOME/.config/cwm/reset"
+bind-key 4S-Return "alacritty"
+# bind-key 4-Return "swapwindow"
+# bind-key 4-space "/bin/sh -c $HOME/.config/cwm/reset"
 # bind-key CM-Delete "xlock -nolock -delay 40000 -mode fzort"
 
 bind-key 4-Tab window-cycle-ingroup
@@ -64,14 +64,14 @@ bind-key 4C-9 group-toggle-9
 bind-key 4-a group-toggle-all
 bind-key 4-g window-group
 
-bind-key 4-Left "focusnextwindow left"
-bind-key 4-Down "focusnextwindow down"
-bind-key 4-Up "focusnextwindow up"
-bind-key 4-Right "focusnextwindow right"
-bind-key 4S-Left "swapwindow left"
-bind-key 4S-Down "swapwindow down"
-bind-key 4S-Up "swapwindow up"
-bind-key 4S-Right "swapwindow right"
+bind-key 4-Left window-move-left
+bind-key 4-Down window-move-down
+bind-key 4-Up window-move-up
+bind-key 4-Right window-move-right
+bind-key 4S-Left window-move-left-big
+bind-key 4S-Down window-move-down-big
+bind-key 4S-Up window-move-up-big
+bind-key 4S-Right window-move-right-big
 
 bind-key 4C-Left window-resize-left
 bind-key 4C-Down window-resize-down
@@ -82,8 +82,8 @@ bind-key 4CS-Down window-resize-down-big
 bind-key 4CS-Up window-resize-up-big
 bind-key 4CS-Right window-resize-right-big
 
-bind-key CM-r window-raise
-bind-key CM-l window-lower
+bind-key 4-r window-raise
+bind-key 4-l window-lower
 
 bind-key 4-f window-maximize
 bind-key 4-m window-vmaximize
@@ -95,22 +95,23 @@ bind-key 4-i window-hide
 bind-key 4S-i menu-window-hidden
 bind-key 4-slash menu-window
 
-bind-key 4-p "rofi -show drun"
-bind-key 4S-p "rofi -show window"
+bind-key 4-p "rofi -config ~/.config/cwm/rofi.conf -show drun"
+bind-key 4S-p "rofi -config ~/.config/cwm/rofi.conf -show window"
+bind-key 4M-p "pavucontrol"
 
 bind-key 4S-r restart
 bind-key 4-q  window-delete
 bind-key 4S-q quit
 
-bind-key CM-Left "movetoscreen left"
-bind-key CM-Down "movetoscreen down"
-bind-key CM-Up "movetoscreen up"
-bind-key CM-Right "movetoscreen right"
+#bind-key CM-Left "movetoscreen left"
+#bind-key CM-Down "movetoscreen down"
+#bind-key CM-Up "movetoscreen up"
+#bind-key CM-Right "movetoscreen right"
 
-bind-key CMS-Left "movetoscreen left win"
-bind-key CMS-Down "movetoscreen down win"
-bind-key CMS-Up "movetoscreen up win"
-bind-key CMS-Right "movetoscreen right win"
+#bind-key CMS-Left "movetoscreen left win"
+#bind-key CMS-Down "movetoscreen down win"
+#bind-key CMS-Up "movetoscreen up win"
+#bind-key CMS-Right "movetoscreen right win"
 
 unbind-mouse all
 bind-mouse 4-1 window-move
