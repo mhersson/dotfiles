@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+blueman-applet &
+dunst -conf ~/.config/cwm/dunstrc
