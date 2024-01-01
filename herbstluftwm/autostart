@@ -22,6 +22,15 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-alacritty}" # use your $TERMINAL with alacritty as fallback
 hc keybind $Mod-Return spawn rofi -config ~/.dotfiles/cwm/rofi.conf -show drun
 
+# Screenshots
+hc keybind $Mod-Shift-F11 spawn /bin/sh -c "maim -s | xclip -selection clipboard -t image/png"
+hc keybind $Mod-F11 spawn /bin/sh -c "maim -s ~/Downloads/screenshot-$(date +%Y%m%d%H%M%S).png"
+
+# Media keys
+hc keybind XF86AudioPlay spawn playerctl play-pause
+hc keybind XF86AudioNext spawn playerctl next
+hc keybind XF86AudioPrev spawn playerctl previous
+
 # basic movement in tiling and floating mode
 # focusing clients
 hc keybind $Mod-Left focus left
