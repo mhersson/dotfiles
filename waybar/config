@@ -101,9 +101,10 @@
     "format-window-separator": " ",
     "window-rewrite-default": "",
     "window-rewrite": {
-      "alacritty": "",
+      "Alacritty": "",
       "brave-browser": "",
       "brave-ebhhcpigfociclbncehheofloeahmjpo-Default": "󰒱",
+      "firefox": "󰈹",
       "Slack": "󰒱",
       "kitty": "",
       "konsole": "",
