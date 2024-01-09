@@ -62,16 +62,16 @@
 [urgency_low]
     background = "#fdf6e3"
     foreground = "#586e75"
-    frame_color = "#c0caf5"
+    frame_color = "#ffc69d"
     timeout = 3
 
 [urgency_normal]
     background = "#fdf6e3"
     foreground = "#586e75"
-    frame_color = "#c0caf5"
+    frame_color = "#ffc69d"
     timeout = 3
 
 [urgency_critical]
     background = "#fdf6e3"
     foreground = "#586e75"
-    frame_color = "#db4b4b"
+    frame_color = "#ffc69d"
