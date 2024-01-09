@@ -1,51 +1,65 @@
 * {
-    border:        none;
-    border-radius: 0;
-    font-family:   Sans;
-    font-size:     15px;
-    box-shadow:    none;
-    text-shadow:   none;
-    transition-duration: 0s;
+  border-radius: 6;
+  font-family:   Sans;
+  font-size:     15px;
+  box-shadow:    none;
+  text-shadow:   none;
+  transition-duration: 0s;
 }
 
 window {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(36, 39, 58, 0.85);
+  color: rgba(89, 99, 117, 1);
+  background: rgba(251, 238, 203 , 1);
+  border: 2px solid rgba(255, 199, 138, 1);
 }
 
 
+tooltip {
+  background: rgba(252, 245, 227 , 1);
+  border: 2px solid rgba(255, 199, 138, 1);
+}
+
+tooltip label {
+  color: rgba(89, 99, 117, 1);
+}
+
 #workspaces button {
-    padding:    0px 15px;
-    color:      rgba(217, 216, 216, 1);
-    border-radius: 5px;
-    min-width: 25px;
+  color: rgba(89, 99, 117, 1);
+  padding:    0px 15px;
+  border-radius: 5px;
+  min-width: 25px;
 }
 
 #workspaces button.active {
-    color: rgba(36, 39, 58, 0.85);
-    background: rgba(138, 173, 244, 1);
+  color: rgba(89, 99, 117, 1);
+  background: rgba(138, 255, 199, 0.55);
+  margin: 2px;
 }
 
 #workspaces button.urgent {
-    background:      rgba(237, 135, 150, 1);
+  background:      rgba(237, 135, 150, 1);
 }
 
 #mode, #idle_inhibitor, #cpu, #memory, #network, #language,
 #bluetooth, #pulseaudio, #idle_inhibitor, #battery, #backlight,
-#custome-time, #custom-vpn, #custom-notifications, #custom-weather {
-    margin:     0px 15px 0px 15px;
+#custome-time, #custom-vpn, #custom-notifications {
+  margin:     0px 15px 0px 15px;
+}
+
+#custom-weather {
+  margin:     5px 15px 0px 15px;
 }
 
 #idle_inhibitor.activated, #custom-vpn.down, #custom-notifications.paused {
-    color:      rgba(237, 135, 150, 1);
+  color:      rgba(237, 135, 150, 1);
 }
 
 #clock {
-    margin:     0px 10px 0px 10px;
+  margin:     0px 10px 0px 10px;
 }
 
 #tray {
-    padding:    0px 5px 0px 5px;
-    margin:     0px 10px 0px 10px;
-    border-radius: 5px;
+  padding:    0px 5px 0px 5px;
+  margin:     0px 10px 0px 10px;
+  border-radius: 5px;
 }

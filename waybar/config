@@ -1,4 +1,5 @@
 {
+  "width": 1000,
   "layer": "top",
   "modules-center": [
     "hyprland/workspaces",
@@ -43,7 +44,8 @@
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     "on-click": "blueman-manager",
-    "max-length": 9
+    "max-length": 9,
+    "min-length": 9
   },
   "clock": {
     "format": "{:  %a, %d %b %Y}"
@@ -92,7 +94,8 @@
   "hyprland/language": {
     "format": "  {}",
     "format-en": "English",
-    "format-no": "Norwegian"
+    "format-no": "Norwegian",
+    "min-length": 7
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
