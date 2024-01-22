@@ -31,13 +31,13 @@ tooltip label {
 }
 
 #workspaces button.active {
-  color: rgba(89, 99, 117, 1);
   background: rgba(138, 255, 199, 0.55);
   margin: 2px;
 }
 
 #workspaces button.urgent {
   background:      rgba(237, 135, 150, 1);
+  margin: 2px;
 }
 
 #mode, #idle_inhibitor, #cpu, #memory, #network, #language,
