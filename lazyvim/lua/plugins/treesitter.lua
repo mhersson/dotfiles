@@ -13,7 +13,6 @@ return {
         "go",
         "gomod",
         "gowork",
-        "hyprlang",
         "json",
         "lua",
         "markdown",
