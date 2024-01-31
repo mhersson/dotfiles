@@ -11,7 +11,7 @@ if wezterm.config_builder then
 end
 
 -- set the color scheme:
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "Solarized Light (Gogh)"
 
 -- set initial window size
 config.initial_rows = 40
