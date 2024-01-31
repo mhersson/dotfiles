@@ -9,7 +9,7 @@ size = 14
 
 [font.bold]
 family = "UbuntuMono Nerd Font"
-style = "Bold"
+style = "Regluar"
 
 [font.bold_italic]
 family = "VictorMono Nerd Font"
@@ -21,7 +21,7 @@ style = "Italic"
 
 [font.normal]
 family = "UbuntuMono Nerd Font"
-style = "Medium"
+style = "Regluar"
 
 [window.dimensions]
 columns = 80
