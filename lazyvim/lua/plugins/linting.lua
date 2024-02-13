@@ -8,6 +8,7 @@ return {
         sh = { "shellcheck" },
         go = { "golangcilint" },
         py = { "pylint" },
+        cue = { "cue" },
       },
       ---@type table<string,table>
       linters = {},

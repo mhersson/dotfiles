@@ -10,6 +10,7 @@ return {
         "comment",
         "html",
         "dockerfile",
+        "gitcommit",
         "go",
         "gomod",
         "gowork",
