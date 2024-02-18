@@ -8,6 +8,11 @@
 }
 
 window {
+  /* Dark Colors */
+  /* color:      rgba(217, 216, 216, 1); */
+  /* background: rgba(66, 69, 88, 1); */
+  /* border: 2px solid rgba(76, 79, 98, 1); */
+  /* Light Colors */
   color: rgba(89, 99, 117, 1);
   background: rgba(251, 238, 203 , 1);
   border: 2px solid rgba(255, 199, 138, 1);
@@ -15,11 +20,18 @@ window {
 
 
 tooltip {
+  /* Dark Colors */
+  /* background: rgba(66, 69, 88, 1); */
+  /* border: 2px solid rgba(76, 79, 98, 1); */
+  /* Light Colors */
   background: rgba(252, 245, 227 , 1);
   border: 2px solid rgba(255, 199, 138, 1);
 }
 
 tooltip label {
+  /* Dark Colors */
+  /* color:      rgba(217, 216, 216, 1); */
+  /* Light Colors */
   color: rgba(89, 99, 117, 1);
 }
 
@@ -31,7 +43,7 @@ tooltip label {
 }
 
 #workspaces button.active {
-  background: rgba(138, 255, 199, 0.55);
+  background: rgba(138, 255, 199, 0.90);
   margin: 2px;
 }
 
