@@ -1,10 +1,5 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    enabled = false,
-  },
-
-  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
