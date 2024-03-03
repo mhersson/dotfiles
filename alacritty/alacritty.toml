@@ -1,4 +1,4 @@
-import = ["/home/morten/.config/alacritty/solarized_light.toml"]
+import = ["/home/morten/.config/alacritty/catppuccin-mocha.toml"]
 
 [cursor.style]
 blinking = "On"
@@ -6,6 +6,10 @@ shape = "Beam"
 
 [font]
 size = 14
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+style = "Regluar"
 
 [font.bold]
 family = "UbuntuMono Nerd Font"
@@ -18,10 +22,6 @@ style = "Bold Italic"
 [font.italic]
 family = "UbuntuMono Nerd Font"
 style = "Italic"
-
-[font.normal]
-family = "UbuntuMono Nerd Font"
-style = "Regluar"
 
 [window.dimensions]
 columns = 80
