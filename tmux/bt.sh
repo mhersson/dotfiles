@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
 
-theme=dracula
+theme=dark
 
 case "$theme" in
-  "dracula")
+  "dark")
     if (bt-device -i "H-Phonak Høreapparat" | grep "Connected: 1" >/dev/null); then
       echo -n "#[bg=colour235,fg=colour67]#[bg=colour67,fg=colour235] 🎧 #[bg=colourcolour67,fg=colour235]"
     fi
     ;;
-  "github")
-    if (bt-device -i "H-Phonak Høreapparat" | grep "Connected: 1" >/dev/null); then
-      echo -n "#[bg=default,fg=colour67]#[bg=colour67,fg=white] 🎧 #[bg=colourcolour67,fg=white]"
-    fi
-    ;;
-  "solarized")
+  "light")
     if (bt-device -i "H-Phonak Høreapparat" | grep "Connected: 1" >/dev/null); then
       echo -n "#[bg=default,fg=colour67]#[bg=colour67,fg=white] 🎧 #[bg=colourcolour67,fg=white]"
     fi
