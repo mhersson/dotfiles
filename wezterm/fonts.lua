@@ -3,26 +3,24 @@ local wezterm = require("wezterm")
 local module = {}
 
 function module.apply(config)
-	config.font_size = 11.5
+	config.font_size = 12
 
-	-- use JetBrains Mono as default and VictorMono for italics
-	config.font = wezterm.font({ family = "JetBrains Mono Nerd Font", weight = "Regular" })
+	config.font = wezterm.font({ family = "Hack Nerd Font" })
+
 	config.font_rules = {
 		{
 			intensity = "Bold",
-			italic = true,
+			italic = false,
 			font = wezterm.font({
-				family = "VictorMono Nerd Font",
-				weight = "Bold",
-				style = "Italic",
+				family = "Hack Nerd Font",
+				-- weight = "Bold",
+				-- style = "Italic",
 			}),
 		},
 		{
-			intensity = "Normal",
 			italic = true,
 			font = wezterm.font({
-				family = "VictorMono Nerd Font",
-				weight = "Bold",
+				family = "Hack Nerd Font",
 				style = "Italic",
 			}),
 		},

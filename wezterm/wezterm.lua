@@ -11,11 +11,11 @@ if wezterm.config_builder then
 end
 
 -- set the color scheme:
-config.color_scheme = "Solarized Light (Gogh)"
+config.color_scheme = "catppuccin-mocha"
 
 -- set initial window size
-config.initial_rows = 40
-config.initial_cols = 150
+config.initial_rows = 24
+config.initial_cols = 80
 
 -- set cursor style
 config.default_cursor_style = "BlinkingBar"
