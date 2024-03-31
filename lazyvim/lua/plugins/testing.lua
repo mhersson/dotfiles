@@ -4,7 +4,7 @@ return {
     opts = {
       adapters = {
         ["neotest-go"] = {
-          args = { "-tags=integration" }
+          args = { "-tags=integration" },
         },
       },
     },

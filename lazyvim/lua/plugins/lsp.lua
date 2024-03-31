@@ -1,6 +1,9 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    codelens = {
+      enabled = true,
+    },
     opts = {
       servers = {
         cuepls = {},
