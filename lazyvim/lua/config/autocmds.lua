@@ -14,3 +14,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.tmpl" },
   command = "set ft=gotmpl",
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.cue" },
+  callback = function()
+    vim.keymap.set("n", "<c-c><c-c>", "<cmd>!cue eval -c %<cr>", { noremap = true, buffer = true })
+  end,
+})
