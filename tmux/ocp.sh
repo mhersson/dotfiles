@@ -11,7 +11,7 @@ if (oc whoami 1>&2 >/dev/null); then
 
   case "$theme" in
     "dark")
-      echo -n "#[fg=colour111]#[bg=colour111,fg=default] ${status} #[bg=colour111,fg=colour235]"
+      echo -n "#[fg=colour111]#[bg=colour111,fg=colour238] ${status} #[bg=colour111,fg=colour235]"
       ;;
     "light")
       echo -n "#[fg=colour163]#[bg=colour163,fg=white] ${status} #[bg=colour163,fg=white]"
