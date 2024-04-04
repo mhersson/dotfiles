@@ -14,6 +14,7 @@ return {
         "go",
         "gomod",
         "gowork",
+        "hyprlang",
         "json",
         "lua",
         "markdown",
@@ -31,9 +32,5 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     enabled = false,
-  },
-  {
-    "luckasRanarison/tree-sitter-hyprlang",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }
