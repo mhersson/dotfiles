@@ -48,7 +48,7 @@
     "min-length": 9
   },
   "clock": {
-    "format": "{:  %a, %d %b %Y}"
+    "format": "  {:%a, %d %b %Y}"
   },
   "cpu": {
     "interval": 10,
