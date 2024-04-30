@@ -6,7 +6,7 @@ return {
         -- cue = { "cue_fmt" },
         sh = { "shfmt" },
         yaml = { "yamlfmt" },
-        go = { "gofumpt", "goimports" },
+        go = { "gofumpt" },
       },
 
       formatters = {
