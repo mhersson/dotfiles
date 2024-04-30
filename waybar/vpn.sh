@@ -18,7 +18,7 @@ else
   ip=$(sudo wg show | grep endpoint | awk '{split($0, a, ":"); print a[2]}')
   if [ "${ip}" != "" ]; then
     class="up"
-    tooltip="VPN connected: ${ip}"
+    tooltip="VPN endpoint: ${ip}"
   fi
 fi
 
