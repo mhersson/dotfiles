@@ -5,6 +5,9 @@ return {
       enabled = true,
     },
     opts = {
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
         cuepls = {},
         yamlls = {
