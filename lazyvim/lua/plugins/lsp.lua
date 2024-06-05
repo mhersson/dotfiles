@@ -6,7 +6,8 @@ return {
     },
     opts = {
       inlay_hints = {
-        enabled = false,
+        enabled = true,
+        exclude = { "go" },
       },
       servers = {
         cuepls = {},
