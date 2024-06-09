@@ -7,7 +7,11 @@ return {
     opts = {
       inlay_hints = {
         enabled = true,
-        exclude = { "go" },
+        exclude = { "go", "cue" },
+      },
+      document_highlight = {
+        enabled = false,
+        fileMatch = { "cue" },
       },
       servers = {
         cuepls = {},
