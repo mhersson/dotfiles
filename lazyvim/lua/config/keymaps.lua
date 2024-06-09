@@ -7,8 +7,8 @@ local opts = { silent = true }
 -- Easy save
 vim.keymap.set("n", "<c-s>", "<NOP>", opts)
 vim.keymap.set("i", "<c-s>", "<NOP>", opts)
-vim.keymap.set("n", "<c-s>", "<cmd>w<cr>", opts)
-vim.keymap.set("i", "<c-s>", "<esc><cmd>w<cr>", opts)
+vim.keymap.set("n", "<c-s>", "<cmd>w!<cr>", opts)
+vim.keymap.set("i", "<c-s>", "<esc><cmd>w!<cr>", opts)
 
 -- Easy quit
 vim.keymap.set("n", "<c-q>", "<NOP>", opts)
