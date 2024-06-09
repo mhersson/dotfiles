@@ -1,18 +1,12 @@
 return {
   {
-    "LazyVim/LazyVim",
+    "folke/tokyonight.nvim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
-  -- {
-  --   "maxmx03/solarized.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.o.background = "light" -- or 'dark'
-  --
-  --     vim.cmd.colorscheme("solarized")
-  --   end,
-  -- },
 }
