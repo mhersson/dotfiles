@@ -1,4 +1,4 @@
-import = ["/home/morten/.config/alacritty/catppuccin-mocha.toml"]
+import = ["/home/morten/.config/alacritty/tokyonight_moon.toml"]
 
 [env]
 TERM = "xterm-256color"
