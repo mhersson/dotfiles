@@ -4,7 +4,7 @@
   "modules-center": [
     "hyprland/workspaces",
     "idle_inhibitor",
-    // "custom/vpn",
+    "custom/vpn",
     "hyprland/language",
     "cpu",
     "memory",

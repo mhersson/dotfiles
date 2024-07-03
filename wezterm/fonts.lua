@@ -13,7 +13,7 @@ function module.apply(config)
 			italic = false,
 			font = wezterm.font({
 				family = "Hack Nerd Font",
-				weight = "Bold",
+				-- weight = "Bold",
 				-- style = "Italic",
 			}),
 		},
