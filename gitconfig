@@ -8,3 +8,19 @@
 	defaultBranch = main
 [commit]
   verbose = true
+[user]
+	email = mher@stibodx.com
+	name = Morten Hersson
+
+[includeIf "hasconfig:remote.*.url:ssh://git@bitbucket.stibodx.com*/**"]
+    path = .gitconfig-work
+[includeIf "hasconfig:remote.*.url:git@gitlab.bamsebo.lan*/**"]
+    path = .gitconfig-bamsebo
+[includeIf "hasconfig:remote.*.url:ssh://git@gitlab.bamsebo.lan*/**"]
+    path = .gitconfig-bamsebo
+[includeIf "hasconfig:remote.*.url:ssh://synology*/**"]
+    path = .gitconfig-bamsebo
+[includeIf "hasconfig:remote.*.url:ssh://gitlab.com*/**"]
+    path = .gitconfig-public
+[includeIf "hasconfig:remote.*.url:ssh://github.com*/**"]
+    path = .gitconfig-public

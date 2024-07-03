@@ -11,7 +11,7 @@ if wezterm.config_builder then
 end
 
 -- set the color scheme:
-config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "Tokyo Night Moon"
 
 -- set initial window size
 config.initial_rows = 24
