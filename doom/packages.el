@@ -11,11 +11,11 @@
 ;(package! ox-hugo)
 ;(package! nord-theme)
 ;(package! gruvbox-theme)
-(package! github-theme)
+;(package! github-theme)
 (package! evil-terminal-cursor-changer)
 (package! xclip)
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+;(package! copilot
+;  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
