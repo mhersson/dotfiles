@@ -1,26 +1,20 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
-
-add_newline = false
-
 [cmd_duration]
 disabled = true
 
 [directory]
-truncation_length = 6
-style = "blue bold"
+style = "blue"
 truncate_to_repo = false
+truncation_length = 6
 
 [git_branch]
-style = "bold green"
-
-[golang]
-disabled = true
+style = "green"
 
 [kubernetes]
-format = '[$symbol$user( \($namespace\))]($style) in '
-disabled = true
-[kubernetes.user_aliases]
-"mher.*cluster01.*" = "mher@cluster01"
-"mher.*cluster02.*" = "mher@cluster02"
-"mo.*skynet.*" = "morten@skynet"
+detect_env_vars = ["INVALID"]
+detect_files = ["generator.yaml", "start.yaml", "start-environments.yaml", "start-replica.yaml"]
+disabled = false
+format = "[\\[$symbol$context/$namespace\\]]($style) "
+style = "red"
+[[kubernetes.contexts]]
+context_alias = "$cluster"
+context_pattern = ".*/api-(?P<cluster>\\w+).*"
