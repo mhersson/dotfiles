@@ -38,7 +38,7 @@ return {
             { path = "~/Development/" },
             { path = "~/Scripts/" },
             { path = "~/.dotfiles/" },
-            { path = "~/.config/nvim/" },
+            { path = "~/.config/home-manager/" },
           },
         },
       },
