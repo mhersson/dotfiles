@@ -16,6 +16,7 @@ return {
     opts = {
       -- Do not ask to confirm the commit - just do it when the buffer is closed.
       disable_commit_confirmation = true,
+      graph_style = "unicode",
       sections = {
         recent = {
           folded = false,
