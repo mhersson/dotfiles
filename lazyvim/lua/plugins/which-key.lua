@@ -2,14 +2,8 @@ return {
   -- Modify which-key keys
   {
     "folke/which-key.nvim",
-    opts = function()
-      require("which-key").register({
-        ["<leader>tc"] = {
-          name = "+coverage",
-        },
-      })
-    end,
     keys = {
+      { "<leader>tc", group = "coverage" },
       {
         "<leader>gb",
         "<cmd>Gitsigns blame_line<cr>",
