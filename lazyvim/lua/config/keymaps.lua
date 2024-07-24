@@ -4,18 +4,6 @@
 
 local opts = { silent = true }
 
--- Easy save
-vim.keymap.set("n", "<c-s>", "<NOP>", opts)
-vim.keymap.set("i", "<c-s>", "<NOP>", opts)
-vim.keymap.set("n", "<c-s>", "<cmd>w!<cr>", opts)
-vim.keymap.set("i", "<c-s>", "<esc><cmd>w!<cr>", opts)
-
--- Easy quit
-vim.keymap.set("n", "<c-q>", "<NOP>", opts)
-vim.keymap.set("i", "<c-q>", "<NOP>", opts)
-vim.keymap.set("n", "<c-q>", "<cmd>qa<cr>", opts)
-vim.keymap.set("i", "<c-q>", "<esc><cmd>qa<cr>", opts)
-
 -- Dap
 vim.keymap.set("n", "<F5>", require("dap").continue, opts)
 vim.keymap.set("n", "<F10>", require("dap").step_over, opts)
