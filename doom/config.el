@@ -6,7 +6,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Morten Hersson"
-      user-mail-address "mher@stibodx.com")
+      user-mail-address "mhersson@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -32,7 +32,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Development/org-files")
+(setq org-directory "~/Documents/org-mode")
 
 ;; Set max length for branch name on the modeline
 (setq doom-modeline-vcs-max-length 40)
@@ -118,8 +118,8 @@
 ;; Disable the documentation pop-up
 (setq lsp-ui-doc-enable nil)
 
-(add-hook! rustic-mode
-  (setq lsp-rust-analyzer-server-display-inlay-hints t))
+; (add-hook! rustic-mode
+;   (setq lsp-rust-analyzer-server-display-inlay-hints t))
 
 ;; Set up flycheck checkers combined with lsp
 ;; https://github.com/hlissner/doom-emacs/issues/1530#issuecomment-725588733
@@ -162,11 +162,6 @@
     (let ((current-point (point)))
       (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
       (goto-char current-point))))
-
-(setq lsp-yaml-schemas '(
-                         :https://mario-infra.release.rnd.cue.cloud/schema/generator-schema.json "generator.yaml"
-                         :https://mario-infra.release.rnd.cue.cloud/schema/component-schema.json "components/*.yaml"
-                         ))
 
 ;; Plantuml
 (after! plantuml-mode
