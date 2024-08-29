@@ -7,6 +7,7 @@ return {
       linters_by_ft = {
         sh = { "shellcheck" },
         go = { "golangcilint" },
+        markdown = { "markdownlint-cli2", "vale" },
         py = { "pylint" },
         cue = { "cue" },
       },
