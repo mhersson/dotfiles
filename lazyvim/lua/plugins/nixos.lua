@@ -3,14 +3,12 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      for i, v in ipairs(opts.ensure_installed) do
-        --  if v == "marksman" then
-        table.remove(opts.ensure_installed, i)
-        --    break
-        --  end
-      end
+      opts.ensure_installed = {}
     end,
+  },
+  {
+    "mfussenger/nvim-dap-python",
+    enabled = false,
   },
   {
     "neovim/nvim-lspconfig",
