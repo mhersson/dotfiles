@@ -17,6 +17,7 @@ return {
       -- Do not ask to confirm the commit - just do it when the buffer is closed.
       disable_commit_confirmation = true,
       graph_style = "unicode",
+      console_timeout = 4000,
       sections = {
         recent = {
           folded = false,
