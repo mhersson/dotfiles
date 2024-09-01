@@ -36,9 +36,8 @@ return {
         project = {
           base_dirs = {
             { path = "~/Development/" },
-            { path = "~/Scripts/" },
+            { path = "~/Documents/" },
             { path = "~/.dotfiles/" },
-            { path = "~/.config/home-manager/" },
           },
         },
       },
