@@ -52,12 +52,8 @@ return {
     -- current markdown file being edited.
     workspaces = {
       {
-        name = "personal",
-        path = "~/Documents/vaults/personal",
-      },
-      {
-        name = "work",
-        path = "~/Documents/vaults/work",
+        name = "notes",
+        path = "~/Documents/notes",
         -- -- Optional, override certain settings.
         -- overrides = {
         --   notes_subdir = "notes",
@@ -70,7 +66,7 @@ return {
     -- dir = "~/vaults/work",
 
     -- Optional, if you keep notes in a specific subdirectory of your vault.
-    notes_subdir = "notes",
+    -- notes_subdir = "notes",
 
     -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
     -- levels defined by "vim.log.levels.*".
@@ -78,7 +74,7 @@ return {
 
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = "notes/dailies",
+      folder = "dailies",
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%Y-%m-%d",
       -- Optional, if you want to change the date format of the default alias of daily notes.
@@ -347,7 +343,7 @@ return {
       -- The default folder to place images in via `:ObsidianPasteImg`.
       -- If this is a relative path it will be interpreted as relative to the vault root.
       -- You can always override this per image by passing a full path to the command instead of just a filename.
-      img_folder = "notes/attachments",
+      img_folder = "attachments",
 
       -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
       ---@return string
