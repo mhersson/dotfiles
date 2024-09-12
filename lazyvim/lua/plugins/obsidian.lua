@@ -19,6 +19,44 @@ return {
 
     -- see below for full list of optional dependencies 👇
   },
+  keys = {
+    { "<leader>o", group = "obsidian", icon = { icon = "󰙵 ", color = "cyan" }, desc = "obsidian" },
+    {
+      "<leader>on",
+      "<cmd>ObsidianNew<cr>",
+      desc = "New",
+    },
+    {
+      "<leader>od",
+      "<cmd>ObsidianDailies<cr>",
+      desc = "Daillies",
+    },
+    {
+      "<leader>ot",
+      "<cmd>ObsidianToday<cr>",
+      desc = "Today",
+    },
+    {
+      "<leader>om",
+      "<cmd>ObsidianTomorrow<cr>",
+      desc = "Tomorrow",
+    },
+    {
+      "<leader>os",
+      "<cmd>ObsidianSearch<cr>",
+      desc = "Search",
+    },
+    {
+      "<leader>oq",
+      "<cmd>ObsidianQuickSwitch<cr>",
+      desc = "Quick Switch",
+    },
+    {
+      "<leader>oy",
+      "<cmd>ObsidianYesterday<cr>",
+      desc = "Yesterday",
+    },
+  },
   cmd = {
     "ObsidianOpen",
     "ObsidianNew",
