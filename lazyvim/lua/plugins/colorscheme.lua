@@ -14,6 +14,7 @@ return {
     opts = {
       -- colorscheme = "catppuccin-mocha",
       colorscheme = "tokyonight",
+      -- colorscheme = "solarized",
     },
   },
   -- {
@@ -22,8 +23,6 @@ return {
   --   priority = 1000,
   --   config = function()
   --     vim.o.background = "light" -- or 'dark'
-  --
-  --     vim.cmd.colorscheme("solarized")
   --   end,
   -- },
 }

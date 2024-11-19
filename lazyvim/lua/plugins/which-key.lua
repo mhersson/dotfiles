@@ -2,6 +2,13 @@ return {
   -- Modify which-key keys
   {
     "folke/which-key.nvim",
+    opts = {
+      icons = {
+        rules = {
+          { plugin = "copilot.lua", icon = " ", color = "orange" },
+        },
+      },
+    },
     keys = {
       { "<leader>tc", group = "coverage" },
       {
