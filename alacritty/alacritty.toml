@@ -11,24 +11,13 @@ shape = "Beam"
 size = 14
 
 [font.normal]
-family = "UbuntuMono Nerd Font"
-style = "Regluar"
+family = "MesloLGS Nerd Font"
 
-[font.bold]
-family = "UbuntuMono Nerd Font"
-style = "Regluar"
-
-[font.bold_italic]
-family = "UbuntuMono Nerd Font"
-style = "Bold Italic"
-
-[font.italic]
-family = "UbuntuMono Nerd Font"
-style = "Italic"
 
 [window.dimensions]
-columns = 80
-lines = 25
+optons_as_alt = "Both"
+columns = 250
+lines = 70
 
 [window.padding]
 x = 10
