@@ -169,9 +169,9 @@
       (goto-char current-point))))
 
 ;; Plantuml
-(after! plantuml-mode
-  (setq plantuml-default-exec-mode 'jar
-        plantuml-preview-theme "toy"))
+;; (after! plantuml-mode
+;;   (setq plantuml-default-exec-mode 'jar
+;;         plantuml-preview-theme "toy"))
 
 ;; Copilot
 ;; accept completion from copilot and fallback to company
@@ -191,3 +191,45 @@
 ;;   (add-to-list 'copilot-indentation-alist '(text-mode 2))
 ;;   (add-to-list 'copilot-indentation-alist '(closure-mode 2))
 ;;   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+
+;; Markdown mode using mdpls for preview
+(after! markdown-mode
+  ;; Automatically open markdown preview (start mdpls)
+  (add-hook 'markdown-mode-local-vars-hook #'lsp!)
+  ;; Enable static content
+  (setq lsp-mdpls-serve-static t))
+
+(after! lsp-mode
+  (defgroup lsp-mdpls nil
+    "Settings for the mdpls language server client."
+    :group 'lsp-mode
+    :link '(url-link "https://github.com/euclio/mdpls"))
+
+  (defcustom lsp-mdpls-server-command "mdpls"
+    "The binary (or full path to binary) which executes the server."
+    :type 'string
+    :group 'lsp-mdpls)
+
+  (defcustom lsp-mdpls-serve-static t
+    "Set to true if mdpls should serve static files like images."
+    :type 'boolean
+    :group 'lsp-mdpls)
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection
+                                     (lambda ()
+                                       (or (executable-find lsp-mdpls-server-command)
+                                           (lsp-package-path 'mdpls)
+                                           "mdpls")
+                                       ))
+                    :activation-fn (lsp-activate-on "markdown")
+                    :initialized-fn (lambda (workspace)
+                                      (with-lsp-workspace workspace
+                                        (lsp--set-configuration
+                                         (lsp-configuration-section "mdpls"))
+                                        (lsp--set-configuration
+                                         `((markdown . ((preview . ((serveStatic . ,lsp-mdpls-serve-static)))))))
+                                        ))
+                    :priority 10
+                    :server-id 'mdpls))
+  )
