@@ -65,8 +65,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 15 :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -77,7 +76,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-
+;; Override background color to catppuccin-mocha
+(custom-set-faces! '(default :background "#1E1E2E"))
 ;; Don't nag about me wanting to exit
 (setq confirm-kill-emacs nil)
 
@@ -90,7 +90,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -125,6 +125,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Set custom global keybindings
+(map! :map global-map
+      "M-k" #'drag-stuff-up
+      "M-j" #'drag-stuff-down)
+
 ;; Always middle click paste at cursors position
 (setq mouse-yank-at-point t)
 
@@ -151,10 +156,6 @@
   (setq lsp-gopls-semantic-tokens t)
   (setq lsp-go-build-flags ["-tags=integration"]))
 
-(after! lsp-mode
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\moto")
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor"))
-
 ;; Use yamlfmt instead of lsp to format yaml files
 (after! yaml-mode
   (add-hook 'yaml-mode-hook
@@ -168,31 +169,36 @@
       (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
       (goto-char current-point))))
 
-;; Plantuml
-;; (after! plantuml-mode
-;;   (setq plantuml-default-exec-mode 'jar
-;;         plantuml-preview-theme "toy"))
+(after! lsp-mode
+  (setq lsp-inlay-hint-enable t))
+
+;; Rust
+(setq lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
+(setq lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t)
+(setq lsp-rust-analyzer-display-chaining-hints t)
+(setq lsp-rust-analyzer-display-closure-return-type-hints t)
+(setq lsp-rust-analyzer-display-parameter-hints t)
+;; (setq lsp-rust-analyzer-display-reborrow-hints t)
 
 ;; Copilot
-;; accept completion from copilot and fallback to company
-;; (use-package! copilot
-;;   :hook (prog-mode . copilot-mode)
-;;   :bind (:map copilot-completion-map
-;;               ("<tab>" . 'copilot-accept-completion)
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("C-TAB" . 'copilot-accept-completion-by-word)
-;;               ("C-<tab>" . 'copilot-accept-completion-by-word)
-;;               ("C-n" . 'copilot-next-completion)
-;;               ("C-p" . 'copilot-previous-completion))
+(use-package! copilot
+  ;; :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("C-<return>" . 'copilot-accept-completion)
+              ;; ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("M-n" . 'copilot-next-completion)
+              ("M-p" . 'copilot-previous-completion))
 
-;;   :config
-;;   (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(org-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(text-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(closure-mode 2))
-;;   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
-;; Markdown mode using mdpls for preview
+;; Add mdpls to markdown-mode for preview
 (after! markdown-mode
   ;; Automatically open markdown preview (start mdpls)
   (add-hook 'markdown-mode-local-vars-hook #'lsp!)
@@ -230,6 +236,86 @@
                                         (lsp--set-configuration
                                          `((markdown . ((preview . ((serveStatic . ,lsp-mdpls-serve-static)))))))
                                         ))
-                    :priority 10
-                    :server-id 'mdpls))
-  )
+                    :priority 1
+                    :add-on? t
+                    :server-id 'mdpls)))
+
+;; Debugging with dape
+(use-package! dape
+  :config
+  ;; Info buffers to the right
+  (setq dape-buffer-window-arrangement 'right)
+
+  ;; Showing inlay hints
+  (setq dape-inlay-hints t)
+
+  ;; Set project root as current working dir
+  (setq dape-cwd-fn 'projectile-project-root)
+
+
+  (add-to-list 'dape-configs
+               `(delve-debug-test
+                 modes (go-mode go-ts-mode)
+                 ensure dape-ensure-command
+                 fn (dape-config-autoport dape-config-tramp)
+                 command "dlv"
+                 command-insert-stderr t
+                 command-args ("dap" "--listen" "127.0.0.1::autoport")
+                 command-cwd (lambda()(if (string-suffix-p "_test.go" (buffer-name))
+                                          default-directory (dape-cwd)))
+                 port :autoport
+                 :type "debug"
+                 :request "launch"
+                 :mode (lambda() (if (string-suffix-p "_test.go" (buffer-name)) "test" "debug"))
+                 :program "."
+                 :cwd "."
+                 :args (lambda()
+                         (require 'which-func)
+                         (if (string-suffix-p "_test.go" (buffer-name))
+                             (when-let* ((test-name (which-function))
+                                         (test-regexp (concat "^" test-name "$")))
+                               (if test-name `["-test.v" ,test-regexp]
+                                 (error "No test selected")))
+                           [])))))
+
+
+(map! :map dape-mode-map
+      :leader
+      :prefix ("d" . "dap")
+      :desc "dape hydra" "h" #'hydra-dap/body
+
+      :desc "dape debug"   "s" #'dape
+      :desc "dape quit"    "q" #'dape-quit
+      :desc "dape restart" "r" #'dape-restart
+
+      :desc "dape breakpoint toggle"     "b" #'dape-breakpoint-toggle
+      :desc "dape breakpoint remove all" "B" #'dape-breakpoint-remove-all
+      :desc "dape breakpoint log"        "l" #'dape-breakpoint-log
+
+      :desc "dape continue" "c" #'dape-continue
+      :desc "dape next"     "n" #'dape-next
+      :desc "dape step in"  "i" #'dape-step-in
+      :desc "dape step out" "o" #'dape-step-out
+
+      :desc "dape eval" "e" #'dape-evaluate-expression)
+
+(require 'hydra)
+(defhydra hydra-dap (:color pink :hint nil)
+  "
+^Dape Hydra^
+------------------------------------------------
+_n_: Next       _e_: Eval    _Q_: Disconnect
+_i_: Step In
+_o_: Step Out
+_c_: Continue
+_r_: Restart
+
+"
+  ("n" #'dape-next)
+  ("i" #'dape-step-in)
+  ("o" #'dape-step-out)
+  ("c" #'dape-continue)
+  ("e" #'dape-evaluate-expression)
+  ("r" #'dape-restart)
+  ("q" nil "Quit" :color blue)
+  ("Q" #'dape-quit :color blue))

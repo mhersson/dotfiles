@@ -1,8 +1,19 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-;; (package! copilot
-;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+;; Better debugging
+(package! dape)
+
+
+(package! ginkgo
+  :recipe (:host github :repo "garslo/ginkgo-mode" :files ("*.el")))
+
+
+;; (package! copilot-chat
+;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))
 
 ;; To install a package with Doom you must declare them here and run 'doom sync'
 ;; on the command line, then restart Emacs for the changes to take effect -- or
