@@ -244,7 +244,9 @@
 (use-package! dape
   :config
   ;; Info buffers to the right
-  (setq dape-buffer-window-arrangement 'right)
+  ;;(setq dape-buffer-window-arrangement 'right)
+  (setq dape-buffer-window-arrangement 'gud)
+  (setq dape-info-hide-mode-line nil)
 
   ;; Showing inlay hints
   (setq dape-inlay-hints t)
@@ -269,14 +271,68 @@
                  :mode (lambda() (if (string-suffix-p "_test.go" (buffer-name)) "test" "debug"))
                  :program "."
                  :cwd "."
-                 :args (lambda()
-                         (require 'which-func)
-                         (if (string-suffix-p "_test.go" (buffer-name))
-                             (when-let* ((test-name (which-function))
-                                         (test-regexp (concat "^" test-name "$")))
-                               (if test-name `["-test.v" ,test-regexp]
-                                 (error "No test selected")))
-                           [])))))
+                 :args
+                 (lambda ()
+                   (require 'which-func)
+                   (if-let* ((file-name (buffer-file-name))
+                             ((string-suffix-p "_test.go" file-name))
+                             (fn-name (which-function)))
+                       `["-test.v"
+                         ,(substring-no-properties (concat "^" fn-name "$"))]
+                     []))))
+
+  (add-to-list 'dape-configs
+               `(delve-ginkgo-suite
+                 modes (go-mode go-ts-mode)
+                 ensure dape-ensure-command
+                 fn (dape-config-autoport dape-config-tramp)
+                 command "dlv"
+                 command-insert-stderr t
+                 command-args ("dap" "--listen" "127.0.0.1::autoport")
+                 command-cwd (lambda()(if (string-suffix-p "_test.go" (buffer-name))
+                                          default-directory (dape-cwd)))
+                 port :autoport
+                 :type "debug"
+                 :request "launch"
+                 :mode (lambda() (if (string-suffix-p "_test.go" (buffer-name)) "test" "debug"))
+                 :program "."
+                 :cwd "."
+                 :args ["-test.run" "."] ))
+
+  (add-to-list 'dape-configs
+               `(delve-ginkgo-focus
+                 modes (go-mode go-ts-mode)
+                 ensure dape-ensure-command
+                 fn (dape-config-autoport dape-config-tramp)
+                 command "dlv"
+                 command-insert-stderr t
+                 command-args ("dap" "--listen" "127.0.0.1::autoport")
+                 command-cwd (lambda()(if (string-suffix-p "_test.go" (buffer-name))
+                                          default-directory (dape-cwd)))
+                 port :autoport
+                 :type "debug"
+                 :request "launch"
+                 :mode (lambda() (if (string-suffix-p "_test.go" (buffer-name)) "test" "debug"))
+                 :program "."
+                 :cwd "."
+                 :args
+                 (lambda ()
+                   (require 'which-func)
+                   (if-let* ((file-name (buffer-file-name))
+                             ((string-suffix-p "_test.go" file-name))
+                             (test-name (extract-ginkgo-describe-string)))
+                       `["-ginkgo.v" "-ginkgo.focus"
+                         ,(substring-no-properties test-name )]
+                     [])))))
+
+(defun extract-ginkgo-describe-string ()
+  "Return the string in double quotes that follows `ginkgo.Describe(` or
+`ginkgo.It(' on the current line."
+  (interactive)
+  (let ((line (thing-at-point 'line t)))
+    (if (string-match "ginkgo\\.Describe(\"\\(.*?\\)\"\\|ginkgo\\.It(\"\\(.*?\\)\"" line)
+        (or (match-string 1 line) (match-string 2 line))
+      "No matching test found.")))
 
 
 (map! :map dape-mode-map

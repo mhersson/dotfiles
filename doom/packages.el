@@ -7,7 +7,6 @@
 ;; Better debugging
 (package! dape)
 
-
 (package! ginkgo
   :recipe (:host github :repo "garslo/ginkgo-mode" :files ("*.el")))
 
