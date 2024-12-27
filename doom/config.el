@@ -210,47 +210,38 @@
   (add-to-list 'copilot-indentation-alist '(closure-mode 2))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
-;; Add mdpls to markdown-mode for preview
+;; Add mpls to markdown-mode for preview
 (after! markdown-mode
-  ;; Automatically open markdown preview (start mdpls)
-  (add-hook 'markdown-mode-local-vars-hook #'lsp!)
-  ;; Enable static content
-  (setq lsp-mdpls-serve-static t))
+  ;; Automatically open markdown preview (start mpls)
+  (add-hook 'markdown-mode-local-vars-hook #'lsp!))
 
 (after! lsp-mode
-  (defgroup lsp-mdpls nil
-    "Settings for the mdpls language server client."
+  (defgroup lsp-mpls nil
+    "Settings for the mpls language server client."
     :group 'lsp-mode
-    :link '(url-link "https://github.com/euclio/mdpls"))
+    :link '(url-link "https://github.com/mhersson/mpls"))
 
-  (defcustom lsp-mdpls-server-command "mdpls"
+  (defcustom lsp-mpls-server-command "/Users/morten/Development/mpls/mpls"
     "The binary (or full path to binary) which executes the server."
     :type 'string
-    :group 'lsp-mdpls)
-
-  (defcustom lsp-mdpls-serve-static t
-    "Set to true if mdpls should serve static files like images."
-    :type 'boolean
-    :group 'lsp-mdpls)
+    :group 'lsp-mpls)
 
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
                                      (lambda ()
-                                       (or (executable-find lsp-mdpls-server-command)
-                                           (lsp-package-path 'mdpls)
-                                           "mdpls")
+                                       (or (executable-find lsp-mpls-server-command)
+                                           (lsp-package-path 'mpls)
+                                           "mpls")
                                        ))
                     :activation-fn (lsp-activate-on "markdown")
                     :initialized-fn (lambda (workspace)
                                       (with-lsp-workspace workspace
                                         (lsp--set-configuration
-                                         (lsp-configuration-section "mdpls"))
-                                        (lsp--set-configuration
-                                         `((markdown . ((preview . ((serveStatic . ,lsp-mdpls-serve-static)))))))
+                                         (lsp-configuration-section "mpls"))
                                         ))
                     :priority 1
                     :add-on? t
-                    :server-id 'mdpls)))
+                    :server-id 'mpls)))
 
 ;; Debugging with dape
 (use-package! dape
