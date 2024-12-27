@@ -6,6 +6,9 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.window_background_opacity = 1.00
+config.macos_window_background_blur = 95
+
 config.front_end = "WebGpu"
 
 config.color_scheme = "catppuccin-mocha"
@@ -15,8 +18,8 @@ config.cursor_blink_rate = 500
 
 config.audible_bell = "Disabled"
 
-config.font_size = 14
-config.font = wezterm.font({ family = "MesloLGS Nerd Font" })
+config.font_size = 15
+config.font = wezterm.font('RobotoMono Nerd Font',{ weight = 'Regular' })
 
 config.pane_focus_follows_mouse = true
 
