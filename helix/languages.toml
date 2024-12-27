@@ -1,0 +1,62 @@
+[[language]]
+auto-format = true
+name = "bash"
+
+[language.formatter]
+args = ["-i", "2", "-ci", "-bn"]
+command = "shfmt"
+
+[[language]]
+auto-format = true
+name = "go"
+
+[language.formatter]
+command = "gofumpt"
+
+[[language]]
+auto-format = true
+language-servers = ["marksman", "mpls"]
+name = "markdown"
+
+[language.formatter]
+command = "prettier"
+
+[[language]]
+auto-format = true
+name = "nix"
+
+[language.formatter]
+command = "nixfmt"
+
+[[language]]
+auto-format = true
+language-servers = ["pyright", "ruff"]
+name = "python"
+
+[language.formatter]
+args = ["--line-length", "88", "--quiet", "-"]
+command = "black"
+
+[[language]]
+auto-format = true
+name = "yaml"
+
+[language.formatter]
+args = ["-"]
+command = "yamlfmt"
+
+[language-server.mpls]
+args = ["--full-sync", "--code-style", "emacs"]
+command = "mpls"
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[language-server.vale]
+command = "vale-ls"

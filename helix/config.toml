@@ -1,0 +1,41 @@
+theme = "catppuccin_mocha"
+[editor]
+bufferline = "multiple"
+color-modes = true
+true-color = true
+[editor.auto-pairs]
+"(" = ")"
+"[" = "]"
+"{" = "}"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = ["mode", "version-control", "file-name", "spinner"]
+
+[editor.whitespace.render]
+newline = "all"
+
+[keys.normal]
+H = "goto_previous_buffer"
+L = "goto_next_buffer"
+
+[keys.normal.space]
+"," = "buffer_picker"
+space = "file_picker"
+
+[keys.normal.space.b]
+R = ":reload-all"
+d = ":buffer-close"
+k = ":buffer-close!"
+o = ":buffer-close-others"
+r = ":reload"
