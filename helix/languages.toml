@@ -46,7 +46,7 @@ args = ["-"]
 command = "yamlfmt"
 
 [language-server.mpls]
-args = ["--full-sync", "--code-style", "emacs"]
+args = ["--dark-mode", "--enable-emoji", "--enable-footnotes" ]
 command = "mpls"
 
 [language-server.pyright.config.python.analysis]
