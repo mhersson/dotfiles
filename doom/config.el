@@ -221,6 +221,13 @@
     :group 'lsp-mode
     :link '(url-link "https://github.com/mhersson/mpls"))
 
+  (defun lsp-mpls-open-preview ()
+    "Open preview of current buffer"
+    (interactive)
+    (lsp-request
+     "workspace/executeCommand"
+     (list :command "open-preview")))
+
   (defcustom lsp-mpls-server-command "/Users/morten/Development/mpls/mpls"
     "The binary (or full path to binary) which executes the server."
     :type 'string
@@ -229,10 +236,14 @@
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection
                                      (lambda ()
-                                       (or (executable-find lsp-mpls-server-command)
-                                           (lsp-package-path 'mpls)
-                                           "mpls")
-                                       ))
+                                       (list
+                                        (or (executable-find lsp-mpls-server-command)
+                                            (lsp-package-path 'mpls)
+                                            "mpls")
+                                        "--dark-mode"
+                                        "--enable-emoji"
+                                        "--enable-footnotes"
+                                        )))
                     :activation-fn (lsp-activate-on "markdown")
                     :initialized-fn (lambda (workspace)
                                       (with-lsp-workspace workspace
