@@ -1,5 +1,5 @@
 font-family = RobotoMono Nerd Font
-font-size = 15
+font-size = 14
 theme = catppuccin-mocha
 quit-after-last-window-closed = true
 background-blur-radius = 20
