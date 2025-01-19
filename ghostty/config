@@ -1,8 +1,11 @@
 font-family = RobotoMono Nerd Font
 font-size = 14
 theme = catppuccin-mocha
+window-padding-x = 10
 quit-after-last-window-closed = true
 background-blur-radius = 20
 mouse-hide-while-typing = true
 keybind = global:cmd+/=toggle_quick_terminal
 macos-option-as-alt = true
+focus-follows-mouse = true
+copy-on-select = true
