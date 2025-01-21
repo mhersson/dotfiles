@@ -14,7 +14,7 @@ return {
           if not configs.mpls then
             configs.mpls = {
               default_config = {
-                cmd = { "mpls" },
+                cmd = { "mpls", "--dark-mode", "--enable-emoji" },
                 filetypes = { "markdown" },
                 single_file_support = true,
                 root_dir = require("lspconfig").util.find_git_ancestor,
