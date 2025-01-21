@@ -26,7 +26,7 @@ return {
     end,
     dependencies = { -- These are optional
       "nvim-treesitter/nvim-treesitter",
-      "hrsh7th/nvim-cmp",
+      -- "hrsh7th/nvim-cmp",
     },
     opt = true, -- Set this to true if the plugin is optional
     event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
