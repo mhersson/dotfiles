@@ -42,10 +42,21 @@
                "\n"))
      'face 'doom-dashboard-banner)))
 
-(setq +doom-dashboard-ascii-banner-fn #'autobots-rules-greater)
 
+(setq +doom-dashboard-ascii-banner-fn #'autobots-rules-greater)
 (custom-set-faces!
   '(doom-dashboard-banner :foreground "#61afef" ))
+
+;; (GUI) set initial frame size, splash image and cursor colors
+(when (display-graphic-p)
+  (set-frame-size (selected-frame) 165 80)
+  (setq fancy-splash-image (concat doom-user-dir "yoshi.png"))
+  (setq evil-emacs-state-cursor '("red" box)
+        evil-normal-state-cursor '("orange" box)
+        evil-visual-state-cursor '("orange" box)
+        evil-insert-state-cursor '("red" bar)
+        evil-replace-state-cursor '("red" bar)
+        evil-operator-state-cursor '("red" hollow)))
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -64,9 +75,9 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
-(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 15 :weight 'Regular))
-;;
+
+(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 14 :weight 'Regular))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -127,8 +138,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Set scratch buffer to github-falvored-markdown
-(setq initial-major-mode 'gfm-mode)
+;; Enable the documentation pop-up
+(setq lsp-ui-doc-show-with-cursor t)
+(setq lsp-ui-doc-delay 0.2)
+(setq lsp-ui-doc-max-width 120)
 
 ;; Set custom global keybindings
 (map! :map global-map
@@ -145,6 +158,8 @@
   (setq ispell-local-dictionary-alist
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
+;; Formatting
+
 ;; Set shell indent to 2 spaces
 (add-hook! sh-mode
   (setq sh-basic-offset 2)
@@ -160,14 +175,6 @@
                     (bash "bash") (mksh "mksh") (t "posix"))))
     :modes 'sh-mode))
 
-(add-hook! go-mode
-  (setq lsp-gopls-gofumpt t)
-  (setq lsp-gopls-complete-unimported t)
-  (setq lsp-gopls-deep-completion t)
-  (setq lsp-gopls-use-placeholders t)
-  (setq lsp-gopls-semantic-tokens t)
-  (setq lsp-go-build-flags ["-tags=integration"]))
-
 ;; Use yamlfmt instead of lsp to format yaml files
 (after! yaml-mode
   (add-hook 'yaml-mode-hook
@@ -181,8 +188,18 @@
       (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
       (goto-char current-point))))
 
+;; Lsp settings
+
 (after! lsp-mode
   (setq lsp-inlay-hint-enable t))
+
+(add-hook! go-mode
+  (setq lsp-gopls-gofumpt t)
+  (setq lsp-gopls-complete-unimported t)
+  (setq lsp-gopls-deep-completion t)
+  (setq lsp-gopls-use-placeholders t)
+  (setq lsp-gopls-semantic-tokens t)
+  (setq lsp-go-build-flags ["-tags=integration"]))
 
 ;; Rust
 (setq lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
@@ -191,24 +208,6 @@
 (setq lsp-rust-analyzer-display-closure-return-type-hints t)
 (setq lsp-rust-analyzer-display-parameter-hints t)
 ;; (setq lsp-rust-analyzer-display-reborrow-hints t)
-
-;; Copilot
-(use-package! copilot
-  ;; :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("C-<return>" . 'copilot-accept-completion)
-              ;; ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)
-              ("M-n" . 'copilot-next-completion)
-              ("M-p" . 'copilot-previous-completion))
-
-  :config
-  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-  (add-to-list 'copilot-indentation-alist '(org-mode 2))
-  (add-to-list 'copilot-indentation-alist '(text-mode 2))
-  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
-  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
 ;; Add mpls to markdown-mode for preview
 (after! markdown-mode
@@ -254,13 +253,37 @@
                     :add-on? t
                     :server-id 'mpls)))
 
+;; Plantuml
+(after! plantuml-mode
+  (setq plantuml-default-exec-mode 'jar
+        plantuml-preview-theme "toy"))
+
+;; Copilot
+(use-package! copilot
+  ;; :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("C-<return>" . 'copilot-accept-completion)
+              ;; ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("M-n" . 'copilot-next-completion)
+              ("M-p" . 'copilot-previous-completion))
+
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+
+
 ;; Debugging with dape
 (use-package! dape
   :config
   ;; Info buffers to the right
-  ;;(setq dape-buffer-window-arrangement 'right)
-  (setq dape-buffer-window-arrangement 'gud)
-  (setq dape-info-hide-mode-line nil)
+  (setq dape-buffer-window-arrangement 'right)
+  ;; (setq dape-buffer-window-arrangement 'gud)
+  ;; (setq dape-info-hide-mode-line nil)
 
   ;; Showing inlay hints
   (setq dape-inlay-hints t)
