@@ -143,6 +143,10 @@
 (setq lsp-ui-doc-delay 0.2)
 (setq lsp-ui-doc-max-width 120)
 
+;; Expand magit sections by default
+(setq magit-section-initial-visibility-alist
+      '((stashes . show) (untracked . show) (unpushed . show)))
+
 ;; Set custom global keybindings
 (map! :map global-map
       "M-k" #'drag-stuff-up
