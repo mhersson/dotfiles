@@ -1,6 +1,9 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
+;; Disable vertico posframe
+(package! vertico-posframe :disable t)
+
 (package! catppuccin-theme)
 
 (package! copilot

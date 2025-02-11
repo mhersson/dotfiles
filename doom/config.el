@@ -49,7 +49,7 @@
 
 ;; (GUI) set initial frame size, splash image and cursor colors
 (when (display-graphic-p)
-  (set-frame-size (selected-frame) 165 80)
+  (set-frame-size (selected-frame) 180 90)
   (setq fancy-splash-image (concat doom-user-dir "yoshi.png"))
   (setq evil-emacs-state-cursor '("red" box)
         evil-normal-state-cursor '("orange" box)
