@@ -6,10 +6,11 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
+
 export GOPATH=$HOME/Development/go
 
-eval "$(direnv hook zsh)"
+export KIND_EXPERIMENTAL_PROVIDER=podman
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path
-path=($GOPATH/bin $HOME/.config/emacs/bin $HOME/.local/bin /usr/local/go/bin /usr/local/zig $path)
+path=($GOPATH/bin $HOME/.local/bin $HOME/.config/emacs/bin /opt/homebrew/bin $path)
