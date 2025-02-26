@@ -49,7 +49,7 @@
 
 ;; (GUI) set initial frame size, splash image and cursor colors
 (when (display-graphic-p)
-  (set-frame-size (selected-frame) 180 90)
+  (set-frame-size (selected-frame) 185 67)
   (setq fancy-splash-image (concat doom-user-dir "yoshi.png"))
   (setq evil-emacs-state-cursor '("red" box)
         evil-normal-state-cursor '("orange" box)
@@ -59,10 +59,6 @@
         evil-operator-state-cursor '("red" hollow)))
 
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Morten Hersson"
-      user-mail-address "mhersson@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -104,7 +100,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -243,9 +238,11 @@
                                         (or (executable-find lsp-mpls-server-command)
                                             (lsp-package-path 'mpls)
                                             "mpls")
-                                        "--dark-mode"
                                         "--enable-emoji"
                                         "--enable-footnotes"
+                                        "--plantuml-server" "localhost:8080"
+                                        "--plantuml-path" "/"
+                                        "--plantuml-disable-tls"
                                         )))
                     :activation-fn (lsp-activate-on "markdown")
                     :initialized-fn (lambda (workspace)
