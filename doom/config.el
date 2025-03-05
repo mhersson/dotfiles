@@ -72,7 +72,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 
-(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 14 :weight 'Regular))
+(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 15 :weight 'Regular))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
