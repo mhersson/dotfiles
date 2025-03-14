@@ -136,7 +136,6 @@
 ;; Enable the documentation pop-up
 (setq lsp-ui-doc-show-with-cursor t)
 (setq lsp-ui-doc-delay 0.2)
-(setq lsp-ui-doc-max-width 120)
 
 ;; Expand magit sections by default
 (setq magit-section-initial-visibility-alist
@@ -208,6 +207,35 @@
 (setq lsp-rust-analyzer-display-parameter-hints t)
 ;; (setq lsp-rust-analyzer-display-reborrow-hints t)
 
+(after! flycheck
+  ;; Define the checker
+  (flycheck-define-checker markdownlint-cli2
+    "A Markdown syntax and style checker using markdownlint-cli2."
+    :command ("markdownlint-cli2" source)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column " " (id (one-or-more (not (any " ")))) " " (message) line-end))
+    :modes markdown-mode)
+
+  ;; Register the checker
+  (add-to-list 'flycheck-checkers 'markdownlint-cli2)
+
+  ;; Explicitly tell flycheck this checker applies to markdown-mode
+  (push 'markdownlint-cli2 (flycheck-checker-get 'markdown-mode 'next-checkers))
+
+  ;; Try to select this checker specifically
+  (setq-hook! 'markdown-mode-hook flycheck-checker 'markdownlint-cli2))
+
+;; Hook to enable flycheck and lsp in markdown-mode
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (flycheck-mode 1)
+            (lsp)
+            ;; Set this checker as highest priority
+            (setq-local flycheck-checker 'markdownlint-cli2)))
+
+;; Use markdown-mode for README files instead of gfm-mode
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . markdown-mode))
+
 ;; Add mpls to markdown-mode for preview
 (after! markdown-mode
   ;; Automatically open markdown preview (start mpls)
@@ -219,7 +247,7 @@
     :group 'lsp-mode
     :link '(url-link "https://github.com/mhersson/mpls"))
 
-  (defun lsp-mpls-open-preview ()
+  (defun mpls-open-preview ()
     "Open preview of current buffer"
     (interactive)
     (lsp-request
@@ -238,6 +266,7 @@
                                         (or (executable-find lsp-mpls-server-command)
                                             (lsp-package-path 'mpls)
                                             "mpls")
+                                        "--no-auto"
                                         "--enable-emoji"
                                         "--enable-footnotes"
                                         "--plantuml-server" "localhost:8080"
@@ -290,7 +319,7 @@
   (setq dape-inlay-hints t)
 
   ;; Set project root as current working dir
-  (setq dape-cwd-fn 'projectile-project-root)
+  (setq dape-cwd-function 'projectile-project-root)
 
 
   (add-to-list 'dape-configs
