@@ -72,7 +72,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 
-(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 15 :weight 'Regular))
+(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 14 :weight 'Regular))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -145,6 +145,11 @@
 (map! :map global-map
       "M-k" #'drag-stuff-up
       "M-j" #'drag-stuff-down)
+
+;; Define keybindings for Shift+H and Shift+L in normal mode
+(map! :map evil-normal-state-map
+      "H" #'previous-buffer  ; Shift+H for previous buffer
+      "L" #'next-buffer)     ; Shift+L for next buffer
 
 ;; Always middle click paste at cursors position
 (setq mouse-yank-at-point t)
@@ -266,6 +271,7 @@
                                         (or (executable-find lsp-mpls-server-command)
                                             (lsp-package-path 'mpls)
                                             "mpls")
+                                        "--dark-mode"
                                         "--no-auto"
                                         "--enable-emoji"
                                         "--enable-footnotes"
@@ -281,7 +287,39 @@
                                         ))
                     :priority 1
                     :add-on? t
-                    :server-id 'mpls)))
+                    :server-id 'mpls))
+
+  ;; Send mpls/editorDidChangeFocus events
+  (defvar last-focused-markdown-buffer nil
+    "Tracks the last markdown buffer that had focus.")
+
+  (defun send-markdown-focus-notification ()
+    "Send an event when focus changes to a markdown buffer."
+    (when (and (eq major-mode 'markdown-mode)
+               (not (eq (current-buffer) last-focused-markdown-buffer))
+               lsp--buffer-workspaces)
+      (setq last-focused-markdown-buffer (current-buffer))
+
+      ;; Get the full file path and convert it to a URI
+      (let* ((file-name (buffer-file-name))
+             (uri (lsp--path-to-uri file-name)))
+        ;; Send notification
+        (lsp-notify "mpls/editorDidChangeFocus"
+                    (list :uri uri
+                          :fileName file-name)))))
+
+  (defun setup-markdown-focus-tracking ()
+    "Setup tracking for markdown buffer focus changes."
+    (add-hook 'buffer-list-update-hook
+              (lambda ()
+                (let ((current-window-buffer (window-buffer (selected-window))))
+                  (when (and (eq current-window-buffer (current-buffer))
+                             (eq major-mode 'markdown-mode)
+                             (buffer-file-name))
+                    (send-markdown-focus-notification))))))
+
+  ;; Initialize the tracking
+  (setup-markdown-focus-tracking))
 
 ;; Plantuml
 (after! plantuml-mode
