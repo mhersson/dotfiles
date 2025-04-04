@@ -1,4 +1,6 @@
 stty -ixon
+autoload -Uz compinit
+compinit
 
 bindkey -M viins '\e.' insert-last-word
 
