@@ -1,6 +1,6 @@
 font-family = RobotoMono Nerd Font
 font-style = Medium
-font-size = 15
+font-size = 14
 cursor-text = black
 theme = catppuccin-mocha
 window-padding-x = 10
