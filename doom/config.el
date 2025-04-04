@@ -245,9 +245,9 @@
                     :activation-fn (lsp-activate-on "markdown")
                     :initialized-fn (lambda (workspace)
                                       (with-lsp-workspace workspace
-                                                          (lsp--set-configuration
-                                                           (lsp-configuration-section "mpls"))
-                                                          ))
+                                        (lsp--set-configuration
+                                         (lsp-configuration-section "mpls"))
+                                        ))
                     :priority 1
                     :add-on? t
                     :server-id 'mpls))
