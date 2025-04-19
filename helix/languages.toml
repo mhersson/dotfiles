@@ -7,47 +7,49 @@ args = ["-i", "2", "-ci", "-bn"]
 command = "shfmt"
 
 [[language]]
-auto-format = true
 name = "go"
+auto-format = true
+language-servers = [ "gopls", "golangci-lint-lsp" ]
 
 [language.formatter]
 command = "gofumpt"
 
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1"]
+
 [[language]]
+name = "markdown"
 auto-format = true
 language-servers = ["marksman", "mpls"]
-name = "markdown"
+text-width = 80
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
 
 [language.formatter]
 command = "prettier"
 
+[language-server.mpls]
+command = "mpls"
+args = ["--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
+
 [[language]]
-auto-format = true
 name = "nix"
+auto-format = true
 
 [language.formatter]
 command = "nixfmt"
 
 [[language]]
+name = "python"
 auto-format = true
 language-servers = ["pyright", "ruff"]
-name = "python"
 
 [language.formatter]
 args = ["--line-length", "88", "--quiet", "-"]
 command = "black"
-
-[[language]]
-auto-format = true
-name = "yaml"
-
-[language.formatter]
-args = ["-"]
-command = "yamlfmt"
-
-[language-server.mpls]
-args = ["--dark-mode", "--enable-emoji", "--enable-footnotes" ]
-command = "mpls"
 
 [language-server.pyright.config.python.analysis]
 typeCheckingMode = "basic"
@@ -57,6 +59,14 @@ command = "ruff-lsp"
 
 [language-server.ruff.config.settings]
 args = ["--ignore", "E501"]
+
+[[language]]
+name = "yaml"
+auto-format = true
+
+[language.formatter]
+args = ["-"]
+command = "yamlfmt"
 
 [language-server.vale]
 command = "vale-ls"
