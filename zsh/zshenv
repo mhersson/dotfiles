@@ -13,4 +13,4 @@ export KIND_EXPERIMENTAL_PROVIDER=podman
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path
-path=($GOPATH/bin $HOME/.local/bin $HOME/.config/emacs/bin /opt/homebrew/bin $path)
+export PATH=$GOPATH/bin:$HOME/.local/bin:$HOME/.config/emacs/bin:/opt/homebrew/bin:$PATH
