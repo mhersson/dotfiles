@@ -1,6 +1,6 @@
 export LC_ALL=en_US.UTF-8
 
-export EDITOR=nvim
+export EDITOR=hx
 
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
@@ -9,8 +9,11 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export GOPATH=$HOME/Development/go
 
+export HELIX_RUNTIME=$HOME/Development/helix/runtime
+
 export KIND_EXPERIMENTAL_PROVIDER=podman
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path
-export PATH=$GOPATH/bin:$HOME/.local/bin:$HOME/.config/emacs/bin:/opt/homebrew/bin:$PATH
+export PATH=$GOPATH/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/emacs/bin:/opt/homebrew/bin:$PATH
+. "$HOME/.cargo/env"
