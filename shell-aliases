@@ -15,9 +15,29 @@ alias glp='git log --decorate --patch --word-diff=color --color-moved'
 alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
 
+
+function go_single_test() {
+  testname=$1
+  testpath="./..."
+
+  if [ -z "${testname}" ]; then
+    echo "Please provide a test name to run."
+    return
+  fi
+
+  if [ -n "$2" ]; then
+    testpath="$2"
+  fi
+
+  go test -v -run "${testname}" "${testpath}"
+}
+
+alias gtst='go_single_test'
+
 alias cat='bat --theme "Catppuccin Mocha" --style plain --paging=never'
 alias less='bat --theme "Catppuccin Mocha" --style plain'
-alias vi='nvim'
+alias lg='lazygit'
+alias vi='hx'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
 alias kc='kubectl'
