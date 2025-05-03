@@ -11,12 +11,10 @@
 ;; (package! copilot-chat
 ;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))
 
-;; Better debugging
-(package! dape)
-
 (package! ginkgo
   :recipe (:host github :repo "garslo/ginkgo-mode" :files ("*.el")))
 
+(unpin! flycheck-golangci-lint)
 
 ;; (package! copilot-chat
 ;;   :recipe (:host github :repo "chep/copilot-chat.el" :files ("*.el")))
