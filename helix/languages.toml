@@ -26,14 +26,12 @@ file-types = ["tmpl"]
 
 [[language]]
 name = "markdown"
-auto-format = true
+auto-format = false
 language-servers = ["marksman", "mpls"]
-text-width = 80
-soft-wrap.enable = true
-soft-wrap.wrap-at-text-width = true
 
 [language.formatter]
 command = "prettier"
+args = ["--parser", "markdown"]
 
 [language-server.mpls]
 command = "mpls"
