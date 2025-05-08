@@ -21,6 +21,10 @@ command = "golangci-lint-langserver"
 command = ["golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1"]
 
 [[language]]
+name = "gotmpl"
+file-types = ["tmpl"]
+
+[[language]]
 name = "markdown"
 auto-format = true
 language-servers = ["marksman", "mpls"]
