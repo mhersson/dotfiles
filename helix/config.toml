@@ -3,6 +3,14 @@ theme = "catppuccin_mocha"
 bufferline = "multiple"
 color-modes = true
 true-color = true
+
+# Minimum severity to show a diagnostic after the end of a line
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "error" # Show inline diagnostics when the cursor is on the line
+other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
+
 [editor.auto-pairs]
 "(" = ")"
 "[" = "]"
