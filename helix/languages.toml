@@ -63,6 +63,16 @@ command = "ruff-lsp"
 args = ["--ignore", "E501"]
 
 [[language]]
+name = "rego"
+file-types = ["rego"]
+language-servers = [ { name = "regal" } ]
+
+[language-server.regal]
+command = "regal"
+args = ["language-server"]
+config = { provideFormatter = true }
+
+[[language]]
 name = "yaml"
 auto-format = true
 
