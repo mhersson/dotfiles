@@ -1,8 +1,8 @@
-# 🚀 Minimal Neovim Configuration
+# 🚀 My Neovim Configuration
 
-A clean, modular Neovim configuration built from scratch (but very much
-inspired by LazyVim) with a focus on Go development and daily productivity
-tasks.
+My goal is a clean, modular Neovim configuration built from scratch (however it
+is very much inspired by LazyVim) with a focus on Go development and daily
+productivity tasks.
 
 This README also function as a to-do list for the features and tools I want to
 implement in my Neovim setup.
@@ -56,7 +56,7 @@ implement in my Neovim setup.
 | **Bash**       | Shell scripting           |   ✅   |
 | **CSS**        | Web styling and design    |   ✅   |
 | **HTML**       | Web markup and templates  |   ✅   |
-| **Javascript** | Web development           |   ⬜   |
+| **Javascript** | Web development           |   ✅   |
 | **JSON**       | Data interchange & config |   ✅   |
 | **Lua**        | Neovim config             |   ✅   |
 | **Python**     | General purpose           |   ⬜   |
@@ -90,16 +90,16 @@ implement in my Neovim setup.
 
 ### Developer Experience
 
-- **AI Assistance**: GitHub Copilot integration with toggle support
+- **AI Assistance**: GitHub Copilot integration (toggleable)
 - **Git Workflow**: Neogit for comprehensive git operations
 - **Code Formatting**: Automatic formatting on save (toggleable)
-- **Project Navigation**: Smart root directory detection
-- **Diagnostics**: Beautiful diagnostic icons and trouble integration
+- **Project Navigation**: Smart root directory detection for quick project switching
+- **Diagnostics**: Diagnostic icons and trouble integration
 
 ### UI & UX
 
 - **Modern Interface**: Clean statusline with project info and copilot status
-- **Theme Support**: Catppuccin theme with additional themes planned
+- **Theme Support**: Catppuccin theme
 - **Icons**: Comprehensive icon set for file types and diagnostics
 - **Which-key**: Interactive keybinding help system
 
