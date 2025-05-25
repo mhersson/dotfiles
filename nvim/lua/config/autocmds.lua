@@ -5,44 +5,61 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     command = "set ft=gotmpl",
 })
 
--- MPLS
+-- MPLS Focus Handler
 
-local debounce_timer = nil
-local debounce_delay = 300 -- Delay in milliseconds
+local function create_debounced_mpls_sender(delay)
+    delay = delay or 300
+    local timer = nil
 
-local function sendMessageToLSP()
-    -- Clear the previous timer if it exists
-    if debounce_timer then
-        debounce_timer:stop()
-    end
+    return function()
+        if timer then
+            timer:close()
+            timer = nil
+        end
 
-    -- Create a new timer
-    debounce_timer = vim.loop.new_timer()
-    debounce_timer:start(
-        debounce_delay,
-        0,
-        vim.schedule_wrap(function()
-            local bufnr = vim.api.nvim_get_current_buf()
-            local clients = vim.lsp.get_clients()
+        timer = vim.uv.new_timer()
+        if not timer then
+            vim.notify("Failed to create timer for MPLS focus", vim.log.levels.ERROR)
+            return
+        end
 
-            for _, client in ipairs(clients) do
-                if client.name == "mpls" then
-                    client.request(
-                        "mpls/editorDidChangeFocus",
-                        { uri = vim.uri_from_bufnr(bufnr) },
-                        function(err, result) end,
-                        bufnr
-                    )
+        timer:start(
+            delay,
+            0,
+            vim.schedule_wrap(function()
+                local bufnr = vim.api.nvim_get_current_buf()
+
+                local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+                if filetype ~= "markdown" then
+                    return
                 end
-            end
-        end)
-    )
+
+                local clients = vim.lsp.get_clients({ name = "mpls" })
+
+                if #clients == 0 then
+                    return
+                end
+
+                local client = clients[1]
+                local params = { uri = vim.uri_from_bufnr(bufnr) }
+
+                client.notify("mpls/editorDidChangeFocus", params)
+
+                if timer then
+                    timer:close()
+                    timer = nil
+                end
+            end)
+        )
+    end
 end
 
--- Create an autocommand group
-local group = vim.api.nvim_create_augroup("MarkdownFocus", { clear = true })
+local send_mpls_focus = create_debounced_mpls_sender(300)
+
+local group = vim.api.nvim_create_augroup("MplsFocus", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*.md",
-    callback = sendMessageToLSP,
+    callback = send_mpls_focus,
     group = group,
+    desc = "Notify MPLS of buffer focus changes",
 })
