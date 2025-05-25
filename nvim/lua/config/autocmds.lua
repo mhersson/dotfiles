@@ -5,6 +5,18 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     command = "set ft=gotmpl",
 })
 
+-- Tree-sitter
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+        local bufnr = args.buf
+        local ft = vim.bo[bufnr].filetype
+
+        -- Only enable if a parser exists for this filetype
+        if pcall(vim.treesitter.get_parser, bufnr, ft) then
+            vim.treesitter.start(bufnr)
+        end
+    end,
+})
 -- MPLS Focus Handler
 
 local function create_debounced_mpls_sender(delay)
@@ -45,7 +57,7 @@ local function create_debounced_mpls_sender(delay)
                 local params = { uri = vim.uri_from_bufnr(bufnr) }
 
                 ---@diagnostic disable-next-line: param-type-mismatch
-                client.notify("mpls/editorDidChangeFocus", params)
+                client:notify("mpls/editorDidChangeFocus", params)
 
                 if timer then
                     timer:close()
