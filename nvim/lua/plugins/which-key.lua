@@ -50,7 +50,7 @@ return {
         },
         keys = {
             {
-                "<leader>ac",
+                "<leader>at",
                 function()
                     vim.cmd("Copilot toggle")
                 end,
