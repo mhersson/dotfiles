@@ -21,9 +21,7 @@ return {
             statuscolumn = { enabled = false },
             words = { enabled = true },
             styles = {
-                notification = {
-                    -- wo = { wrap = true } -- Wrap notifications
-                },
+                notification = {},
             },
         },
         keys = {

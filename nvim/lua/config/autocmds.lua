@@ -17,6 +17,7 @@ local function create_debounced_mpls_sender(delay)
             timer = nil
         end
 
+        ---@diagnostic disable-next-line: undefined-field
         timer = vim.uv.new_timer()
         if not timer then
             vim.notify("Failed to create timer for MPLS focus", vim.log.levels.ERROR)
@@ -43,6 +44,7 @@ local function create_debounced_mpls_sender(delay)
                 local client = clients[1]
                 local params = { uri = vim.uri_from_bufnr(bufnr) }
 
+                ---@diagnostic disable-next-line: param-type-mismatch
                 client.notify("mpls/editorDidChangeFocus", params)
 
                 if timer then

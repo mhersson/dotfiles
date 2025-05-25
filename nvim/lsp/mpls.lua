@@ -18,7 +18,7 @@ return {
                 command = "open-preview",
                 arguments = {},
             }
-            client.request("workspace/executeCommand", params, function(err, result)
+            client.request("workspace/executeCommand", params, function(err, _)
                 if err then
                     vim.notify("Error executing command: " .. err.message, vim.log.levels.ERROR)
                 else
