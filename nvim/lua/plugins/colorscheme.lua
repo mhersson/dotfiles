@@ -1,14 +1,30 @@
+local ACTIVE_THEME = "tokyonight"
+
 return {
     {
+        "folke/tokyonight.nvim",
+        lazy = ACTIVE_THEME ~= "tokyonight",
+        priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
+        opts = { style = "moon" },
+        config = function(_, opts)
+            require("tokyonight").setup(opts)
+            if ACTIVE_THEME == "tokyonight" then
+                vim.cmd.colorscheme("tokyonight")
+            end
+        end,
+    },
+    {
         "catppuccin/nvim",
-        lazy = false,
         name = "catppuccin",
-        priority = 1000,
+        lazy = ACTIVE_THEME ~= "catppuccin",
+        priority = ACTIVE_THEME == "catppuccin" and 1000 or nil,
         config = function()
             require("catppuccin").setup({
                 flavor = "mocha",
             })
-            vim.cmd.colorscheme("catppuccin")
+            if ACTIVE_THEME == "catppuccin" then
+                vim.cmd.colorscheme("catppuccin")
+            end
         end,
         opts = {
             integrations = {
@@ -16,6 +32,8 @@ return {
                 alpha = false,
                 cmp = false,
                 dashboard = false,
+                dap = true,
+                dap_ui = true,
                 flash = false,
                 fzf = true,
                 grug_far = true,
@@ -30,12 +48,6 @@ return {
                 mini = true,
                 native_lsp = {
                     enabled = true,
-                    underlines = {
-                        errors = { "undercurl" },
-                        hints = { "undercurl" },
-                        warnings = { "undercurl" },
-                        information = { "undercurl" },
-                    },
                 },
                 navic = { enabled = true, custom_bg = "lualine" },
                 neotest = true,

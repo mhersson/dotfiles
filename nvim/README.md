@@ -91,7 +91,7 @@ implement in my setup.
 | **Gruvbox Light**   |   ⬜   |
 | **OneDark**         |   ⬜   |
 | **Solarized Light** |   ⬜   |
-| **TokyoNight**      |   ⬜   |
+| **TokyoNight**      |   ✅   |
 
 ## 🤝 Contributing
 
