@@ -87,16 +87,30 @@ return {
                                     if ok and copilot_status.status and copilot_status.data then
                                         local status = copilot_status.data.status
                                         if status == "InProgress" then
-                                            return { fg = "#f7768e" } -- pending/error color
+                                            return { fg = "#ff757f" } -- pending/error color
                                         elseif status == "Warning" then
-                                            return { fg = "#ff9e64" } -- warning color
+                                            return { fg = "#ff966c" } -- warning color
                                         else
-                                            return { fg = "#9ece6a" } -- ok/success color
+                                            return { fg = "#4fd6be" } -- ok/success color
                                         end
                                     end
                                 end
                                 return { fg = "#565f89" } -- inactive color
                             end,
+                        },
+                        -- Add lsp icon if any lsp servers are running
+                        {
+                            function()
+                                local clients = vim.lsp.get_clients({ bufnr = 0 })
+                                if #clients > 0 then
+                                    return icons.kinds.Lsp .. " " .. #clients
+                                end
+                                return ""
+                            end,
+                            cond = function()
+                                return #vim.lsp.get_clients({ bufnr = 0 }) > 0
+                            end,
+                            color = { fg = "#82aaff" },
                         },
                         {
                             function()

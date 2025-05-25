@@ -50,6 +50,7 @@ M.kinds = {
     Interface = " ",
     Key = " ",
     Keyword = " ",
+    Lsp = "󱓞 ",
     Method = "󰊕 ",
     Module = " ",
     Namespace = "󰦮 ",
