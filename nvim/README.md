@@ -1,11 +1,11 @@
 # 🚀 My Neovim Configuration
 
-My goal is a clean, modular Neovim configuration built from scratch (however it
-is very much inspired by LazyVim) with a focus on Go development and daily
+My goal is a clean, modular Neovim configuration built from scratch, however it
+is very much inspired by LazyVim, but with a focus on Go development and daily
 productivity tasks.
 
 This README also function as a to-do list for the features and tools I want to
-implement in my Neovim setup.
+implement in my setup.
 
 ## ✨ Features
 
@@ -33,7 +33,7 @@ implement in my Neovim setup.
 | **Direnv**       | Environment variable management |   ✅   |
 | **Editorconfig** | Consistent coding styles        |   ✅   |
 | **Neogit**       | Git interface                   |   ✅   |
-| **NeoTest**      | Testing framework               |   ✅   |
+| **Neotest**      | Testing framework               |   ✅   |
 | **Nvim-lint**    | Linting integration             |   ✅   |
 | **Snacks**       | UI enhancements                 |   ✅   |
 | **Treesitter**   | Syntax highlighting & parsing   |   ✅   |
@@ -46,8 +46,8 @@ implement in my Neovim setup.
 | Language     | Tools                         | Status |
 | ------------ | ----------------------------- | :----: |
 | **Go**       | gopls, golangci-lint          |   ✅   |
-| **Rego**     | regal                         |   ✅   |
 | **Markdown** | markdownlint2, marksman, mpls |   ✅   |
+| **Rego**     | regal                         |   ✅   |
 
 #### Nice to Have
 
