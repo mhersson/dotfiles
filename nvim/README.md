@@ -19,6 +19,20 @@ implement in my setup.
 - **Developer Tools**: Integrated debugging, testing, git workflows, and AI
   assistance
 
+## ⚡️ Requirements
+
+| Requirement    |         Minimum Version / Notes |
+| -------------- | ------------------------------: |
+| **Neovim**     |                            0.11 |
+| **Git**        |                          2.19.0 |
+| **NerdFont**   |                             3.0 |
+| **C compiler** | For building Treesitter parsers |
+| **curl**       |                   For blink.cmp |
+| **fzf**        |                    Fuzzy finder |
+| **ripgrep**    |                       Live grep |
+| **fd**         |                       Find file |
+| **Terminal**   |     True color support required |
+
 ## 📋 Implementation Status
 
 ### 🔧 Core Tools & Utilities
@@ -93,7 +107,8 @@ implement in my setup.
 - **AI Assistance**: GitHub Copilot integration (toggleable)
 - **Git Workflow**: Neogit for comprehensive git operations
 - **Code Formatting**: Automatic formatting on save (toggleable)
-- **Project Navigation**: Smart root directory detection for quick project switching
+- **Project Navigation**: Smart root directory detection for quick project
+  switching
 - **Diagnostics**: Diagnostic icons and trouble integration
 
 ### UI & UX
@@ -105,8 +120,12 @@ implement in my setup.
 
 ## 🤝 Contributing
 
-Feel free to suggest improvements or report issues. This configuration is designed to be personal but can serve as inspiration for others building minimal Neovim setups.
+Feel free to suggest improvements or report issues. This configuration is
+designed to be personal but can serve as inspiration for others building minimal
+Neovim setups.
 
 ---
 
-> **Note**: This configuration is actively maintained and regularly updated. Check the implementation status table above for the latest feature availability.
+> **Note**: This configuration is actively maintained and regularly updated.
+> Check the implementation status table above for the latest feature
+> availability.
