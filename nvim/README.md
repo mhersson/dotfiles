@@ -93,31 +93,6 @@ implement in my setup.
 | **Solarized Light** |   ⬜   |
 | **TokyoNight**      |   ⬜   |
 
-## ⚡ Key Features
-
-### Go Development
-
-- **LSP Integration**: Full Go language server (gopls) support
-- **Linting**: golangci-lint integration
-- **Testing**: Built-in test runner and coverage visualization
-- **Debugging**: Debug adapter protocol support
-
-### Developer Experience
-
-- **AI Assistance**: GitHub Copilot integration (toggleable)
-- **Git Workflow**: Neogit for comprehensive git operations
-- **Code Formatting**: Automatic formatting on save (toggleable)
-- **Project Navigation**: Smart root directory detection for quick project
-  switching
-- **Diagnostics**: Diagnostic icons and trouble integration
-
-### UI & UX
-
-- **Modern Interface**: Clean statusline with project info and copilot status
-- **Theme Support**: Catppuccin theme
-- **Icons**: Comprehensive icon set for file types and diagnostics
-- **Which-key**: Interactive keybinding help system
-
 ## 🤝 Contributing
 
 Feel free to suggest improvements or report issues. This configuration is
