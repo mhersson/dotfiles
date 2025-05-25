@@ -70,7 +70,6 @@ return {
                         Snacks.profiler.status(),
                         {
                             function()
-                                local icons = require("utils.icons")
                                 return icons.kinds.Copilot
                             end,
                             cond = function()
@@ -84,9 +83,9 @@ return {
                                         and vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
                                     or {}
                                 if #clients > 0 then
-                                    local ok, copilot_api = pcall(require, "copilot.api")
-                                    if ok and copilot_api.status and copilot_api.status.data then
-                                        local status = copilot_api.status.data.status
+                                    local ok, copilot_status = pcall(require, "copilot.status")
+                                    if ok and copilot_status.status and copilot_status.data then
+                                        local status = copilot_status.data.status
                                         if status == "InProgress" then
                                             return { fg = "#f7768e" } -- pending/error color
                                         elseif status == "Warning" then
