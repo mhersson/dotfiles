@@ -8,7 +8,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = []
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = false
@@ -52,12 +52,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 20
-inner.vertical =   20
-outer.left =       20
-outer.bottom =     20
-outer.top =        20
-outer.right =      20
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -164,6 +164,13 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # if.during-aerospace-startup = true
 # check-further-callbacks = true
 # run = ['layout floating', 'move-node-to-workspace S']  # The callback itself
+
+# Workaround for ghostty tabs being rendered as separate windows Starting
+# ghostty in floating mode, and then manually switch to tiling mode seems to
+# remedy the issue
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run=  'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
