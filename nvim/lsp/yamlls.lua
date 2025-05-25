@@ -6,10 +6,10 @@ return {
     },
     settings = {
         {
+            format = {
+                enabled = false,
+            },
             redhat = {
-                format = {
-                    enabled = false,
-                },
                 telemetry = {
                     enabled = false,
                 },
