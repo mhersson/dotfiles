@@ -1,8 +1,8 @@
 # 🚀 My Neovim Configuration
 
-My goal is a clean, modular Neovim configuration built from scratch, however it
-is very much inspired by LazyVim, but with a focus on Go development and daily
-productivity tasks.
+My goal is a clean, modular Neovim configuration built from scratch. However it
+is very much inspired by LazyVim, and a lot of the config is copied from there,
+but it has a focus on Go development and the tools I use on a daily basis.
 
 This README also function as a to-do list for the features and tools I want to
 implement in my setup.
@@ -12,7 +12,7 @@ implement in my setup.
 - **Modular Structure**: Clean separation of concerns with organized plugin
   management
 - **Go-First Development**: Optimized for Go development with gopls,
-  golangci-lint, and testing tools
+  golangci-lint, testing and debugging tools
 - **Lazy Loading**: Fast startup times with intelligent plugin loading
 - **Modern UI**: Beautiful interface with diagnostic icons, statusline, and
   theme support
@@ -37,31 +37,31 @@ implement in my setup.
 
 ### 🔧 Core Tools & Utilities
 
-| Tool             | Description                     | Status |
-| ---------------- | ------------------------------- | :----: |
-| **Lazy**         | Plugin manager                  |   ✅   |
-| **Conform**      | Code formatting                 |   ✅   |
-| **Copilot**      | AI-powered code completion      |   ✅   |
-| **Coverage**     | Test coverage visualization     |   ✅   |
-| **Debugger**     | Debug adapter protocol support  |   ✅   |
-| **Direnv**       | Environment variable management |   ✅   |
-| **Editorconfig** | Consistent coding styles        |   ✅   |
-| **Neogit**       | Git interface                   |   ✅   |
-| **Neotest**      | Testing framework               |   ✅   |
-| **Nvim-lint**    | Linting integration             |   ✅   |
-| **Snacks**       | UI enhancements                 |   ✅   |
-| **Treesitter**   | Syntax highlighting & parsing   |   ✅   |
-| **Which-key**    | Keybinding helper               |   ✅   |
+| Tool             | Description                         | Status |
+| ---------------- | ----------------------------------- | :----: |
+| **Lazy**         | Plugin manager                      |   ✅   |
+| **Conform**      | Code formatting                     |   ✅   |
+| **Copilot**      | AI-powered code completion          |   ✅   |
+| **Coverage**     | Test coverage visualization         |   ✅   |
+| **Debugger**     | Debug adapter protocol support      |   ✅   |
+| **Direnv**       | Environment variable management     |   ✅   |
+| **Editorconfig** | Consistent coding styles (built in) |   ✅   |
+| **Neogit**       | Git interface                       |   ✅   |
+| **Neotest**      | Testing framework                   |   ✅   |
+| **Nvim-lint**    | Linting integration                 |   ✅   |
+| **Snacks**       | UI enhancements                     |   ✅   |
+| **Treesitter**   | Syntax highlighting & parsing       |   ✅   |
+| **Which-key**    | Keybinding helper                   |   ✅   |
 
 ### 💻 Language Support
 
 #### Must Have
 
-| Language     | Tools                         | Status |
-| ------------ | ----------------------------- | :----: |
-| **Go**       | gopls, golangci-lint          |   ✅   |
-| **Markdown** | markdownlint2, marksman, mpls |   ✅   |
-| **Rego**     | regal                         |   ✅   |
+| Language     | Tools                             | Status |
+| ------------ | --------------------------------- | :----: |
+| **Go**       | gopls, golangci-lint              |   ✅   |
+| **Markdown** | markdownlint-cli2, marksman, mpls |   ✅   |
+| **Rego**     | regal                             |   ✅   |
 
 #### Nice to Have
 
@@ -102,5 +102,3 @@ Neovim setups.
 ---
 
 > **Note**: This configuration is actively maintained and regularly updated.
-> Check the implementation status table above for the latest feature
-> availability.
