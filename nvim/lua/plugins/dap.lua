@@ -20,7 +20,7 @@ return {
     {
         "mfussenegger/nvim-dap",
         desc = "Debugging support.",
-
+        lazy = true,
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "leoluz/nvim-dap-go",
@@ -71,6 +71,7 @@ return {
     {
         "rcarriga/nvim-dap-ui",
         dependencies = { "nvim-neotest/nvim-nio" },
+        lazy = true,
         -- stylua: ignore
         keys = {
             { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI", },
@@ -94,6 +95,7 @@ return {
     },
     {
         "theHamsta/nvim-dap-virtual-text",
+        lazy = true,
         opts = {},
     },
     {
