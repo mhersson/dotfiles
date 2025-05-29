@@ -52,7 +52,24 @@ return {
             {
                 "<leader>at",
                 function()
-                    vim.cmd("Copilot toggle")
+                    -- Use Copilot's internal state checking
+                    if vim.fn.exists(":Copilot") == 0 then
+                        vim.notify("Copilot not available", vim.log.levels.WARN)
+                        return
+                    end
+
+                    -- Check current status by trying to get suggestions
+                    local copilot_on = vim.g.copilot_enabled ~= 0
+
+                    if copilot_on then
+                        vim.cmd("Copilot disable")
+                        vim.g.copilot_enabled = 0
+                        vim.notify("🤖 Copilot disabled", vim.log.levels.INFO)
+                    else
+                        vim.cmd("Copilot enable")
+                        vim.g.copilot_enabled = 1
+                        vim.notify("🤖 Copilot enabled", vim.log.levels.INFO)
+                    end
                 end,
                 desc = "Toggle Copilot",
             },
