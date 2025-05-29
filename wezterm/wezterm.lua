@@ -11,7 +11,7 @@ config.macos_window_background_blur = 95
 
 config.front_end = "WebGpu"
 
-config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "tokyonight_moon"
 
 config.default_cursor_style = "BlinkingBar"
 config.cursor_blink_rate = 500
@@ -33,5 +33,42 @@ config.window_close_confirmation = "NeverPrompt"
 
 config.initial_cols = 185
 config.initial_rows = 67
+
+-- Keybindings
+config.keys = {
+    -- Split pane vertically (cmd+d)
+    {
+        key = "d",
+        mods = "CMD",
+        action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+    },
+    -- Split pane horizontally (cmd+shift+d)
+    {
+        key = "d",
+        mods = "CMD|SHIFT",
+        action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+    },
+    -- Navigate panes with option+arrow keys
+    {
+        key = "LeftArrow",
+        mods = "OPT",
+        action = wezterm.action.ActivatePaneDirection("Left"),
+    },
+    {
+        key = "RightArrow",
+        mods = "OPT",
+        action = wezterm.action.ActivatePaneDirection("Right"),
+    },
+    {
+        key = "UpArrow",
+        mods = "OPT",
+        action = wezterm.action.ActivatePaneDirection("Up"),
+    },
+    {
+        key = "DownArrow",
+        mods = "OPT",
+        action = wezterm.action.ActivatePaneDirection("Down"),
+    },
+}
 
 return config
