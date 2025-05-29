@@ -10,7 +10,7 @@ return {
                 enabled = true,
                 auto_trigger = false,
                 hide_during_completion = true,
-                trigger_on_accept = true,
+                trigger_on_accept = false,
                 keymap = {
                     accept = false, -- "<C-CR>",
                     next = "<M-]>",
@@ -21,8 +21,17 @@ return {
             panel = { enabled = false },
             filetypes = {
                 markdown = true,
+                gitcommit = true,
                 help = true,
             },
         },
+        config = function(_, opts)
+            require("copilot").setup(opts)
+            -- Disable Copilot at startup
+            vim.defer_fn(function()
+                vim.cmd("Copilot disable")
+                vim.g.copilot_enabled = 0
+            end, 100) -- Small delay to ensure Copilot is fully loaded
+        end,
     },
 }
