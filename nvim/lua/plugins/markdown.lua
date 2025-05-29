@@ -3,7 +3,7 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
         ---@module 'render-markdown'
-        opts = { enabled = false },
+        opts = { enabled = false, checkbox = { enabled = false }, bullet = { enabled = false } },
         ft = { "markdown", "markdown.mdx" },
         config = function(_, opts)
             require("render-markdown").setup(opts)
