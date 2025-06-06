@@ -54,10 +54,10 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 10
 inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+outer.left =       0
+outer.bottom =     0
+outer.top =        0
+outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -137,7 +137,7 @@ alt-shift-f = 'fullscreen'
 alt-shift-semicolon = 'mode service'
 
 alt-t = 'layout v_accordion'
-alt-s = 'layout h_accordion'
+alt-w = 'layout h_accordion'
 alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
@@ -185,7 +185,15 @@ if.app-id = 'com.microsoft.Outlook'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.microsoft.edgemac'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'org.whispersystems.signal-desktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'io.zsa.keymapp'
 run = 'layout floating'
 
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
