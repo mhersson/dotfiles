@@ -16,7 +16,6 @@ return {
         vim.api.nvim_buf_create_user_command(bufnr, "MplsOpenPreview", function()
             local params = {
                 command = "open-preview",
-                arguments = {},
             }
             client.request("workspace/executeCommand", params, function(err, _)
                 if err then
@@ -26,7 +25,7 @@ return {
                 end
             end)
         end, {
-            desc = "Open Markdown Preview with mpls",
+            desc = "Preview markdown with mpls",
         })
     end,
 }

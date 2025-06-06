@@ -2,6 +2,20 @@ local ACTIVE_THEME = "tokyonight"
 
 return {
     {
+        "ellisonleao/gruvbox.nvim",
+        lazy = ACTIVE_THEME ~= "gruvbox",
+        priority = ACTIVE_THEME == "gruvbox" and 1000 or nil,
+        opts = {
+            contrast = "hard",
+        },
+        config = function(_, opts)
+            require("gruvbox").setup(opts)
+            if ACTIVE_THEME == "gruvbox" then
+                vim.cmd.colorscheme("gruvbox")
+            end
+        end,
+    },
+    {
         "folke/tokyonight.nvim",
         lazy = ACTIVE_THEME ~= "tokyonight",
         priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
