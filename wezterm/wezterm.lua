@@ -6,12 +6,24 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+-- Set nushell with explicit config loading
+config.default_prog = {
+    "/opt/homebrew/bin/nu",
+    "--config",
+    os.getenv("HOME") .. "/.config/nushell/config.nu",
+    "--env-config",
+    os.getenv("HOME") .. "/.config/nushell/env.nu",
+}
+
 config.window_background_opacity = 1.00
 config.macos_window_background_blur = 95
 
 config.front_end = "WebGpu"
 
 config.color_scheme = "tokyonight_moon"
+config.colors = {
+    split = "#ffc777",
+}
 
 config.default_cursor_style = "BlinkingBar"
 config.cursor_blink_rate = 500
