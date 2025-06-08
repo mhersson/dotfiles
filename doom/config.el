@@ -150,9 +150,15 @@
 (defun yamlfmt-format-buffer ()
   "Format the current buffer using yamlfmt."
   (when (executable-find "yamlfmt")
-    (let ((current-point (point)))
+    (let ((current-point (point))
+          (mark-active-p (region-active-p)))
+      ;; Deactivate mark to avoid selection issues
+      (deactivate-mark)
       (shell-command-on-region (point-min) (point-max) "yamlfmt -" nil t)
-      (goto-char current-point))))
+      (goto-char current-point)
+      ;; Only reactivate mark if it was originally active
+      (unless mark-active-p
+        (deactivate-mark)))))
 
 ;; Lsp settings
 
