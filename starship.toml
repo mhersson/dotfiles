@@ -30,6 +30,7 @@ truncation_length = 6
 
 [docker_context]
 symbol = " "
+disabled = true
 
 [elixir]
 symbol = " "
