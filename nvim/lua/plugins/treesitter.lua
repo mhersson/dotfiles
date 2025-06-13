@@ -34,6 +34,7 @@ return {
                 "markdown",
                 "markdown_inline",
                 "nix",
+                "nu",
                 "printf",
                 "python",
                 "regex",
