@@ -2,8 +2,11 @@
 ;;; $DOOMDIR/packages.el
 
 (package! catppuccin-theme)
+;; (package! gruvbox-theme)
 ;; Disable vertico posframe
 (package! vertico-posframe :disable t)
+
+(package! rego-mode)
 
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))

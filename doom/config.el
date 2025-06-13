@@ -40,7 +40,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'catppuccin)
+(setq doom-theme 'doom-tokyo-night)
 
 ;; Override background color to catppuccin-mocha
 ;;(custom-set-faces! '(default :background "#1E1E2E"))
@@ -99,10 +99,6 @@
 ;; Enable the documentation pop-up
 (setq lsp-ui-doc-show-with-cursor t)
 (setq lsp-ui-doc-delay 0.2)
-
-;; Expand magit sections by default
-(setq magit-section-initial-visibility-alist
-      '((stashes . show) (untracked . show) (unpushed . show)))
 
 ;; Set custom global keybindings
 (map! :map global-map
@@ -187,7 +183,7 @@
     "A Markdown syntax and style checker using markdownlint-cli2."
     :command ("markdownlint-cli2" source)
     :error-patterns
-    ((warning line-start (file-name) ":" line ":" column " " (id (one-or-more (not (any " ")))) " " (message) line-end))
+    ((warning line-start (file-name) ":" line " " (id (one-or-more (not (any " ")))) " " (message) line-end))
     :modes markdown-mode)
 
   ;; Register the checker
@@ -241,7 +237,6 @@
                                             (lsp-package-path 'mpls)
                                             "mpls")
                                         "--dark-mode"
-                                        "--no-auto"
                                         "--enable-emoji"
                                         "--enable-footnotes"
                                         "--plantuml-server" "localhost:8080"
@@ -250,10 +245,7 @@
                                         )))
                     :activation-fn (lsp-activate-on "markdown")
                     :initialized-fn (lambda (workspace)
-                                      (with-lsp-workspace workspace
-                                        (lsp--set-configuration
-                                         (lsp-configuration-section "mpls"))
-                                        ))
+                                      (with-lsp-workspace workspace (lsp--set-configuration (lsp-configuration-section "mpls"))))
                     :priority 1
                     :add-on? t
                     :server-id 'mpls))
