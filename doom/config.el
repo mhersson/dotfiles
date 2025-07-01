@@ -30,7 +30,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 
-(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 14 :weight 'Regular))
+(setq doom-font (font-spec :family "RobotoMono Nerd Font" :size 14 :weight 'Medium))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -40,13 +40,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'catppuccin)
 
 ;; Override background color to catppuccin-mocha
 ;;(custom-set-faces! '(default :background "#1E1E2E"))
 
 ;; Don't nag about me wanting to exit
-;; (setq confirm-kill-emacs nil)
+(setq confirm-kill-emacs nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -60,9 +60,9 @@
 (setq display-line-numbers-type t)
 
 ;; Tab bar
-(setq centaur-tabs-set-bar 'over)
-(setq centaur-tabs-set-close-button nil)
-(setq centaur-tabs-height 20)
+;; (setq centaur-tabs-set-bar 'over)
+;; (setq centaur-tabs-set-close-button nil)
+;; (setq centaur-tabs-height 20)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -97,8 +97,8 @@
 ;; they are implemented.
 
 ;; Enable the documentation pop-up
-(setq lsp-ui-doc-show-with-cursor t)
-(setq lsp-ui-doc-delay 0.2)
+;; (setq lsp-ui-doc-show-with-cursor t)
+;; (setq lsp-ui-doc-delay 0.2)
 
 ;; Set custom global keybindings
 (map! :map global-map
@@ -121,12 +121,6 @@
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
 
 ;; Formatting
-
-;; Set shell indent to 2 spaces
-(add-hook! sh-mode
-  (setq sh-basic-offset 2)
-  (setq tab-width 2))
-
 ;; Override shfmt to use two spaces instead of tabs
 (after! format-all
   (set-formatter! 'shfmt
@@ -135,7 +129,7 @@
       ;; Mode selection ropied from the default config
       ("-ln" "%s" (cl-case (and (boundp 'sh-shell) (symbol-value 'sh-shell))
                     (bash "bash") (mksh "mksh") (t "posix"))))
-    :modes 'sh-mode))
+    :modes '(sh-mode)))
 
 ;; Use yamlfmt instead of lsp to format yaml files
 (after! yaml-mode
@@ -166,8 +160,7 @@
   (setq lsp-gopls-complete-unimported t)
   (setq lsp-gopls-deep-completion t)
   (setq lsp-gopls-use-placeholders t)
-  (setq lsp-gopls-semantic-tokens t)
-  (setq lsp-go-build-flags ["-tags=integration"]))
+  (setq lsp-gopls-semantic-tokens t))
 
 ;; Rust
 (setq lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
