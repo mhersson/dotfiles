@@ -13,10 +13,6 @@ $env.XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
 
 # Development paths
 $env.GOPATH = ($env.HOME | path join "Development" "go")
-$env.HELIX_RUNTIME = ($env.HOME | path join "Development" "helix" "runtime")
-
-# Tool configuration
-$env.KIND_EXPERIMENTAL_PROVIDER = "podman"
 
 # Cargo environment (equivalent to sourcing ~/.cargo/env)
 if ($env.HOME | path join ".cargo" "env" | path exists) {

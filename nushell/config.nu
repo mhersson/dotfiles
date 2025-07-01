@@ -51,6 +51,7 @@ source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/themes/tokyonight-moon.nu
 
 # Aliases
+alias l = ls
 alias ll = ls -l
 alias la = ls -a
 alias .. = cd ..
