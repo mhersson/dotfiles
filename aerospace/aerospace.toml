@@ -196,6 +196,14 @@ run = 'layout floating'
 if.app-id = 'io.zsa.keymapp'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'layout floating'
+
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
 [workspace-to-monitor-force-assignment]
 1 = 'main'
