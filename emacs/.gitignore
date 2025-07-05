@@ -1,0 +1,28 @@
+# Automatically generated directories and files
+auto-save-list/
+eln-cache/
+elpa/
+eshell/
+straight/
+transient/
+tree-sitter/
+projects/
+
+# Package-generated files
+*.cache
+*.eld
+custom.el
+recentf
+history
+places
+bookmarks
+projectile-bookmarks.eld
+
+# Temporary files
+*.tmp
+*~
+.#*
+\#*#
+
+# macOS
+.DS_Store
