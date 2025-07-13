@@ -103,10 +103,10 @@ alt-k = 'focus up'
 alt-l = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-shift-h = 'swap left'
+alt-shift-j = 'swap down'
+alt-shift-k = 'swap up'
+alt-shift-l = 'swap right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -10'
@@ -168,9 +168,9 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # Workaround for ghostty tabs being rendered as separate windows Starting
 # ghostty in floating mode, and then manually switch to tiling mode seems to
 # remedy the issue
-[[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
-run=  'layout floating'
+# [[on-window-detected]]
+# if.app-id="com.mitchellh.ghostty"
+# run=  'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
