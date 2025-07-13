@@ -22,7 +22,7 @@
 
   ;; Configure prettier for markdown files
   (add-to-list 'apheleia-formatters
-               '(prettier-markdown . ("prettier" "--parser" "markdown")))
+               '(prettier-markdown . ("prettier" "--parser" "markdown" "--prose-wrap" "always")))
 
   (add-to-list 'apheleia-mode-alist
                '(markdown-mode . prettier-markdown))

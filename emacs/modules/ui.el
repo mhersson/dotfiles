@@ -7,18 +7,21 @@
 ;;; Code:
 
 ;; Doom themes
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-one :no-confirm))
+;; (use-package doom-themes
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;;         doom-themes-enable-italic t)
+;;   (load-theme 'doom-moonlight :no-confirm))
 
 ;; Catppuccin theme
-;; (use-package catppuccin-theme
-;;   :custom
-;;   (catppuccin-cursor 'mocha) ; or 'latte, 'frappe, 'macchiato
-;;   :config
-;;   (load-theme 'catppuccin :no-confirm))
+(use-package catppuccin-theme
+  :custom
+  (catppuccin-cursor 'macchiato) ; 'mocha or 'latte, 'frappe, 'macchiato
+  :config
+  (load-theme 'catppuccin :no-confirm))
+
+(catppuccin-set-color 'base "#222436")
+(catppuccin-reload)
 
 ;; Set font
 (set-face-attribute 'default nil
