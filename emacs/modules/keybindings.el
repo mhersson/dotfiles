@@ -42,6 +42,7 @@
 
 ;;; Which-key group names
 (which-key-add-key-based-replacements
+  "SPC a" "ai"
   "SPC b" "buffer"
   "SPC c" "code"
   "SPC d" "debug"
@@ -184,6 +185,27 @@
   (kbd "<leader>do") 'dape-step-out
   (kbd "<leader>dr") 'dape-restart
   (kbd "<leader>dq") 'dape-quit)
+
+;;; AI operations (Copilot Chat)
+(which-key-add-key-based-replacements
+  "SPC a c" "chat"
+  "SPC a e" "explain"
+  "SPC a r" "review"
+  "SPC a f" "fix"
+  "SPC a o" "optimize"
+  "SPC a t" "test"
+  "SPC a d" "doc"
+  "SPC a g" "commit message")
+
+(evil-define-key 'normal 'global
+  (kbd "<leader>ac") 'copilot-chat-display
+  (kbd "<leader>ae") 'copilot-chat-explain
+  (kbd "<leader>ar") 'copilot-chat-review
+  (kbd "<leader>af") 'copilot-chat-fix
+  (kbd "<leader>ao") 'copilot-chat-optimize
+  (kbd "<leader>at") 'copilot-chat-test
+  (kbd "<leader>ad") 'copilot-chat-doc
+  (kbd "<leader>ag") 'copilot-chat-insert-commit-message)
 
 (provide 'keybindings)
 ;;; keybindings.el ends here
