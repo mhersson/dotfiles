@@ -13,6 +13,8 @@
 
 (define-key copilot-completion-map (kbd "C-<return>") 'copilot-accept-completion)
 (setq copilot-lsp-settings '(:github-enterprise (:uri "https://dnb.ghe.com")))
+(setq copilot-max-char 300000)  ; Increase max file size for completions
+(setq copilot-indent-offset-warning-disable t)  ; Disable indentation warnings
 (add-hook 'prog-mode-hook 'copilot-mode)
 (add-hook 'markdown-mode-hook 'copilot-mode)
 
