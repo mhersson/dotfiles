@@ -1,3 +1,13 @@
+# Discard duplicates from both $PATH and $path
+typeset -U PATH path
+
+# PATH configuration must be in .zshrc (not .zshenv) because macOS runs
+# /usr/libexec/path_helper from /etc/zprofile, which reorders PATH based on
+# /etc/paths and /etc/paths.d/*. Since .zshenv runs before /etc/zprofile,
+# any PATH changes there get overridden. Setting PATH here ensures our
+# custom order (with /opt/homebrew/bin first) is preserved.
+export PATH=$GOPATH/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/emacs/bin:/opt/homebrew/bin:$PATH
+
 stty -ixon
 autoload -Uz compinit
 compinit

@@ -9,7 +9,4 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export GOPATH=$HOME/Development/go
 
-# Discard duplicates from both $PATH and $path
-typeset -U PATH path
-export PATH=$GOPATH/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.config/emacs/bin:/opt/homebrew/bin:$PATH
 . "$HOME/.cargo/env"
