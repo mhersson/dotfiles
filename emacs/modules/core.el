@@ -116,7 +116,13 @@
 ;; Magit for Git integration
 (use-package magit
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  ;; Add window operation keybindings for magit
+  (evil-define-key 'normal magit-mode-map
+    (kbd "SPC wh") 'evil-window-left
+    (kbd "SPC wj") 'evil-window-down
+    (kbd "SPC wk") 'evil-window-up
+    (kbd "SPC wl") 'evil-window-right))
 
 ;; EditorConfig support
 (use-package editorconfig
