@@ -186,9 +186,10 @@
   (kbd "<leader>dr") 'dape-restart
   (kbd "<leader>dq") 'dape-quit)
 
-;;; AI operations (Copilot Chat)
+;;; AI operations
+;; Copilot Chat
 (which-key-add-key-based-replacements
-  "SPC a c" "chat"
+  "SPC a s" "chat"
   "SPC a e" "explain"
   "SPC a r" "review"
   "SPC a f" "fix"
@@ -198,7 +199,7 @@
   "SPC a g" "commit message")
 
 (evil-define-key 'normal 'global
-  (kbd "<leader>ac") 'copilot-chat-display
+  (kbd "<leader>as") 'copilot-chat-display
   (kbd "<leader>ae") 'copilot-chat-explain
   (kbd "<leader>ar") 'copilot-chat-review
   (kbd "<leader>af") 'copilot-chat-fix
@@ -206,6 +207,34 @@
   (kbd "<leader>at") 'copilot-chat-test
   (kbd "<leader>ad") 'copilot-chat-doc
   (kbd "<leader>ag") 'copilot-chat-insert-commit-message)
+
+;; Claude Code
+(which-key-add-key-based-replacements
+  "SPC a c" "claude code"
+  "SPC a c c" "start session"
+  "SPC a c d" "start in directory"
+  "SPC a c r" "send region"
+  "SPC a c f" "send file"
+  "SPC a c t" "toggle window"
+  "SPC a c C" "continue"
+  "SPC a c R" "resume session"
+  "SPC a c k" "kill session"
+  "SPC a c b" "switch to buffer"
+  "SPC a c e" "fix error"
+  "SPC a c m" "menu")
+
+(evil-define-key 'normal 'global
+  (kbd "<leader>acc") 'claude-code
+  (kbd "<leader>acd") 'claude-code-start-in-directory
+  (kbd "<leader>acr") 'claude-code-send-region
+  (kbd "<leader>acf") 'claude-code-send-buffer-file
+  (kbd "<leader>act") 'claude-code-toggle
+  (kbd "<leader>acC") 'claude-code-continue
+  (kbd "<leader>acR") 'claude-code-resume
+  (kbd "<leader>ack") 'claude-code-kill
+  (kbd "<leader>acb") 'claude-code-switch-to-buffer
+  (kbd "<leader>ace") 'claude-code-fix-error-at-point
+  (kbd "<leader>acm") 'claude-code-transient)
 
 (provide 'keybindings)
 ;;; keybindings.el ends here

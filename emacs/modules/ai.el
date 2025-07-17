@@ -17,6 +17,7 @@
 (setq copilot-indent-offset-warning-disable t)  ; Disable indentation warnings
 (add-hook 'prog-mode-hook 'copilot-mode)
 (add-hook 'markdown-mode-hook 'copilot-mode)
+(add-hook 'yaml-mode-hook 'copilot-mode)
 
 ;; Copilot Chat
 (use-package copilot-chat
@@ -24,8 +25,25 @@
   :init
   (setq copilot-chat-frontend 'markdown)
   (setq copilot-chat-enterprise-uri "https://dnb.ghe.com")
-  (setq copilot-chat-default-model "gpt-4.1")
+  (setq copilot-chat-default-model "claude-sonnet-4")
   :after markdown-mode)
+
+;; Claude Code
+(use-package claude-code
+  :straight (:type git :host github :repo "stevemolitor/claude-code.el" :branch "main" :depth 1
+                   :files ("*.el" (:exclude "images/*")))
+  :bind-keymap
+  ("C-c c" . claude-code-command-map)
+  :config
+  (setq claude-code-terminal-backend 'vterm)
+  (claude-code-mode))
+
+;; Display Claude Code in a side window
+(add-to-list 'display-buffer-alist
+             '("^\\*claude"
+               (display-buffer-in-side-window)
+               (side . right)
+               (window-width . 90)))
 
 (provide 'ai)
 ;;; ai.el ends here

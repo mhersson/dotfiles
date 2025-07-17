@@ -10,7 +10,9 @@
 (use-package vterm
   :defer t
   :custom
-  (vterm-max-scrollback 5000)
+  ;; Allow vterm windows to be as narrow as 40 columns
+  (vterm-min-window-width 40)
+  (vterm-max-scrollback 20000)
   (vterm-buffer-name-string "*vterm %s*")
   (vterm-install-buffer-name "*vterm-install*")
   :config
