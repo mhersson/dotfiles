@@ -23,6 +23,7 @@
 (use-package copilot-chat
   :straight (:host github :repo "mhersson/copilot-chat.el" :files ("*.el"))
   :init
+  (setq copilot-chat-backend 'curl)
   (setq copilot-chat-frontend 'markdown)
   (setq copilot-chat-enterprise-uri "https://dnb.ghe.com")
   (setq copilot-chat-default-model "claude-sonnet-4")
