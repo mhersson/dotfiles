@@ -52,6 +52,7 @@
 (require 'testing)
 (require 'debug)
 (require 'terminal)
+(require 'functions)
 (require 'keybindings)
 (require 'ai)
 

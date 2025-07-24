@@ -26,20 +26,6 @@
   (setq which-key-min-display-lines 3
         which-key-add-column-padding 6))
 
-;; Helper functions
-(defun my/kill-other-buffers ()
-  "Kill all buffers except the current one."
-  (interactive)
-  (mapc 'kill-buffer
-        (delq (current-buffer) (buffer-list))))
-
-(defun my/toggle-vterm ()
-  "Toggle vterm window."
-  (interactive)
-  (if (get-buffer-window "*vterm*")
-      (delete-window (get-buffer-window "*vterm*"))
-    (vterm-other-window)))
-
 ;;; Which-key group names
 (which-key-add-key-based-replacements
   "SPC a" "ai"
