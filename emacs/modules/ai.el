@@ -29,22 +29,12 @@
   (setq copilot-chat-default-model "claude-sonnet-4")
   :after markdown-mode)
 
-;; Claude Code
-(use-package claude-code
-  :straight (:type git :host github :repo "stevemolitor/claude-code.el" :branch "main" :depth 1
-                   :files ("*.el" (:exclude "images/*")))
-  :bind-keymap
-  ("C-c c" . claude-code-command-map)
+;; Claude Code IDE
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
   :config
-  (setq claude-code-terminal-backend 'vterm)
-  (claude-code-mode))
-
-;; Display Claude Code in a side window
-(add-to-list 'display-buffer-alist
-             '("^\\*claude"
-               (display-buffer-in-side-window)
-               (side . right)
-               (window-width . 90)))
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
 (provide 'ai)
 ;;; ai.el ends here
