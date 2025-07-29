@@ -21,36 +21,24 @@
   ;; Disable default key prefix to avoid conflicts with evil/which-key
   (setq dape-key-prefix nil)
 
+  (setq dape-cwd-function 'projectile-project-root)
+
   (add-to-list 'dape-configs
                `(devspace
-                 modes (go-mode go-ts-mode)
                  command "dlv"
                  command-args ("connect" "127.0.0.1:2345")
-                 command-cwd default-directory
+                 modes (go-mode go-ts-mode)
                  host "127.0.0.1"
                  port 2345
+                 prefix-local ,(lambda () default-directory)
+                 prefix-remote "/workspace/"
                  :name "Debug remote in devspace pod"
                  :request "attach"
                  :mode "remote"
                  :type "go"
                  ))
-
-  ;; (add-to-list dape-configs
-  ;;              '(
-  ;;                (go-test
-  ;;                 modes (go-mode go-ts-mode)
-  ;;                 command "dlv"
-  ;;                 command-args ("dap" "--listen" "127.0.0.1:autoport")
-  ;;                 command-cwd default-directory
-  ;;                 host "127.0.0.1"
-  ;;                 port autoport
-  ;;                 :name "Run the go tests in cwd"
-  ;;                 :request "launch"
-  ;;                 :mode "test"
-  ;;                 :type "go"
-  ;;                 :program "."
-  ;;                 )))
   )
+
 
 (provide 'debug)
 ;;; debug.el ends here
