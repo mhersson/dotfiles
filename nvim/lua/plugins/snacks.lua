@@ -105,6 +105,13 @@ return {
                 desc = "Projects",
             },
             {
+                "<leader>pp",
+                function()
+                    Snacks.picker.projects()
+                end,
+                desc = "Projects",
+            },
+            {
                 "<leader>fr",
                 function()
                     Snacks.picker.recent()
@@ -549,6 +556,11 @@ return {
         ---@type snacks.Config
         opts = {
             picker = {
+                sources = {
+                    projects = {
+                        confirm = { "tcd", "picker_files" }, -- Change directory and open file picker
+                    },
+                },
                 win = {
                     -- input window
                     input = {

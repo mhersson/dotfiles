@@ -56,6 +56,9 @@ return {
         end,
         -- Customize formatters
         formatters = {
+            markdown = {
+                prepend_args = { "--prose-wrap", "always" },
+            },
             shfmt = {
                 prepend_args = { "-i", "2", "-ci", "-bn" },
             },
