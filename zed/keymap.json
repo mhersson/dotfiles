@@ -1,0 +1,46 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Put key bindings here if you want them to work in normal & visual mode.
+      "space space": "file_finder::Toggle",
+      "space ,": "tab_switcher::ToggleAll",
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "space p p": ["projects::OpenRecent", { "create_new_window": false }]
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "space space": "file_finder::Toggle",
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "tab": "editor::ContextMenuNext",
+      "shift-tab": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space p p": ["projects::OpenRecent", { "create_new_window": false }]
+    }
+  }
+]

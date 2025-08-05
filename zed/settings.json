@@ -1,0 +1,119 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "icon_theme": "Material Icon Theme",
+  "vim_mode": true,
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "experimental.theme_overrides": {
+    "players": [
+      {
+        "cursor": "#ff9500ff",
+        "background": "#ff9500ff"
+      }
+    ]
+  },
+  "buffer_font_family": "RobotoMono Nerd Font",
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Hard",
+    "dark": "Catppuccin Macchiato"
+  },
+  "close_on_file_delete": true,
+  "load_direnv": "shell_hook",
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_sign_in": false
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "toolbar": {
+    "selections_menu": false
+  },
+  "command_aliases": {
+    "W": "w",
+    "Wq": "wq"
+  },
+  "file_finder": {
+    "include_ignored": true
+  },
+  "project_panel": {
+    "auto_reveal_entries": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "inlay_hints": {
+    "show_value_hints": false
+  },
+  "agent": {
+    "button": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    }
+  },
+  "edit_predictions": {
+    "copilot": {
+      "enterprise_uri": "https://dnb.ghe.com"
+    }
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "languages": {
+    "YAML": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "yamlfmt",
+          "arguments": ["-"]
+        }
+      }
+    },
+    "Markdown": {
+      "tab_size": 4,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--parser", "markdown", "--prose-wrap", "always"]
+        }
+      }
+    }
+  },
+  "lsp": {
+    "mpls": {
+      "binary": {
+        "path": "mpls",
+        "arguments": [
+          "--dark-mode",
+          "--enable-emoji",
+          "--enable-footnotes",
+          "--plantuml-server",
+          "localhost:8080",
+          "--plantuml-path",
+          "/",
+          "--plantuml-disable-tls"
+        ]
+      }
+    }
+  }
+}
