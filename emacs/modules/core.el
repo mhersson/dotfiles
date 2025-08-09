@@ -57,6 +57,12 @@
         evil-motion-state-cursor '(box "#ff9500")
         evil-emacs-state-cursor '(bar "#ff9500")))
 
+(use-package evil-terminal-cursor-changer
+  :if (not (display-graphic-p))
+  :after evil
+  :config
+  (evil-terminal-cursor-changer-activate))
+
 
 ;; Use escape to escape from everything
 (use-package evil-escape
