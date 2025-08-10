@@ -16,7 +16,7 @@
       "shift-l": "pane::ActivateNextItem",
       "space b k": ["pane::CloseActiveItem", { "close_pinned": false }],
       "space b o": ["pane::CloseOtherItems", { "close_pinned": false }],
-      "space g g": "git_panel::ToggleFocus",
+      "space g g": "git::Diff",
       "space p p": ["projects::OpenRecent", { "create_new_window": false }]
     }
   },
@@ -24,12 +24,18 @@
     "context": "Workspace",
     "bindings": {
       // "space space": "file_finder::Toggle",
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w j": "workspace::ActivatePaneDown"
     }
   },
   {
     "context": "Editor",
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
+      "space w v": "pane::SplitRight",
+      "space w s": "pane::SplitDown"
     }
   },
   {
@@ -37,6 +43,18 @@
     "bindings": {
       "tab": "editor::ContextMenuNext",
       "shift-tab": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    "context": "GitDiff > Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      "q": "pane::CloseActiveItem",
+      "space": "git::ToggleStaged",
+      "tab": "editor::ToggleFold",
+      "shift-tab": "editor::FoldAll",
+      "shift-x": "git::Restore",
+      "x": ["git::RestoreFile", { "skip_prompt": false }]
     }
   },
   {
