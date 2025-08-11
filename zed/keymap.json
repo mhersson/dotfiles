@@ -54,7 +54,9 @@
       "tab": "editor::ToggleFold",
       "shift-tab": "editor::FoldAll",
       "shift-x": "git::Restore",
-      "x": ["git::RestoreFile", { "skip_prompt": false }]
+      "x": ["git::RestoreFile", { "skip_prompt": false }],
+      "shift-p u": "git::Push",
+      "shift-p f u": "git::ForcePush"
     }
   },
   {
