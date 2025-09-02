@@ -7,13 +7,13 @@ if wezterm.config_builder then
 end
 
 -- Set nushell with explicit config loading
-config.default_prog = {
-    "/opt/homebrew/bin/nu",
-    "--config",
-    os.getenv("HOME") .. "/.config/nushell/config.nu",
-    "--env-config",
-    os.getenv("HOME") .. "/.config/nushell/env.nu",
-}
+-- config.default_prog = {
+--     "/opt/homebrew/bin/nu",
+--     "--config",
+--     os.getenv("HOME") .. "/.config/nushell/config.nu",
+--     "--env-config",
+--     os.getenv("HOME") .. "/.config/nushell/env.nu",
+-- }
 
 config.window_background_opacity = 1.00
 config.macos_window_background_blur = 95
@@ -23,6 +23,11 @@ config.front_end = "WebGpu"
 config.color_scheme = "tokyonight_moon"
 config.colors = {
     split = "#ffc777",
+}
+-- Don't dim inactive panes
+config.inactive_pane_hsb = {
+    saturation = 1.0,
+    brightness = 1.0,
 }
 
 config.default_cursor_style = "BlinkingBar"
