@@ -43,16 +43,16 @@ formatter = { command = 'prettier', args = ["--parser", "json"] }
 
 [[language]]
 name = "markdown"
-auto-format = false
+auto-format = true
 language-servers = ["marksman", "mpls"]
 
 [language.formatter]
 command = "prettier"
-args = ["--parser", "markdown"]
+args = ["--parser", "markdown", "--prose-wrap", "always" ]
 
 [language-server.mpls]
 command = "mpls"
-args = ["--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
+args = ["--dark-mode", "--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
 
 [[language]]
 name = "nix"
