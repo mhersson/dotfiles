@@ -1,7 +1,6 @@
 return {
     {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = false,
+        "mhersson/CopilotChat.nvim",
         dependencies = {
             { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -13,16 +12,50 @@ return {
             local user = vim.env.USER or "User"
             user = user:sub(1, 1):upper() .. user:sub(2)
             return {
+                auto_follow_cursor = true,
                 auto_insert_mode = true,
-                question_header = "  " .. user .. " ",
-                answer_header = "  Copilot ",
+                auto_fold = true, -- Automatically folds non-assistant messages
+                model = "claude-sonnet-4",
                 headers = {
                     user = "  " .. user .. " ",
                     assistant = "  Copilot ",
                     tool = " ",
                 },
                 window = {
-                    width = 0.4,
+                    layout = "float",
+                    width = 85, -- Fixed width in columns
+                    height = 30, -- Fixed height in rows
+                    border = "rounded", -- 'single', 'double', 'rounded', 'solid'
+                    title = "🤖 AI Assistant",
+                    zindex = 100, -- Ensure window stays on top
+                },
+                separator = "━━",
+                -- GitHub Enterprise configuration
+                copilot_chat = {
+                    api_url = "https://copilot-api.dnb.ghe.com/chat/completions",
+                    auth_url = "https://api.dnb.ghe.com/copilot_internal/v2/token",
+                    models_url = "https://copilot-api.dnb.ghe.com/models",
+                },
+                prompts = {
+                    ConventionalCommit = {
+                        prompt = [[
+You are an expert software engineer and meticulous code reviewer.
+Your task is to generate a single Git commit message that **strictly follows the Conventional Commits v1.0.0 Specification**
+
+### PRIMARY GOAL
+Produce one short, complete commit message for the staged changes.
+
+### OUTPUT FORMAT
+- Return **only** the commit message text—no code fences, no commentary, no extra markup or explanations.
+- The summary (first) line **must** be imperative, present tense, ≤72 characters, and **must not** end with a period.
+- Wrap all body lines at a maximum of 72 characters.
+- If a body is included, format it as a clean, concise bullet list, each line starting with - .
+- If user has COMMIT_EDITMSG opened, generate replacement block for the commit message.]],
+                        resources = {
+                            "gitdiff:staged",
+                            "buffer",
+                        },
+                    },
                 },
             }
         end,
@@ -30,11 +63,19 @@ return {
             { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
             { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
             {
-                "<leader>aa",
+                "<leader>ac",
                 function()
                     return require("CopilotChat").toggle()
                 end,
                 desc = "Toggle (CopilotChat)",
+                mode = { "n", "v" },
+            },
+            {
+                "<leader>ag",
+                function()
+                    vim.cmd("CopilotChatConventionalCommit")
+                end,
+                desc = "Generate commit message",
                 mode = { "n", "v" },
             },
             {
