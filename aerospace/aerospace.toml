@@ -128,8 +128,8 @@ alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 
-alt-tab = 'workspace-back-and-forth'
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# alt-tab = 'workspace-back-and-forth'
+# alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-f = 'fullscreen'
 
@@ -202,6 +202,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
 run = 'layout floating'
 
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
