@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Catppuccin Macchiato",
   "vim_mode": true,
   "telemetry": {
     "metrics": false,
@@ -22,7 +23,7 @@
   },
   "buffer_font_family": "RobotoMono Nerd Font",
   "ui_font_size": 16,
-  "buffer_font_size": 14.5,
+  "buffer_font_size": 14,
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
@@ -46,6 +47,13 @@
   "toolbar": {
     "selections_menu": false
   },
+  "scrollbar": {
+    "show": "auto",
+    "axes": {
+      "horizontal": false,
+      "vertical": true
+    }
+  },
   "command_aliases": {
     "W": "w",
     "Wq": "wq"
@@ -66,10 +74,15 @@
     "show_value_hints": false
   },
   "agent": {
+    "default_profile": "write",
     "button": true,
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
+    },
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
     }
   },
   "edit_predictions": {
