@@ -19,7 +19,7 @@ return {
         "folke/tokyonight.nvim",
         lazy = ACTIVE_THEME ~= "tokyonight",
         priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
-        opts = { style = "moon" },
+        opts = { style = "moon", transparent = true },
         config = function(_, opts)
             require("tokyonight").setup(opts)
             if ACTIVE_THEME == "tokyonight" then
@@ -34,7 +34,7 @@ return {
         priority = ACTIVE_THEME == "catppuccin" and 1000 or nil,
         config = function()
             require("catppuccin").setup({
-                flavor = "mocha",
+                flavor = "macchiato",
             })
             if ACTIVE_THEME == "catppuccin" then
                 vim.cmd.colorscheme("catppuccin")
@@ -74,17 +74,6 @@ return {
                 treesitter = true,
                 treesitter_context = true,
                 which_key = true,
-            },
-        },
-        specs = {
-            {
-                "akinsho/bufferline.nvim",
-                optional = true,
-                opts = function(_, opts)
-                    if (vim.g.colors_name or ""):find("catppuccin") then
-                        opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
-                    end
-                end,
             },
         },
     },
