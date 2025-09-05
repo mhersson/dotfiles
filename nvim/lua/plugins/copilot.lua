@@ -14,13 +14,5 @@ return {
                 help = true,
             },
         },
-        config = function(_, opts)
-            require("copilot").setup(opts)
-            -- Disable Copilot at startup
-            vim.defer_fn(function()
-                vim.cmd("Copilot disable")
-                vim.g.copilot_enabled = 0
-            end, 100) -- Small delay to ensure Copilot is fully loaded
-        end,
     },
 }
