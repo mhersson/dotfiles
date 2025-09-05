@@ -13,9 +13,10 @@ return {
         },
         opts = {
             options = {
-                separator_style = "slant",
+                separator_style = "thin",
+                themeable = true,
                 indicator = {
-                    style = "icon",
+                    style = "underline",
                 },
                 diagnostics = "nvim_lsp",
                 always_show_bufferline = false,
