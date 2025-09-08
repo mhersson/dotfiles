@@ -19,7 +19,7 @@ return {
         "folke/tokyonight.nvim",
         lazy = ACTIVE_THEME ~= "tokyonight",
         priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
-        opts = { style = "moon", transparent = true },
+        opts = { style = "moon", transparent = false },
         config = function(_, opts)
             require("tokyonight").setup(opts)
             if ACTIVE_THEME == "tokyonight" then

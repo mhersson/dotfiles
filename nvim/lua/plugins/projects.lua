@@ -5,6 +5,7 @@ return {
             "~/Development/*",
             "~/.dotfiles",
             "~/Documents/notes",
+            "~/Documents/presentations/*",
         },
         last_session_on_startup = true,
         dashboard_mode = false,
