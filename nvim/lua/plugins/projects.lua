@@ -29,7 +29,6 @@ return {
             "<leader>fp",
             function()
                 vim.cmd("NeovimProjectDiscover history")
-                vim.cmd("stopinsert")
             end,
             desc = "Browse Projects",
         },
@@ -37,7 +36,6 @@ return {
             "<leader>pp",
             function()
                 vim.cmd("NeovimProjectDiscover history")
-                vim.cmd("stopinsert")
             end,
             desc = "Browse Projects",
         },
@@ -45,7 +43,6 @@ return {
             "<leader>pr",
             function()
                 vim.cmd("NeovimProjectHistory")
-                vim.cmd("stopinsert")
             end,
             desc = "Recent project",
         },
@@ -53,7 +50,6 @@ return {
             "<leader>pq",
             function()
                 vim.cmd("NeovimProjectLoadRecent")
-                vim.cmd("stopinsert")
             end,
             desc = "Open previous session",
         },
