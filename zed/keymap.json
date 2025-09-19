@@ -21,7 +21,7 @@
     }
   },
   {
-    "context": "Workspace",
+    "context": "Workspace && VimControl",
     "bindings": {
       // "space space": "file_finder::Toggle",
       "space w h": "workspace::ActivatePaneLeft",
@@ -31,11 +31,15 @@
     }
   },
   {
-    "context": "Editor",
+    "context": "Editor && VimControl",
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
       "space w v": "pane::SplitRight",
-      "space w s": "pane::SplitDown"
+      "space w s": "pane::SplitDown",
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -46,7 +50,7 @@
     }
   },
   {
-    "context": "GitDiff > Editor",
+    "context": "GitDiff > Editor && VimControl",
     "use_key_equivalents": true,
     "bindings": {
       "q": "pane::CloseActiveItem",
@@ -60,7 +64,7 @@
     }
   },
   {
-    "context": "EmptyPane || SharedScreen",
+    "context": "EmptyPane || SharedScreen && VimControl",
     "bindings": {
       "space space": "file_finder::Toggle",
       "space p p": ["projects::OpenRecent", { "create_new_window": false }]
