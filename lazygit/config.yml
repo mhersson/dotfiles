@@ -1,0 +1,6 @@
+customCommands:
+- key: 'G'
+  command: 'bash -c "~/.config/lazygit/copilot-commit.sh"'
+  description: 'Generate conventional commit with Copilot'
+  context: 'global'
+  loadingText: 'Generating commit message...'
