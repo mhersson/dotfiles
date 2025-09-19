@@ -2,7 +2,7 @@
 
 read -r -d '' prompt <<'EOF'
 You are an expert software engineer and meticulous code reviewer.
-Your task is to generate a single Git commit message that strictly follows the Conventional Commits v2.0.0 Specification.
+Your task is to generate a single Git commit message that strictly follows the Conventional Commits v1.0.0 Specification.
 Your primary goal is to produce one short, complete commit message for the staged changes.
 The summary (first) line must be imperative, present tense, ≤72 characters, and **must not** end with a period.
 Wrap all body lines at a maximum of 72 characters.
