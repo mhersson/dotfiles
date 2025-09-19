@@ -22,16 +22,17 @@ return {
                     tool = " ",
                 },
                 window = {
-                    layout = "float",
-                    width = 85, -- Fixed width in columns
-                    height = 30, -- Fixed height in rows
-                    border = "rounded", -- 'single', 'double', 'rounded', 'solid'
-                    title = "🤖 AI Assistant",
-                    zindex = 100, -- Ensure window stays on top
+                    width = 0.4,
+                    --title = "🤖 AI Assistant",
+                    -- layout = "float",
+                    -- width = 85, -- Fixed width in columns
+                    -- height = 30, -- Fixed height in rows
+                    -- border = "rounded", -- 'single', 'double', 'rounded', 'solid'
+                    -- zindex = 100, -- Ensure window stays on top
                 },
                 separator = "━━",
                 -- GitHub Enterprise configuration
-                copilot_chat = {
+                api_endpoints = {
                     api_url = "https://copilot-api.dnb.ghe.com/chat/completions",
                     auth_url = "https://api.dnb.ghe.com/copilot_internal/v2/token",
                     models_url = "https://copilot-api.dnb.ghe.com/models",
@@ -51,9 +52,10 @@ Produce one short, complete commit message for the staged changes.
 - The commit message **must always** end with a blank line, and the summary and the body (if any) must be separated with blank line.
 - Wrap all body lines at a maximum of 72 characters.
 - If a body is included, format it as a clean, concise bullet list, each line starting with - .
+- The summary line **must always** contain a scope, e.g. feat(nvim): updated copilot chat prompts
 - If the current branch name contains a jira ticket number on the format [a-zA-Z]{3,4}-[0-9]{3,} - for example IDD-1234
   then use the ticket as the scope in the summary
-- If user has COMMIT_EDITMSG opened, generate replacement block for the commit message.]],
+- If user has COMMIT_EDITMSG opened, generate diff replacement block for the commit message only.]],
                         resources = {
                             "gitdiff:staged",
                             "buffer",
