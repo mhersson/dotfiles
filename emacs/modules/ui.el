@@ -6,13 +6,6 @@
 
 ;;; Code:
 
-;; Doom themes
-;; (use-package doom-themes
-;;   :config
-;;   (setq doom-themes-enable-bold t
-;;         doom-themes-enable-italic t)
-;;   (load-theme 'doom-moonlight :no-confirm))
-
 ;; Catppuccin theme
 (use-package catppuccin-theme
   :custom
@@ -22,6 +15,18 @@
 
 (catppuccin-set-color 'base "#222436")
 (catppuccin-reload)
+
+;; Doom themes
+;; (use-package doom-themes
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;;         doom-themes-enable-italic t)
+;;   (load-theme 'doom-moonlight :no-confirm))
+
+;; Gruvbox theme
+;; (use-package gruvbox-theme
+;;   :config
+;;   (load-theme 'gruvbox-light-hard :no-confirm))
 
 ;; Set font
 (set-face-attribute 'default nil
