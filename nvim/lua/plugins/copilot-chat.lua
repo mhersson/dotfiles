@@ -5,7 +5,7 @@ return {
             { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        build = "make tiktoken", -- Only on MacOS or Linux
+        build = "make tiktoken",                            -- Only on MacOS or Linux
         branch = "main",
         cmd = "CopilotChat",
         opts = function()
@@ -13,7 +13,8 @@ return {
             user = user:sub(1, 1):upper() .. user:sub(2)
             return {
                 auto_follow_cursor = true,
-                auto_insert_mode = true,
+                auto_insert_mode = false,
+                insert_at_end = true,
                 auto_fold = true, -- Automatically folds non-assistant messages
                 model = "claude-sonnet-4",
                 headers = {
@@ -65,8 +66,8 @@ Produce one short, complete commit message for the staged changes.
             }
         end,
         keys = {
-            { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
-            { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+            { "<c-s>",     "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
+            { "<leader>a", "",     desc = "+ai",        mode = { "n", "v" } },
             {
                 "<leader>ac",
                 function()
