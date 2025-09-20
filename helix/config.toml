@@ -1,3 +1,4 @@
+# theme = "gruvbox_light_hard"
 theme = "tokyonight_transparent"
 [editor]
 bufferline = "multiple"
