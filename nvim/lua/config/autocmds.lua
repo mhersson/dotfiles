@@ -5,18 +5,32 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     command = "set ft=gotmpl",
 })
 
+-- Switch to normal mode after switching project
+local augroup = vim.api.nvim_create_augroup("user_cmds", { clear = true })
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = { "SessionLoadPost" },
+    group = augroup,
+    desc = "Switch to Normal Mode",
+    callback = function()
+        -- Switch to Normal Mode
+        vim.cmd("stopinsert")
+    end,
+})
+
+-- Stop LSP servers when they are not attached to any buffers
 vim.api.nvim_create_autocmd("BufDelete", {
-  callback = function()
-    vim.schedule(function()
-      local clients = vim.lsp.get_clients()
-      for _, client in ipairs(clients) do
-        local buffers = vim.lsp.get_buffers_by_client_id(client.id)
-        if #buffers == 0 then
-          vim.lsp.stop_client(client.id)
-        end
-      end
-    end)
-  end,
+    callback = function()
+        vim.schedule(function()
+            local clients = vim.lsp.get_clients()
+            for _, client in ipairs(clients) do
+                local buffers = vim.lsp.get_buffers_by_client_id(client.id)
+                if #buffers == 0 then
+                    vim.lsp.stop_client(client.id)
+                end
+            end
+        end)
+    end,
 })
 
 -- Tree-sitter
