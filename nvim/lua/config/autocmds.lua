@@ -5,6 +5,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     command = "set ft=gotmpl",
 })
 
+vim.api.nvim_create_autocmd("BufDelete", {
+  callback = function()
+    vim.schedule(function()
+      local clients = vim.lsp.get_clients()
+      for _, client in ipairs(clients) do
+        local buffers = vim.lsp.get_buffers_by_client_id(client.id)
+        if #buffers == 0 then
+          vim.lsp.stop_client(client.id)
+        end
+      end
+    end)
+  end,
+})
+
 -- Tree-sitter
 vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
