@@ -1,7 +1,7 @@
 font-family = RobotoMono Nerd Font
 font-style = Medium
 font-size = 14
-cursor-invert-fg-bg = true
+cursor-color = #FF9433
 # theme = Gruvbox Light Hard
 theme = Tokyonight Moon
 background-opacity = 1
