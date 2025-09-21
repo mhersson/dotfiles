@@ -6,7 +6,7 @@ return {
         event = "BufReadPost",
         opts = {
             auth_provider_url = "https://dnb.ghe.com",
-            suggestion = { enabled = false },
+            suggestion = { enabled = true },
             panel = { enabled = false },
             filetypes = {
                 markdown = true,
