@@ -16,7 +16,10 @@
       "shift-l": "pane::ActivateNextItem",
       "space b k": ["pane::CloseActiveItem", { "close_pinned": false }],
       "space b o": ["pane::CloseOtherItems", { "close_pinned": false }],
-      "space g g": "git::Diff",
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" }
+      ],
       "space p p": ["projects::OpenRecent", { "create_new_window": false }]
     }
   },
