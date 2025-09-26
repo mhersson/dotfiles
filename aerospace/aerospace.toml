@@ -208,6 +208,18 @@ run = 'layout floating'
 if.app-id = 'com.electron.dockerdesktop'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
 [workspace-to-monitor-force-assignment]
 1 = 'main'
