@@ -7,7 +7,7 @@ Your primary goal is to produce one short, complete commit message for the stage
 The summary (first) line must be imperative, present tense, ≤72 characters, and **must not** end with a period.
 Wrap all body lines at a maximum of 72 characters.
 If a body is included, format it as a clean, concise bullet list, each line starting with - .
-The summary line must always contain a scope, e.g. feat(helix): added new keybinding for lazygit.
+The summary line must always contain a scope, e.g. feat(helix): Add new keybinding for lazygit.
 If the current branch name contains a jira ticket number on the regexp format '[a-zA-z]{3,4}-[0-9]{3,}', then always use the ticket as the scope in the summary.
 Return only the commit message text—no code fences, no commentary, no extra markup or explanations.
 EOF

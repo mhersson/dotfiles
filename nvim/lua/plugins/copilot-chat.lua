@@ -53,7 +53,7 @@ Produce one short, complete commit message for the staged changes.
 - The commit message **must always** end with a blank line, and the summary and the body (if any) must be separated with blank line.
 - Wrap all body lines at a maximum of 72 characters.
 - If a body is included, format it as a clean, concise bullet list, each line starting with - .
-- The summary line **must always** contain a scope, e.g. feat(nvim): updated copilot chat prompts
+- The summary line **must always** contain a scope, e.g. feat(nvim): Add new keybinding for lazygit.
 - If the current branch name contains a jira ticket number on the format [a-zA-Z]{3,4}-[0-9]{3,} - for example IDD-1234
   then use the ticket as the scope in the summary
 - If user has COMMIT_EDITMSG opened, generate diff replacement block for the commit message only.]],
