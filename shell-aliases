@@ -35,8 +35,8 @@ function go_single_test() {
 
 alias gtst='go_single_test'
 
-alias cat='bat --theme "Catppuccin Mocha" --style plain --paging=never'
-alias less='bat --theme "Catppuccin Mocha" --style plain'
+alias cat='bat --theme "Catppuccin Macchiato" --style plain --paging=never'
+alias less='bat --theme "Catppuccin Macchiato" --style plain'
 alias lg='lazygit'
 alias vi='nvim'
 alias emacs='emacs -nw'
