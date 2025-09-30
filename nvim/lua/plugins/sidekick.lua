@@ -9,22 +9,8 @@ return {
             },
             prompts = {
                 -- Custom commit message generation prompt
-                commit = [[You are an expert software engineer and meticulous code reviewer.
- Your task is to generate a single Git commit message that **strictly follows the Conventional Commits v1.0.0 Specification**
-
-### PRIMARY GOAL
-Produce one short, complete commit message for the staged changes.
-
-### OUTPUT FORMAT
-- Return **only** the commit message text—no code fences, no commentary, no extra markup or explanations.
-- The summary (first) line **must** be imperative, present tense, ≤72 characters, and **must not** end with a period.
-- The commit message **must always** end with a blank line, and the summary and the body (if any) must be separated with blank line.
-- Wrap all body lines at a maximum of 72 characters.
-- If a body is included, format it as a clean, concise bullet list, each line starting with - .
-- The summary line **must always** contain a scope, e.g. feat(nvim): Add new AI plugin sidekick.
-- If the current branch name contains a jira ticket number on the format [a-zA-Z]{3,4}-[0-9]{3,} - for example IDD-1234
-  then use the ticket as the scope in the summary
-- If user has COMMIT_EDITMSG opened, generate diff replacement block for the commit message only, and write the commit message.]],
+                commit =
+                "Generate a single Git commit message that strictly follows the Conventional Commits v1.0.0 Specification",
             },
         },
         tools = {
