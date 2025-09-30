@@ -168,9 +168,9 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # Workaround for ghostty tabs being rendered as separate windows Starting
 # ghostty in floating mode, and then manually switch to tiling mode seems to
 # remedy the issue
-# [[on-window-detected]]
-# if.app-id="com.mitchellh.ghostty"
-# run=  'layout floating'
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run=  'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -218,6 +218,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.google.android.studio'
 run = 'layout floating'
 
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
