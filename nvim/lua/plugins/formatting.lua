@@ -56,7 +56,7 @@ return {
         end,
         -- Customize formatters
         formatters = {
-            markdown = {
+            prettier = {
                 prepend_args = { "--prose-wrap", "always" },
             },
             shfmt = {
