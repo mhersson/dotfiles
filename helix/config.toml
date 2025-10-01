@@ -38,15 +38,6 @@ L = "goto_next_buffer"
 
 A-q = ":reflow"
 
-C-g = [
-    ":write-all",
-    ":new",
-    ":insert-output lazygit",
-    ":buffer-close!",
-    ":redraw",
-    ":reload-all"
-]
-
 C-y = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
@@ -60,8 +51,24 @@ C-y = [
 space = "file_picker"
 
 [keys.normal.space.b]
+b = "buffer_picker"
 R = ":reload-all"
 d = ":buffer-close"
 k = ":buffer-close!"
 o = ":buffer-close-others"
 r = ":reload"
+
+[keys.normal.space.g]
+f = "changed_file_picker"
+g = [
+    ":write-all",
+    ":new",
+    ":insert-output lazygit",
+    ":set mouse false", # First disable mouse to hint helix into activating it
+    ":set mouse true",
+    ":buffer-close!",
+    ":redraw",
+    ":reload-all"
+]
+# inline blame
+b = ":run-shell-command ~/.config/helix/utils/blame_line_pretty.sh %{buffer_name} %{cursor_line}"
