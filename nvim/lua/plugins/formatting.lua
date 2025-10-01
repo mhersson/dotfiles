@@ -59,9 +59,6 @@ return {
             prettier = {
                 prepend_args = { "--prose-wrap", "always" },
             },
-            shfmt = {
-                prepend_args = { "-i", "2", "-ci", "-bn" },
-            },
         },
     },
     init = function()
