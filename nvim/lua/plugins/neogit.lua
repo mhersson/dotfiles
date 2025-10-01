@@ -9,7 +9,7 @@ return {
         keys = {
             {
                 "<leader>gg",
-                "<cmd>Neogit<cr>",
+                "<cmd>Neogit kind=split_above<cr>",
                 desc = "Neogit",
             },
         },
@@ -22,6 +22,9 @@ return {
                 recent = {
                     folded = false,
                 },
+            },
+            commit_editor = {
+                kind = "split_above"
             },
         },
     },
