@@ -9,20 +9,32 @@ return {
             },
             prompts = {
                 -- Custom commit message generation prompt
-                commit =
-                "Generate a single Git commit message that strictly follows the Conventional Commits v1.0.0 Specification",
+                commit = [[
+You are an expert software engineer and meticulous code reviewer.
+Your task is to generate a single Git commit message that strictly follows the Conventional Commits v1.0.0 Specification
+
+PRIMARY GOAL:
+Produce one short, complete commit message for the staged changes.
+
+RULES:
+1. Format: `type(scope): subject` - imperative mood, lowercase, no period
+2. Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert
+3. Scope: Extract from branch name if contains JIRA ticket (e.g., PROJ-123), otherwise infer from changes
+4. Subject: Max 72 chars, describe what the commit does (not did)
+5. Body (if needed): Bullet list with `-`, each line max 72 chars, blank line after subject
+6. If user has COMMIT_EDITMSG opened, generate diff replacement block for the commit message only
+
+BRANCH NAME PARSING:
+- Match pattern: [A-Z]+-\d+ (e.g., JIRA-456, ABC-123)
+- If found, use as scope: `feat(JIRA-456): add user authentication`
+- If not found, use contextual scope: `fix(api): handle nil pointer`
+
+OUTPUT:
+- Return only the commit message
+- If COMMIT_EDITMSG buffer exists, replace its contents
+- Do not execute git commit
+]],
             },
-        },
-        tools = {
-            claude = { cmd = { "claude" }, url = "https://github.com/anthropics/claude-code" },
-            -- codex = { cmd = { "codex", "--search" }, url = "https://github.com/openai/codex" },
-            copilot = { cmd = { "copilot", "--banner" }, url = "https://github.com/github/copilot-cli" },
-            -- crush = { cmd = { "crush" }, url = "https://github.com/charmbracelet/crush" },
-            -- cursor = { cmd = { "cursor-agent" }, url = "https://cursor.com/cli" },
-            -- gemini = { cmd = { "gemini" }, url = "https://github.com/google-gemini/gemini-cli" },
-            -- grok = { cmd = { "grok" }, url = "https://github.com/superagent-ai/grok-cli" },
-            -- opencode = { cmd = { "opencode" }, url = "https://github.com/sst/opencode" },
-            -- qwen = { cmd = { "qwen" }, url = "https://github.com/QwenLM/qwen-code" },
         },
     },
     keys = {
