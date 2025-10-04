@@ -73,15 +73,12 @@ return {
                                 return icons.kinds.Copilot
                             end,
                             cond = function()
-                                local clients = package.loaded["copilot"]
-                                        and vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
-                                    or {}
+                                -- Check for copilot client without relying on package.loaded
+                                local clients = vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
                                 return #clients > 0
                             end,
                             color = function()
-                                local clients = package.loaded["copilot"]
-                                        and vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
-                                    or {}
+                                local clients = vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
                                 if #clients > 0 then
                                     local ok, copilot_status = pcall(require, "copilot.status")
                                     if ok and copilot_status.status and copilot_status.data then
