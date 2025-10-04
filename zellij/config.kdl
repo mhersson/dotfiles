@@ -504,7 +504,7 @@ default_layout "compact-bar-on-top"
 // Whether to enable mouse hover effects and pane grouping functionality
 // Default: true
 //
-// advanced_mouse_actions false
+advanced_mouse_actions false
 
 // A command to run (will be wrapped with sh -c and provided the RESURRECT_COMMAND env variable)
 // after Zellij attempts to discover a command inside a pane when resurrecting sessions, the STDOUT
