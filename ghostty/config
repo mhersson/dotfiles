@@ -4,6 +4,7 @@ font-size = 14
 cursor-color = #FF9433
 # theme = Gruvbox Light Hard
 theme = Tokyonight Moon
+macos-titlebar-proxy-icon = hidden
 background-opacity = 1
 window-padding-x = 10
 window-width = 170
