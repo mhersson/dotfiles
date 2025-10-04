@@ -5,12 +5,8 @@ return {
         branch = "main",
         lazy = false,
         cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-        config = function()
-            require("nvim-treesitter").setup({
-                -- Directory to install parsers and queries to
-                install_dir = vim.fn.stdpath("data") .. "/site",
-            })
-            require("nvim-treesitter").install({
+        opts = {
+            ensure_installed = {
                 "bash",
                 "c",
                 "comment",
@@ -48,7 +44,7 @@ return {
                 "xml",
                 "yaml",
                 "zig",
-            })
-        end,
+            },
+        },
     },
 }
