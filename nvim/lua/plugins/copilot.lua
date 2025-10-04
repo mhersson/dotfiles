@@ -11,6 +11,7 @@ return {
             filetypes = {
                 markdown = true,
                 gitcommit = true,
+                yaml = true,
                 help = true,
             },
         },

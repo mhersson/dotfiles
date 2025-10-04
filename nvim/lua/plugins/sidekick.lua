@@ -1,5 +1,6 @@
 return {
     "folke/sidekick.nvim",
+    enabled = false,
     opts = {
         -- add any options here
         cli = {
@@ -53,14 +54,6 @@ return {
             desc = "Sidekick Claude Toggle",
             mode = { "n", "v" },
         },
-        -- {
-        --     "<leader>ag",
-        --     function()
-        --         require("sidekick.cli").ask({ prompt = "commit", submit = true })
-        --     end,
-        --     desc = "Generate commit message",
-        --     mode = { "n", "v" },
-        -- },
         {
             "<leader>ap",
             function()
