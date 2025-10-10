@@ -18,9 +18,14 @@
       "space b o": ["pane::CloseOtherItems", { "close_pinned": false }],
       "space g g": [
         "task::Spawn",
-        { "task_name": "lazygit", "reveal_target": "center" }
+        { "task_name": "open neogit", "reveal_target": "center" }
       ],
-      "space p p": ["projects::OpenRecent", { "create_new_window": false }]
+      "space n n": [
+        "task::Spawn",
+        { "task_name": "open neovim", "reveal_target": "dock" }
+      ],
+      "space p p": ["projects::OpenRecent", { "create_new_window": false }],
+      "space s s": "outline::Toggle"
     }
   },
   {
@@ -43,6 +48,17 @@
       "space w l": "workspace::ActivatePaneRight",
       "space w k": "workspace::ActivatePaneUp",
       "space w j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-shift-d": "pane::SplitRight",
+      "cmd-d": "pane::SplitDown",
+      "alt-left": "workspace::ActivatePaneLeft",
+      "alt-right": "workspace::ActivatePaneRight",
+      "alt-up": "workspace::ActivatePaneUp",
+      "alt-down": "workspace::ActivatePaneDown"
     }
   },
   {

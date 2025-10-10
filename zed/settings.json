@@ -62,7 +62,7 @@
     "include_ignored": true
   },
   "project_panel": {
-    "auto_reveal_entries": false
+    "auto_reveal_entries": true
   },
   "collaboration_panel": {
     "button": false
@@ -78,11 +78,11 @@
     "button": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4.5"
     },
     "commit_message_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "claude-sonnet-4.5"
     }
   },
   "edit_predictions": {

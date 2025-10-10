@@ -1,7 +1,29 @@
 [
+  // {
+  //   "label": "open lazygit",
+  //   "command": "lazygit",
+  //   "hide": "on_success",
+  //   "use_new_terminal": true,
+  //   "allow_concurrent_runs": false,
+  //   "shell": {
+  //     "program": "bash"
+  //   }
+  // },
   {
-    "label": "lazygit",
-    "command": "lazygit",
+    "label": "open neovim",
+    "command": "nvim",
+    "hide": "on_success",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "shell": {
+      "program": "bash"
+    }
+  },
+  // Open neogit in nvim without loading a project, and map q to quit all
+  {
+    "label": "open neogit",
+    "env": { "NVIM_NO_PROJECT": "1" },
+    "command": "nvim -c \"lua require('neogit')\"  -c \"Neogit\" -c \"nnoremap <buffer> q :qa<CR>\"",
     "hide": "on_success",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
