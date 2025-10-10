@@ -4,3 +4,6 @@ customCommands:
   description: 'Generate conventional commit with Copilot'
   context: 'global'
   loadingText: 'Generating commit message...'
+
+git:
+  overrideGpg: true
