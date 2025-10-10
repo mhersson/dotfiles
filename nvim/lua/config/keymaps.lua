@@ -86,6 +86,7 @@ map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- code actions
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)

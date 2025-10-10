@@ -1,5 +1,9 @@
 return {
     "coffebar/neovim-project",
+    -- Enable/disable plugin based on env variable NVIM_NO_PROJECT
+    -- If NVIM_NO_PROJECT is set to "1", the plugin will be disabled
+    -- Used by Zed to disable project management when opening nvim and neogit
+    enabled = vim.env.NVIM_NO_PROJECT ~= "1",
     opts = {
         projects = { -- define project roots
             "~/Development/*",
