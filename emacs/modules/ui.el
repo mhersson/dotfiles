@@ -66,7 +66,7 @@
   :ensure t
   :defer t
   :config
-  (treemacs-follow-mode -1)
+  (treemacs-follow-mode t)
   (treemacs-filewatch-mode t)
   (treemacs-fringe-indicator-mode 'always))
 
