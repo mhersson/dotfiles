@@ -12,20 +12,22 @@
       // Put key bindings here if you want them to work in normal & visual mode.
       "space space": "file_finder::Toggle",
       "space ,": "tab_switcher::ToggleAll",
+      "space e": "workspace::ToggleLeftDock",
       "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
       "space b k": ["pane::CloseActiveItem", { "close_pinned": false }],
       "space b o": ["pane::CloseOtherItems", { "close_pinned": false }],
       "space g g": [
         "task::Spawn",
-        { "task_name": "open neogit", "reveal_target": "center" }
+        { "task_name": "neogit", "reveal_target": "center" }
       ],
       "space n n": [
         "task::Spawn",
-        { "task_name": "open neovim", "reveal_target": "dock" }
+        { "task_name": "neovim", "reveal_target": "dock" }
       ],
       "space p p": ["projects::OpenRecent", { "create_new_window": false }],
-      "space s s": "outline::Toggle"
+      "space p P": ["projects::OpenRecent", { "create_new_window": true }],
+      "space s o": "outline::Toggle"
     }
   },
   {

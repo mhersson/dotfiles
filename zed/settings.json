@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "base_keymap": "VSCode",
   "icon_theme": "Catppuccin Macchiato",
   "vim_mode": true,
   "telemetry": {
@@ -31,6 +32,7 @@
     "dark": "Catppuccin Macchiato"
   },
   "format_on_save": "on",
+  "formatter": ["auto", { "code_action": "source.organizeImports" }],
   "close_on_file_delete": true,
   "load_direnv": "shell_hook",
   "title_bar": {
@@ -73,7 +75,11 @@
   "inlay_hints": {
     "show_value_hints": false
   },
+  "terminal": {
+    "copy_on_select": true
+  },
   "agent": {
+    "always_allow_tool_actions": true,
     "default_profile": "write",
     "button": true,
     "default_model": {
@@ -118,21 +124,13 @@
     "mpls": {
       "binary": {
         "path": "mpls",
-        "arguments": [
-          "--dark-mode",
-          "--enable-emoji",
-          "--enable-footnotes",
-          "--plantuml-server",
-          "localhost:8080",
-          "--plantuml-path",
-          "/",
-          "--plantuml-disable-tls"
-        ]
+        "arguments": ["--dark-mode", "--enable-emoji", "--enable-footnotes"]
       }
     },
     "gopls": {
       "initialization_options": {
-        "gofumpt": true
+        "gofumpt": true,
+        "buildFlags": ["-tags=integration"]
       }
     }
   }
