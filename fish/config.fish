@@ -93,10 +93,7 @@ alias gei='curl --silent https://icanhazip.com'
 alias yy='yazi'
 
 if status is-interactive
-    if type -q fzf
-        fzf --fish | source
-    end
-
+    fzf --fish | source
     direnv hook fish | source
     zoxide init --cmd cd fish | source
     # starship init fish | source
