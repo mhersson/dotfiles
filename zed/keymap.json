@@ -88,7 +88,15 @@
     "context": "EmptyPane || SharedScreen && VimControl",
     "bindings": {
       "space space": "file_finder::Toggle",
-      "space p p": ["projects::OpenRecent", { "create_new_window": false }]
+      "space p p": ["projects::OpenRecent", { "create_new_window": false }],
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "neogit", "reveal_target": "center" }
+      ],
+      "space n n": [
+        "task::Spawn",
+        { "task_name": "neovim", "reveal_target": "dock" }
+      ]
     }
   }
 ]

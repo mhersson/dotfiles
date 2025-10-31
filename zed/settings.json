@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "base_keymap": "VSCode",
-  "icon_theme": "Catppuccin Macchiato",
+  "icon_theme": "Zed (Default)",
   "vim_mode": true,
   "telemetry": {
     "metrics": false,
@@ -61,10 +61,10 @@
     "Wq": "wq"
   },
   "file_finder": {
-    "include_ignored": true
+    "include_ignored": "all"
   },
   "project_panel": {
-    "auto_reveal_entries": true
+    "auto_reveal_entries": false
   },
   "collaboration_panel": {
     "button": false
