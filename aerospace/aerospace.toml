@@ -134,11 +134,11 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
+# alt-shift-semicolon = 'mode service'
 
-alt-t = 'layout v_accordion'
-alt-w = 'layout h_accordion'
-alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+# alt-t = 'layout v_accordion'
+# alt-w = 'layout h_accordion'
+# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
