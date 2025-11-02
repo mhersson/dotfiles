@@ -1,29 +1,17 @@
-local ACTIVE_THEME = "tokyonight"
+local ACTIVE_THEME = "ayu"
 
 return {
     {
-        "ellisonleao/gruvbox.nvim",
-        lazy = ACTIVE_THEME ~= "gruvbox",
-        priority = ACTIVE_THEME == "gruvbox" and 1000 or nil,
+        "shatur/neovim-ayu",
+        lazy = ACTIVE_THEME ~= "ayu",
+        priority = ACTIVE_THEME == "ayu" and 1000 or nil,
         opts = {
-            contrast = "hard",
+            theme = "ayu",
         },
         config = function(_, opts)
-            require("gruvbox").setup(opts)
-            if ACTIVE_THEME == "gruvbox" then
-                vim.cmd.colorscheme("gruvbox")
-            end
-        end,
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = ACTIVE_THEME ~= "tokyonight",
-        priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
-        opts = { style = "moon", transparent = false },
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-            if ACTIVE_THEME == "tokyonight" then
-                vim.cmd.colorscheme("tokyonight")
+            require("ayu").setup(opts)
+            if ACTIVE_THEME == "ayu" then
+                vim.cmd.colorscheme("ayu")
             end
         end,
     },
@@ -76,5 +64,42 @@ return {
                 which_key = true,
             },
         },
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = ACTIVE_THEME ~= "gruvbox",
+        priority = ACTIVE_THEME == "gruvbox" and 1000 or nil,
+        opts = {
+            contrast = "hard",
+        },
+        config = function(_, opts)
+            require("gruvbox").setup(opts)
+            if ACTIVE_THEME == "gruvbox" then
+                vim.cmd.colorscheme("gruvbox")
+            end
+        end,
+    },
+    {
+        "olimorris/onedarkpro.nvim",
+        lazy = ACTIVE_THEME ~= "onedark",
+        priority = ACTIVE_THEME == "onedark" and 1000 or nil,
+        config = function(_, opts)
+            require("onedarkpro").setup(opts)
+            if ACTIVE_THEME == "onedark" then
+                vim.cmd.colorscheme("onedark")
+            end
+        end,
+    },
+    {
+        "folke/tokyonight.nvim",
+        lazy = ACTIVE_THEME ~= "tokyonight",
+        priority = ACTIVE_THEME == "tokyonight" and 1000 or nil,
+        opts = { style = "moon", transparent = false },
+        config = function(_, opts)
+            require("tokyonight").setup(opts)
+            if ACTIVE_THEME == "tokyonight" then
+                vim.cmd.colorscheme("tokyonight")
+            end
+        end,
     },
 }

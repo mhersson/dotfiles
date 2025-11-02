@@ -29,7 +29,7 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light Hard",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Ayu Dark"
   },
   "format_on_save": "on",
   "formatter": ["auto", { "code_action": "source.organizeImports" }],
@@ -124,13 +124,32 @@
     "mpls": {
       "binary": {
         "path": "mpls",
-        "arguments": ["--dark-mode", "--enable-emoji", "--enable-footnotes"]
+        "arguments": [
+          "--dark-mode",
+          "--code-style",
+          "onedark",
+          "--enable-emoji",
+          "--enable-footnotes"
+        ]
       }
     },
     "gopls": {
       "initialization_options": {
         "gofumpt": true,
         "buildFlags": ["-tags=integration"]
+      }
+    },
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--output.text.path=",
+          "--tests"
+        ]
       }
     }
   }

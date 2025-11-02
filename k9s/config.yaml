@@ -6,7 +6,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    skin: tokyo-night
+    skin: ayu
     enableMouse: false
     headless: false
     logoless: true
