@@ -5,7 +5,7 @@
 
 # Styles...
 foreground: &foreground "#3c3735"
-background: &background "#f9f5d7"
+background: &background "#f9f2c9"
 current_line: &current_line "#ebdbb2"
 selection: &selection "#3c3735"
 comment: &comment "#bdad93"
@@ -56,8 +56,8 @@ k9s:
       bgColor: *comment
       activeColor: *blue
     status:
-      newColor: *cyan
-      modifyColor: *blue
+      newColor: *blue
+      modifyColor: *cyan
       addColor: *green
       errorColor: *red
       highlightColor: *orange
