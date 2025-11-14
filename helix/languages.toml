@@ -52,7 +52,7 @@ args = ["--parser", "markdown", "--prose-wrap", "always" ]
 
 [language-server.mpls]
 command = "mpls"
-args = ["--dark-mode", "--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
+args = ["--no-auto", "--dark-mode", "--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
 
 [[language]]
 name = "nix"
