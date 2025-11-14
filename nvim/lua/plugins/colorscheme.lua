@@ -1,4 +1,4 @@
-local ACTIVE_THEME = "ayu"
+local ACTIVE_THEME = "tokyonight"
 
 return {
     {
@@ -75,6 +75,7 @@ return {
         config = function(_, opts)
             require("gruvbox").setup(opts)
             if ACTIVE_THEME == "gruvbox" then
+                vim.o.background = "light"
                 vim.cmd.colorscheme("gruvbox")
             end
         end,
@@ -86,7 +87,7 @@ return {
         config = function(_, opts)
             require("onedarkpro").setup(opts)
             if ACTIVE_THEME == "onedark" then
-                vim.cmd.colorscheme("onedark")
+                vim.cmd.colorscheme("onelight")
             end
         end,
     },
