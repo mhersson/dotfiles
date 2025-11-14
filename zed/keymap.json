@@ -10,7 +10,10 @@
     "context": "VimControl && !menu",
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
-      "space space": "file_finder::Toggle",
+      "space space": [
+        "task::Spawn",
+        { "task_name": "find file", "reveal_target": "center" }
+      ],
       "space ,": "tab_switcher::ToggleAll",
       "space e": "workspace::ToggleLeftDock",
       "shift-h": "pane::ActivatePreviousItem",
@@ -87,7 +90,10 @@
   {
     "context": "EmptyPane || SharedScreen && VimControl",
     "bindings": {
-      "space space": "file_finder::Toggle",
+      "space space": [
+        "task::Spawn",
+        { "task_name": "find file", "reveal_target": "center" }
+      ],
       "space p p": ["projects::OpenRecent", { "create_new_window": false }],
       "space g g": [
         "task::Spawn",

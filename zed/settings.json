@@ -28,8 +28,8 @@
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Light Hard",
-    "dark": "Ayu Dark"
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato"
   },
   "format_on_save": "on",
   "formatter": ["auto", { "code_action": "source.organizeImports" }],
@@ -100,14 +100,8 @@
     "edit_prediction_provider": "copilot"
   },
   "languages": {
-    "YAML": {
-      "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "yamlfmt",
-          "arguments": ["-"]
-        }
-      }
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint"]
     },
     "Markdown": {
       "tab_size": 4,
@@ -118,19 +112,22 @@
         }
       }
     },
-    "Shell Script": { "tab_size": 2 }
+    "Shell Script": { "tab_size": 2 },
+    "YAML": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "yamlfmt",
+          "arguments": ["-"]
+        }
+      }
+    }
   },
   "lsp": {
     "mpls": {
       "binary": {
         "path": "mpls",
-        "arguments": [
-          "--dark-mode",
-          "--code-style",
-          "onedark",
-          "--enable-emoji",
-          "--enable-footnotes"
-        ]
+        "arguments": ["--dark-mode", "--enable-emoji", "--enable-footnotes"]
       }
     },
     "gopls": {
