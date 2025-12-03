@@ -34,7 +34,7 @@
   },
   {
     "label": "find file",
-    "command": "fzf --preview 'bat --style=numbers --theme=\"Catppuccin Macchiato\" --color=always --line-range=:100 {}' --height=100% --header=\"\n\" --margin=4 --reverse --input-border=rounded --info=inline-right | xargs -I{} zed {}",
+    "command": "fzf --preview 'bat --style=numbers --theme=\"Catppuccin Macchiato\" --color=always --line-range :500 {}' --height=100% --header=\"\n\" --margin=4 --reverse --input-border=rounded --info=inline-right | xargs -I{} zed {}",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "reveal": "always",

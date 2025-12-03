@@ -28,7 +28,7 @@
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Catppuccin Macchiato",
     "dark": "Catppuccin Macchiato"
   },
   "format_on_save": "on",
