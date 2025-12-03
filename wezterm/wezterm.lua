@@ -20,7 +20,7 @@ config.macos_window_background_blur = 95
 
 config.front_end = "WebGpu"
 
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "tokyonight_moon"
 config.colors = {
     split = "#ffc777",
     cursor_bg = "#FF9433",
