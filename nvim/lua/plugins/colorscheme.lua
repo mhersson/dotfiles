@@ -23,6 +23,7 @@ return {
         config = function()
             require("catppuccin").setup({
                 flavor = "macchiato",
+                transparent_background = true,
             })
             if ACTIVE_THEME == "catppuccin" then
                 vim.cmd.colorscheme("catppuccin")

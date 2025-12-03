@@ -3,10 +3,19 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         build = ":Copilot auth",
-        lazy = false, -- Load immediately to avoid session restore issues
+        event = "BufReadPost",
         opts = {
             auth_provider_url = "https://dnb.ghe.com",
-            suggestion = { enabled = true },
+            suggestion = {
+                enabled = not vim.g.ai_cmp,
+                auto_trigger = true,
+                hide_during_completion = vim.g.ai_cmp,
+                keymap = {
+                    accept = "<C-Return>",
+                    next = "<M-]>",
+                    prev = "<M-[>",
+                },
+            },
             panel = { enabled = false },
             filetypes = {
                 markdown = true,
@@ -15,22 +24,5 @@ return {
                 help = true,
             },
         },
-        config = function(_, opts)
-            require("copilot").setup(opts)
-
-            -- Force Copilot to attach after session load
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "SessionLoadPost",
-                callback = function()
-                    vim.defer_fn(function()
-                        -- Restart Copilot to ensure it attaches to restored buffers
-                        vim.cmd("Copilot disable")
-                        vim.defer_fn(function()
-                            vim.cmd("Copilot enable")
-                        end, 100)
-                    end, 200)
-                end,
-            })
-        end,
     },
 }

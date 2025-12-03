@@ -1,6 +1,9 @@
 return {
     {
         "akinsho/bufferline.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
         event = "VeryLazy",
         keys = {
             { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
@@ -13,11 +16,9 @@ return {
         },
         opts = {
             options = {
-                separator_style = "thin",
+                separator_style = "slant",
                 themeable = true,
-                indicator = {
-                    style = "underline",
-                },
+                color_icons = true,
                 diagnostics = "nvim_lsp",
                 always_show_bufferline = false,
                 diagnostics_indicator = function(_, _, diag)

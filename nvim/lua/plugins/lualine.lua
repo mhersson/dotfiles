@@ -88,7 +88,7 @@ return {
                                         elseif status == "Warning" then
                                             return { fg = "#ff966c" } -- warning color
                                         else
-                                            return { fg = "#4fd6be" } -- ok/success color
+                                            return { fg = "#82aaff" } -- ok/success color
                                         end
                                     end
                                 end

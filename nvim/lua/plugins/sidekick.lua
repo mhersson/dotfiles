@@ -1,6 +1,5 @@
 return {
     "folke/sidekick.nvim",
-    enabled = false,
     opts = {
         -- add any options here
         cli = {
@@ -23,11 +22,10 @@ return {
             desc = "Goto/Apply Next Edit Suggestion",
         },
         {
-            "<c-.>",
+            "<C-.>",
             function()
                 require("sidekick.cli").focus()
             end,
-            mode = { "n", "x", "i", "t" },
             desc = "Sidekick Switch Focus",
         },
         {
@@ -36,31 +34,66 @@ return {
                 require("sidekick.cli").toggle({ focus = true })
             end,
             desc = "Sidekick Toggle CLI",
-            mode = { "n", "v" },
+        },
+        {
+            "<leader>as",
+            function()
+                -- require("sidekick.cli").select()
+                require("sidekick.cli").select({ filter = { installed = true } })
+            end,
+            desc = "Select CLI",
+        },
+        {
+            "<leader>ad",
+            function()
+                require("sidekick.cli").close()
+            end,
+            desc = "Detach a CLI Session",
+        },
+        {
+            "<leader>at",
+            function()
+                require("sidekick.cli").send({ msg = "{this}" })
+            end,
+            mode = { "x", "n" },
+            desc = "Send This",
+        },
+        {
+            "<leader>af",
+            function()
+                require("sidekick.cli").send({ msg = "{file}" })
+            end,
+            desc = "Send File",
+        },
+        {
+            "<leader>av",
+            function()
+                require("sidekick.cli").send({ msg = "{selection}" })
+            end,
+            mode = { "x" },
+            desc = "Send Visual Selection",
+        },
+        {
+            "<leader>ap",
+            function()
+                require("sidekick.cli").prompt()
+            end,
+            mode = { "n", "x" },
+            desc = "Sidekick Select Prompt",
         },
         {
             "<leader>ac",
             function()
                 require("sidekick.cli").toggle({ name = "copilot", focus = true })
             end,
-            desc = "Sidekick Copilot Toggle",
-            mode = { "n", "v" },
+            desc = "Sidekick Toggle Copilot",
         },
         {
             "<leader>aC",
             function()
                 require("sidekick.cli").toggle({ name = "claude", focus = true })
             end,
-            desc = "Sidekick Claude Toggle",
-            mode = { "n", "v" },
-        },
-        {
-            "<leader>ap",
-            function()
-                require("sidekick.cli").select_prompt()
-            end,
-            desc = "Sidekick Ask Prompt",
-            mode = { "n", "v" },
+            desc = "Sidekick Toggle Claude",
         },
     },
 }

@@ -45,8 +45,8 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
--- MPLS Focus Handler
 
+-- MPLS Focus Handler
 local function create_debounced_mpls_sender(delay)
     delay = delay or 300
     local timer = nil

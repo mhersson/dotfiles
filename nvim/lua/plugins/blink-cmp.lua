@@ -4,7 +4,6 @@ return {
         -- optional: provides snippets for the snippet source
         dependencies = {
             "rafamadriz/friendly-snippets",
-            "giuxtaposition/blink-cmp-copilot",
         },
 
         -- use a release tag to download pre-built binaries
@@ -32,15 +31,7 @@ return {
             completion = { documentation = { auto_show = true } },
 
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "copilot" },
-                providers = {
-                    copilot = {
-                        name = "copilot",
-                        module = "blink-cmp-copilot",
-                        score_offset = 100,
-                        async = true,
-                    },
-                },
+                default = { "lsp", "path", "snippets", "buffer" },
             },
 
             -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
