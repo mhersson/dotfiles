@@ -84,6 +84,11 @@ alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
 alias gg='~/.config/lazygit/copilot-commit.sh'
 
+# Kubernetes
+alias kc='kubectl'
+alias kcl='kubectl logs'
+alias kcrr='kubectl rollout restart'
+
 alias cat='bat --theme "Catppuccin Macchiato" --style plain --paging=never'
 alias less='bat --theme "Catppuccin Macchiato" --style plain'
 alias lg='lazygit'
