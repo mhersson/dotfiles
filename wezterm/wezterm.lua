@@ -20,9 +20,12 @@ config.macos_window_background_blur = 95
 
 config.front_end = "WebGpu"
 
-config.color_scheme = "tokyonight_moon"
+config.color_scheme = "Catppuccin Macchiato"
 config.colors = {
     split = "#ffc777",
+    cursor_bg = "#FF9433",
+    cursor_border = "#FF9433",
+    cursor_fg = "#eff1f5",
 }
 -- Don't dim inactive panes
 config.inactive_pane_hsb = {
@@ -32,7 +35,7 @@ config.inactive_pane_hsb = {
 
 config.default_cursor_style = "BlinkingBar"
 config.cursor_blink_rate = 500
-config.force_reverse_video_cursor = true
+config.force_reverse_video_cursor = false
 
 config.audible_bell = "Disabled"
 
