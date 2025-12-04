@@ -6,11 +6,11 @@ require("config.lazy")
 
 vim.lsp.enable({
     "bashls",
-    --    "copilot",
+    "copilot",
     "golangci_lint_ls",
     "gopls",
     "lua_ls",
-    "marksman",
+    -- "marksman",
     "mpls",
     "regal",
     "ts_ls",

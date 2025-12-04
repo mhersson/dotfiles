@@ -80,17 +80,7 @@ return {
                             color = function()
                                 local clients = vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
                                 if #clients > 0 then
-                                    local ok, copilot_status = pcall(require, "copilot.status")
-                                    if ok and copilot_status.status and copilot_status.data then
-                                        local status = copilot_status.data.status
-                                        if status == "InProgress" then
-                                            return { fg = "#ff757f" } -- pending/error color
-                                        elseif status == "Warning" then
-                                            return { fg = "#ff966c" } -- warning color
-                                        else
-                                            return { fg = "#82aaff" } -- ok/success color
-                                        end
-                                    end
+                                    return { fg = "#82aaff" } -- ok/success color
                                 end
                                 return { fg = "#565f89" } -- inactive color
                             end,

@@ -2,10 +2,9 @@ return {
     {
         "mhersson/CopilotChat.nvim",
         dependencies = {
-            { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        build = "make tiktoken",                            -- Only on MacOS or Linux
+        build = "make tiktoken", -- Only on MacOS or Linux
         branch = "main",
         cmd = "CopilotChat",
         opts = function()
