@@ -51,7 +51,12 @@ map("i", ";", ";<c-g>u")
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
+-- Better paste
+-- don't replace clipboard when pasting over a selection
+map("v", "p", '"_dP', { noremap = true, silent = true })
+
 -- better indenting
+-- when indenting in visual mode, keep selection
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
