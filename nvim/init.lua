@@ -10,7 +10,7 @@ vim.lsp.enable({
     "golangci_lint_ls",
     "gopls",
     "lua_ls",
-    -- "marksman",
+    "marksman",
     "mpls",
     "regal",
     "ts_ls",

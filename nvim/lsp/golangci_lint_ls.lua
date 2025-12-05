@@ -1,5 +1,9 @@
 return {
     cmd = { "golangci-lint-langserver" },
+    filetypes = { "go", "gomod" },
+    init_options = {
+        command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" },
+    },
     root_markers = {
         ".golangci.yml",
         ".golangci.yaml",
@@ -8,17 +12,5 @@ return {
         "go.work",
         "go.mod",
         ".git",
-    },
-    filetypes = { "go", "gomod" },
-    init_options = {
-        command = {
-            "golangci-lint",
-            "run",
-            "--output.json.path",
-            "stdout",
-            "--show-stats=false",
-            "--output.text.path=",
-            "--tests",
-        },
     },
 }

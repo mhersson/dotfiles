@@ -1,4 +1,4 @@
-local ACTIVE_THEME = "tokyonight"
+local ACTIVE_THEME = "catppuccin"
 
 return {
     {
@@ -22,8 +22,8 @@ return {
         priority = ACTIVE_THEME == "catppuccin" and 1000 or nil,
         config = function()
             require("catppuccin").setup({
-                flavor = "macchiato",
-                transparent_background = true,
+                flavor = "mocha",
+                transparent_background = false,
             })
             if ACTIVE_THEME == "catppuccin" then
                 vim.cmd.colorscheme("catppuccin")
