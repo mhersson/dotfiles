@@ -69,10 +69,9 @@ set -gx GOPATH $HOME/Development/go
 bind -M insert \e\[A history-search-backward
 bind -M insert \e\[B history-search-forward
 
+fish_add_path --prepend --move /opt/homebrew/bin
 fish_add_path --prepend --move $HOME/.local/bin
 fish_add_path --prepend --move $HOME/.cargo/bin
-fish_add_path --prepend --move $HOME/.config/emacs/bin
-fish_add_path --prepend --move /opt/homebrew/bin
 fish_add_path --prepend --move $GOPATH/bin
 
 # Git
