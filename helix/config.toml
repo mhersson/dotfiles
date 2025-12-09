@@ -1,9 +1,12 @@
 # theme = "gruvbox_light_hard"
-theme = "tokyonight_transparent"
+theme = "catppuccin_mocha"
 [editor]
 bufferline = "multiple"
 color-modes = true
 true-color = true
+
+# copilot
+inline-completion-timeout = 150
 
 # Minimum severity to show a diagnostic after the end of a line
 end-of-line-diagnostics = "hint"
@@ -31,6 +34,10 @@ render = true
 
 [editor.statusline]
 left = ["mode", "version-control", "file-name", "spinner"]
+
+[keys.insert]
+A-tab = "inline_completion_accept"
+C-e = "inline_completion_dismiss"
 
 [keys.normal]
 H = "goto_previous_buffer"
@@ -61,6 +68,8 @@ o = ":buffer-close-others"
 r = ":reload"
 
 [keys.normal.space.g]
+# inline blame
+b = ":run-shell-command ~/.config/helix/utils/blame_line_pretty.sh %{buffer_name} %{cursor_line}"
 f = "changed_file_picker"
 g = [
     ":write-all",
@@ -72,5 +81,3 @@ g = [
     ":redraw",
     ":reload-all"
 ]
-# inline blame
-b = ":run-shell-command ~/.config/helix/utils/blame_line_pretty.sh %{buffer_name} %{cursor_line}"

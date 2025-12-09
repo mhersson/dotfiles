@@ -1,6 +1,7 @@
 [[language]]
 auto-format = true
 name = "bash"
+language-servers = [ "bash-language-server", "copilot" ]
 
 [language.formatter]
 args = ["-i", "2", "-ci", "-bn"]
@@ -13,7 +14,7 @@ formatter = { command = 'prettier', args = ["--parser", "css"] }
 [[language]]
 name = "go"
 auto-format = true
-language-servers = [ "gopls", "golangci-lint-lsp" ]
+language-servers = [ "gopls", "golangci-lint-lsp", "copilot" ]
 
 [language.formatter]
 command = "goimports"
@@ -44,7 +45,7 @@ formatter = { command = 'prettier', args = ["--parser", "json"] }
 [[language]]
 name = "markdown"
 auto-format = true
-language-servers = ["marksman", "mpls"]
+language-servers = ["marksman", "mpls", "copilot"]
 
 [language.formatter]
 command = "prettier"
@@ -52,7 +53,7 @@ args = ["--parser", "markdown", "--prose-wrap", "always" ]
 
 [language-server.mpls]
 command = "mpls"
-args = ["--no-auto", "--dark-mode", "--enable-emoji", "--enable-footnotes", "--plantuml-server", "localhost:8080", "--plantuml-path", "/", "--plantuml-disable-tls"]
+args = ["--no-auto", "--dark-mode", "--enable-emoji", "--enable-footnotes"]
 
 [[language]]
 name = "nix"
@@ -64,7 +65,7 @@ command = "nixfmt"
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["pyright", "ruff"]
+language-servers = ["pyright", "ruff", "copilot"]
 
 [language.formatter]
 args = ["--line-length", "88", "--quiet", "-"]
@@ -92,6 +93,7 @@ config = { provideFormatter = true }
 [[language]]
 name = "yaml"
 auto-format = true
+language-servers = [ "yaml-language-server", "copilot" ]
 
 [language.formatter]
 args = ["-"]
@@ -99,3 +101,12 @@ command = "yamlfmt"
 
 [language-server.vale]
 command = "vale-ls"
+
+[language-server.copilot]
+command = "copilot-language-server"
+args = ["--stdio"]
+
+[language-server.copilot.config]
+editorInfo = { name = "Helix", version = "25.01" }
+editorPluginInfo = { name = "helix-copilot", version = "0.1.0" }
+github-enterprise = { uri = "https://dnb.ghe.com" }
