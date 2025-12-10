@@ -65,20 +65,19 @@ command = "nixfmt"
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["pyright", "ruff", "copilot"]
+language-servers = ["ty", "ruff", "copilot"]
 
 [language.formatter]
-args = ["--line-length", "88", "--quiet", "-"]
-command = "black"
+command = "uvx"
+args = ["ruff", "format", "-"]
 
-[language-server.pyright.config.python.analysis]
-typeCheckingMode = "basic"
+[language-server.ty]
+command = "uvx"
+args = ["ty", "server"]
 
 [language-server.ruff]
-command = "ruff-lsp"
-
-[language-server.ruff.config.settings]
-args = ["--ignore", "E501"]
+command = "uvx"
+args = ["ruff", "server", "--preview"]
 
 [[language]]
 name = "rego"
