@@ -52,8 +52,8 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 8
-inner.vertical =   8
+inner.horizontal = 3
+inner.vertical =   3
 outer.left =       0
 outer.bottom =     0
 outer.top =        0
@@ -108,6 +108,14 @@ alt-shift-j = 'swap down'
 alt-shift-k = 'swap up'
 alt-shift-l = 'swap right'
 
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+
+ctrl-alt-cmd-shift-h = 'split horizontal'
+ctrl-alt-shift-h = 'split vertical'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -10'
 alt-shift-equal = 'resize smart +10'
@@ -138,7 +146,7 @@ alt-shift-f = 'fullscreen'
 
 # alt-t = 'layout v_accordion'
 # alt-w = 'layout h_accordion'
-# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
