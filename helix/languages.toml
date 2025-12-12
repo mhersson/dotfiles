@@ -68,16 +68,19 @@ auto-format = true
 language-servers = ["ty", "ruff", "copilot"]
 
 [language.formatter]
-command = "uvx"
-args = ["ruff", "format", "-"]
+command = "sh"
+args = ["-c", "uvx ruff check --fix --select I - | uvx ruff format -"]
 
 [language-server.ty]
 command = "uvx"
 args = ["ty", "server"]
 
+[language-server.ty.config]
+ty.experimental.rename = true
+
 [language-server.ruff]
 command = "uvx"
-args = ["ruff", "server", "--preview"]
+args = ["ruff", "server"]
 
 [[language]]
 name = "rego"
