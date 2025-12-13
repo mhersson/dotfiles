@@ -9,7 +9,6 @@ return {
                 sh = { "shellcheck" },
                 -- go = { "golangcilint" },
                 markdown = { "markdownlint-cli2" },
-                py = { "pylint" },
             },
             -- LazyVim extension to easily override linter options
             -- or add custom linters.

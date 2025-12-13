@@ -33,7 +33,7 @@ return {
             json = { "prettier" },
             lua = { "stylua" },
             markdown = { "prettier" },
-            python = { "isort", "black" },
+            python = { "ruff" },
             sh = { "shfmt" },
             typescript = { "prettier" },
             yaml = { "yamlfmt" },

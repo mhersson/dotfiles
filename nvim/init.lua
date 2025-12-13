@@ -13,6 +13,8 @@ vim.lsp.enable({
     "marksman",
     "mpls",
     "regal",
+    "ruff",
     "ts_ls",
+    "ty",
     "yamlls",
 })
