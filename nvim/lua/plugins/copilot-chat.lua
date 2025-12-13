@@ -15,7 +15,7 @@ return {
                 auto_insert_mode = false,
                 insert_at_end = true,
                 auto_fold = true, -- Automatically folds non-assistant messages
-                model = "claude-sonnet-4",
+                model = "claude-sonnet-4.5",
                 headers = {
                     user = "  " .. user .. " ",
                     assistant = "  Copilot ",
