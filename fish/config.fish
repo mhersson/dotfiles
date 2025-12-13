@@ -62,8 +62,9 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 
-set -gx EDITOR nvim
+set -gx EDITOR hx
 set -gx GOPATH $HOME/Development/go
+set -gx HELIX_RUNTIME $HOME/Development/helix/runtime
 
 # Better history search (up/down with what you've typed)
 bind -M insert \e\[A history-search-backward
@@ -91,14 +92,15 @@ alias kcrr='kubectl rollout restart'
 alias cat='bat --theme "Catppuccin Macchiato" --style plain --paging=never'
 alias less='bat --theme "Catppuccin Macchiato" --style plain'
 alias lg='lazygit'
-alias vi='nvim'
+alias vi='hx'
 alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
 alias yy='yazi'
+alias ytop='ytop --human-readable --simple --sel-bg "#82aaff" --sel-fg "#222436"'
 
 if status is-interactive
     fzf --fish | source
     direnv hook fish | source
     zoxide init --cmd cd fish | source
-    starship init fish | source
+    # starship init fish | source
 end
