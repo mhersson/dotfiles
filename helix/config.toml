@@ -2,6 +2,7 @@
 theme = "catppuccin_mocha"
 [editor]
 bufferline = "multiple"
+cursorline = true
 color-modes = true
 true-color = true
 
@@ -45,8 +46,6 @@ L = "goto_next_buffer"
 
 A-q = ":reflow"
 
-C-m = ":lsp-workspace-command open-preview"
-
 C-y = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
@@ -58,6 +57,9 @@ C-y = [
 [keys.normal.space]
 "," = "buffer_picker"
 space = "file_picker"
+f = "file_picker_in_current_buffer_directory"
+i = ":toggle lsp.display-inlay-hints"
+m = ":lsp-workspace-command open-preview"
 
 [keys.normal.space.b]
 b = "buffer_picker"
