@@ -1,8 +1,8 @@
 customCommands:
-- key: 'G'
-  command: 'bash -c "~/.config/lazygit/copilot-commit.sh"'
-  description: 'Generate conventional commit with Copilot'
-  context: 'global'
+- key: '<c-g>'
+  description: 'Generate commit message (copy to clipboard)'
+  context: 'files'
+  command: 'gitmsg | pbcopy && echo "Commit message copied to clipboard!"'
   loadingText: 'Generating commit message...'
 
 git:
