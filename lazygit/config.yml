@@ -2,7 +2,7 @@ customCommands:
 - key: '<c-g>'
   description: 'Generate commit message (copy to clipboard)'
   context: 'global'
-  command: 'gitmsg | pbcopy && echo "Commit message copied to clipboard!"'
+  command: 'gitmsg | pbcopy'
   loadingText: 'Generating commit message...'
 
 git:
