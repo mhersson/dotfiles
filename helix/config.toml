@@ -1,5 +1,6 @@
 # theme = "gruvbox_light_hard"
 theme = "catppuccin_mocha"
+
 [editor]
 bufferline = "multiple"
 cursorline = true
@@ -34,7 +35,15 @@ git-ignore = true
 render = true
 
 [editor.statusline]
-left = ["mode", "version-control", "file-name", "spinner"]
+left = ["mode", "spacer", "spinner", "version-control", "file-name"]
+center = []
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+diagnostics = ["info", "warning", "error"]
+workspace-diagnostics = ["warning", "error"]
 
 [keys.insert]
 A-tab = "inline_completion_accept"
