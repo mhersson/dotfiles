@@ -82,7 +82,7 @@ alias gc='git commit -v'
 alias glp='git log --decorate --patch --word-diff=color --color-moved'
 alias gria='git rebase --interactive --autosquash'
 alias gst='git status'
-alias gg='~/.config/lazygit/copilot-commit.sh'
+alias gg='gitmsg | pbcopy'
 
 # Kubernetes
 alias kc='kubectl'
