@@ -12,6 +12,13 @@ return {
                 "<cmd>Neogit kind=tab<cr>",
                 desc = "Neogit",
             },
+            {
+                "<leader>gG",
+                function()
+                    vim.fn.system("gitmsg | pbcopy")
+                end,
+                desc = "Generate Git Commit Message",
+            },
         },
         opts = {
             -- Do not ask to confirm the commit - just do it when the buffer is closed.
