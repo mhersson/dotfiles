@@ -16,11 +16,10 @@ end
 -- }
 
 config.window_background_opacity = 1.00
-config.macos_window_background_blur = 95
 config.window_decorations = "RESIZE"
 config.front_end = "WebGpu"
 
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Everforest Dark (Gogh)"
 config.colors = {
     split = "#ffc777",
     cursor_bg = "#FF9433",
@@ -40,7 +39,7 @@ config.force_reverse_video_cursor = false
 config.audible_bell = "Disabled"
 
 config.font_size = 15
-config.font = wezterm.font("FantasqueSansM Nerd Font", { weight = "Medium" })
+config.font = wezterm.font("FantasqueSansM Nerd Font")
 config.line_height = 1.2
 
 config.pane_focus_follows_mouse = true
