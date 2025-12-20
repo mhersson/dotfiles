@@ -1,4 +1,25 @@
 #!/usr/bin/env bash
+# This script allows the user to select a working directory from a list of project roots.
+# It uses 'fd' to find directories and 'fzf' for interactive selection.
+# The selected directory is stored in a temporary file for later retrieval.
+# Usage:
+#   ./change-project.sh show-picker  # to show the directory picker
+#   ./change-project.sh              # to retrieve the cached selection
+# Requirements:
+#   - fd
+#   - fzf
+#
+# Example config for Helix to use this script:
+# ```toml
+# C-p = [
+#     ":open %sh{~/.config/helix/utils/change-project.sh show-picker}",
+#     ":change-current-directory %sh{~/.config/helix/utils/change-project.sh}",
+#     ":redraw",
+#     ":reload-all"
+# ]
+# ```
+# Make sure to adjust the paths and project roots as needed.
+
 set -euo pipefail
 
 DOTFILES_DIR="$HOME/.dotfiles"
