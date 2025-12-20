@@ -1,5 +1,4 @@
-# theme = "gruvbox_light_hard"
-theme = "catppuccin_mocha"
+theme = "my_everforest_dark"
 
 [editor]
 bufferline = "multiple"
@@ -52,9 +51,8 @@ C-e = "inline_completion_dismiss"
 [keys.normal]
 H = "goto_previous_buffer"
 L = "goto_next_buffer"
-
 A-q = ":reflow"
-
+C-r = ":reload-all"
 C-y = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
@@ -77,12 +75,11 @@ d = ":buffer-close"
 k = ":buffer-close!"
 o = ":buffer-close-others"
 p = [
-    # ':buffer-close-all',
-    ':change-current-directory %sh{~/.config/helix/utils/change-project.sh show-picker}',
-    ':open %sh{~/.config/helix/utils/change-project.sh}',
-    ':redraw'
+    ":change-current-directory %sh{~/.config/helix/utils/change-project.sh show-picker}",
+    ":open %sh{~/.config/helix/utils/change-project.sh}",
+    ":redraw",
+    ":reload-all"
 ]
-
 r = ":reload"
 
 [keys.normal.space.g]
