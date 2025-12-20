@@ -33,7 +33,7 @@ return {
             json = { "prettier" },
             lua = { "stylua" },
             markdown = { "prettier" },
-            python = { "ruff" },
+            python = { "ruff_fix", "ruff_format" },
             sh = { "shfmt" },
             typescript = { "prettier" },
             yaml = { "yamlfmt" },
@@ -58,6 +58,16 @@ return {
         formatters = {
             prettier = {
                 prepend_args = { "--prose-wrap", "always" },
+            },
+            ruff_fix = {
+                command = "uvx",
+                args = { "ruff", "check", "--fix", "--select", "I", "-" },
+                stdin = true,
+            },
+            ruff_format = {
+                command = "uvx",
+                args = { "ruff", "format", "-" },
+                stdin = true,
             },
         },
     },

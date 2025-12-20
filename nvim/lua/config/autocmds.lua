@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("BufDelete", {
         vim.schedule(function()
             local clients = vim.lsp.get_clients()
             for _, client in ipairs(clients) do
-                local buffers = vim.lsp.get_buffers_by_client_id(client.id)
+                local buffers = vim.lsp.get_client_by_id(client.id).attached_buffers
                 if #buffers == 0 then
                     vim.lsp.stop_client(client.id)
                 end
