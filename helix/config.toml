@@ -84,7 +84,7 @@ r = ":reload"
 
 [keys.normal.space.g]
 # inline blame
-b = ":run-shell-command ~/.config/helix/utils/blame_line_pretty.sh %{buffer_name} %{cursor_line}"
+b = ":run-shell-command ~/.config/helix/utils/blame-line-pretty.sh %{buffer_name} %{cursor_line}"
 f = "changed_file_picker"
 g = [
     ":write-all",
