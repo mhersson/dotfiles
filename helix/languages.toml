@@ -75,9 +75,6 @@ args = ["-c", "uvx ruff check --fix --select I - | uvx ruff format -"]
 command = "uvx"
 args = ["ty", "server"]
 
-[language-server.ty.config]
-ty.experimental.rename = true
-
 [language-server.ruff]
 command = "uvx"
 args = ["ruff", "server"]
