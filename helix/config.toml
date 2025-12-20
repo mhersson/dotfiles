@@ -76,6 +76,13 @@ R = ":reload-all"
 d = ":buffer-close"
 k = ":buffer-close!"
 o = ":buffer-close-others"
+p = [
+    # ':buffer-close-all',
+    ':change-current-directory %sh{~/.config/helix/utils/change-project.sh show-picker}',
+    ':open %sh{~/.config/helix/utils/change-project.sh}',
+    ':redraw'
+]
+
 r = ":reload"
 
 [keys.normal.space.g]
