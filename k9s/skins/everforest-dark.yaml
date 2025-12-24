@@ -65,7 +65,7 @@ k9s:
     crumbs:
       fgColor: *bg0
       bgColor: *orange
-      activeColor: *bg1
+      activeColor: *yellow
     # Resource status and update styles
     status:
       newColor: *blue
@@ -128,4 +128,4 @@ k9s:
       bgColor: default
       indicator:
         fgColor: *red
-        bgColor: *bg2 
+        bgColor: *bg2
