@@ -7,7 +7,7 @@ k9s:
   noExitOnCtrlC: false
   defaultView: pods
   ui:
-    skin: tokyo-night
+    skin: everforest-dark
     enableMouse: false
     headless: true
     logoless: true

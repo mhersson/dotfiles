@@ -1,0 +1,131 @@
+# Everforest Dark color palette
+bg0: &bg0 "#2d353b"
+bg1: &bg1 "#343f44"
+bg2: &bg2 "#3d484d"
+bg3: &bg3 "#475258"
+bg_visual: &bg_visual "#543a48"
+bg_blue: &bg_blue "#3a515d"
+
+fg: &fg "#d3c6aa"
+red: &red "#e67e80"
+orange: &orange "#e69875"
+yellow: &yellow "#dbbc7f"
+green: &green "#a7c080"
+aqua: &aqua "#83c092"
+blue: &blue "#7fbbb3"
+purple: &purple "#d699b6"
+
+grey0: &grey0 "#7a8478"
+grey1: &grey1 "#859289"
+grey2: &grey2 "#9da9a0"
+
+statusline1: &statusline1 "#a7c080"
+statusline2: &statusline2 "#d3c6aa"
+statusline3: &statusline3 "#e67e80"
+
+k9s:
+  # General K9s styles
+  body:
+    fgColor: *fg
+    bgColor: default
+    logoColor: *statusline1
+  # Command prompt styles
+  prompt:
+    fgColor: *fg
+    bgColor: *bg0
+    suggestColor: *grey1
+    border:
+      defaultColor: *orange
+      commandColor: *statusline3
+  # ClusterInfoView styles.
+  info:
+    fgColor: *blue
+    sectionColor: *statusline2
+  # Dialog styles.
+  dialog:
+    fgColor: *fg
+    bgColor: default
+    buttonFgColor: *fg
+    buttonBgColor: *bg_blue
+    buttonFocusFgColor: *bg0
+    buttonFocusBgColor: *aqua
+    labelFgColor: *grey1
+    fieldFgColor: *fg
+  frame:
+    # Borders styles.
+    border:
+      fgColor: *bg3
+      focusColor: *orange
+    menu:
+      fgColor: *blue
+      keyColor: *aqua
+      # Used for favorite namespaces
+      numKeyColor: *yellow
+    # CrumbView attributes for history navigation.
+    crumbs:
+      fgColor: *bg0
+      bgColor: *orange
+      activeColor: *bg1
+    # Resource status and update styles
+    status:
+      newColor: *blue
+      modifyColor: *aqua
+      addColor: *green
+      errorColor: *red
+      highlightcolor: *orange
+      killColor: *grey0
+      completedColor: *grey1
+    # Border title styles.
+    title:
+      fgColor: *fg
+      bgColor: default
+      highlightColor: *yellow
+      counterColor: *purple
+      filterColor: *statusline1
+  views:
+    # Charts skins...
+    charts:
+      bgColor: default
+      defaultDialColors:
+      - *blue
+      - *red
+      defaultChartColors:
+      - *statusline1
+      - *statusline3
+    # TableView attributes.
+    table:
+      fgColor: *fg
+      bgColor: default
+      cursorFgColor: *bg0
+      cursorBgColor: *orange
+      markColor: *green
+      # Header row styles.
+      header:
+        fgColor: *statusline2
+        bgColor: default
+        sorterColor: *aqua
+    # Xray view attributes.
+    xray:
+      fgColor: *fg
+      bgColor: default
+      cursorColor: *bg_visual
+      graphicColor: *blue
+      showIcons: false
+    # YAML info styles.
+    yaml:
+      keyColor: *blue
+      colonColor: *grey2
+      valueColor: *fg
+    # Logs styles.
+    logs:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *fg
+        bgColor: *bg2
+    help:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *red
+        bgColor: *bg2 
