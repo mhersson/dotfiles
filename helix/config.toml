@@ -5,6 +5,7 @@ bufferline = "multiple"
 cursorline = true
 color-modes = true
 true-color = true
+rainbow-brackets = true
 
 # copilot
 inline-completion-timeout = 150
