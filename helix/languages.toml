@@ -14,10 +14,8 @@ formatter = { command = 'prettier', args = ["--parser", "css"] }
 [[language]]
 name = "go"
 auto-format = true
+formatter = {command = "sh", args = ["-c", "goimports | gofumpt"]}
 language-servers = [ "gopls", "golangci-lint-lsp", "copilot" ]
-
-[language.formatter]
-command = "goimports"
 
 [language-server.golangci-lint-lsp]
 command = "golangci-lint-langserver"
@@ -97,9 +95,6 @@ language-servers = [ "yaml-language-server", "copilot" ]
 [language.formatter]
 args = ["-"]
 command = "yamlfmt"
-
-[language-server.vale]
-command = "vale-ls"
 
 [language-server.copilot]
 command = "copilot-language-server"
