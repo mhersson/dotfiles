@@ -11,10 +11,10 @@ rainbow-brackets = true
 inline-completion-timeout = 150
 
 # Minimum severity to show a diagnostic after the end of a line
-end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "error"
 
 [editor.inline-diagnostics]
-cursor-line = "error" # Show inline diagnostics when the cursor is on the line
+cursor-line = "info" # Show inline diagnostics when the cursor is on the line
 other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
 
 [editor.auto-pairs]
@@ -29,7 +29,7 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
-git-ignore = true
+git-ignore = false
 
 [editor.indent-guides]
 render = true
