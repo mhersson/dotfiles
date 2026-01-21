@@ -2,7 +2,7 @@ return {
     cmd = {
         "mpls",
         "--no-auto",
-        "--dark-mode",
+        "--theme", "everforest-dark",
         "--enable-emoji",
         "--enable-footnotes",
     },
