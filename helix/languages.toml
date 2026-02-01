@@ -51,7 +51,7 @@ args = ["--parser", "markdown", "--prose-wrap", "always" ]
 
 [language-server.mpls]
 command = "mpls"
-args = ["--no-auto", "--dark-mode", "--enable-emoji", "--enable-footnotes"]
+args = [ "--theme", "everforest-dark", "--enable-emoji", "--enable-footnotes"]
 
 [[language]]
 name = "nix"

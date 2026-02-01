@@ -29,7 +29,7 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
-git-ignore = false
+git-ignore = true
 
 [editor.indent-guides]
 render = true
