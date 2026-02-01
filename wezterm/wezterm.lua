@@ -2,6 +2,48 @@ local wezterm = require("wezterm")
 
 local config = {}
 
+-- Function to get git project name from a path
+local function get_git_project_name(cwd)
+    if not cwd then
+        return nil
+    end
+
+    -- Walk up the directory tree looking for .git
+    local path = cwd
+    while path and path ~= "/" and path ~= "" do
+        local git_dir = path .. "/.git"
+        local f = io.open(git_dir, "r")
+        if f then
+            f:close()
+            -- Found .git, return the directory name
+            return path:match("([^/]+)$")
+        end
+        -- Go up one directory
+        path = path:match("(.+)/[^/]*$")
+    end
+    return nil
+end
+
+-- Custom tab title showing git project name if available
+wezterm.on("format-tab-title", function(tab)
+    local pane = tab.active_pane
+    local cwd = pane.current_working_dir
+
+    if cwd then
+        local project = get_git_project_name(cwd.file_path)
+        if project then
+            return " " .. project .. " "
+        end
+    end
+
+    -- Fall back to the process name
+    local title = pane.title
+    if title and #title > 0 then
+        return " " .. title .. " "
+    end
+    return " Terminal "
+end)
+
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
