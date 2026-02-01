@@ -89,6 +89,15 @@ alias kc='kubectl'
 alias kcl='kubectl logs'
 alias kcrr='kubectl rollout restart'
 
+# Wrapper to cd into directory before opening helix (for proper tab titles)
+function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
+    if test (count $argv) -eq 1 -a -d $argv[1]
+        cd $argv[1] && command hx .
+    else
+        command hx $argv
+    end
+end
+
 alias cat='bat --theme "base16" --style plain --paging=never'
 alias less='bat --theme "base16" --style plain'
 alias lg='lazygit'
@@ -102,5 +111,5 @@ if status is-interactive
     fzf --fish | source
     direnv hook fish | source
     zoxide init --cmd cd fish | source
-    # starship init fish | source
+    starship init fish | source
 end
