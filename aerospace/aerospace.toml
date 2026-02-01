@@ -234,6 +234,10 @@ run = 'layout floating'
 if.app-id = 'com.google.android.studio'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.github.mhersson.sightline'
+run = ['layout floating', 'move-node-to-workspace 4']
+
 # Make sure that workkspace 1-4 is always on the main monitor - whatever monitor that is
 [workspace-to-monitor-force-assignment]
 1 = 'main'
