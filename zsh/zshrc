@@ -22,7 +22,7 @@ source $HOME/.dotfiles/shell-aliases
 
 eval "$(starship init zsh)"
 
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 eval "$(direnv hook zsh)"
 
