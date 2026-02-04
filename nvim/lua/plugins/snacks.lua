@@ -10,6 +10,7 @@ return {
             explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
+            lazygit = { enabled = true },
             notifier = {
                 enabled = true,
                 timeout = 3000,
@@ -29,7 +30,6 @@ return {
             {
                 "<leader><space>",
                 function()
-                    --Snacks.picker.smart()
                     Snacks.picker.files()
                 end,
                 desc = "Smart Find Files",
@@ -112,6 +112,13 @@ return {
                     Snacks.picker.git_branches()
                 end,
                 desc = "Git Branches",
+            },
+            {
+                "<leader>gg",
+                function()
+                    Snacks.lazygit()
+                end,
+                desc = "Lazygit",
             },
             {
                 "<leader>gl",
