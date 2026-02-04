@@ -2,16 +2,16 @@ local ACTIVE_THEME = "everforest"
 
 return {
     {
-      "neanias/everforest-nvim",
-      version = false,
-      lazy = ACTIVE_THEME ~= "everforest",
-      priority = ACTIVE_THEME == "everforest" and 1000 or nil,
-      config = function()
-        require("everforest").setup()
+        "mhersson/everforest-dark-nvim",
+        version = false,
+        lazy = ACTIVE_THEME ~= "everforest",
+        priority = ACTIVE_THEME == "everforest" and 1000 or nil,
+        config = function()
+            require("everforest").setup()
             if ACTIVE_THEME == "everforest" then
                 vim.cmd.colorscheme("everforest")
             end
-      end,
+        end,
     },
     {
         "shatur/neovim-ayu",

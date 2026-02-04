@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("BufDelete", {
             local clients = vim.lsp.get_clients()
             for _, client in ipairs(clients) do
                 local buffers = vim.lsp.get_client_by_id(client.id).attached_buffers
-                if #buffers == 0 then
+                if vim.tbl_isempty(buffers) then
                     vim.lsp.stop_client(client.id)
                 end
             end
@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
             vim.keymap.set(
                 "i",
-                "<C-Return>",
+                "<M-Tab>",
                 vim.lsp.inline_completion.get,
                 { desc = "LSP: accept inline completion", buffer = bufnr }
             )

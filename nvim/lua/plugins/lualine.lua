@@ -77,13 +77,7 @@ return {
                                 local clients = vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
                                 return #clients > 0
                             end,
-                            color = function()
-                                local clients = vim.lsp.get_clients({ name = "copilot", bufnr = 0 })
-                                if #clients > 0 then
-                                    return { fg = "#82aaff" } -- ok/success color
-                                end
-                                return { fg = "#565f89" } -- inactive color
-                            end,
+                            color = { fg = "#83c092" }, -- everforest aqua
                         },
                         -- Add lsp icon if any lsp servers are running
                         {
@@ -97,7 +91,7 @@ return {
                             cond = function()
                                 return #vim.lsp.get_clients({ bufnr = 0 }) > 0
                             end,
-                            color = { fg = "#82aaff" },
+                            color = { fg = "#a7c080" }, -- everforest green
                         },
                         {
                             function()

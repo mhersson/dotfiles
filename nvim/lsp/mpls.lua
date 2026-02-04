@@ -1,8 +1,8 @@
 return {
     cmd = {
         "mpls",
-        "--no-auto",
-        "--theme", "everforest-dark",
+        "--theme",
+        "everforest-dark",
         "--enable-emoji",
         "--enable-footnotes",
     },

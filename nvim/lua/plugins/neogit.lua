@@ -30,6 +30,14 @@ return {
                     folded = false,
                 },
             },
+            mappings = {
+                status = {
+                    ["<C-g>"] = function()
+                        vim.fn.system("gitmsg | pbcopy")
+                        vim.notify("Git message copied to clipboard", vim.log.levels.INFO)
+                    end,
+                },
+            },
         },
     },
 }
