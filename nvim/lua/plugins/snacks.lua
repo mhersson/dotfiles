@@ -10,7 +10,14 @@ return {
             explorer = { enabled = true },
             indent = { enabled = true },
             input = { enabled = true },
-            lazygit = { enabled = true },
+            lazygit = {
+                enabled = true,
+                config = {
+                    git = {
+                        overrideGpg = true,
+                    },
+                },
+            },
             notifier = {
                 enabled = true,
                 timeout = 3000,
