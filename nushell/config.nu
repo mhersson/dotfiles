@@ -1,7 +1,8 @@
-# Nushell Configuration
-# Place this in ~/.config/nushell/config.nu
+# Nushell Config - ~/.config/nushell/config.nu
 
-# Configuration
+# ───────────────────────────────────────────────────────────────
+# Shell behavior and preferences
+# ───────────────────────────────────────────────────────────────
 $env.config = {
     show_banner: false
     history: {
@@ -28,30 +29,40 @@ $env.config = {
         shape_external: green
         shape_internalcall: green
     }
+    keybindings: [
+        {
+            name: edit_command
+            modifier: alt
+            keycode: char_v
+            mode: [vi_normal, vi_insert]
+            event: {send: OpenEditor}
+        }
+    ]
     hooks: {
         env_change: {
-            PWD: [{
-                code: "
+            PWD: [
+                {code: "
                     if (which direnv | is-not-empty) {
                         let direnv = (direnv export json | from json | default {})
                         $direnv | load-env
                     }
-                "
-            }]
+                "}
+            ]
         }
     }
 }
 
-# Initialize starship
+# Prompt and navigation integrations
 source ($nu.data-dir | path join "vendor/autoload/starship.nu")
-
-# Initialize zoxide
 source ~/.config/nushell/zoxide.nu
-
 # source ~/.config/nushell/themes/tokyonight-moon.nu
 
-# Custom functions
-def go_single_test [testname: string, testpath: string = "./..."] {
+# ───────────────────────────────────────────────────────────────
+# Functions
+# ───────────────────────────────────────────────────────────────
+
+# Run a single Go test by name, optionally in a specific path
+def go_single_test [testname: string, testpath: string = ./...] {
     if ($testname | is-empty) {
         print "Please provide a test name to run."
         return
@@ -61,37 +72,48 @@ def go_single_test [testname: string, testpath: string = "./..."] {
 
 alias gtst = go_single_test
 
+# Helix wrapper: cd into directory and set wezterm tab title
 def --env --wrapped hx [...args] {
     if ($args | length) == 1 and ($args.0 | path type) == "dir" {
         cd $args.0
         let cwd = ($args.0 | path expand)
         print -n $"\e]7;file://localhost($cwd)\e\\"
         ^hx .
-    } else {
-        ^hx ...$args
+    } else { ^hx ...$args }
+}
+
+# Decode and pretty-print a JWT token
+def jd [token: string] {
+    if ($token == "") {
+        echo "Usage: jwksdecode <token>" | stub
+        return
     }
+    let cmd = $"go-jwx decode \"($token)\" | bat -l json --style plain"
+    sh -c $cmd
 }
 
-def jd [token:string] {
-  if ($token == "") {
-    echo "Usage: jwksdecode <token>" | stub
-    return
-  }
-  let cmd = $"go-jwx decode \"($token)\" | bat -l json --style plain"
-  sh -c $cmd
+# Update, list outdated, upgrade, and cleanup Homebrew packages
+def bup [] {
+    brew update
+    brew outdated
+    brew upgrade
+    brew cleanup
 }
 
-
+# ───────────────────────────────────────────────────────────────
 # Aliases
+# ───────────────────────────────────────────────────────────────
+
+# Directory listing shortcuts
 alias l = ls
 alias ll = ls -l
 alias la = ls -a
 alias .. = cd ..
 
-# Override cd to use zoxide
+# Use zoxide for smart directory jumping
 alias cd = z
 
-# Git aliases
+# Git shortcuts
 alias ga = git add
 alias gaa = git add --all
 alias gc = git commit -v
@@ -100,7 +122,7 @@ alias gria = git rebase --interactive --autosquash
 alias gst = git status
 alias gg = gitmsg | pbcopy
 
-# Tool aliases
+# Tool replacements and shortcuts
 alias cat = bat --theme "base16" --style plain --paging=never
 alias less = bat --theme "base16" --style plain
 alias lg = lazygit
@@ -112,5 +134,3 @@ alias kcl = kubectl logs
 alias kcrr = kubectl rollout restart
 alias yy = yazi
 alias ytop = ytop --human-readable --simple --sel-bg "#82aaff" --sel-fg "#222436"
-
-
