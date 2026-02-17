@@ -72,6 +72,16 @@ def --env --wrapped hx [...args] {
     }
 }
 
+def jd [token:string] {
+  if ($token == "") {
+    echo "Usage: jwksdecode <token>" | stub
+    return
+  }
+  let cmd = $"go-jwx decode \"($token)\" | bat -l json --style plain"
+  sh -c $cmd
+}
+
+
 # Aliases
 alias l = ls
 alias ll = ls -l
@@ -102,4 +112,5 @@ alias kcl = kubectl logs
 alias kcrr = kubectl rollout restart
 alias yy = yazi
 alias ytop = ytop --human-readable --simple --sel-bg "#82aaff" --sel-fg "#222436"
+
 
