@@ -61,16 +61,27 @@ source ~/.config/nushell/zoxide.nu
 # Functions
 # ───────────────────────────────────────────────────────────────
 
+# Update, list outdated, upgrade, and cleanup Homebrew packages
+def bup [] {
+    brew update
+    brew outdated
+    brew upgrade
+    brew cleanup
+}
+
+# Generate and copy commit message to clipboard
+def gg [] {
+    gitmsg | pbcopy
+}
+
 # Run a single Go test by name, optionally in a specific path
-def go_single_test [testname: string, testpath: string = ./...] {
+def gtst [testname: string, testpath: string = ./...] {
     if ($testname | is-empty) {
         print "Please provide a test name to run."
         return
     }
     go test -v -run $testname $testpath
 }
-
-alias gtst = go_single_test
 
 # Helix wrapper: cd into directory and set wezterm tab title to "hx <project>"
 def --env --wrapped hx [...args] {
@@ -91,18 +102,6 @@ def jd [token: string] {
     }
     let cmd = $"go-jwx decode \"($token)\" | bat -l json --style plain"
     sh -c $cmd
-}
-
-def gg [] {
-    gitmsg | pbcopy
-}
-
-# Update, list outdated, upgrade, and cleanup Homebrew packages
-def bup [] {
-    brew update
-    brew outdated
-    brew upgrade
-    brew cleanup
 }
 
 # ───────────────────────────────────────────────────────────────
