@@ -72,12 +72,13 @@ def go_single_test [testname: string, testpath: string = ./...] {
 
 alias gtst = go_single_test
 
-# Helix wrapper: cd into directory and set wezterm tab title
+# Helix wrapper: cd into directory and set wezterm tab title to "hx <project>"
 def --env --wrapped hx [...args] {
     if ($args | length) == 1 and ($args.0 | path type) == "dir" {
         cd $args.0
         let cwd = ($args.0 | path expand)
-        print -n $"\e]7;file://localhost($cwd)\e\\"
+        let project = ($cwd | path basename)
+        print -n $"\e]0;hx ($project)\e\\"
         ^hx .
     } else { ^hx ...$args }
 }
@@ -90,6 +91,10 @@ def jd [token: string] {
     }
     let cmd = $"go-jwx decode \"($token)\" | bat -l json --style plain"
     sh -c $cmd
+}
+
+def gg [] {
+    gitmsg | pbcopy
 }
 
 # Update, list outdated, upgrade, and cleanup Homebrew packages
@@ -120,7 +125,6 @@ alias gc = git commit -v
 alias glp = git log --decorate --patch --word-diff=color --color-moved
 alias gria = git rebase --interactive --autosquash
 alias gst = git status
-alias gg = gitmsg | pbcopy
 
 # Tool replacements and shortcuts
 alias cat = bat --theme "base16" --style plain --paging=never

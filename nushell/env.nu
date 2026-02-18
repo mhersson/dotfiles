@@ -42,3 +42,5 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend [
 
 # zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
 # starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+$env.CARAPACE_EXCLUDES = "go"
