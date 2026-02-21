@@ -83,13 +83,10 @@ def gtst [testname: string, testpath: string = ./...] {
     go test -v -run $testname $testpath
 }
 
-# Helix wrapper: cd into directory and set wezterm tab title to "hx <project>"
+# Helix wrapper: cd into directory before opening
 def --env --wrapped hx [...args] {
     if ($args | length) == 1 and ($args.0 | path type) == "dir" {
         cd $args.0
-        let cwd = ($args.0 | path expand)
-        let project = ($cwd | path basename)
-        print -n $"\e]0;hx ($project)\e\\"
         ^hx .
     } else { ^hx ...$args }
 }

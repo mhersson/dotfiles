@@ -89,13 +89,23 @@ alias kc='kubectl'
 alias kcl='kubectl logs'
 alias kcrr='kubectl rollout restart'
 
-# Wrapper to cd into directory before opening helix (for proper tab titles)
+# Wrapper to cd into directory before opening helix
 function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
     if test (count $argv) -eq 1 -a -d $argv[1]
-        cd $argv[1] && command hx .
+        cd $argv[1]
+        command hx .
     else
         command hx $argv
     end
+end
+
+# Decode and pretty-print a JWT token
+function jd --description 'Decode and pretty-print a JWT token'
+    if test -z "$argv[1]"
+        echo "Usage: jd <token>"
+        return 1
+    end
+    go-jwx decode "$argv[1]" | bat -l json --style plain
 end
 
 alias cat='bat --theme "base16" --style plain --paging=never'

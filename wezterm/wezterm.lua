@@ -29,11 +29,23 @@ wezterm.on("format-tab-title", function(tab)
     local pane = tab.active_pane
     local cwd = pane.current_working_dir
 
+    -- Get the foreground process name
+    local process = pane.foreground_process_name or ""
+    process = process:match("([^/]+)$") or "" -- Get basename
+
+    local project = nil
     if cwd then
-        local project = get_git_project_name(cwd.file_path)
-        if project then
-            return " " .. project .. " "
-        end
+        project = get_git_project_name(cwd.file_path)
+    end
+
+    -- If we have a project and a known editor process, show "editor project"
+    if project and (process == "hx" or process == "nvim" or process == "vim") then
+        return " " .. process .. " " .. project .. " "
+    end
+
+    -- If we have a project, show just the project name
+    if project then
+        return " " .. project .. " "
     end
 
     -- Fall back to the process name
