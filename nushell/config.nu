@@ -55,7 +55,7 @@ $env.config = {
 # Prompt and navigation integrations
 source ($nu.data-dir | path join "vendor/autoload/starship.nu")
 source ~/.config/nushell/zoxide.nu
-# source ~/.config/nushell/themes/tokyonight-moon.nu
+source ~/.config/nushell/themes/everforest-medium-dark.nu
 
 # ───────────────────────────────────────────────────────────────
 # Functions
@@ -83,11 +83,14 @@ def gtst [testname: string, testpath: string = ./...] {
     go test -v -run $testname $testpath
 }
 
-# Helix wrapper: cd into directory before opening
+# Helix wrapper: cd into directory and set wezterm tab title
 def --env --wrapped hx [...args] {
     if ($args | length) == 1 and ($args.0 | path type) == "dir" {
         cd $args.0
+        let project = ($args.0 | path expand | path basename)
+        print -n $"\e]0;hx ($project)\e\\"
         ^hx .
+        print -n $"\e]0;\e\\"
     } else { ^hx ...$args }
 }
 
