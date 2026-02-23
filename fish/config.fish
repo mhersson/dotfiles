@@ -1,5 +1,36 @@
+# Fish Config - ~/.config/fish/config.fish
+
+# ───────────────────────────────────────────────────────────────
+# Shell behavior and preferences
+# ───────────────────────────────────────────────────────────────
+set -g fish_greeting
+set -g fish_key_bindings fish_vi_key_bindings
+
+# XDG directories
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+
+# Environment
+set -gx EDITOR hx
+set -gx GOPATH $HOME/Development/go
+set -gx HELIX_RUNTIME $HOME/Development/helix/runtime
+
+# PATH
+fish_add_path --prepend --move /opt/homebrew/bin
+fish_add_path --prepend --move $HOME/.local/bin
+fish_add_path --prepend --move $HOME/.cargo/bin
+fish_add_path --prepend --move $GOPATH/bin
+
+# Better history search (up/down with what you've typed)
+bind -M insert \e\[A history-search-backward
+bind -M insert \e\[B history-search-forward
+
+# ───────────────────────────────────────────────────────────────
+# Custom prompt (overridden by starship when interactive)
+# ───────────────────────────────────────────────────────────────
 function fish_prompt
-    # Capture exit status immediately
     set -l last_status $status
 
     set_color blue
@@ -10,12 +41,9 @@ function fish_prompt
         set_color green
         echo -n ' on '(git branch --show-current)
 
-        # Git status indicators
         set -l git_status ""
-        set_color normal
-
         set_color red
-        # Check for various states
+
         set -l is_dirty (git diff --quiet 2>/dev/null; echo $status)
         set -l has_staged (git diff --cached --quiet 2>/dev/null; echo $status)
         set -l has_untracked (git ls-files --others --exclude-standard | string collect)
@@ -32,7 +60,6 @@ function fish_prompt
             set git_status $git_status"?"
         end
 
-        # Show status in brackets if any
         if test -n "$git_status"
             echo -n ' ['$git_status']'
         end
@@ -42,7 +69,6 @@ function fish_prompt
 
     echo ""
 
-    # Red prompt if last command failed, green otherwise
     if test $last_status -eq 0
         set_color green
     else
@@ -52,44 +78,31 @@ function fish_prompt
     set_color normal
 end
 
-# Disable greeting
-set -g fish_greeting
-# Use vi key bindings
-set -g fish_key_bindings fish_vi_key_bindings
+# ───────────────────────────────────────────────────────────────
+# Prompt and navigation integrations
+# ───────────────────────────────────────────────────────────────
+if status is-interactive
+    fzf --fish | source
+    direnv hook fish | source
+    zoxide init --cmd cd fish | source
+    starship init fish | source
+end
 
-set -gx XDG_CACHE_HOME $HOME/.cache
-set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx XDG_DATA_HOME $HOME/.local/share
-set -gx XDG_STATE_HOME $HOME/.local/state
+# ───────────────────────────────────────────────────────────────
+# Functions
+# ───────────────────────────────────────────────────────────────
 
-set -gx EDITOR hx
-set -gx GOPATH $HOME/Development/go
-set -gx HELIX_RUNTIME $HOME/Development/helix/runtime
+# Update, list outdated, upgrade, and cleanup Homebrew packages
+function bup --description 'Update Homebrew and all packages'
+    brew update && brew outdated && brew upgrade && brew cleanup
+end
 
-# Better history search (up/down with what you've typed)
-bind -M insert \e\[A history-search-backward
-bind -M insert \e\[B history-search-forward
+# Generate and copy commit message to clipboard
+function gg --description 'Generate and copy commit message'
+    gitmsg | pbcopy
+end
 
-fish_add_path --prepend --move /opt/homebrew/bin
-fish_add_path --prepend --move $HOME/.local/bin
-fish_add_path --prepend --move $HOME/.cargo/bin
-fish_add_path --prepend --move $GOPATH/bin
-
-# Git
-alias ga='git add'
-alias gaa='git add --all'
-alias gc='git commit -v'
-alias glp='git log --decorate --patch --word-diff=color --color-moved'
-alias gria='git rebase --interactive --autosquash'
-alias gst='git status'
-alias gg='gitmsg | pbcopy'
-
-# Kubernetes
-alias kc='kubectl'
-alias kcl='kubectl logs'
-alias kcrr='kubectl rollout restart'
-
-# Wrapper to cd into directory before opening helix
+# Helix wrapper: cd into directory before opening
 function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
     if test (count $argv) -eq 1 -a -d $argv[1]
         cd $argv[1]
@@ -108,6 +121,24 @@ function jd --description 'Decode and pretty-print a JWT token'
     go-jwx decode "$argv[1]" | bat -l json --style plain
 end
 
+# ───────────────────────────────────────────────────────────────
+# Aliases
+# ───────────────────────────────────────────────────────────────
+
+# Git shortcuts
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit -v'
+alias glp='git log --decorate --patch --word-diff=color --color-moved'
+alias gria='git rebase --interactive --autosquash'
+alias gst='git status'
+
+# Kubernetes shortcuts
+alias kc='kubectl'
+alias kcl='kubectl logs'
+alias kcrr='kubectl rollout restart'
+
+# Tool replacements and shortcuts
 alias cat='bat --theme "base16" --style plain --paging=never'
 alias less='bat --theme "base16" --style plain'
 alias lg='lazygit'
@@ -116,10 +147,3 @@ alias emacs='emacs -nw'
 alias gei='curl --silent https://icanhazip.com'
 alias yy='yazi'
 alias ytop='ytop --human-readable --simple --sel-bg "#82aaff" --sel-fg "#222436"'
-
-if status is-interactive
-    fzf --fish | source
-    direnv hook fish | source
-    zoxide init --cmd cd fish | source
-    starship init fish | source
-end
