@@ -9,18 +9,23 @@
 {
   "base_keymap": "VSCode",
   "icon_theme": "Zed (Default)",
-  "vim_mode": true,
+  "helix_mode": true,
+  "which_key": {
+    "delay_ms": 200,
+    "enabled": true,
+  },
   "telemetry": {
     "metrics": false,
-    "diagnostics": false
+    "diagnostics": false,
   },
+  "colorize_brackets": true,
   "experimental.theme_overrides": {
     "players": [
       {
         "cursor": "#ff9500ff",
-        "background": "#ff9500ff"
-      }
-    ]
+        "background": "#ff9500ff",
+      },
+    ],
   },
   "buffer_font_family": "RobotoMono Nerd Font",
   "ui_font_size": 16,
@@ -29,7 +34,7 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Macchiato",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Everforest Dark Medium",
   },
   "format_on_save": "on",
   "formatter": ["auto", { "code_action": "source.organizeImports" }],
@@ -37,46 +42,46 @@
   "load_direnv": "shell_hook",
   "title_bar": {
     "show_branch_icon": true,
-    "show_sign_in": false
+    "show_sign_in": false,
   },
   "tab_bar": {
-    "show_nav_history_buttons": false
+    "show_nav_history_buttons": false,
   },
   "tabs": {
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "toolbar": {
-    "selections_menu": false
+    "selections_menu": false,
   },
   "scrollbar": {
     "show": "auto",
     "axes": {
       "horizontal": false,
-      "vertical": true
-    }
+      "vertical": true,
+    },
   },
   "command_aliases": {
     "W": "w",
-    "Wq": "wq"
+    "Wq": "wq",
   },
   "file_finder": {
-    "include_ignored": "all"
+    "include_ignored": "all",
   },
   "project_panel": {
-    "auto_reveal_entries": false
+    "auto_reveal_entries": false,
   },
   "collaboration_panel": {
-    "button": false
+    "button": false,
   },
   "notification_panel": {
-    "button": false
+    "button": false,
   },
   "inlay_hints": {
-    "show_value_hints": false
+    "show_value_hints": false,
   },
   "terminal": {
-    "copy_on_select": true
+    "copy_on_select": true,
   },
   "agent": {
     "always_allow_tool_actions": true,
@@ -84,33 +89,33 @@
     "button": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
+      "model": "claude-sonnet-4.5",
     },
     "commit_message_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
-    }
+      "model": "claude-sonnet-4.5",
+    },
   },
   "edit_predictions": {
     "copilot": {
-      "enterprise_uri": "https://dnb.ghe.com"
-    }
+      "enterprise_uri": "https://dnb.ghe.com",
+    },
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "copilot",
   },
   "languages": {
     "Go": {
-      "language_servers": ["gopls", "golangci-lint"]
+      "language_servers": ["gopls", "golangci-lint"],
     },
     "Markdown": {
       "tab_size": 4,
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": ["--parser", "markdown", "--prose-wrap", "always"]
-        }
-      }
+          "arguments": ["--parser", "markdown", "--prose-wrap", "always"],
+        },
+      },
     },
     "Shell Script": { "tab_size": 2 },
     "YAML": {
@@ -118,23 +123,29 @@
       "formatter": {
         "external": {
           "command": "yamlfmt",
-          "arguments": ["-"]
-        }
-      }
-    }
+          "arguments": ["-"],
+        },
+      },
+    },
   },
   "lsp": {
     "mpls": {
       "binary": {
         "path": "mpls",
-        "arguments": ["--dark-mode", "--enable-emoji", "--enable-footnotes"]
-      }
+        "arguments": [
+          "--tabs",
+          "--theme",
+          "everforest-dark",
+          "--enable-emoji",
+          "--enable-footnotes",
+        ],
+      },
     },
     "gopls": {
       "initialization_options": {
         "gofumpt": true,
-        "buildFlags": ["-tags=integration"]
-      }
+        "buildFlags": ["-tags=integration"],
+      },
     },
     "golangci-lint": {
       "initialization_options": {
@@ -145,9 +156,9 @@
           "stdout",
           "--show-stats=false",
           "--output.text.path=",
-          "--tests"
-        ]
-      }
-    }
-  }
+          "--tests",
+        ],
+      },
+    },
+  },
 }

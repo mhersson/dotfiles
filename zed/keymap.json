@@ -12,7 +12,7 @@
       // Put key bindings here if you want them to work in normal & visual mode.
       "space space": [
         "task::Spawn",
-        { "task_name": "find file", "reveal_target": "center" }
+        { "task_name": "find file", "reveal_target": "center" },
       ],
       "space ,": "tab_switcher::ToggleAll",
       "space e": "workspace::ToggleLeftDock",
@@ -22,16 +22,12 @@
       "space b o": ["pane::CloseOtherItems", { "close_pinned": false }],
       "space g g": [
         "task::Spawn",
-        { "task_name": "neogit", "reveal_target": "center" }
-      ],
-      "space n n": [
-        "task::Spawn",
-        { "task_name": "neovim", "reveal_target": "dock" }
+        { "task_name": "lazygit", "reveal_target": "center" },
       ],
       "space p p": ["projects::OpenRecent", { "create_new_window": false }],
       "space p P": ["projects::OpenRecent", { "create_new_window": true }],
-      "space s o": "outline::Toggle"
-    }
+      "space s o": "outline::Toggle",
+    },
   },
   {
     "context": "Workspace && VimControl",
@@ -40,8 +36,8 @@
       "space w h": "workspace::ActivatePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
       "space w k": "workspace::ActivatePaneUp",
-      "space w j": "workspace::ActivatePaneDown"
-    }
+      "space w j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "Editor && VimControl",
@@ -52,8 +48,8 @@
       "space w h": "workspace::ActivatePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
       "space w k": "workspace::ActivatePaneUp",
-      "space w j": "workspace::ActivatePaneDown"
-    }
+      "space w j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "Terminal",
@@ -63,15 +59,15 @@
       "alt-left": "workspace::ActivatePaneLeft",
       "alt-right": "workspace::ActivatePaneRight",
       "alt-up": "workspace::ActivatePaneUp",
-      "alt-down": "workspace::ActivatePaneDown"
-    }
+      "alt-down": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "Editor && (showing_code_actions || showing_completions)",
     "bindings": {
       "tab": "editor::ContextMenuNext",
-      "shift-tab": "editor::ContextMenuPrevious"
-    }
+      "shift-tab": "editor::ContextMenuPrevious",
+    },
   },
   {
     "context": "GitDiff > Editor && VimControl",
@@ -84,25 +80,25 @@
       "shift-x": "git::Restore",
       "x": ["git::RestoreFile", { "skip_prompt": false }],
       "shift-p u": "git::Push",
-      "shift-p f u": "git::ForcePush"
-    }
+      "shift-p f u": "git::ForcePush",
+    },
   },
   {
     "context": "EmptyPane || SharedScreen && VimControl",
     "bindings": {
       "space space": [
         "task::Spawn",
-        { "task_name": "find file", "reveal_target": "center" }
+        { "task_name": "find file", "reveal_target": "center" },
       ],
       "space p p": ["projects::OpenRecent", { "create_new_window": false }],
       "space g g": [
         "task::Spawn",
-        { "task_name": "neogit", "reveal_target": "center" }
+        { "task_name": "neogit", "reveal_target": "center" },
       ],
       "space n n": [
         "task::Spawn",
-        { "task_name": "neovim", "reveal_target": "dock" }
-      ]
-    }
-  }
+        { "task_name": "neovim", "reveal_target": "dock" },
+      ],
+    },
+  },
 ]

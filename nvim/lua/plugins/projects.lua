@@ -11,8 +11,8 @@ return {
             "~/Documents/notes",
             "~/Documents/presentations/*",
         },
-        last_session_on_startup = true,
-        dashboard_mode = false,
+        last_session_on_startup = false,
+        dashboard_mode = true,
         picker = {
             type = "snacks", -- one of "telescope", "fzf-lua", or "snacks"
         },

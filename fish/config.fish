@@ -102,11 +102,14 @@ function gg --description 'Generate and copy commit message'
     gitmsg | pbcopy
 end
 
-# Helix wrapper: cd into directory before opening
+# Helix wrapper: cd into directory and set wezterm tab title
 function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
     if test (count $argv) -eq 1 -a -d $argv[1]
         cd $argv[1]
+        set -l project (basename (realpath $argv[1]))
+        printf '\e]0;hx %s\e\\' $project
         command hx .
+        printf '\e]0;\e\\'
     else
         command hx $argv
     end
@@ -139,8 +142,8 @@ alias kcl='kubectl logs'
 alias kcrr='kubectl rollout restart'
 
 # Tool replacements and shortcuts
-alias cat='bat --theme "base16" --style plain --paging=never'
-alias less='bat --theme "base16" --style plain'
+alias cat='bat --theme "Everforest Dark" --style plain --paging=never'
+alias less='bat --theme "Everforest Dark" --style plain'
 alias lg='lazygit'
 alias vi='hx'
 alias emacs='emacs -nw'

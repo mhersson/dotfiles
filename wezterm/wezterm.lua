@@ -27,29 +27,23 @@ end
 -- Custom tab title showing git project name if available
 wezterm.on("format-tab-title", function(tab)
     local pane = tab.active_pane
+    local title = pane.title
     local cwd = pane.current_working_dir
 
-    -- Get the foreground process name
-    local process = pane.foreground_process_name or ""
-    process = process:match("([^/]+)$") or "" -- Get basename
+    -- If shell explicitly set a title (starts with "hx " or similar), use it
+    if title and title:match("^hx ") then
+        return " " .. title .. " "
+    end
 
-    local project = nil
+    -- Otherwise, show git project name if in a git repo
     if cwd then
-        project = get_git_project_name(cwd.file_path)
+        local project = get_git_project_name(cwd.file_path)
+        if project then
+            return " " .. project .. " "
+        end
     end
 
-    -- If we have a project and a known editor process, show "editor project"
-    if project and (process == "hx" or process == "nvim" or process == "vim") then
-        return " " .. process .. " " .. project .. " "
-    end
-
-    -- If we have a project, show just the project name
-    if project then
-        return " " .. project .. " "
-    end
-
-    -- Fall back to the process name
-    local title = pane.title
+    -- Fall back to pane title or Terminal
     if title and #title > 0 then
         return " " .. title .. " "
     end
@@ -98,6 +92,7 @@ config.line_height = 1.2
 
 config.pane_focus_follows_mouse = true
 
+config.tab_max_width = 32
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
@@ -109,40 +104,40 @@ config.initial_cols = 185
 config.initial_rows = 67
 
 -- Keybindings
-config.keys = {
-    -- Split pane vertically (cmd+d)
-    {
-        key = "d",
-        mods = "CMD",
-        action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-    },
-    -- Split pane horizontally (cmd+shift+d)
-    {
-        key = "d",
-        mods = "CMD|SHIFT",
-        action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-    },
-    -- Navigate panes with option+arrow keys
-    {
-        key = "LeftArrow",
-        mods = "OPT",
-        action = wezterm.action.ActivatePaneDirection("Left"),
-    },
-    {
-        key = "RightArrow",
-        mods = "OPT",
-        action = wezterm.action.ActivatePaneDirection("Right"),
-    },
-    {
-        key = "UpArrow",
-        mods = "OPT",
-        action = wezterm.action.ActivatePaneDirection("Up"),
-    },
-    {
-        key = "DownArrow",
-        mods = "OPT",
-        action = wezterm.action.ActivatePaneDirection("Down"),
-    },
-}
+-- config.keys = {
+--     -- Split pane vertically (cmd+d)
+--     {
+--         key = "d",
+--         mods = "CMD",
+--         action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+--     },
+--     -- Split pane horizontally (cmd+shift+d)
+--     {
+--         key = "d",
+--         mods = "CMD|SHIFT",
+--         action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+--     },
+--     -- Navigate panes with option+arrow keys
+--     {
+--         key = "LeftArrow",
+--         mods = "OPT",
+--         action = wezterm.action.ActivatePaneDirection("Left"),
+--     },
+--     {
+--         key = "RightArrow",
+--         mods = "OPT",
+--         action = wezterm.action.ActivatePaneDirection("Right"),
+--     },
+--     {
+--         key = "UpArrow",
+--         mods = "OPT",
+--         action = wezterm.action.ActivatePaneDirection("Up"),
+--     },
+--     {
+--         key = "DownArrow",
+--         mods = "OPT",
+--         action = wezterm.action.ActivatePaneDirection("Down"),
+--     },
+-- }
 
 return config

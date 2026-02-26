@@ -3,6 +3,7 @@ local ACTIVE_THEME = "everforest"
 return {
     {
         "mhersson/everforest-dark-nvim",
+        -- dir = "~/Development/everforest-dark-nvim",
         version = false,
         lazy = ACTIVE_THEME ~= "everforest",
         priority = ACTIVE_THEME == "everforest" and 1000 or nil,
