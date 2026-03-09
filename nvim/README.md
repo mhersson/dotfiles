@@ -10,8 +10,10 @@ capabilities.
   plugin needed
 - **Modular Structure**: Clean separation with `config/`, `plugins/`, `lsp/`,
   and `utils/` directories
-- **Go-First Development**: Full Go tooling with gopls, golangci-lint,
+- **Go-First Development**: Full Go tooling with gopls, golangci-lint-langserver,
   debugging, and testing
+- **Python Support**: Ruff for linting/formatting and Ty for type checking, both
+  via native LSP
 - **Markdown Tooling**: Live browser preview with
   [mpls](https://github.com/mhersson/mpls), completion with marksman, and
   linting via markdownlint-cli2
@@ -20,8 +22,9 @@ capabilities.
 - **Modern Pickers**: Snacks.nvim picker combining Telescope's features with
   fzf-lua's speed
 - **Developer Tools**: Integrated debugging (DAP), testing (Neotest), git
-  workflows (Neogit), and AI assistance (Copilot)
-- **Beautiful UI**: Catppuccin/TokyoNight themes, Lualine statusline,
+  workflows (Neogit), and AI assistance (Copilot + Sidekick)
+- **Search & Replace**: Powerful project-wide search and replace with grug-far.nvim
+- **Beautiful UI**: Everforest theme (6 themes available), Lualine statusline,
   Bufferline, and Noice UI enhancements
 
 ## ⚡️ Requirements
@@ -48,6 +51,7 @@ capabilities.
 | **shfmt**        | Shell script formatting       |
 | **shellcheck**   | Shell script linting          |
 | **markdownlint** | Markdown linting              |
+| **uvx**          | Python tool runner (ruff, ty) |
 
 ## 📦 Core Plugins
 
@@ -67,18 +71,19 @@ capabilities.
 | Plugin               | Purpose            | Why This One?                                             |
 | -------------------- | ------------------ | --------------------------------------------------------- |
 | **blink.cmp**        | Completion engine  | 6x faster than fzf, SIMD fuzzy matching, 0.5-4ms overhead |
+| **friendly-snippets** | Snippet collection | Community-maintained snippets for many languages          |
 | **nvim-treesitter**  | Syntax parsing     | Native 0.11 integration with auto-start                   |
-| **copilot.lua**      | AI code completion | GitHub Copilot integration                                |
-| **CopilotChat.nvim** | AI chat interface  | Claude Sonnet 4 powered commit messages                   |
+| **sidekick.nvim**    | AI CLI assistant   | Integrates Copilot CLI, Claude CLI, and other AI tools    |
 
 ### Code Quality
 
-| Plugin                 | Purpose           | Why This One?                                       |
-| ---------------------- | ----------------- | --------------------------------------------------- |
-| **conform.nvim**       | Formatting        | Modern, extensible, format-on-save                  |
-| **nvim-lint**          | Linting           | Async linting with extensive language support       |
-| **trouble.nvim**       | Diagnostics UI    | Beautiful diagnostics, quickfix, and LSP references |
-| **todo-comments.nvim** | TODO highlighting | Track TODO/FIXME/NOTE comments                      |
+| Plugin                 | Purpose            | Why This One?                                       |
+| ---------------------- | ------------------ | --------------------------------------------------- |
+| **conform.nvim**       | Formatting         | Modern, extensible, format-on-save                  |
+| **nvim-lint**          | Linting            | Async linting with extensive language support        |
+| **trouble.nvim**       | Diagnostics UI     | Beautiful diagnostics, quickfix, and LSP references  |
+| **todo-comments.nvim** | TODO highlighting  | Track TODO/FIXME/NOTE comments                      |
+| **grug-far.nvim**      | Search & replace   | Project-wide search and replace with live preview    |
 
 ### Git Integration
 
@@ -90,14 +95,15 @@ capabilities.
 
 ### Testing & Debugging
 
-| Plugin             | Purpose          | Why This One?                 |
-| ------------------ | ---------------- | ----------------------------- |
-| **neotest**        | Test runner      | Unified testing interface     |
-| **neotest-golang** | Go test adapter  | Go-specific test integration  |
-| **nvim-dap**       | Debug adapter    | DAP protocol support          |
-| **nvim-dap-go**    | Go debugging     | Delve integration             |
-| **nvim-dap-ui**    | Debug UI         | Beautiful debug interface     |
-| **nvim-coverage**  | Coverage display | Inline coverage visualization |
+| Plugin             | Purpose              | Why This One?                 |
+| ------------------ | -------------------- | ----------------------------- |
+| **neotest**        | Test runner          | Unified testing interface     |
+| **neotest-golang** | Go test adapter      | Go-specific test integration  |
+| **nvim-dap**       | Debug adapter        | DAP protocol support          |
+| **nvim-dap-go**    | Go debugging         | Delve integration             |
+| **nvim-dap-ui**    | Debug UI             | Beautiful debug interface     |
+| **nvim-dap-virtual-text** | Inline debug values | Shows variable values inline |
+| **nvim-coverage**  | Coverage display     | Inline coverage visualization |
 
 ### UI & UX
 
@@ -121,11 +127,14 @@ capabilities.
 
 ### Themes
 
-| Plugin              | Purpose                  |
-| ------------------- | ------------------------ |
-| **catppuccin**      | Catppuccin color scheme  |
-| **tokyonight.nvim** | Tokyo Night color scheme |
-| **gruvbox.nvim**    | Gruvbox color scheme     |
+| Plugin              | Purpose                    |
+| ------------------- | -------------------------- |
+| **everforest**      | Everforest color scheme    |
+| **catppuccin**      | Catppuccin color scheme    |
+| **tokyonight.nvim** | Tokyo Night color scheme   |
+| **gruvbox.nvim**    | Gruvbox color scheme       |
+| **neovim-ayu**      | Ayu color scheme           |
+| **onedarkpro.nvim** | One Dark Pro color scheme  |
 
 ## 🗂️ Structure
 
@@ -135,12 +144,16 @@ nvim/
 ├── lazy-lock.json        # Plugin version lockfile
 ├── lsp/                  # Native Neovim 0.11 LSP configs
 │   ├── bashls.lua
+│   ├── copilot.lua
+│   ├── golangci_lint_ls.lua
 │   ├── gopls.lua
 │   ├── lua_ls.lua
 │   ├── marksman.lua
 │   ├── mpls.lua
 │   ├── regal.lua
+│   ├── ruff.lua
 │   ├── ts_ls.lua
+│   ├── ty.lua
 │   └── yamlls.lua
 ├── lua/
 │   ├── config/           # Core configuration
@@ -153,8 +166,6 @@ nvim/
 │   │   ├── blink-cmp.lua
 │   │   ├── bufferline.lua
 │   │   ├── colorscheme.lua
-│   │   ├── copilot.lua
-│   │   ├── copilot-chat.lua
 │   │   ├── coverage.lua
 │   │   ├── dap.lua
 │   │   ├── diagnostics.lua
@@ -182,14 +193,15 @@ nvim/
 
 ### Production Languages
 
-| Language     | LSP                  | Formatters         | Linters           | DAP            | Tests          |
-| ------------ | -------------------- | ------------------ | ----------------- | -------------- | -------------- |
-| **Go**       | gopls, golangci-lint | goimports, gofumpt | golangci-lint     | delve (dap-go) | neotest-golang |
-| **Lua**      | lua_ls               | stylua             | -                 | -              | -              |
-| **Bash**     | bashls               | shfmt              | shellcheck        | -              | -              |
-| **Markdown** | marksman, mpls       | prettier           | markdownlint-cli2 | -              | -              |
-| **Rego**     | regal                | -                  | regal             | -              | -              |
-| **YAML**     | yamlls               | yamlfmt            | -                 | -              | -              |
+| Language     | LSP                         | Formatters              | Linters           | DAP            | Tests          |
+| ------------ | --------------------------- | ----------------------- | ----------------- | -------------- | -------------- |
+| **Go**       | gopls, golangci-lint-ls     | goimports, gofumpt      | golangci-lint     | delve (dap-go) | neotest-golang |
+| **Python**   | ruff, ty                    | ruff_fix, ruff_format   | ruff              | -              | -              |
+| **Lua**      | lua_ls                      | stylua                  | -                 | -              | -              |
+| **Bash**     | bashls                      | shfmt                   | shellcheck        | -              | -              |
+| **Markdown** | marksman, mpls              | prettier                | markdownlint-cli2 | -              | -              |
+| **Rego**     | regal                       | -                       | regal             | -              | -              |
+| **YAML**     | yamlls                      | yamlfmt                 | -                 | -              | -              |
 
 ### Web Development
 
@@ -199,13 +211,14 @@ nvim/
 | **HTML**                  | -     | prettier   |
 | **CSS**                   | -     | prettier   |
 | **JSON**                  | -     | prettier   |
+| **Python**                | -     | prettier   |
 
 ### Parsers (Treesitter)
 
 bash, c, comment, diff, dockerfile, gitcommit, go, gomod, gosum, gotmpl, gowork,
 html, javascript, jsdoc, json, jsonc, lua, luadoc, luap, make, markdown,
-markdown_inline, nix, nu, printf, python, regex, rego, rust, toml, tsx,
-typescript, vim, vimdoc, xml, yaml, zig
+markdown_inline, nix, nu, printf, python, regex, rego, rust, terraform, toml,
+tsx, typescript, vim, vimdoc, xml, yaml, zig
 
 ## ⌨️ Key Bindings
 
@@ -218,6 +231,7 @@ typescript, vim, vimdoc, xml, yaml, zig
 | `<C-h/j/k/l>`     | Normal | Navigate windows       |
 | `<S-h>` / `<S-l>` | Normal | Previous/Next buffer   |
 | `<leader>e`       | Normal | File explorer (Snacks) |
+| `<leader>bd`      | Normal | Delete buffer          |
 
 ### Finding & Searching
 
@@ -226,25 +240,45 @@ typescript, vim, vimdoc, xml, yaml, zig
 | `<leader><space>` | Normal        | Smart find files    |
 | `<leader>,`       | Normal        | Buffers             |
 | `<leader>/`       | Normal        | Live grep           |
+| `<leader>:`       | Normal        | Command history     |
 | `<leader>ff`      | Normal        | Find files          |
+| `<leader>fc`      | Normal        | Find config file    |
 | `<leader>fg`      | Normal        | Git files           |
 | `<leader>fr`      | Normal        | Recent files        |
+| `<leader>fp`      | Normal        | Projects            |
 | `<leader>sg`      | Normal        | Grep                |
 | `<leader>sw`      | Normal/Visual | Grep word/selection |
+| `<leader>sb`      | Normal        | Buffer lines        |
+| `<leader>ss`      | Normal        | LSP symbols         |
+| `<leader>sS`      | Normal        | Workspace symbols   |
+| `<leader>sr`      | Normal        | Search & replace    |
+| `<leader>sR`      | Normal        | Resume last search  |
 
 ### Git
 
-| Key           | Mode          | Action                       |
-| ------------- | ------------- | ---------------------------- |
-| `<leader>gg`  | Normal        | Neogit                       |
-| `<leader>gb`  | Normal        | Git branches                 |
-| `<leader>gl`  | Normal        | Git log                      |
-| `<leader>gs`  | Normal        | Git status                   |
-| `<leader>gd`  | Normal        | Git diff                     |
-| `<leader>gB`  | Normal/Visual | Git browse (open in browser) |
-| `]h` / `[h`   | Normal        | Next/Previous hunk           |
-| `<leader>ghs` | Normal/Visual | Stage hunk                   |
-| `<leader>ghr` | Normal/Visual | Reset hunk                   |
+| Key            | Mode          | Action                       |
+| -------------- | ------------- | ---------------------------- |
+| `<leader>gg`   | Normal        | Lazygit                      |
+| `<leader>gb`   | Normal        | Git branches                 |
+| `<leader>gl`   | Normal        | Git log                      |
+| `<leader>gL`   | Normal        | Git log line                 |
+| `<leader>gs`   | Normal        | Git status                   |
+| `<leader>gS`   | Normal        | Git stash                    |
+| `<leader>gd`   | Normal        | Git diff (hunks)             |
+| `<leader>gf`   | Normal        | Git log file                 |
+| `<leader>gB`   | Normal/Visual | Git browse (open in browser) |
+| `]h` / `[h`    | Normal        | Next/Previous hunk           |
+| `]H` / `[H`    | Normal        | Last/First hunk              |
+| `<leader>ghs`  | Normal/Visual | Stage hunk                   |
+| `<leader>ghr`  | Normal/Visual | Reset hunk                   |
+| `<leader>ghS`  | Normal        | Stage buffer                 |
+| `<leader>ghu`  | Normal        | Undo stage hunk              |
+| `<leader>ghR`  | Normal        | Reset buffer                 |
+| `<leader>ghp`  | Normal        | Preview hunk inline          |
+| `<leader>ghb`  | Normal        | Blame line                   |
+| `<leader>ghB`  | Normal        | Blame buffer                 |
+| `<leader>ghd`  | Normal        | Diff this                    |
+| `<leader>ghD`  | Normal        | Diff this ~                  |
 
 ### LSP
 
@@ -263,26 +297,50 @@ typescript, vim, vimdoc, xml, yaml, zig
 
 ### Testing & Debugging
 
-| Key          | Mode   | Action              |
-| ------------ | ------ | ------------------- |
-| `<leader>tt` | Normal | Run nearest test    |
-| `<leader>tT` | Normal | Run all tests       |
-| `<leader>ts` | Normal | Toggle test summary |
-| `<leader>to` | Normal | Test output panel   |
-| `<leader>db` | Normal | Toggle breakpoint   |
-| `<leader>dc` | Normal | Continue            |
-| `<leader>di` | Normal | Step into           |
-| `<leader>do` | Normal | Step over           |
-| `<leader>dO` | Normal | Step out            |
-| `<leader>dr` | Normal | REPL                |
-| `<leader>du` | Normal | Toggle DAP UI       |
+| Key           | Mode          | Action                |
+| ------------- | ------------- | --------------------- |
+| `<leader>tr`  | Normal        | Run nearest test      |
+| `<leader>tt`  | Normal        | Run file tests        |
+| `<leader>tT`  | Normal        | Run all test files    |
+| `<leader>tl`  | Normal        | Run last test         |
+| `<leader>ts`  | Normal        | Toggle test summary   |
+| `<leader>to`  | Normal        | Show test output      |
+| `<leader>tO`  | Normal        | Toggle output panel   |
+| `<leader>tS`  | Normal        | Stop tests            |
+| `<leader>tw`  | Normal        | Toggle watch mode     |
+| `<leader>tcc` | Normal        | Load coverage         |
+| `<leader>tcl` | Normal        | Clear coverage        |
+| `<leader>tct` | Normal        | Toggle coverage       |
+| `<leader>tcs` | Normal        | Coverage summary      |
+| `<leader>dB`  | Normal        | Breakpoint condition  |
+| `<leader>db`  | Normal        | Toggle breakpoint     |
+| `<leader>da`  | Normal        | Run with args         |
+| `<leader>dc`  | Normal        | Run to cursor         |
+| `<leader>dd`  | Normal        | Run/Continue          |
+| `<leader>di`  | Normal        | Step into             |
+| `<leader>dn`  | Normal        | Step over             |
+| `<leader>do`  | Normal        | Step out              |
+| `<leader>dl`  | Normal        | Run last              |
+| `<leader>dP`  | Normal        | Pause                 |
+| `<leader>dt`  | Normal        | Terminate             |
+| `<leader>dr`  | Normal        | Toggle REPL           |
+| `<leader>du`  | Normal        | Toggle DAP UI         |
+| `<leader>de`  | Normal/Visual | Eval expression       |
+| `<leader>dw`  | Normal        | Widgets               |
 
-### AI (Copilot)
+### AI (Sidekick)
 
-| Key          | Mode   | Action                  |
-| ------------ | ------ | ----------------------- |
-| `<leader>at` | Normal | Toggle Copilot          |
-| `<leader>ag` | Normal | Generate commit message |
+| Key          | Mode          | Action                  |
+| ------------ | ------------- | ----------------------- |
+| `<leader>aa` | Normal        | Toggle Sidekick CLI     |
+| `<leader>ac` | Normal        | Toggle Copilot CLI      |
+| `<leader>aC` | Normal        | Toggle Claude CLI       |
+| `<leader>as` | Normal        | Select installed CLI    |
+| `<leader>ad` | Normal        | Detach CLI session      |
+| `<leader>at` | Normal/Visual | Send selection/code     |
+| `<leader>af` | Normal        | Send current file       |
+| `<leader>av` | Visual        | Send visual selection   |
+| `<leader>ap` | Normal        | Select prompt           |
 
 ### UI Toggles
 
@@ -296,12 +354,39 @@ typescript, vim, vimdoc, xml, yaml, zig
 | `<leader>ud` | Normal | Toggle diagnostics      |
 | `<leader>uh` | Normal | Toggle inlay hints      |
 | `<leader>uG` | Normal | Toggle git signs        |
+| `<leader>ug` | Normal | Toggle indent guides    |
+| `<leader>ub` | Normal | Toggle dark background  |
+| `<leader>uc` | Normal | Toggle conceallevel     |
+| `<leader>uT` | Normal | Toggle treesitter       |
+| `<leader>uD` | Normal | Toggle dim              |
+| `<leader>um` | Normal | Toggle markdown render  |
+| `<leader>un` | Normal | Dismiss notifications   |
+
+### Diagnostics & Quickfix
+
+| Key          | Mode   | Action                        |
+| ------------ | ------ | ----------------------------- |
+| `<leader>xx` | Normal | Toggle diagnostics (Trouble)  |
+| `<leader>xX` | Normal | Buffer diagnostics            |
+| `<leader>cs` | Normal | Symbols (Trouble)             |
+| `<leader>cS` | Normal | LSP references/definitions    |
+| `<leader>xL` | Normal | Location list (Trouble)       |
+| `<leader>xQ` | Normal | Quickfix list (Trouble)       |
+| `<leader>xt` | Normal | Todo comments                 |
+| `<leader>xT` | Normal | Todo/Fix/Fixme                |
+| `<leader>st` | Normal | Search todos                  |
+| `<leader>sT` | Normal | Search Todo/Fix/Fixme         |
+| `[q` / `]q`  | Normal | Previous/Next trouble item    |
+| `[d` / `]d`  | Normal | Previous/Next diagnostic      |
+| `[e` / `]e`  | Normal | Previous/Next error           |
+| `[t` / `]t`  | Normal | Previous/Next todo comment    |
 
 ### Projects & Sessions
 
 | Key          | Mode   | Action                |
 | ------------ | ------ | --------------------- |
 | `<leader>pp` | Normal | Browse projects       |
+| `<leader>fp` | Normal | Browse projects       |
 | `<leader>pr` | Normal | Recent projects       |
 | `<leader>pq` | Normal | Open previous session |
 
@@ -313,7 +398,12 @@ typescript, vim, vimdoc, xml, yaml, zig
 | `<leader>z` | Normal | Zen mode              |
 | `<leader>Z` | Normal | Zoom window           |
 | `<C-/>`     | Normal | Toggle terminal       |
+| `<leader>.` | Normal | Scratch buffer        |
+| `<leader>S` | Normal | Select scratch buffer |
+| `<leader>n` | Normal | Notification history  |
+| `<leader>cR`| Normal | Rename file           |
 | `<leader>?` | Normal | Show buffer keymaps   |
+| `<leader>qq`| Normal | Quit all              |
 
 ## 🚀 Installation
 
@@ -341,6 +431,10 @@ npm install -g bash-language-server
 npm install -g typescript typescript-language-server
 npm install -g prettier
 npm install -g markdownlint-cli2
+
+# Python (via uvx - no install needed, but for reference)
+# uvx ruff check .
+# uvx ty check .
 ```
 
 ## 🔧 Customization
@@ -399,11 +493,17 @@ Lazy.nvim will auto-detect and load it on next restart.
 
 - **LSP Configuration**: This config uses Neovim 0.11's native
   `vim.lsp.enable()` API. No lspconfig plugin needed!
+- **Copilot**: GitHub Copilot runs as a native LSP server
+  (`copilot-language-server`), not via a plugin
+- **AI Workflows**: Sidekick.nvim provides integration with Copilot CLI,
+  Claude CLI, and other AI assistants
 - **Performance**: blink.cmp provides 0.5-4ms completion overhead vs nvim-cmp's
   2-50ms
 - **Session Management**: Handled by neovim-project + neovim-session-manager
 - **Icons**: Using mini.icons for better performance and caching vs
   nvim-web-devicons
+- **Python Tooling**: Ruff (linting/formatting) and Ty (type checking) both
+  run via `uvx` for zero-install convenience
 
 ## 🐛 Troubleshooting
 
