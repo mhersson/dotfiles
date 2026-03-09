@@ -1,6 +1,7 @@
 return {
     cmd = {
         "mpls",
+        "--no-auto",
         "--theme",
         "everforest-dark",
         "--enable-emoji",
@@ -9,6 +10,15 @@ return {
     root_markers = { ".marksman.toml", ".git" },
     filetypes = { "markdown", "markdown.mdx" },
     on_attach = function(client, bufnr)
+        vim.keymap.set("n", "<leader>mp", function()
+            local params = { command = "open-preview" }
+            client:request("workspace/executeCommand", params, function(err, _)
+                if err then
+                    vim.notify("Error opening preview: " .. err.message, vim.log.levels.ERROR)
+                end
+            end)
+        end, { buffer = bufnr, desc = "Markdown Preview" })
+
         vim.api.nvim_buf_create_user_command(bufnr, "MplsOpenPreview", function()
             local params = {
                 command = "open-preview",
