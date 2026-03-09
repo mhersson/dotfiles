@@ -1,18 +1,18 @@
 return {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
-    root_makrers = {
+    root_markers = {
         ".git",
     },
     settings = {
-        {
+        yaml = {
             format = {
                 enabled = false,
             },
-            redhat = {
-                telemetry = {
-                    enabled = false,
-                },
+        },
+        redhat = {
+            telemetry = {
+                enabled = false,
             },
         },
     },

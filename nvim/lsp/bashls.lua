@@ -1,7 +1,7 @@
 return {
     cmd = { "bash-language-server", "start" },
     filetypes = { "sh", "bash" },
-    root_makrers = { ".git" },
+    root_markers = { ".git" },
     settings = {
         bashIde = {
             globPattern = "*@(.sh|.inc|.bash|.command)",

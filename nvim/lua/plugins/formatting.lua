@@ -6,8 +6,6 @@ return {
         {
             "<leader>uf",
             function()
-                local conform = require("conform")
-
                 -- Toggle the format_on_save setting
                 if vim.g.format_on_save == false then
                     vim.g.format_on_save = true
@@ -51,7 +49,6 @@ return {
 
             return {
                 timeout_ms = 500,
-                lsp_fallback = true,
             }
         end,
         -- Customize formatters

@@ -7,13 +7,13 @@ return {
         "--enable-footnotes",
     },
     root_markers = { ".marksman.toml", ".git" },
-    filetypes = { "markdown", "makdown.mdx" },
+    filetypes = { "markdown", "markdown.mdx" },
     on_attach = function(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, "MplsOpenPreview", function()
             local params = {
                 command = "open-preview",
             }
-            client.request("workspace/executeCommand", params, function(err, _)
+            client:request("workspace/executeCommand", params, function(err, _)
                 if err then
                     vim.notify("Error executing command: " .. err.message, vim.log.levels.ERROR)
                 else

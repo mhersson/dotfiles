@@ -67,7 +67,7 @@ opt.splitright = true -- Put new windows right of current
 opt.synmaxcol = 300 -- Max column for syntax highlight
 opt.swapfile = false -- Don't use swapfile
 opt.tabstop = 2 -- Number of spaces tabs count for
-opt.termguicolors = true -- True color support
+opt.termguicolors = true -- True color support (default on modern Neovim, kept for compatibility)
 opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
 opt.undofile = true
 opt.undolevels = 10000
@@ -80,6 +80,21 @@ opt.writebackup = false -- Don't use backup files
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Workaround for Neovim core race condition: diagnostic cleanup tries to
+-- delete autocmds that were already removed during bulk buffer deletion
+-- (e.g., session switching). Safe to suppress as it's a no-op.
+do
+    local orig_reset = vim.diagnostic.reset
+    vim.diagnostic.reset = function(...)
+        local ok, err = pcall(orig_reset, ...)
+        if not ok and type(err) == "string" and err:find("Failed to delete autocmd") then
+            return
+        elseif not ok then
+            error(err)
+        end
+    end
+end
 
 -- Setup diagnostic icons
 local icons = require("utils.icons")

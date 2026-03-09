@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("User", {
     group = augroup,
     desc = "Switch to Normal Mode",
     callback = function()
-        -- Switch to Normal Mode
         vim.cmd("stopinsert")
     end,
 })
@@ -24,7 +23,7 @@ vim.api.nvim_create_autocmd("BufDelete", {
         vim.schedule(function()
             local clients = vim.lsp.get_clients()
             for _, client in ipairs(clients) do
-                local buffers = vim.lsp.get_client_by_id(client.id).attached_buffers
+                local buffers = client.attached_buffers
                 if vim.tbl_isempty(buffers) then
                     client:stop()
                 end
@@ -95,7 +94,7 @@ local function create_debounced_mpls_sender(delay)
             vim.schedule_wrap(function()
                 local bufnr = vim.api.nvim_get_current_buf()
 
-                local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+                local filetype = vim.bo[bufnr].filetype
                 if filetype ~= "markdown" then
                     return
                 end

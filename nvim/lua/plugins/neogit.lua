@@ -1,7 +1,7 @@
 return {
     {
         "NeogitOrg/neogit",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
@@ -9,7 +9,7 @@ return {
         },
         keys = {
             {
-                "<leader>gg",
+                "<leader>gn",
                 "<cmd>Neogit kind=tab<cr>",
                 desc = "Neogit",
             },

@@ -33,7 +33,7 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>bd", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
+map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
@@ -86,28 +86,24 @@ map("n", "<leader>xq", function()
     end
 end, { desc = "Quickfix List" })
 
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
-
 -- code actions
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 
 -- diagnostic
-local diagnostic_goto = function(next, severity)
-    local go = next and vim.diagnostic.get_next() or vim.diagnostic.get_prev()
+local function diagnostic_goto(count, severity)
     severity = severity and vim.diagnostic.severity[severity] or nil
     return function()
-        go({ severity = severity })
+        vim.diagnostic.jump({ count = count, severity = severity })
     end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
-map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
-map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+map("n", "]d", diagnostic_goto(1), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(-1), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(1, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(-1, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(1, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(-1, "WARN"), { desc = "Prev Warning" })
 
 -- stylua: ignore start
 
@@ -117,8 +113,6 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 -- floating terminal
 map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = utils.get_lsp_root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = utils.get_lsp_root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = utils.get_lsp_root() }) end, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
