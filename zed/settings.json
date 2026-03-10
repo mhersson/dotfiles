@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "base_keymap": "VSCode",
-  "icon_theme": "Zed (Default)",
+  "icon_theme": "JetBrains New UI Icons (Dark)",
   "helix_mode": true,
   "which_key": {
     "delay_ms": 200,
@@ -84,7 +84,9 @@
     "copy_on_select": true,
   },
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow"
+    },
     "default_profile": "write",
     "button": true,
     "default_model": {
@@ -97,12 +99,10 @@
     },
   },
   "edit_predictions": {
+    "provider": "copilot",
     "copilot": {
       "enterprise_uri": "https://dnb.ghe.com",
     },
-  },
-  "features": {
-    "edit_prediction_provider": "copilot",
   },
   "languages": {
     "Go": {
@@ -133,7 +133,6 @@
       "binary": {
         "path": "mpls",
         "arguments": [
-          "--tabs",
           "--theme",
           "everforest-dark",
           "--enable-emoji",
