@@ -16,6 +16,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx EDITOR hx
 set -gx GOPATH $HOME/Development/go
 set -gx HELIX_RUNTIME $HOME/Development/helix/runtime
+set -gx BAT_THEME "Everforest Dark"
 
 # PATH
 fish_add_path --prepend --move /opt/homebrew/bin
@@ -92,6 +93,14 @@ end
 # Functions
 # ───────────────────────────────────────────────────────────────
 
+function cat --wraps=bat --description 'bat with plain style'
+    command bat --theme $BAT_THEME --style plain --paging=never $argv
+end
+
+function less --wraps=bat --description 'bat with plain style and paging'
+    command bat --theme $BAT_THEME --style plain $argv
+end
+
 # Update, list outdated, upgrade, and cleanup Homebrew packages
 function bup --description 'Update Homebrew and all packages'
     brew update && brew outdated && brew upgrade && brew cleanup
@@ -121,7 +130,7 @@ function jd --description 'Decode and pretty-print a JWT token'
         echo "Usage: jd <token>"
         return 1
     end
-    go-jwx decode "$argv[1]" | bat -l json --style plain
+    go-jwx decode "$argv[1]" | bat --theme $BAT_THEME -l json --style plain
 end
 
 # ───────────────────────────────────────────────────────────────
@@ -142,8 +151,6 @@ alias kcl='kubectl logs'
 alias kcrr='kubectl rollout restart'
 
 # Tool replacements and shortcuts
-alias cat='bat --theme "Everforest Dark" --style plain --paging=never'
-alias less='bat --theme "Everforest Dark" --style plain'
 alias lg='lazygit'
 alias vi='hx'
 alias emacs='emacs -nw'
