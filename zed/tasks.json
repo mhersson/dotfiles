@@ -34,7 +34,8 @@
   //  },
   {
     "label": "find file",
-    "command": "fzf --preview 'bat --style=numbers --theme=\"Everforest Dark\" --color=always --line-range :500 {}' --height=100% --header=\"\n\" --margin=4 --reverse --input-border=rounded --info=inline-right | xargs -I{} zed {}",
+    "command": "fzf --preview 'bat --style=numbers --theme=\"$BAT_THEME\" --color=always --line-range :500 {}' --height=100% --header=\"\n\" --margin=4 --reverse --input-border=rounded --info=inline-right | xargs -I{} zed {}",
+    "env": { "BAT_THEME": "Everforest Dark" },
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "reveal": "always",
