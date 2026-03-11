@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lsp/mpls.lua
+---@type vim.lsp.Config
 return {
     cmd = {
         "mpls",
@@ -10,28 +12,16 @@ return {
     root_markers = { ".marksman.toml", ".git" },
     filetypes = { "markdown", "markdown.mdx" },
     on_attach = function(client, bufnr)
-        vim.keymap.set("n", "<leader>mp", function()
-            local params = { command = "open-preview" }
-            client:request("workspace/executeCommand", params, function(err, _)
-                if err then
-                    vim.notify("Error opening preview: " .. err.message, vim.log.levels.ERROR)
-                end
-            end)
-        end, { buffer = bufnr, desc = "Markdown Preview" })
-
         vim.api.nvim_buf_create_user_command(bufnr, "MplsOpenPreview", function()
-            local params = {
+            client:exec_cmd({
+                title = "Preview markdown with mpls",
                 command = "open-preview",
-            }
-            client:request("workspace/executeCommand", params, function(err, _)
-                if err then
-                    vim.notify("Error executing command: " .. err.message, vim.log.levels.ERROR)
-                else
-                    vim.notify("Preview opened", vim.log.levels.INFO)
-                end
-            end)
-        end, {
-            desc = "Preview markdown with mpls",
+            })
+        end, { desc = "Preview markdown with mpls" })
+
+        vim.keymap.set("n", "<leader>mp", "<cmd>MplsOpenPreview<cr>", {
+            buffer = bufnr,
+            desc = "Markdown Preview",
         })
     end,
 }
