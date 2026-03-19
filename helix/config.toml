@@ -13,6 +13,9 @@ inline-completion-timeout = 150
 # Minimum severity to show a diagnostic after the end of a line
 end-of-line-diagnostics = "error"
 
+[editor.lsp]
+mpls-focus-notify = true
+
 [editor.inline-blame]
 show = "cursor-line"
 auto-fetch = true
