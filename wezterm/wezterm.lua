@@ -86,9 +86,17 @@ config.force_reverse_video_cursor = false
 
 config.audible_bell = "Disabled"
 
-config.font_size = 15
-config.font = wezterm.font("FantasqueSansM Nerd Font")
-config.line_height = 1.2
+config.font_size = 14
+config.font = wezterm.font { family = "RobotoMono Nerd Font" }
+config.font_rules = {
+    {
+        font = wezterm.font {
+            family = "RobotoMono Nerd Font",
+            weight = "Regular",
+        },
+    },
+}
+-- config.line_height = 1.2
 
 config.pane_focus_follows_mouse = true
 
