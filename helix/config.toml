@@ -1,6 +1,7 @@
 theme = "my_everforest_dark"
 
 [editor]
+insecure = true
 bufferline = "multiple"
 cursorline = true
 color-modes = true
@@ -85,6 +86,7 @@ o = ":buffer-close-others"
 p = [
     ":open %sh{~/.config/helix/utils/switch-project.sh show-picker}",
     ":change-current-directory %sh{~/.config/helix/utils/switch-project.sh}",
+    # ":buffer-close-all",
     ":redraw",
     ":reload-all"
 ]
@@ -95,7 +97,7 @@ f = "changed_file_picker"
 g = [
     ":write-all",
     ":new",
-    ":insert-output lazygit",
+    ":insert-output termagit",
     ":set mouse false", # First disable mouse to hint helix into activating it
     ":set mouse true",
     ":buffer-close!",
