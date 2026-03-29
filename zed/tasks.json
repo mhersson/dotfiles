@@ -1,37 +1,14 @@
 [
   {
-    "label": "lazygit",
-    "command": "lazygit",
+    "label": "termagit",
+    "command": "termagit",
     "hide": "on_success",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {
-      "program": "bash",
-    },
+      "program": "bash"
+    }
   },
-  // {
-  //    "label": "neovim",
-  //    "command": "nvim",
-  //    "env": { "NVIM_NO_PROJECT": "1" },
-  //    "hide": "on_success",
-  //    "use_new_terminal": true,
-  //    "allow_concurrent_runs": false,
-  //    "shell": {
-  //      "program": "bash"
-  //    }
-  //  },
-  //  // Open neogit in nvim without loading a project, and map q to quit all
-  //  {
-  //    "label": "neogit",
-  //    "env": { "NVIM_NO_PROJECT": "1" },
-  //    "command": "nvim -c \"lua require('neogit')\"  -c \"Neogit\" -c \"nnoremap <buffer> q :qa<CR>\"",
-  //    "hide": "on_success",
-  //    "use_new_terminal": true,
-  //    "allow_concurrent_runs": false,
-  //    "shell": {
-  //      "program": "bash"
-  //    }
-  //  },
   {
     "label": "find file",
     "command": "fzf --preview 'bat --style=numbers --theme=\"$BAT_THEME\" --color=always --line-range :500 {}' --height=100% --header=\"\n\" --margin=4 --reverse --input-border=rounded --info=inline-right | xargs -I{} zed {}",
@@ -40,6 +17,6 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "always",
-    "shell": { "program": "bash" },
-  },
+    "shell": { "program": "bash" }
+  }
 ]
