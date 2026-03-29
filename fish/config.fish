@@ -151,6 +151,7 @@ alias kcl='kubectl logs'
 alias kcrr='kubectl rollout restart'
 
 # Tool replacements and shortcuts
+alias chameleon='~/.dotfiles/chameleon.py'
 alias lg='lazygit'
 alias vi='hx'
 alias emacs='emacs -nw'
