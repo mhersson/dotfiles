@@ -2,11 +2,9 @@ font-family = RobotoMono Nerd Font
 font-style = Medium
 font-size = 14
 cursor-color = #FF9433
-# theme = Atom One Light
-# theme = Gruvbox Light
-theme = Tokyonight Moon
+theme = Everforest Dark Medium
 macos-titlebar-proxy-icon = hidden
-background-opacity = 1
+background-opacity = 1.00
 window-padding-x = 10
 window-width = 170
 window-height = 67
@@ -17,7 +15,7 @@ background-blur-radius = 20
 mouse-hide-while-typing = true
 focus-follows-mouse = true
 copy-on-select = true
-adjust-cell-width = -10%
+# adjust-cell-width = -10%
 keybind = global:cmd+/=toggle_quick_terminal
 keybind = alt+left=unbind
 keybind = alt+right=unbind
