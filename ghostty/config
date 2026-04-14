@@ -4,6 +4,7 @@ font-size = 14
 cursor-color = #FF9433
 theme = Everforest Dark Medium
 macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = tabs
 background-opacity = 1.00
 window-padding-x = 10
 window-width = 170
