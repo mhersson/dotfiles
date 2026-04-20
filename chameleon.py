@@ -24,6 +24,7 @@ THEMES = {
         "nvim_flavor": "mocha",
         "helix": "catppuccin_mocha",
         "wezterm": "Catppuccin Mocha",
+        "ghostty": "Catppuccin Mocha",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Mocha",
         "zed_dark": "Catppuccin Mocha",
@@ -38,6 +39,7 @@ THEMES = {
         "nvim_flavor": "macchiato",
         "helix": "catppuccin_macchiato",
         "wezterm": "Catppuccin Macchiato",
+        "ghostty": "Catppuccin Macchiato",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Macchiato",
         "zed_dark": "Catppuccin Macchiato",
@@ -52,6 +54,7 @@ THEMES = {
         "nvim_flavor": "frappe",
         "helix": "catppuccin_frappe",
         "wezterm": "Catppuccin Frappe",
+        "ghostty": "Catppuccin Frappe",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Frappe",
         "zed_dark": "Catppuccin Frappé",
@@ -66,6 +69,7 @@ THEMES = {
         "nvim_flavor": "latte",
         "helix": "catppuccin_latte",
         "wezterm": "Catppuccin Latte",
+        "ghostty": "Catppuccin Latte",
         "k9s": "catppuccin-latte",
         "bat": "Catppuccin Latte",
         "zed_dark": "Catppuccin Latte",
@@ -79,6 +83,7 @@ THEMES = {
         "nvim": "gruvbox",
         "helix": "gruvbox_light",
         "wezterm": "GruvboxLight",
+        "ghostty": "Gruvbox Light",
         "k9s": "gruvbox-light",
         "bat": "gruvbox-light",
         "zed_dark": "Gruvbox",
@@ -92,6 +97,7 @@ THEMES = {
         "nvim": "everforest",
         "helix": "my_everforest_dark",
         "wezterm": "Everforest Dark (Gogh)",
+        "ghostty": "Everforest Dark Medium",
         "k9s": "everforest-dark",
         "bat": "Everforest Dark",
         "zed_dark": "Everforest Dark Medium",
@@ -106,6 +112,7 @@ THEMES = {
         "nvim_style": "night",
         "helix": "tokyonight",
         "wezterm": "Tokyo Night",
+        "ghostty": "TokyoNight Night",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night",
@@ -120,6 +127,7 @@ THEMES = {
         "nvim_style": "storm",
         "helix": "tokyonight_storm",
         "wezterm": "Tokyo Night Storm",
+        "ghostty": "TokyoNight Storm",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night Storm",
@@ -134,6 +142,7 @@ THEMES = {
         "nvim_style": "moon",
         "helix": "tokyonight_moon",
         "wezterm": "Tokyo Night Moon",
+        "ghostty": "TokyoNight Moon",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night Moon",
@@ -221,6 +230,14 @@ def update_wezterm(theme: dict) -> bool:
         filepath,
         r'config\.color_scheme = ".*"',
         f'config.color_scheme = "{theme["wezterm"]}"',
+    )
+
+
+def update_ghostty(theme: dict) -> bool:
+    """Update Ghostty config theme."""
+    filepath = DOTFILES_DIR / "ghostty" / "config"
+    return update_file_with_regex(
+        filepath, r"^theme = .*", f"theme = {theme['ghostty']}"
     )
 
 
@@ -385,6 +402,8 @@ def apply_theme(theme_name: str) -> list[str]:
         updated.append("Helix")
     if update_wezterm(theme):
         updated.append("WezTerm")
+    if update_ghostty(theme):
+        updated.append("Ghostty")
     if update_k9s(theme):
         updated.append("K9s")
     if update_bat(theme):
