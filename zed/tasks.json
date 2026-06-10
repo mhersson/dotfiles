@@ -4,10 +4,11 @@
     "command": "termagit",
     "hide": "on_success",
     "use_new_terminal": true,
+    "reveal": "always",
     "allow_concurrent_runs": false,
     "shell": {
-      "program": "bash"
-    }
+      "program": "bash",
+    },
   },
   {
     "label": "find file",
@@ -17,6 +18,6 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "always",
-    "shell": { "program": "bash" }
-  }
+    "shell": { "program": "bash" },
+  },
 ]

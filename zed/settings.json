@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "base_keymap": "VSCode",
   "icon_theme": "JetBrains New UI Icons (Dark)",
   "helix_mode": true,
@@ -32,8 +38,8 @@
   "buffer_font_size": 14,
   "buffer_line_height": "standard",
   "theme": {
-    "mode": "system",
-    "light": "Catppuccin Macchiato",
+    "mode": "light",
+    "light": "Catppuccin Latte",
     "dark": "Everforest Dark Medium",
   },
   "format_on_save": "on",
@@ -69,9 +75,11 @@
     "include_ignored": "all",
   },
   "project_panel": {
+    "dock": "left",
     "auto_reveal_entries": false,
   },
   "collaboration_panel": {
+    "dock": "left",
     "button": false,
   },
   "notification_panel": {
@@ -84,6 +92,7 @@
     "copy_on_select": true,
   },
   "agent": {
+    "dock": "right",
     "tool_permissions": {
       "default": "allow"
     },
@@ -134,7 +143,7 @@
         "path": "mpls",
         "arguments": [
           "--theme",
-          "everforest-dark",
+          "catppuccin-latte",
           "--enable-emoji",
           "--enable-footnotes",
         ],
