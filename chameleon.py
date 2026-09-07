@@ -18,6 +18,24 @@ DOTFILES_DIR = Path(__file__).parent.resolve()
 # Theme definitions with per-app values
 # Each theme has: dark (bool), and app-specific values
 THEMES = {
+    "ayu-mirage": {
+        "dark": True,
+        "nvim": "ayu",
+        "nvim_mirage": True,
+        "helix": "ayu_mirage",
+        "wezterm": "Ayu Mirage",
+        "ghostty": "Ayu Mirage",
+        "k9s": "ayu-mirage",
+        # bat ships no ayu theme - TwoDark is the closest match
+        "bat": "TwoDark",
+        "zed_dark": "Ayu Mirage",
+        "zed_light": "Ayu Light",
+        # mpls has no ayu-mirage theme - tokyonight-moon's background (#222436)
+        # is the closest match to mirage's #1f2430 (ayu-dark is far darker)
+        "mpls": "tokyonight-moon",
+        "yclock": {"bg": "#1f2430", "fg": "#cccac2", "accent": "#ffcc66"},
+        "slack": "#1F2430,#23344B,#73D0FF,#1F2430,#274364,#CCCAC2,#D5FF80,#F28779",
+    },
     "catppuccin-mocha": {
         "dark": True,
         "nvim": "catppuccin",
@@ -155,6 +173,7 @@ THEMES = {
 
 # Ordered list of theme names for display
 THEME_ORDER = [
+    "ayu-mirage",
     "catppuccin-mocha",
     "catppuccin-macchiato",
     "catppuccin-frappe",
@@ -167,12 +186,18 @@ THEME_ORDER = [
 ]
 
 
-def update_file_with_regex(filepath: Path, pattern: str, replacement: str) -> bool:
-    """Update a file by replacing a regex pattern with a replacement string."""
+def update_file_with_regex(
+    filepath: Path, pattern: str, replacement: str, flags: int = re.MULTILINE
+) -> bool:
+    """Update a file by replacing a regex pattern with a replacement string.
+
+    Patterns are matched per-line by default so that ^ anchors work regardless
+    of where the setting appears in the file.
+    """
     if not filepath.exists():
         return False
     content = filepath.read_text()
-    new_content, count = re.subn(pattern, replacement, content, count=1)
+    new_content, count = re.subn(pattern, replacement, content, count=1, flags=flags)
     if count > 0:
         filepath.write_text(new_content)
         return True
@@ -211,6 +236,14 @@ def update_nvim(theme: dict) -> bool:
             content,
         )
 
+    # Update ayu mirage variant if applicable
+    if theme["nvim"] == "ayu" and "nvim_mirage" in theme:
+        content = re.sub(
+            r"mirage = (?:true|false)",
+            f"mirage = {'true' if theme['nvim_mirage'] else 'false'}",
+            content,
+        )
+
     filepath.write_text(content)
     return True
 
@@ -234,10 +267,13 @@ def update_wezterm(theme: dict) -> bool:
 
 
 def update_ghostty(theme: dict) -> bool:
-    """Update Ghostty config theme."""
+    """Update Ghostty config theme.
+
+    Anchored at line start so commented-out theme lines are left untouched.
+    """
     filepath = DOTFILES_DIR / "ghostty" / "config"
     return update_file_with_regex(
-        filepath, r"^theme = .*", f"theme = {theme['ghostty']}"
+        filepath, r"^theme[ \t]*=.*", f"theme = {theme['ghostty']}"
     )
 
 
@@ -377,6 +413,12 @@ def detect_current_theme() -> str | None:
                     if style == "night":
                         return "tokyonight"
                     return f"tokyonight-{style}"
+
+            # For ayu, check the mirage variant
+            if nvim_theme == "ayu":
+                mirage_match = re.search(r"mirage = (true|false)", content)
+                if mirage_match and mirage_match.group(1) == "true":
+                    return "ayu-mirage"
 
             # Map other nvim themes to our theme names
             nvim_to_theme = {
