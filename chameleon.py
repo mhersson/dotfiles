@@ -4,12 +4,17 @@ Chameleon - Theme Switcher for dotfiles
 
 A TUI application to switch color themes across multiple applications.
 Uses curses for the interface, no external dependencies required.
+
+Config files are edited in the dotfiles repo regardless of which apps are
+installed on this machine, so the repo stays consistent across machines.
+System appearance is switched on macOS (osascript) and GNOME (gsettings).
 """
 
 import curses
-import json
 import re
+import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 # Detect dotfiles directory from script location
@@ -25,6 +30,10 @@ THEMES = {
         "helix": "ayu_mirage",
         "wezterm": "Ayu Mirage",
         "ghostty": "Ayu Mirage",
+        "zellij": "ayu-mirage",
+        # termagit has no ayu theme; tokyo-night-storm's #24283b background is the
+        # closest match to mirage's #1f2430
+        "termagit": "tokyo-night-storm",
         "k9s": "ayu-mirage",
         # bat ships no ayu theme - TwoDark is the closest match
         "bat": "TwoDark",
@@ -43,6 +52,8 @@ THEMES = {
         "helix": "catppuccin_mocha",
         "wezterm": "Catppuccin Mocha",
         "ghostty": "Catppuccin Mocha",
+        "zellij": "catppuccin-mocha",
+        "termagit": "catppuccin-mocha",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Mocha",
         "zed_dark": "Catppuccin Mocha",
@@ -58,6 +69,8 @@ THEMES = {
         "helix": "catppuccin_macchiato",
         "wezterm": "Catppuccin Macchiato",
         "ghostty": "Catppuccin Macchiato",
+        "zellij": "catppuccin-macchiato",
+        "termagit": "catppuccin-macchiato",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Macchiato",
         "zed_dark": "Catppuccin Macchiato",
@@ -73,6 +86,8 @@ THEMES = {
         "helix": "catppuccin_frappe",
         "wezterm": "Catppuccin Frappe",
         "ghostty": "Catppuccin Frappe",
+        "zellij": "catppuccin-frappe",
+        "termagit": "catppuccin-frappe",
         "k9s": "tokyo-night",
         "bat": "Catppuccin Frappe",
         "zed_dark": "Catppuccin Frappé",
@@ -88,6 +103,8 @@ THEMES = {
         "helix": "catppuccin_latte",
         "wezterm": "Catppuccin Latte",
         "ghostty": "Catppuccin Latte",
+        "zellij": "catppuccin-latte",
+        "termagit": "catppuccin-latte",
         "k9s": "catppuccin-latte",
         "bat": "Catppuccin Latte",
         "zed_dark": "Catppuccin Latte",
@@ -102,6 +119,8 @@ THEMES = {
         "helix": "gruvbox_light",
         "wezterm": "GruvboxLight",
         "ghostty": "Gruvbox Light",
+        "zellij": "gruvbox-light",
+        "termagit": "gruvbox-light",
         "k9s": "gruvbox-light",
         "bat": "gruvbox-light",
         "zed_dark": "Gruvbox",
@@ -116,6 +135,8 @@ THEMES = {
         "helix": "my_everforest_dark",
         "wezterm": "Everforest Dark (Gogh)",
         "ghostty": "Everforest Dark Medium",
+        "zellij": "everforest-dark",
+        "termagit": "everforest-dark",
         "k9s": "everforest-dark",
         "bat": "Everforest Dark",
         "zed_dark": "Everforest Dark Medium",
@@ -131,6 +152,10 @@ THEMES = {
         "helix": "tokyonight",
         "wezterm": "Tokyo Night",
         "ghostty": "TokyoNight Night",
+        # zellij's tokyo-night uses the storm palette; tokyo-night-dark matches the
+        # night style's #1a1b26 background
+        "zellij": "tokyo-night-dark",
+        "termagit": "tokyo-night",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night",
@@ -146,6 +171,8 @@ THEMES = {
         "helix": "tokyonight_storm",
         "wezterm": "Tokyo Night Storm",
         "ghostty": "TokyoNight Storm",
+        "zellij": "tokyo-night-storm",
+        "termagit": "tokyo-night-storm",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night Storm",
@@ -161,6 +188,12 @@ THEMES = {
         "helix": "tokyonight_moon",
         "wezterm": "Tokyo Night Moon",
         "ghostty": "TokyoNight Moon",
+        # zellij has no moon variant; tokyo-night-dark (#1a1b26) is closer to
+        # moon's #222436 than tokyo-night-storm is
+        "zellij": "tokyo-night-dark",
+        # termagit has no moon variant; tokyo-night-storm (#24283b) is closer to
+        # moon's #222436 than tokyo-night (#1a1b26) is
+        "termagit": "tokyo-night-storm",
         "k9s": "tokyo-night",
         "bat": "Tokyo Night",
         "zed_dark": "Tokyo Night Moon",
@@ -277,6 +310,26 @@ def update_ghostty(theme: dict) -> bool:
     )
 
 
+def update_zellij(theme: dict) -> bool:
+    """Update Zellij config.kdl theme.
+
+    Anchored at line start so the commented theme_dark/theme_light lines are
+    left untouched.
+    """
+    filepath = DOTFILES_DIR / "zellij" / "config.kdl"
+    return update_file_with_regex(
+        filepath, r'^theme ".*"', f'theme "{theme["zellij"]}"'
+    )
+
+
+def update_termagit(theme: dict) -> bool:
+    """Update termagit config.toml theme."""
+    filepath = DOTFILES_DIR / "termagit" / "config.toml"
+    return update_file_with_regex(
+        filepath, r'^theme = ".*"', f'theme = "{theme["termagit"]}"'
+    )
+
+
 def update_k9s(theme: dict) -> bool:
     """Update K9s config.yaml skin."""
     filepath = DOTFILES_DIR / "k9s" / "config.yaml"
@@ -377,15 +430,61 @@ def update_mpls_zed(theme: dict) -> bool:
     )
 
 
+def _run_quietly(command: list[str]) -> bool:
+    """Run a command, returning False if it is missing or exits non-zero."""
+    if shutil.which(command[0]) is None:
+        return False
+    try:
+        subprocess.run(command, check=True, capture_output=True)
+    except (subprocess.CalledProcessError, OSError):
+        return False
+    return True
+
+
 def set_macos_appearance(dark: bool) -> bool:
     """Set macOS system appearance using osascript."""
     appearance = "true" if dark else "false"
     script = f'tell app "System Events" to tell appearance preferences to set dark mode to {appearance}'
-    try:
-        subprocess.run(["osascript", "-e", script], check=True, capture_output=True)
+    return _run_quietly(["osascript", "-e", script])
+
+
+def set_gnome_appearance(dark: bool) -> bool:
+    """Set GNOME color scheme using gsettings.
+
+    Uses the same values GNOME Settings writes: prefer-dark for dark and
+    default for light.
+    """
+    scheme = "prefer-dark" if dark else "default"
+    return _run_quietly(
+        ["gsettings", "set", "org.gnome.desktop.interface", "color-scheme", scheme]
+    )
+
+
+def set_os_appearance(dark: bool) -> bool:
+    """Set the system light/dark appearance for the current platform."""
+    if sys.platform == "darwin":
+        return set_macos_appearance(dark)
+    if sys.platform.startswith("linux"):
+        return set_gnome_appearance(dark)
+    return False
+
+
+def os_appearance_label() -> str:
+    """Name shown in the status line when the OS appearance was switched."""
+    return "macOS" if sys.platform == "darwin" else "GNOME"
+
+
+def slack_installed() -> bool:
+    """Check whether Slack is installed, via PATH, app bundle, flatpak or snap."""
+    if shutil.which("slack") is not None:
         return True
-    except subprocess.CalledProcessError:
-        return False
+    locations = (
+        Path("/Applications/Slack.app"),
+        Path("/var/lib/flatpak/app/com.slack.Slack"),
+        Path.home() / ".local" / "share" / "flatpak" / "app" / "com.slack.Slack",
+        Path("/snap/slack"),
+    )
+    return any(location.exists() for location in locations)
 
 
 def detect_current_theme() -> str | None:
@@ -446,6 +545,10 @@ def apply_theme(theme_name: str) -> list[str]:
         updated.append("WezTerm")
     if update_ghostty(theme):
         updated.append("Ghostty")
+    if update_zellij(theme):
+        updated.append("Zellij")
+    if update_termagit(theme):
+        updated.append("termagit")
     if update_k9s(theme):
         updated.append("K9s")
     if update_bat(theme):
@@ -460,8 +563,8 @@ def apply_theme(theme_name: str) -> list[str]:
         updated.append("mpls-helix")
     if update_mpls_zed(theme):
         updated.append("mpls-zed")
-    if set_macos_appearance(theme["dark"]):
-        updated.append("macOS")
+    if set_os_appearance(theme["dark"]):
+        updated.append(os_appearance_label())
 
     return updated
 
@@ -480,6 +583,7 @@ def main(stdscr):
     current_idx = 0
     current_theme = detect_current_theme()
     status_message = ""
+    show_slack = slack_installed()
 
     # Try to select current theme in list
     if current_theme in THEME_ORDER:
@@ -497,11 +601,12 @@ def main(stdscr):
         instructions = "↑/↓: Navigate | Enter: Apply | q: Quit"
         stdscr.addstr(3, (width - len(instructions)) // 2, instructions)
 
-        # Theme list
+        # Theme list; leave room for the Slack box when shown, and the status line
         start_y = 5
+        list_bottom = height - 8 if show_slack else height - 3
         for idx, theme_name in enumerate(THEME_ORDER):
             y = start_y + idx
-            if y >= height - 8:  # Leave room for Slack box
+            if y >= list_bottom:
                 break
 
             # Build display string
@@ -525,18 +630,18 @@ def main(stdscr):
                     marker_pos = 2 + len(display) - 2
                     stdscr.addstr(y, marker_pos, "←", curses.color_pair(2))
 
-        # Slack theme box
+        # Slack theme box, only when Slack is installed and the box fits
         selected_theme = THEME_ORDER[current_idx]
         slack_theme = THEMES[selected_theme].get("slack", "")
         box_y = height - 6
         box_width = len(slack_theme) + 4
         box_x = (width - box_width) // 2
 
-        # Draw box
-        stdscr.addstr(box_y, box_x, "┌" + "─" * (box_width - 2) + "┐")
-        stdscr.addstr(box_y + 1, box_x, "│ Slack theme:" + " " * (box_width - 15) + "│")
-        stdscr.addstr(box_y + 2, box_x, "│ " + slack_theme + " │", curses.A_BOLD)
-        stdscr.addstr(box_y + 3, box_x, "└" + "─" * (box_width - 2) + "┘")
+        if show_slack and box_width <= width:
+            stdscr.addstr(box_y, box_x, "┌" + "─" * (box_width - 2) + "┐")
+            stdscr.addstr(box_y + 1, box_x, "│ Slack theme:" + " " * (box_width - 15) + "│")
+            stdscr.addstr(box_y + 2, box_x, "│ " + slack_theme + " │", curses.A_BOLD)
+            stdscr.addstr(box_y + 3, box_x, "└" + "─" * (box_width - 2) + "┘")
 
         # Status message
         if status_message:

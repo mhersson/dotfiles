@@ -1,0 +1,4 @@
+theme = "tokyo-night-storm"
+
+[commit_editor]
+disable_insert_on_commit = true
