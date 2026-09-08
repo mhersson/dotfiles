@@ -1,0 +1,127 @@
+# GitHub Dark color palette
+bg: &bg "#0d1117"
+panel: &panel "#161b22"
+selection: &selection "#21262d"
+guide: &guide "#30363d"
+
+fg: &fg "#e6edf3"
+accent: &accent "#58a6ff"
+tag: &tag "#56d4dd"
+entity: &entity "#79c0ff"
+func: &func "#e3b341"
+string: &string "#7ee787"
+keyword: &keyword "#ffa657"
+constant: &constant "#d2a8ff"
+markup: &markup "#ff7b72"
+error: &error "#f85149"
+
+ui: &ui "#8b949e"
+comment: &comment "#6e7681"
+
+k9s:
+  # General K9s styles
+  body:
+    fgColor: *fg
+    bgColor: default
+    logoColor: *accent
+  # Command prompt styles
+  prompt:
+    fgColor: *fg
+    bgColor: *panel
+    suggestColor: *ui
+    border:
+      default: *keyword
+      command: *tag
+  # ClusterInfoView styles.
+  info:
+    fgColor: *entity
+    sectionColor: *fg
+  # Dialog styles.
+  dialog:
+    fgColor: *fg
+    bgColor: default
+    buttonFgColor: *fg
+    buttonBgColor: *selection
+    buttonFocusFgColor: *bg
+    buttonFocusBgColor: *tag
+    labelFgColor: *ui
+    fieldFgColor: *fg
+  frame:
+    # Borders styles.
+    border:
+      fgColor: *guide
+      focusColor: *keyword
+    menu:
+      fgColor: *entity
+      keyColor: *tag
+      # Used for favorite namespaces
+      numKeyColor: *func
+    # CrumbView attributes for history navigation.
+    crumbs:
+      fgColor: *bg
+      bgColor: *keyword
+      activeColor: *accent
+    # Resource status and update styles
+    status:
+      newColor: *entity
+      modifyColor: *tag
+      addColor: *string
+      pendingColor: *keyword
+      errorColor: *error
+      highlightColor: *accent
+      killColor: *ui
+      completedColor: *comment
+    # Border title styles.
+    title:
+      fgColor: *fg
+      bgColor: default
+      highlightColor: *accent
+      counterColor: *constant
+      filterColor: *string
+  views:
+    # Charts skins...
+    charts:
+      bgColor: default
+      defaultDialColors:
+      - *entity
+      - *markup
+      defaultChartColors:
+      - *string
+      - *markup
+    # TableView attributes.
+    table:
+      fgColor: *fg
+      bgColor: default
+      cursorFgColor: *bg
+      cursorBgColor: *keyword
+      markColor: *string
+      # Header row styles.
+      header:
+        fgColor: *fg
+        bgColor: default
+        sorterColor: *tag
+    # Xray view attributes.
+    xray:
+      fgColor: *fg
+      bgColor: default
+      cursorColor: *selection
+      graphicColor: *entity
+      showIcons: false
+    # YAML info styles.
+    yaml:
+      keyColor: *entity
+      colonColor: *ui
+      valueColor: *fg
+    # Logs styles.
+    logs:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *fg
+        bgColor: *selection
+    help:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *markup
+        bgColor: *selection

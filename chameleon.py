@@ -145,6 +145,55 @@ THEMES = {
         "yclock": {"bg": "#272e33", "fg": "#d2c6aa", "accent": "#ed8796"},
         "slack": "#272E33,#343F44,#7FBBB3,#272E33,#3D484D,#D3C6AA,#A7C080,#E67E80",
     },
+    "github-dark": {
+        "dark": True,
+        "nvim": "github",
+        "nvim_variant": "github_dark_default",
+        "helix": "github_dark",
+        # wezterm only ships the older iTerm2 GitHub Dark (#101216); it is still
+        # the closest match to Primer dark's #0d1117
+        "wezterm": "GitHub Dark",
+        "ghostty": "GitHub Dark Default",
+        # zellij has no github theme; tokyo-night-dark (#1a1b26) is the closest
+        # dark blue-black with blue accents
+        "zellij": "tokyo-night-dark",
+        # termagit has no github theme; tokyo-night (#1a1b26) is the closest match
+        "termagit": "tokyo-night",
+        "k9s": "github-dark",
+        # bat ships no github dark theme - Coldark-Dark (#111b27) is the closest
+        "bat": "Coldark-Dark",
+        # both zed themes come from the github-theme extension
+        "zed_dark": "GitHub Dark",
+        "zed_light": "GitHub Light",
+        # mpls' generic dark theme is github dark: #0d1117 background, #c9d1d9 text
+        "mpls": "dark",
+        "yclock": {"bg": "#0d1117", "fg": "#e6edf3", "accent": "#58a6ff"},
+        "slack": "#0D1117,#161B22,#58A6FF,#0D1117,#21262D,#E6EDF3,#3FB950,#F85149",
+    },
+    "github-light": {
+        "dark": False,
+        "nvim": "github",
+        "nvim_variant": "github_light_default",
+        "helix": "github_light",
+        # the Gogh variant is the one carrying Primer light's ansi colors; its
+        # #f6f8fa background is a shade off github's pure white
+        "wezterm": "Github Light (Gogh)",
+        "ghostty": "GitHub Light Default",
+        # zellij has no github theme; ayu-light (#e7eaed) is its lightest
+        "zellij": "ayu-light",
+        # termagit has no github theme; catppuccin-latte (#eff1f5) is the closest
+        # to github light's #ffffff
+        "termagit": "catppuccin-latte",
+        "k9s": "github-light",
+        # bat's GitHub theme is the light one
+        "bat": "GitHub",
+        "zed_dark": "GitHub Dark",
+        "zed_light": "GitHub Light",
+        # mpls' generic light theme is github light: #ffffff background, #24292e text
+        "mpls": "light",
+        "yclock": {"bg": "#ffffff", "fg": "#1f2328", "accent": "#0969da"},
+        "slack": "#FFFFFF,#F6F8FA,#0969DA,#FFFFFF,#EAEEF2,#1F2328,#1A7F37,#CF222E",
+    },
     "tokyonight": {
         "dark": True,
         "nvim": "tokyonight",
@@ -213,6 +262,8 @@ THEME_ORDER = [
     "catppuccin-latte",
     "gruvbox-light",
     "everforest-dark",
+    "github-dark",
+    "github-light",
     "tokyonight",
     "tokyonight-storm",
     "tokyonight-moon",
@@ -274,6 +325,15 @@ def update_nvim(theme: dict) -> bool:
         content = re.sub(
             r"mirage = (?:true|false)",
             f"mirage = {'true' if theme['nvim_mirage'] else 'false'}",
+            content,
+        )
+
+    # github-nvim-theme has no dark/light option - the variant is the
+    # colorscheme name, so rewrite the colorscheme call instead
+    if theme["nvim"] == "github" and "nvim_variant" in theme:
+        content = re.sub(
+            r'colorscheme\("github_[^"]*"\)',
+            f'colorscheme("{theme["nvim_variant"]}")',
             content,
         )
 
@@ -361,7 +421,7 @@ def update_zed(theme: dict) -> bool:
         content = re.sub(pattern, rf'\1"{theme["zed_dark"]}"', content)
     else:
         pattern = r'("theme"\s*:\s*\{[^}]*"light"\s*:\s*)"[^"]*"'
-        content = re.sub(pattern, rf'\1"{theme["zed_dark"]}"', content)
+        content = re.sub(pattern, rf'\1"{theme["zed_light"]}"', content)
 
     filepath.write_text(content)
     return True
@@ -518,6 +578,14 @@ def detect_current_theme() -> str | None:
                 mirage_match = re.search(r"mirage = (true|false)", content)
                 if mirage_match and mirage_match.group(1) == "true":
                     return "ayu-mirage"
+
+            # For github, the colorscheme name carries the dark/light variant
+            if nvim_theme == "github":
+                variant_match = re.search(
+                    r'colorscheme\("github_(dark|light)[^"]*"\)', content
+                )
+                if variant_match:
+                    return f"github-{variant_match.group(1)}"
 
             # Map other nvim themes to our theme names
             nvim_to_theme = {
