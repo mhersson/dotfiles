@@ -22,6 +22,7 @@ set -gx BAT_THEME "Everforest Dark"
 fish_add_path --prepend --move /opt/homebrew/bin
 fish_add_path --prepend --move $HOME/.local/bin
 fish_add_path --prepend --move $HOME/.cargo/bin
+fish_add_path --prepend --move /usr/local/go/bin
 fish_add_path --prepend --move $GOPATH/bin
 
 # Better history search (up/down with what you've typed)
@@ -152,6 +153,7 @@ alias kcrr='kubectl rollout restart'
 
 # Tool replacements and shortcuts
 alias chameleon='~/.dotfiles/chameleon.py'
+alias csu='contextmatrix-setup update --yes'
 alias lg='lazygit'
 alias vi='hx'
 alias emacs='emacs -nw'
