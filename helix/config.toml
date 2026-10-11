@@ -32,9 +32,9 @@ other-lines = "disable" # Don't expand diagnostics unless the cursor is on the l
 "{" = "}"
 
 [editor.cursor-shape]
-insert = "native"
-normal = "native"
-select = "native"
+insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.file-picker]
 hidden = false
