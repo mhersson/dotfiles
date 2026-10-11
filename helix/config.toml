@@ -1,12 +1,13 @@
-theme = "my_everforest_dark"
+theme = "ayu_mirage"
 
 [editor]
-insecure = true
 bufferline = "multiple"
 cursorline = true
 color-modes = true
 true-color = true
 rainbow-brackets = true
+rounded-corners = true
+popup-border = "all"
 
 # copilot
 inline-completion-timeout = 150
@@ -31,9 +32,9 @@ other-lines = "disable" # Don't expand diagnostics unless the cursor is on the l
 "{" = "}"
 
 [editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
+insert = "native"
+normal = "native"
+select = "native"
 
 [editor.file-picker]
 hidden = false
@@ -46,12 +47,24 @@ render = true
 left = ["mode", "spacer", "spinner", "version-control", "file-name"]
 center = []
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-separator = "│"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
 diagnostics = ["info", "warning", "error"]
 workspace-diagnostics = ["warning", "error"]
+
+[editor.breadcrumb]
+enable = false
+path = "none"
+
+[icons.fs]
+enable = true
+
+[icons.kind]
+enable = true
+
+[icons.vcs]
+enable = true
 
 [keys.insert]
 A-tab = "inline_completion_accept"
@@ -65,7 +78,7 @@ C-r = ":reload-all"
 C-y = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
-  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':insert-output printf "\033[?1049h\033[?2004h" > /dev/tty',
   ':open %sh{cat /tmp/unique-file}',
   ':redraw',
 ]
@@ -74,33 +87,36 @@ C-y = [
 "," = "buffer_picker"
 space = "file_picker"
 f = "file_picker_in_current_buffer_directory"
-i = ":toggle lsp.display-inlay-hints"
-m = ":lsp-workspace-command open-preview"
+i = { label = "Toggle inlay hints", command = ":toggle lsp.display-inlay-hints" }
+m = { label = "Markdown preview", command = ":lsp-workspace-command open-preview" }
 
 [keys.normal.space.b]
+label = "Buffer"
 b = "buffer_picker"
-R = ":reload-all"
-d = ":buffer-close"
-k = ":buffer-close!"
-o = ":buffer-close-others"
-p = [
+R = { label = "Reload all", command = ":reload-all" }
+d = { label = "Close", command = ":buffer-close" }
+k = { label = "Force close", command = ":buffer-close!" }
+o = { label = "Close others", command = ":buffer-close-others" }
+p = { label = "Switch project", command = [
     ":open %sh{~/.config/helix/utils/switch-project.sh show-picker}",
     ":change-current-directory %sh{~/.config/helix/utils/switch-project.sh}",
     # ":buffer-close-all",
     ":redraw",
     ":reload-all"
-]
-r = ":reload"
+] }
+r = { label = "Reload", command = ":reload" }
 
 [keys.normal.space.g]
+label = "Git"
 f = "changed_file_picker"
-g = [
+g = { label = "Termagit", command = [
     ":write-all",
     ":new",
     ":insert-output termagit",
+    ':insert-output printf "\033[?1049h\033[?2004h" > /dev/tty',
     ":set mouse false", # First disable mouse to hint helix into activating it
     ":set mouse true",
     ":buffer-close!",
     ":redraw",
     ":reload-all"
-]
+] }
