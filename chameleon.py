@@ -10,6 +10,8 @@ installed on this machine, so the repo stays consistent across machines.
 System appearance is switched on macOS (osascript) and GNOME (gsettings).
 """
 
+from __future__ import annotations
+
 import curses
 import re
 import shutil
@@ -423,11 +425,15 @@ def update_k9s(theme: dict) -> bool:
 
 
 def update_bat(theme: dict) -> bool:
-    """Update Fish config.fish BAT_THEME."""
+    """Update Fish config.fish BAT_THEME.
+
+    Matches the value quoted or not, since fish_indent strips quotes from
+    single-word values; it is always written quoted for multi-word names.
+    """
     filepath = DOTFILES_DIR / "fish" / "config.fish"
     return update_file_with_regex(
         filepath,
-        r'set -gx BAT_THEME ".*"',
+        r"^set -gx BAT_THEME .*",
         f'set -gx BAT_THEME "{theme["bat"]}"',
     )
 
@@ -574,52 +580,20 @@ def slack_installed() -> bool:
 
 
 def detect_current_theme() -> str | None:
-    """Detect the currently active theme by reading config files."""
-    # Check Neovim config for ACTIVE_THEME
-    nvim_path = DOTFILES_DIR / "nvim" / "lua" / "plugins" / "colorscheme.lua"
-    if nvim_path.exists():
-        content = nvim_path.read_text()
-        match = re.search(r'^local ACTIVE_THEME = "([^"]*)"', content, re.MULTILINE)
-        if match:
-            nvim_theme = match.group(1)
+    """Detect the currently active theme from the Helix config.
 
-            # For catppuccin, also check flavor
-            if nvim_theme == "catppuccin":
-                flavor_match = re.search(r'flavor = "([^"]*)"', content)
-                if flavor_match:
-                    flavor = flavor_match.group(1)
-                    return f"catppuccin-{flavor}"
-
-            # For tokyonight, check style
-            if nvim_theme == "tokyonight":
-                style_match = re.search(r'style = "([^"]*)"', content)
-                if style_match:
-                    style = style_match.group(1)
-                    if style == "night":
-                        return "tokyonight"
-                    return f"tokyonight-{style}"
-
-            # For ayu, check the mirage variant
-            if nvim_theme == "ayu":
-                mirage_match = re.search(r"mirage = (true|false)", content)
-                if mirage_match and mirage_match.group(1) == "true":
-                    return "ayu-mirage"
-
-            # For github, the colorscheme name carries the dark/light variant
-            if nvim_theme == "github":
-                variant_match = re.search(
-                    r'colorscheme\("github_(dark|light)[^"]*"\)', content
-                )
-                if variant_match:
-                    return f"github-{variant_match.group(1)}"
-
-            # Map other nvim themes to our theme names
-            nvim_to_theme = {
-                "everforest": "everforest-dark",
-                "gruvbox": "gruvbox-light",
-            }
-            return nvim_to_theme.get(nvim_theme, nvim_theme)
-
+    Every theme maps to a distinct Helix theme name, so the reverse lookup is
+    unambiguous.
+    """
+    helix_path = DOTFILES_DIR / "helix" / "config.toml"
+    if not helix_path.exists():
+        return None
+    match = re.search(r'^theme = "([^"]*)"', helix_path.read_text(), re.MULTILINE)
+    if not match:
+        return None
+    for name, theme in THEMES.items():
+        if theme["helix"] == match.group(1):
+            return name
     return None
 
 
