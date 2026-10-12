@@ -30,6 +30,7 @@ THEMES = {
         "helix": "ayu_mirage",
         "wezterm": "Ayu Mirage",
         "ghostty": "Ayu Mirage",
+        "kitty": "ayu_mirage",
         "zellij": "ayu-mirage",
         # termagit has no ayu theme; tokyo-night-storm's #24283b background is the
         # closest match to mirage's #1f2430
@@ -52,6 +53,7 @@ THEMES = {
         "helix": "catppuccin_mocha",
         "wezterm": "Catppuccin Mocha",
         "ghostty": "Catppuccin Mocha",
+        "kitty": "Catppuccin-Mocha",
         "zellij": "catppuccin-mocha",
         "termagit": "catppuccin-mocha",
         "k9s": "tokyo-night",
@@ -69,6 +71,7 @@ THEMES = {
         "helix": "catppuccin_macchiato",
         "wezterm": "Catppuccin Macchiato",
         "ghostty": "Catppuccin Macchiato",
+        "kitty": "Catppuccin-Macchiato",
         "zellij": "catppuccin-macchiato",
         "termagit": "catppuccin-macchiato",
         "k9s": "tokyo-night",
@@ -86,6 +89,7 @@ THEMES = {
         "helix": "catppuccin_frappe",
         "wezterm": "Catppuccin Frappe",
         "ghostty": "Catppuccin Frappe",
+        "kitty": "Catppuccin-Frappe",
         "zellij": "catppuccin-frappe",
         "termagit": "catppuccin-frappe",
         "k9s": "tokyo-night",
@@ -103,6 +107,7 @@ THEMES = {
         "helix": "catppuccin_latte",
         "wezterm": "Catppuccin Latte",
         "ghostty": "Catppuccin Latte",
+        "kitty": "Catppuccin-Latte",
         "zellij": "catppuccin-latte",
         "termagit": "catppuccin-latte",
         "k9s": "catppuccin-latte",
@@ -119,6 +124,7 @@ THEMES = {
         "helix": "gruvbox_light",
         "wezterm": "GruvboxLight",
         "ghostty": "Gruvbox Light",
+        "kitty": "gruvbox-light",
         "zellij": "gruvbox-light",
         "termagit": "gruvbox-light",
         "k9s": "gruvbox-light",
@@ -135,6 +141,7 @@ THEMES = {
         "helix": "my_everforest_dark",
         "wezterm": "Everforest Dark (Gogh)",
         "ghostty": "Everforest Dark Medium",
+        "kitty": "everforest_dark_medium",
         "zellij": "everforest-dark",
         "termagit": "everforest-dark",
         "k9s": "everforest-dark",
@@ -154,6 +161,7 @@ THEMES = {
         # the closest match to Primer dark's #0d1117
         "wezterm": "GitHub Dark",
         "ghostty": "GitHub Dark Default",
+        "kitty": "GitHub_Dark",
         # zellij has no github theme; tokyo-night-dark (#1a1b26) is the closest
         # dark blue-black with blue accents
         "zellij": "tokyo-night-dark",
@@ -179,6 +187,7 @@ THEMES = {
         # #f6f8fa background is a shade off github's pure white
         "wezterm": "Github Light (Gogh)",
         "ghostty": "GitHub Light Default",
+        "kitty": "GitHub_Light",
         # zellij has no github theme; ayu-light (#e7eaed) is its lightest
         "zellij": "ayu-light",
         # termagit has no github theme; catppuccin-latte (#eff1f5) is the closest
@@ -201,6 +210,7 @@ THEMES = {
         "helix": "tokyonight",
         "wezterm": "Tokyo Night",
         "ghostty": "TokyoNight Night",
+        "kitty": "tokyo_night_night",
         # zellij's tokyo-night uses the storm palette; tokyo-night-dark matches the
         # night style's #1a1b26 background
         "zellij": "tokyo-night-dark",
@@ -220,6 +230,7 @@ THEMES = {
         "helix": "tokyonight_storm",
         "wezterm": "Tokyo Night Storm",
         "ghostty": "TokyoNight Storm",
+        "kitty": "tokyo_night_storm",
         "zellij": "tokyo-night-storm",
         "termagit": "tokyo-night-storm",
         "k9s": "tokyo-night",
@@ -237,6 +248,7 @@ THEMES = {
         "helix": "tokyonight_moon",
         "wezterm": "Tokyo Night Moon",
         "ghostty": "TokyoNight Moon",
+        "kitty": "tokyo_night_moon",
         # zellij has no moon variant; tokyo-night-dark (#1a1b26) is closer to
         # moon's #222436 than tokyo-night-storm is
         "zellij": "tokyo-night-dark",
@@ -367,6 +379,20 @@ def update_ghostty(theme: dict) -> bool:
     filepath = DOTFILES_DIR / "ghostty" / "config"
     return update_file_with_regex(
         filepath, r"^theme[ \t]*=.*", f"theme = {theme['ghostty']}"
+    )
+
+
+def update_kitty(theme: dict) -> bool:
+    """Update kitty.conf to include the theme file from kitty/themes.
+
+    Theme files are copied from kitty-themes so they exist in the repo even on
+    machines without kitty installed.
+    """
+    filepath = DOTFILES_DIR / "kitty" / "kitty.conf"
+    return update_file_with_regex(
+        filepath,
+        r"^include \./themes/.*\.conf$",
+        f"include ./themes/{theme['kitty']}.conf",
     )
 
 
@@ -613,6 +639,8 @@ def apply_theme(theme_name: str) -> list[str]:
         updated.append("WezTerm")
     if update_ghostty(theme):
         updated.append("Ghostty")
+    if update_kitty(theme):
+        updated.append("Kitty")
     if update_zellij(theme):
         updated.append("Zellij")
     if update_termagit(theme):
