@@ -1,0 +1,15 @@
+# Copper dark: the ContextMatrix Copper palette (web/src/index.css); same values as the Ghostty and Kitty themes.
+
+[colors]
+foreground = "#f1eef5"
+background = "#211f27"
+cursor_bg = "#f2a17e"
+cursor_border = "#f2a17e"
+cursor_fg = "#211f27"
+selection_bg = "#4f3d3d"
+selection_fg = "#f1eef5"
+ansi = ["#403b49", "#ffb0bc", "#a7dfbb", "#f2cf8f", "#b3c4ff", "#d2b9ed", "#add2de", "#c9c1d0"]
+brights = ["#62596e", "#ffc0cc", "#b7f0cb", "#ffdf9f", "#c3d4ff", "#e2c9fe", "#bde2ef", "#f1eef5"]
+
+[metadata]
+name = "Copper Dark"

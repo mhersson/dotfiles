@@ -1,0 +1,32 @@
+# Copper dark: the ContextMatrix Copper palette (web/src/index.css).
+# Everforest's dark theme with the palette swapped token for token.
+
+inherits = "everforest_dark"
+
+[palette]
+bg_dim = "#17161b"
+bg0 = "#211f27"
+bg1 = "#2c2833"
+bg2 = "#35303e"
+bg3 = "#403b49"
+bg4 = "#514a5b"
+bg5 = "#62596e"
+bg_visual = "#3e2a24"
+bg_red = "#432831"
+bg_green = "#24392e"
+bg_blue = "#29334c"
+bg_yellow = "#403425"
+fg = "#f1eef5"
+red = "#ffb0bc"
+orange = "#f57f0a"
+yellow = "#f2cf8f"
+green = "#a7dfbb"
+aqua = "#f2a17e"
+blue = "#b3c4ff"
+purple = "#d2b9ed"
+grey0 = "#b2aaba"
+grey1 = "#bdb5c5"
+grey2 = "#c9c1d0"
+statusline1 = "#a7dfbb"
+statusline2 = "#f1eef5"
+statusline3 = "#ffb0bc"

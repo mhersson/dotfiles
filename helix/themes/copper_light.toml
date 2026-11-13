@@ -1,0 +1,32 @@
+# Copper light: the ContextMatrix Copper palette (web/src/index.css).
+# Everforest's light theme with the palette swapped token for token.
+
+inherits = "everforest_light"
+
+[palette]
+bg_dim = "#f5f4f7"
+bg0 = "#ffffff"
+bg1 = "#f0eef3"
+bg2 = "#e9e6ed"
+bg3 = "#dedbe3"
+bg4 = "#ccc6d3"
+bg5 = "#b2aaba"
+bg_red = "#fcebf0"
+bg_visual = "#fbeee7"
+bg_yellow = "#fff3dd"
+bg_green = "#e8f4ed"
+bg_blue = "#eaf0ff"
+fg = "#25232b"
+red = "#a42a3b"
+orange = "#793809"
+yellow = "#855313"
+green = "#216346"
+blue = "#3452a3"
+aqua = "#a83d17"
+purple = "#725096"
+grey0 = "#68636f"
+grey1 = "#625b6b"
+grey2 = "#574f60"
+statusline1 = "#216346"
+statusline2 = "#25232b"
+statusline3 = "#a42a3b"

@@ -1,0 +1,132 @@
+# Copper light: the ContextMatrix Copper palette (web/src/index.css).
+# The Everforest skin with its palette swapped token for token.
+bg0: &bg0 "#ffffff"
+bg1: &bg1 "#f0eef3"
+bg2: &bg2 "#e9e6ed"
+bg3: &bg3 "#dedbe3"
+bg_visual: &bg_visual "#fbeee7"
+bg_blue: &bg_blue "#eaf0ff"
+
+fg: &fg "#25232b"
+red: &red "#a42a3b"
+orange: &orange "#793809"
+yellow: &yellow "#855313"
+green: &green "#216346"
+aqua: &aqua "#a83d17"
+blue: &blue "#3452a3"
+purple: &purple "#725096"
+
+grey0: &grey0 "#68636f"
+grey1: &grey1 "#625b6b"
+grey2: &grey2 "#574f60"
+
+statusline1: &statusline1 "#216346"
+statusline2: &statusline2 "#25232b"
+statusline3: &statusline3 "#a42a3b"
+
+k9s:
+  # General K9s styles
+  body:
+    fgColor: *fg
+    bgColor: default
+    logoColor: *statusline1
+  # Command prompt styles
+  prompt:
+    fgColor: *fg
+    bgColor: *bg0
+    suggestColor: *grey1
+    border:
+      defaultColor: *orange
+      commandColor: *statusline3
+  # ClusterInfoView styles.
+  info:
+    fgColor: *blue
+    sectionColor: *statusline2
+  # Dialog styles.
+  dialog:
+    fgColor: *fg
+    bgColor: default
+    buttonFgColor: *fg
+    buttonBgColor: *bg_blue
+    buttonFocusFgColor: *bg0
+    buttonFocusBgColor: *aqua
+    labelFgColor: *grey1
+    fieldFgColor: *fg
+  frame:
+    # Borders styles.
+    border:
+      fgColor: *bg3
+      focusColor: *orange
+    menu:
+      fgColor: *blue
+      keyColor: *aqua
+      # Used for favorite namespaces
+      numKeyColor: *yellow
+    # CrumbView attributes for history navigation.
+    crumbs:
+      fgColor: *bg0
+      bgColor: *orange
+      activeColor: *yellow
+    # Resource status and update styles
+    status:
+      newColor: *blue
+      modifyColor: *aqua
+      addColor: *green
+      errorColor: *red
+      highlightcolor: *orange
+      killColor: *grey0
+      completedColor: *grey1
+    # Border title styles.
+    title:
+      fgColor: *fg
+      bgColor: default
+      highlightColor: *yellow
+      counterColor: *purple
+      filterColor: *statusline1
+  views:
+    # Charts skins...
+    charts:
+      bgColor: default
+      defaultDialColors:
+      - *blue
+      - *red
+      defaultChartColors:
+      - *statusline1
+      - *statusline3
+    # TableView attributes.
+    table:
+      fgColor: *fg
+      bgColor: default
+      cursorFgColor: *bg0
+      cursorBgColor: *orange
+      markColor: *green
+      # Header row styles.
+      header:
+        fgColor: *statusline2
+        bgColor: default
+        sorterColor: *aqua
+    # Xray view attributes.
+    xray:
+      fgColor: *fg
+      bgColor: default
+      cursorColor: *bg_visual
+      graphicColor: *blue
+      showIcons: false
+    # YAML info styles.
+    yaml:
+      keyColor: *blue
+      colonColor: *grey2
+      valueColor: *fg
+    # Logs styles.
+    logs:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *fg
+        bgColor: *bg2
+    help:
+      fgColor: *fg
+      bgColor: default
+      indicator:
+        fgColor: *red
+        bgColor: *bg2

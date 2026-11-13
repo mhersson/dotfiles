@@ -120,6 +120,47 @@ THEMES = {
         "yclock": {"bg": "#eff1f5", "fg": "#4c4f69", "accent": "#ea76cb"},
         "slack": "#EFF1F5,#CCD0DA,#1E66F5,#EFF1F5,#BCC0CC,#4C4F69,#40A02B,#D20F39",
     },
+    # Copper is the ContextMatrix palette; it has no Neovim theme, so Neovim
+    # keeps whatever colorscheme it has
+    "copper-dark": {
+        "dark": True,
+        "helix": "copper_dark",
+        "wezterm": "Copper Dark",
+        "ghostty": "Copper Dark",
+        "kitty": "Copper-Dark",
+        "zellij": "copper-dark",
+        "termagit": "copper-dark",
+        "k9s": "copper-dark",
+        "bat": "Copper Dark",
+        # no copper theme for Zed; Catppuccin Mocha (#1e1e2e) is the closest
+        # cool purple-tinted dark, Ayu Light the closest white with an orange
+        # accent
+        "zed_dark": "Catppuccin Mocha",
+        "zed_light": "Ayu Light",
+        # mpls has no copper theme; catppuccin-mocha's #1e1e2e is the closest
+        # to copper's #211f27
+        "mpls": "catppuccin-mocha",
+        "yclock": {"bg": "#211f27", "fg": "#f1eef5", "accent": "#f2a17e"},
+        "slack": "#211F27,#2C2833,#F2A17E,#211F27,#403B49,#F1EEF5,#A7DFBB,#FFB0BC",
+    },
+    "copper-light": {
+        "dark": False,
+        "helix": "copper_light",
+        "wezterm": "Copper Light",
+        "ghostty": "Copper Light",
+        "kitty": "Copper-Light",
+        "zellij": "copper-light",
+        "termagit": "copper-light",
+        "k9s": "copper-light",
+        "bat": "Copper Light",
+        "zed_dark": "Catppuccin Mocha",
+        "zed_light": "Ayu Light",
+        # mpls' generic light theme (#ffffff background, #24292e text) is the
+        # closest to copper light's #ffffff and #25232b
+        "mpls": "light",
+        "yclock": {"bg": "#ffffff", "fg": "#25232b", "accent": "#a83d17"},
+        "slack": "#FFFFFF,#E9E6ED,#A83D17,#FFFFFF,#DEDBE3,#25232B,#216346,#A42A3B",
+    },
     "gruvbox-light": {
         "dark": False,
         "nvim": "gruvbox",
@@ -274,6 +315,8 @@ THEME_ORDER = [
     "catppuccin-macchiato",
     "catppuccin-frappe",
     "catppuccin-latte",
+    "copper-dark",
+    "copper-light",
     "gruvbox-light",
     "everforest-dark",
     "github-dark",
@@ -305,7 +348,7 @@ def update_file_with_regex(
 def update_nvim(theme: dict) -> bool:
     """Update Neovim colorscheme.lua with theme and optionally flavor/style."""
     filepath = DOTFILES_DIR / "nvim" / "lua" / "plugins" / "colorscheme.lua"
-    if not filepath.exists():
+    if "nvim" not in theme or not filepath.exists():
         return False
 
     content = filepath.read_text()

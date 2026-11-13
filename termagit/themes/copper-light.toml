@@ -1,0 +1,31 @@
+# Copper light: the ContextMatrix Copper palette (web/src/index.css).
+# Mapped like termagit's built-in everforest-dark; aqua is Copper's copper accent.
+
+# Everforest uses blue where the standard mapping uses cyan
+popup_switch = "#3452a3"
+graph_cyan = "#3452a3"
+
+[palette]
+bg = "#ffffff"
+bg1 = "#f0eef3"
+bg2 = "#dedbe3"
+bg3 = "#ccc6d3"
+diff_add_bg = "#e8f4ed"
+diff_del_bg = "#fcebf0"
+diff_context_bg = "#f0eef3"
+diff_hunk_bg = "#f7f6f9"
+fg = "#25232b"
+fg1 = "#25232b"
+fg2 = "#574f60"
+dim = "#68636f"
+dim1 = "#625b6b"
+blue = "#3452a3"
+green = "#216346"
+red = "#a42a3b"
+yellow = "#855313"
+purple = "#725096"
+teal = "#a83d17"
+cyan = "#a83d17"
+orange = "#793809"
+pink = "#725096"
+lavender = "#a83d17"

@@ -1,0 +1,123 @@
+// Copper dark: the ContextMatrix Copper palette (web/src/index.css).
+// Catppuccin's layout through the same slot mapping as the AIM theme; copper marks
+// the focused frame and selected tab, and emphasis falls back to a readable colour.
+themes {
+    copper-dark {
+        text_unselected {
+            base 241 238 245
+            background 23 22 27
+            emphasis_0 245 127 10
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        text_selected {
+            base 241 238 245
+            background 98 89 110
+            emphasis_0 241 238 245
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        ribbon_selected {
+            base 23 22 27
+            background 242 161 126
+            emphasis_0 164 42 59
+            emphasis_1 121 56 9
+            emphasis_2 114 80 150
+            emphasis_3 52 82 163
+        }
+        ribbon_unselected {
+            base 23 22 27
+            background 241 238 245
+            emphasis_0 164 42 59
+            emphasis_1 37 35 43
+            emphasis_2 52 82 163
+            emphasis_3 114 80 150
+        }
+        table_title {
+            base 242 161 126
+            background 0
+            emphasis_0 245 127 10
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        table_cell_selected {
+            base 241 238 245
+            background 98 89 110
+            emphasis_0 241 238 245
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        table_cell_unselected {
+            base 241 238 245
+            background 23 22 27
+            emphasis_0 245 127 10
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        list_selected {
+            base 241 238 245
+            background 98 89 110
+            emphasis_0 241 238 245
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        list_unselected {
+            base 241 238 245
+            background 23 22 27
+            emphasis_0 245 127 10
+            emphasis_1 173 210 222
+            emphasis_2 167 223 187
+            emphasis_3 210 185 237
+        }
+        frame_selected {
+            base 242 161 126
+            background 0
+            emphasis_0 245 127 10
+            emphasis_1 173 210 222
+            emphasis_2 210 185 237
+            emphasis_3 0
+        }
+        frame_highlight {
+            base 245 127 10
+            background 0
+            emphasis_0 210 185 237
+            emphasis_1 245 127 10
+            emphasis_2 245 127 10
+            emphasis_3 245 127 10
+        }
+        exit_code_success {
+            base 167 223 187
+            background 0
+            emphasis_0 173 210 222
+            emphasis_1 23 22 27
+            emphasis_2 210 185 237
+            emphasis_3 179 196 255
+        }
+        exit_code_error {
+            base 255 176 188
+            background 0
+            emphasis_0 242 207 143
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 210 185 237
+            player_2 179 196 255
+            player_3 0
+            player_4 242 207 143
+            player_5 173 210 222
+            player_6 0
+            player_7 255 176 188
+            player_8 0
+            player_9 0
+            player_10 0
+        }
+    }
+}
