@@ -7,10 +7,10 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xff7fbbb3 inactive_color=0xff384b55 width=8.0'
+    'exec-and-forget borders active_color=0xfff2a17e inactive_color=0xff514a5b width=8.0'
 ]
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = false
@@ -188,6 +188,10 @@ if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
 run = 'layout floating'
 
@@ -233,6 +237,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.google.android.studio'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'no.rai.raiwork'
 run = 'layout floating'
 
 [[on-window-detected]]
