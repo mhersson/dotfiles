@@ -16,7 +16,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx EDITOR hx
 set -gx GOPATH $HOME/Development/go
 set -gx HELIX_RUNTIME $HOME/Development/helix/runtime
-set -gx BAT_THEME "Everforest Dark"
+set -gx BAT_THEME "Copper Dark"
 
 # PATH
 fish_add_path --prepend --move /opt/homebrew/bin
@@ -109,21 +109,21 @@ end
 
 # Generate and copy commit message to clipboard
 function gg --description 'Generate and copy commit message'
-    gitmsg | pbcopy
+    gitmsg | wl-copy
 end
 
-# Helix wrapper: cd into directory and set wezterm tab title
-function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
-    if test (count $argv) -eq 1 -a -d $argv[1]
-        cd $argv[1]
-        set -l project (basename (realpath $argv[1]))
-        printf '\e]0;hx %s\e\\' $project
-        command hx .
-        printf '\e]0;\e\\'
-    else
-        command hx $argv
-    end
-end
+# # Helix wrapper: cd into directory and set wezterm tab title
+# function hx --wraps=hx --description 'Helix editor with auto-cd for directories'
+#     if test (count $argv) -eq 1 -a -d $argv[1]
+#         cd $argv[1]
+#         set -l project (basename (realpath $argv[1]))
+#         printf '\e]0;hx %s\e\\' $project
+#         command hx .
+#         printf '\e]0;\e\\'
+#     else
+#         command hx $argv
+#     end
+# end
 
 # Decode and pretty-print a JWT token
 function jd --description 'Decode and pretty-print a JWT token'
