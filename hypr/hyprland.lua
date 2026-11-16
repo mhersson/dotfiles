@@ -21,7 +21,7 @@ hl.monitor({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("hypridle")
-    hl.exec_cmd("ghostty")
+    hl.exec_cmd("kitty")
     hl.exec_cmd("firefox")
 end)
 
@@ -38,21 +38,21 @@ hl.config({
         border_size = 3,
 
         col = {
-            active_border   = 0xff8aadf4,
-            inactive_border = 0xff494d64,
+            active_border   = 0xfff2a17e,
+            inactive_border = 0xff514a5b,
         },
     },
 
     group = {
         col = {
-            border_active   = 0xfff38ba8,
-            border_inactive = 0xff494d64,
+            border_active   = 0xfff2a17e,
+            border_inactive = 0xff514a5b,
         },
         groupbar = {
             enabled = true,
             col = {
-                active   = 0xfff38ba8,
-                inactive = 0xff494d64,
+                active   = 0xfff2a17e,
+                inactive = 0xff514a5b,
             },
             render_titles = false,
             gradients     = false,
@@ -114,10 +114,10 @@ hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 5,  bezier = "
 
 hl.config({
     input = {
-        kb_layout    = "us,no",
-        kb_variant   = "",
+        kb_layout    = "us",
+        kb_variant   = "mac",
         kb_model     = "",
-        kb_options   = "grp:caps_toggle",
+        kb_options   = "",
         kb_rules     = "",
 
         repeat_rate  = 25,
@@ -173,7 +173,7 @@ local mainMod = "ALT"
 hl.bind(mainMod .. " + B",              hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + C",              hl.dsp.window.center())
 hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd("thunar"))
-hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd("ghostty"))
+hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + SHIFT + E",      hl.dsp.exit())
 hl.bind(mainMod .. " + F",              hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + space",  hl.dsp.window.float({ action = "toggle" }))
@@ -197,7 +197,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 
 -- Screenshots
 hl.bind(mainMod .. " + SHIFT + F11", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
-hl.bind(mainMod .. " + F11",         hl.dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]]))
+hl.bind("SUPER" .. " + SHIFT + 4",   hl.dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]]))
 
 -- Toggle monitor resolution / restart portal
 hl.bind(mainMod .. " + SHIFT + F12", hl.dsp.exec_cmd("~/.config/hypr/toggle-resolution"))
