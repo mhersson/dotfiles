@@ -1,0 +1,34 @@
+# Copper, dark: the ContextMatrix web UI's Copper palette, cool neutral greys
+# with a copper accent. Cyan and the overlay greys are derived in OKLab; every
+# text shade from overlay0 up clears 4.5:1 on base and mantle.
+
+title = "Copper Dark"
+dark = true
+
+[palette]
+rosewater = "#f1eef5"
+flamingo = "#f57f0a"
+pink = "#d2b9ed"
+mauve = "#f2a17e"
+red = "#ffb0bc"
+maroon = "#ffb0bc"
+peach = "#f57f0a"
+yellow = "#f2cf8f"
+green = "#a7dfbb"
+teal = "#add2de"
+sky = "#add2de"
+sapphire = "#b3c4ff"
+blue = "#b3c4ff"
+lavender = "#d2b9ed"
+text = "#f1eef5"
+subtext1 = "#c9c1d0"
+subtext0 = "#b2aaba"
+overlay2 = "#a59dae"
+overlay1 = "#9890a2"
+overlay0 = "#8c8496"
+surface2 = "#62596e"
+surface1 = "#403b49"
+surface0 = "#2c2833"
+base = "#211f27"
+mantle = "#17161b"
+crust = "#17161b"
