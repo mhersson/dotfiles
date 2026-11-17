@@ -118,7 +118,7 @@ copy_on_select = true
 ## agent you cannot see: blocked is an agent that needs a decision, done is a
 ## finished turn. "off" sends nothing, bell included.
 ## values: all | blocked | off
-# notify = "all"
+notify = "blocked"
 
 ## Ring the terminal bell with each notification. With false, kitty (0.36 or
 ## newer) is asked to make the notification silent.
